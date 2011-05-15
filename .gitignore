@@ -32,3 +32,11 @@ src
 
 ## org stuff
 .org-id-locations
+
+## ignore mail directories for those who keep mail in this directory
+drafts
+Mail
+mail
+
+## allow snippets to be kept in the base directory
+snippets
