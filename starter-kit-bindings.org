@@ -95,11 +95,6 @@ Key Bindings.
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 #+end_src
 
-** Fetch the contents at a URL, display it raw.
-#+begin_src emacs-lisp 
-(global-set-key (kbd "C-x h") 'view-url)
-#+end_src
-
 ** Help should search more than just commands
 #+begin_src emacs-lisp 
 (global-set-key (kbd "C-h a") 'apropos)
