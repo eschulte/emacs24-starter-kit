@@ -32,7 +32,7 @@ The following packages should all ways be installed
 #+end_src
 
 #+begin_src emacs-lisp
-(defun esk-online? ()
+(defun starter-kit-online? ()
   "See if we're online.
 
 Windows does not have the network-interface-list function, so we
@@ -49,7 +49,7 @@ just have to assume it's online."
 
 On your first run, this should pull in all the base packages.
 #+begin_src emacs-lisp
-(when (esk-online?)
+(when (starter-kit-online?)
   (unless package-archive-contents (package-refresh-contents))
   (starter-kit-elpa-install))
 #+end_src

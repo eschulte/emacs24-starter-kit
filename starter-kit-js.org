@@ -32,7 +32,7 @@ Java-script Helpers
 #+end_src
 
 #+begin_src emacs-lisp
-(defun esk-pp-json ()
+(defun starter-kit-pp-json ()
   "Pretty-print the json object following point."
   (interactive)
   (require 'json)
