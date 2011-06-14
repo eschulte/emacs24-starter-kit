@@ -73,7 +73,7 @@ Function definitions
         (goto-char position))))
 #+end_src
 
-** These belong in coding-hook:
+** These belong in starter-kit-coding-hook:
 
 We have a number of turn-on-* functions since it's advised that lambda
 functions not go in hooks. Repeatedly evaling an add-to-list with a
@@ -102,29 +102,29 @@ a lambda doesn't already exist in the list.
 
 #+srcname: starter-kit-add-local-column-number-mode
 #+begin_src emacs-lisp 
-(add-hook 'coding-hook 'local-column-number-mode)
+(add-hook 'starter-kit-coding-hook 'local-column-number-mode)
 #+end_src
 
 #+srcname: start-kit-add-local-comment-auto-fill
 #+begin_src emacs-lisp 
-(add-hook 'coding-hook 'local-comment-auto-fill)
+(add-hook 'starter-kit-coding-hook 'local-comment-auto-fill)
 #+end_src
 
 #+srcname: starter-kit-add-hl-line-mode
 #+begin_src emacs-lisp :tangle no
-(add-hook 'coding-hook 'turn-on-hl-line-mode)
+(add-hook 'starter-kit-coding-hook 'turn-on-hl-line-mode)
 #+end_src
 
 #+srcname: starter-kit-add-pretty-lambdas
 #+begin_src emacs-lisp
-(add-hook 'coding-hook 'pretty-lambdas)
+(add-hook 'starter-kit-coding-hook 'pretty-lambdas)
 #+end_src
   
-#+srcname: starter-kit-run-coding-hook
+#+srcname: starter-kit-run-starter-kit-coding-hook
 #+begin_src emacs-lisp 
-(defun run-coding-hook ()
+(defun run-starter-kit-coding-hook ()
   "Enable things that are convenient across all coding buffers."
-  (run-hooks 'coding-hook))
+  (run-hooks 'starter-kit-coding-hook))
 #+end_src
 
 #+srcname: starter-kit-untabify-buffer

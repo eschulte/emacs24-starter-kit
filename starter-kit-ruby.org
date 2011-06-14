@@ -72,7 +72,7 @@ Clear the compilation buffer between test runs.
 
 ** Hooks
 #+begin_src emacs-lisp
-(add-hook 'ruby-mode-hook 'run-coding-hook)
+(add-hook 'ruby-mode-hook 'run-starter-kit-coding-hook)
 #+end_src
 
 #+begin_emacs-lisp

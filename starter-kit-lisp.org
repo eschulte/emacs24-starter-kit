@@ -47,7 +47,7 @@ back, =C-M-u= up, =C-M-d= down)
 
 #+begin_src emacs-lisp
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'emacs-lisp-mode-hook 'run-coding-hook)
+(add-hook 'emacs-lisp-mode-hook 'run-starter-kit-coding-hook)
 (add-hook 'emacs-lisp-mode-hook 'esk-remove-elc-on-save)
 ;; (add-hook 'emacs-lisp-mode-hook 'idle-highlight)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-paredit)
@@ -70,7 +70,7 @@ back, =C-M-u= up, =C-M-d= down)
 #+begin_src emacs-lisp
   (require 'clojure-mode)
 
-  (add-hook 'clojure-mode-hook 'run-coding-hook)
+  (add-hook 'clojure-mode-hook 'run-starter-kit-coding-hook)
   
   (font-lock-add-keywords 'clojure-mode
                           '(("(\\|)" . 'esk-paren-face)))
@@ -175,7 +175,7 @@ pretty \lambda's in clojure
 ** Scheme
 
 #+begin_src emacs-lisp
-(add-hook 'scheme-mode-hook 'run-coding-hook)
+(add-hook 'scheme-mode-hook 'run-starter-kit-coding-hook)
 ;; (add-hook 'scheme-mode-hook 'idle-highlight)
 (font-lock-add-keywords 'scheme-mode
 			'(("(\\|)" . 'esk-paren-face)))
@@ -184,7 +184,7 @@ pretty \lambda's in clojure
 ** Common Lisp
 
 #+begin_src emacs-lisp
-(add-hook 'lisp-mode-hook 'run-coding-hook)
+(add-hook 'lisp-mode-hook 'run-starter-kit-coding-hook)
 ;; (add-hook 'lisp-mode-hook 'idle-highlight)
 (add-hook 'lisp-mode-hook 'turn-on-paredit)
 (font-lock-add-keywords 'lisp-mode

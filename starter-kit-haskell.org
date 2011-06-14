@@ -21,6 +21,6 @@ pretty lambdas in Haskell code
 
 Haskell mode hook
 #+begin_src emacs-lisp
-  (add-hook 'haskell-mode-hook 'run-coding-hook)
+  (add-hook 'haskell-mode-hook 'run-starter-kit-coding-hook)
   (add-hook 'haskell-mode-hook 'pretty-lambdas-haskell)
 #+end_src
