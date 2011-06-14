@@ -1,5 +1,7 @@
+#+TITLE: Starter Kit Yasnippet
+#+OPTIONS: toc:nil num:nil ^:nil
 
-
+This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
 
 * Starter kit yasnippet
 [[http://code.google.com/p/yasnippet/][yasnippet]] is yet another snippet expansion system for Emacs.  It is

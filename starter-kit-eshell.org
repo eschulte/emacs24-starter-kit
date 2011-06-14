@@ -39,6 +39,7 @@ point to the =eshell= directory in this directory.  The =alias= file
 is pre-populated with some generally applicable aliases.
 
 #+begin_src emacs-lisp
-  (setq eshell-directory-name (expand-file-name "./" (expand-file-name "eshell" dotfiles-dir)))
+  (setq eshell-directory-name
+        (expand-file-name "./" (expand-file-name "eshell" starter-kit-dir)))
 #+end_src
 

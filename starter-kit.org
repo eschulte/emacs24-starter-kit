@@ -254,16 +254,16 @@ This section contains all code implementing the Emacs Starter Kit.
 
 #+srcname: starter-kit-load-paths
 #+begin_src emacs-lisp 
-  (setq dotfiles-dir (file-name-directory
+  (setq starter-kit-dir (file-name-directory
                       (or load-file-name (buffer-file-name))))
   
-  (add-to-list 'load-path dotfiles-dir)
-  (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
-  (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/jabber"))
+  (add-to-list 'load-path starter-kit-dir)
+  (add-to-list 'load-path (concat starter-kit-dir "/elpa-to-submit"))
+  (add-to-list 'load-path (concat starter-kit-dir "/elpa-to-submit/jabber"))
   
-  (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-  (setq package-user-dir (concat dotfiles-dir "elpa"))
-  (setq custom-file (concat dotfiles-dir "custom.el"))
+  (setq autoload-file (concat starter-kit-dir "loaddefs.el"))
+  (setq package-user-dir (concat starter-kit-dir "elpa"))
+  (setq custom-file (concat starter-kit-dir "custom.el"))
 #+end_src
 
 *** Ubiquitous Packages
@@ -295,7 +295,7 @@ backport some functionality to Emacs 22 if needed
   (defun starter-kit-load (file)
     "This function is to be used to load starter-kit-*.org files."
     (org-babel-load-file (expand-file-name file
-                                           dotfiles-dir)))
+                                           starter-kit-dir)))
 #+end_src
 
 *** ELPA (Emacs Lisp Package Manager)
@@ -326,11 +326,11 @@ in this document).
 
 #+srcname: starter-kit-user/system-setup
 #+begin_src emacs-lisp 
-  (setq system-specific-config (concat dotfiles-dir system-name ".el")
-        system-specific-literate-config (concat dotfiles-dir system-name ".org")
-        user-specific-config (concat dotfiles-dir user-login-name ".el")
-        user-specific-literate-config (concat dotfiles-dir user-login-name ".org")
-        user-specific-dir (concat dotfiles-dir user-login-name))
+  (setq system-specific-config (concat starter-kit-dir system-name ".el")
+        system-specific-literate-config (concat starter-kit-dir system-name ".org")
+        user-specific-config (concat starter-kit-dir user-login-name ".el")
+        user-specific-literate-config (concat starter-kit-dir user-login-name ".org")
+        user-specific-dir (concat starter-kit-dir user-login-name))
   (add-to-list 'load-path user-specific-dir)
 #+end_src
 
@@ -341,7 +341,7 @@ project is not in elpa.
 
 #+srcname: starter-kit-load-elisp-dir
 #+begin_src emacs-lisp
-(setq elisp-source-dir (concat dotfiles-dir "src"))
+(setq elisp-source-dir (concat starter-kit-dir "src"))
 (add-to-list 'load-path elisp-source-dir)
 #+end_src
 
@@ -398,14 +398,14 @@ load the yasnippet bundle
   (add-to-list 'load-path
                (expand-file-name  "yasnippet"
                                   (expand-file-name "src"
-                                                    dotfiles-dir)))
+                                                    starter-kit-dir)))
   (require 'yasnippet)
   (yas/initialize)
 #+end_src
 
 load the snippets defined in the =./snippets/= directory
 #+begin_src emacs-lisp
-  (yas/load-directory (expand-file-name "snippets" dotfiles-dir))
+  (yas/load-directory (expand-file-name "snippets" starter-kit-dir))
 #+end_src
 
 *** Starter kit Org-mode

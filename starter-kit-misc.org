@@ -18,7 +18,7 @@ This following loads color-theme so that it is available by default.
 #+begin_src emacs-lisp
   (add-to-list 'load-path
                (expand-file-name "color-theme"
-                                 (expand-file-name "src" dotfiles-dir)))
+                                 (expand-file-name "src" starter-kit-dir)))
   (require 'color-theme)
   (eval-after-load "color-theme"
     '(progn
@@ -61,9 +61,9 @@ will load the =railscasts= color theme when Emacs starts.
                                   indentation space-after-tab)
       whitespace-line-column 100
       ediff-window-setup-function 'ediff-setup-windows-plain
-      oddmuse-directory (concat dotfiles-dir "oddmuse")
+      oddmuse-directory (concat starter-kit-dir "oddmuse")
       xterm-mouse-mode t
-      save-place-file (concat dotfiles-dir "places"))
+      save-place-file (concat starter-kit-dir "places"))
 #+end_src
 
 ** Nxhtml -- utilities for we development
@@ -175,7 +175,7 @@ it's possible aspell isn't in your path
 ** Don't clutter up directories with files~
 #+begin_src emacs-lisp
 (setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat dotfiles-dir "backups")))))
+                                        (concat starter-kit-dir "backups")))))
 #+end_src
 
 ** Associate modes with file extensions

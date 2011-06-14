@@ -67,15 +67,7 @@ contains an up to date list of the currently supported languages.
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
-     (sh . t)
-     (R . t)
-     (perl . t)
-     (ruby . t)
-     (python . t)
-     (js . t)
-     (haskell . t)
-     (clojure . t)
-     (ditaa . t)))
+     (sh . t)))
 #+end_src
 
 You are encouraged to add the following to your personal configuration
@@ -109,7 +101,7 @@ for use by code blocks in *any* emacs file.  See the actual
       "contrib"
       (expand-file-name
        "org"
-       (expand-file-name "src" dotfiles-dir))))))
+       (expand-file-name "src" starter-kit-dir))))))
 #+end_src
 
 ** Ensure the Latest Org-mode manual is in the info directory
@@ -124,7 +116,7 @@ Org-mode manual is available to the =info= command (bound to =C-h i=).
                "doc"
                (expand-file-name
                 "org"
-                (expand-file-name "src" dotfiles-dir)))
+                (expand-file-name "src" starter-kit-dir)))
               Info-directory-list))
 #+end_src
 
@@ -136,13 +128,14 @@ the documentation for the Starter Kit to html.
   (unless (boundp 'org-publish-project-alist)
     (setq org-publish-project-alist nil))
   (let ((this-dir (file-name-directory (or load-file-name buffer-file-name))))
-    (add-to-list 'org-publish-project-alist
-                 `("starter-kit-documentation"
-                   :base-directory ,this-dir
-                   :base-extension "org"
-                   :style "<link rel=\"stylesheet\" href=\"emacs.css\" type=\"text/css\"/>"
-                   :publishing-directory ,this-dir
-                   :index-filename "starter-kit.org"
-                   :auto-postamble nil)))
+    (add-to-list
+     'org-publish-project-alist
+     `("starter-kit-documentation"
+       :base-directory ,this-dir
+       :base-extension "org"
+       :style "<link rel=\"stylesheet\" href=\"emacs.css\" type=\"text/css\"/>"
+       :publishing-directory ,this-dir
+       :index-filename "starter-kit.org"
+       :auto-postamble nil)))
 #+end_src
 
