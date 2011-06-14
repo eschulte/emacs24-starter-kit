@@ -298,17 +298,6 @@ backport some functionality to Emacs 22 if needed
                                            starter-kit-dir)))
 #+end_src
 
-*** ELPA (Emacs Lisp Package Manager)
-
-Load up [[http://tromey.com/elpa/][ELPA]], the Emacs Lisp package manager
-
-#+srcname: starter-kit-elpa
-#+begin_src emacs-lisp 
-  (require 'package)
-  (package-initialize)
-  (starter-kit-load "starter-kit-elpa.org")
-#+end_src
-
 *** Work around OS X bug
 
 Work around a bug on OS X where system-name is FQDN
