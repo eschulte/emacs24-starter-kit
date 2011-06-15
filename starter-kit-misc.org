@@ -16,13 +16,7 @@ website and EmacsWiki pages for more information.
 
 This following loads color-theme so that it is available by default.
 #+begin_src emacs-lisp
-  (add-to-list 'load-path
-               (expand-file-name "color-theme"
-                                 (expand-file-name "src" starter-kit-dir)))
   (require 'color-theme)
-  (eval-after-load "color-theme"
-    '(progn
-       (color-theme-initialize)))
 #+end_src
 
 Once you've selected a preferred color theme it can be installed by
