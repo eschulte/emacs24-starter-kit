@@ -1,5 +1,4 @@
 This is a Literate Programming fork of the original Emacs Starter Kit
-which is located at http://github.com/technomancy/emacs-starter-kit/
 
 This should provide a saner set of defaults than you get normally with
 Emacs. It's intended for beginners, but provides a good elisp
@@ -7,7 +6,7 @@ initialization structure for all levels of users.
 
 The main advantage of this Emacs Starter Kit are
 - better default settings
-- inclusion of many useful libraries
+- easy loading of many useful libraries and configurations
 - "literate" customization embedded in Org-mode files
 - an organizational directory structure
 - git provides for version control, backup, and sharing
