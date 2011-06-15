@@ -41,7 +41,7 @@ to use this file:
    the very readable [[http://www.gnu.org/software/emacs/manual/html_node/gnus/index.html][Gnus Manual]] to learn untold tricks (see also
    [[file:starter-kit-gnus.org::#customization][Starter-kit-gnus:Customizations]]).
 
-* saving mail locally
+** saving mail locally
 Where your mail will be saved locally default value will be =~/gmail=.
 #+begin_src emacs-lisp
   (require 'gnus)
@@ -55,7 +55,7 @@ All Gmail groups will be ignored by the default value of
   (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\”]\”[#’()]")
 #+end_src
 
-* getting mail
+** getting mail
 Set Gmail as the primary source for incoming mail (Gnus can aggregate
 many email and/or newsgroup sources).
 #+begin_src emacs-lisp
@@ -76,7 +76,7 @@ and make sure that no-one else can read it with
   chmod 600 ~/.authinfo
 #+end_src
 
-* sending mail
+** sending mail
 /Requirement/: gnus uses the [[http://en.wikipedia.org/wiki/STARTTLS][starttls]] tool for encrypted sending of
 email to the Gmail SMTP server.  This is easily installed on modern
 Debian (including Ubuntu) systems with
