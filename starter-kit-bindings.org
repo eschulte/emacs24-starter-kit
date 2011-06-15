@@ -22,11 +22,6 @@ Key Bindings.
 (global-set-key (kbd "M-/") 'hippie-expand)
 #+end_src
 
-** Perform general cleanup.
-#+begin_src emacs-lisp 
-(global-set-key (kbd "C-c n") 'cleanup-buffer)
-#+end_src
-
 ** Turn on the menu bar for exploring new modes
 #+begin_src emacs-lisp 
 (global-set-key [f1] 'menu-bar-mode)
@@ -75,58 +70,15 @@ Key Bindings.
 (global-set-key (kbd "C-x ^") 'join-line)
 #+end_src
 
-** Start eshell or switch to it if it's active.
-#+begin_src emacs-lisp 
-(global-set-key (kbd "C-x m") 'eshell)
-#+end_src
-
-** Start a new eshell even if one is active.
-#+begin_src emacs-lisp 
-(global-set-key (kbd "C-x M") (lambda () (interactive) (eshell t)))
-#+end_src
-
-** Start a regular shell if you prefer that.
-#+begin_src emacs-lisp 
-(global-set-key (kbd "C-x M-m") 'shell)
-#+end_src
-
 ** If you want to be able to M-x without meta
 #+begin_src emacs-lisp 
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 #+end_src
 
 ** Help should search more than just commands
-#+begin_src emacs-lisp 
++begin_src emacs-lisp 
 (global-set-key (kbd "C-h a") 'apropos)
-#+end_src
-
-** Should be able to eval-and-replace anywhere.
-#+begin_src emacs-lisp 
-(global-set-key (kbd "C-c e") 'eval-and-replace)
-#+end_src
-
-** Applications
-#+begin_src emacs-lisp 
-
-(global-set-key (kbd "C-c j") (lambda () (interactive) (switch-or-start 'jabber-connect "*-jabber-*")))
-(global-set-key (kbd "C-c g") (lambda () (interactive) (switch-or-start 'gnus "*Group*")))
-(global-set-key (kbd "C-c i") (lambda () (interactive) (switch-or-start (lambda ()
-                                                                     (rcirc-connect "irc.freenode.net"))
-                                                                   "*irc.freenode.net*")))
-(global-set-key (kbd "C-c J") 'jabber-send-presence)
-(global-set-key (kbd "C-c M-j") 'jabber-disconnect)
-(global-set-key (kbd "C-x g") 'magit-status)
-#+end_src
-
-** This is a little hacky since VC doesn't support git add internally
-#+begin_src emacs-lisp 
-(eval-after-load 'vc
-  (define-key vc-prefix-map "i" '(lambda () (interactive)
-                                   (if (not (eq 'Git (vc-backend buffer-file-name)))
-                                       (vc-register)
-                                     (shell-command (format "git add %s" buffer-file-name))
-                                     (message "Staged changes.")))))
-#+end_src
++end_src
 
 ** Activate occur easily inside isearch
 #+begin_src emacs-lisp 
@@ -136,11 +88,6 @@ Key Bindings.
       (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
 #+end_src
 
-** Closing
-#+begin_src emacs-lisp 
-(provide 'starter-kit-bindings)
-;;; starter-kit-bindings.el ends here
-#+end_src
 ** Org-mode
 Two global binding for Org-mode (see [[file:starter-kit-org.org][starter-kit-org]])
 
@@ -155,18 +102,6 @@ globally for later insertion into an Org-mode buffer.  See
 #+begin_src emacs-lisp
 (define-key global-map "\C-cl" 'org-store-link)
 #+end_src
-** Magit
-It's to the point now where I almost can't use git without magit.
-- [[http://zagadka.vm.bytemark.co.uk/magit/][Homepage]]
-- [[http://zagadka.vm.bytemark.co.uk/magit/magit.html][Manual]]
-- [[http://groups.google.com/group/magit/][Mailing list]]
-#+begin_src emacs-lisp
-  (require 'magit)
-  (define-key global-map "\M-\C-g" 'magit-status)
-#+end_src
-
-#+resname:
-: magit-status
 
 ** Rgrep
 Rgrep is infinitely useful in multi-file projects.
@@ -175,4 +110,9 @@ Rgrep is infinitely useful in multi-file projects.
 
 #+begin_src emacs-lisp
   (define-key global-map "\C-x\C-r" 'rgrep)
+#+end_src
+** Closing
+#+begin_src emacs-lisp 
+(provide 'starter-kit-bindings)
+;;; starter-kit-bindings.el ends here
 #+end_src
