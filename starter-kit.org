@@ -15,14 +15,13 @@ brighter; it simply makes everything else vanish.
   :PROPERTIES:
   :CUSTOM_ID: introduction
   :END:
-
 This should provide a saner set of defaults than you get normally with
 Emacs. It's intended for beginners, but provides a good elisp
 initialization structure for all levels of users.
 
 The main advantage of this Emacs Starter Kit are
 - better default settings
-- inclusion of many useful libraries
+- inclusion of many useful libraries and configurations
 - "literate" customization embedded in Org-mode files
 - an organizational directory structure
 - git provides for version control, backup, and sharing
@@ -33,9 +32,9 @@ The latest version is at http://github.com/eschulte/emacs-starter-kit/
    :PROPERTIES:
    :CUSTOM_ID: learning
    :END:
-
 This won't teach you Emacs, but it'll make it easier to get
-comfortable. To access the tutorial, press control-h followed by t.
+comfortable. To access the tutorial, press control-h followed by t
+from within Emacs.
 
 The [[http://emacswiki.org][Emacs Wiki]] is also very handy.
 
@@ -44,52 +43,33 @@ The [[http://emacswiki.org][Emacs Wiki]] is also very handy.
    :CUSTOM_ID: installation
    :END:
 
-1. Install Emacs (at least version 22) Use your package manager if you
-   have one.  Otherwise, Mac users should get it [[http://www.apple.com/downloads/macosx/unix_open_source/carbonemacspackage.html][from Apple]], or
-   install it directly from [[http://savannah.gnu.org/projects/emacs/][from source]] following the instructions in
-   =nextstep/INSTALL=.  Windows users can get it [[http://ftp.gnu.org/gnu/emacs/windows/emacs-22.3-bin-i386.zip][from GNU]].
+1. Install Emacs version 24 or greater.  Use your package manager if
+   you have one and it has a version of Emacs 24, otherwise install it
+   directly [[http://savannah.gnu.org/projects/emacs/][from source]].
 2. Checkout a version of the starter kit using git -- if you're new to
    git checkout this [[http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html][git-tutorial]], also we'd highly recommend that you
-   try out [[http://zagadka.vm.bytemark.co.uk/magit/magit.html][magit]] the Emacs mode for git interaction which comes
-   bundled in the starter kit.
+   try out [[http://zagadka.vm.bytemark.co.uk/magit/magit.html][magit]] the Emacs mode for git interaction.
    #+begin_src sh
      git clone http://github.com/eschulte/emacs-starter-kit.git
    #+end_src
 3. Move the resulting directory to =~/.emacs.d= [1]
-4. Install the Org-mode [[http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#submodules][submodules]] with the following
-   #+begin_src sh
-   cd ~/.emacs.d/
-   git submodule init
-   git submodule update
-   #+end_src
-5. build Org-mode
-   #+begin_src sh
-   cd src/org/
-   make
-   #+end_src
-6. build [[http://www.gnu.org/software/auctex/][auctex]] -- for instilllation help see the [[http://www.gnu.org/software/auctex/manual/auctex/Installation.html#Installation][auctex instillation
-   instructions]], auctex requires a working TeX installation
-   #+begin_src sh
-   cd src/auctex
-   ./configure && make
-   #+end_src
 7. Launch Emacs!
 
-After setup you may need to restart Emacs a couple of times while it
+After setup you may need to restart Emacs one or twice while it
 downloads packages from [[* Emacs Lisp Package Archive][ELPA]] -- errors parsing html from
 =*tromey.com:80*= can generally be safely ignored.
 
 If you are missing some autoloads after an update (should manifest
 itself as "void function: foobar" errors) try M-x regen-autoloads.
 
-If you want to keep your regular ~/.emacs.d in place and just launch a
-single instance using the starter kit, try the following invocation:
+If you want to keep your regular =~/.emacs.d= in place and just launch
+a single instance using the starter kit, try the following invocation:
 
 #+begin_src sh
   emacs -q -l ~/src/emacs-starter-kit/init.el
 #+end_src
 
-Note that having a ~/.emacs file might override the starter kit
+Note that having a =~/.emacs= file might override the starter kit
 loading, so if you've having trouble loading it, make sure that file
 is not present.
 
@@ -97,21 +77,19 @@ is not present.
    :PROPERTIES:
    :CUSTOM_ID: structure
    :END:
-
-The init.el file is where everything begins. It's the first file to
-get loaded. Additional customization embedded in this file provides
-what I consider to be better defaults, both for different programming
-languages and for built-in Emacs features like bindings or registers.
-
-There are also a few files that are meant for code that doesn't belong
-in the Starter Kit, they are described below in [[* customization][Customization]].
+The =init.el= file is where everything begins. It is loaded
+automatically by Emacs on startup, its sole purpose is to load the
+elisp code embedded in this file.  This file then loads some minimal
+configuration which should be generally useful, and goes on to load
+user-specific configuration files from the following locations
+mentioned in [[customizations]] immediately below.
 
 ** Customization
    :PROPERTIES:
    :CUSTOM_ID: customization
    :END:
 
-The many defaults built into the starter kit are only the beginning of
+The defaults built into the starter kit are only the beginning of
 most users customization of Emacs to suite their needs.  The starter
 kit provides a number of places for additional user and system
 specific customization.  These are designed in such a way that it will
@@ -184,49 +162,23 @@ suggestions
 
 Libraries from [[http://tromey.com/elpa][ELPA]] are preferred when available since dependencies
 are handled automatically, and the burden to update them is removed
-from the user. In the long term, ideally everything would be installed
-via ELPA, and only [[file:package.el][package.el]] would need to be distributed with the
-starter kit. (Or better yet, [[file:package.el][package.el]] would come with Emacs...) See
-[[* Starter Kit
- ELPA][Starter Kit ELPA]] for a list of libraries that are pending submission
-to ELPA. Packages get installed in the [[file:elpa/][elpa/]] directory.
-
-There's no vendor/ directory in the starter kit because if an external
-library is useful enough to be bundled with the starter kit, it should
-be useful enough to submit to ELPA so that everyone can use it, not
-just users of the starter kit.  However any packages included in the
-[[file:src][src/]] directory will be added to the load-path, for tracking bleeding
-edge packages.
-
-Sometimes packages are removed from the Starter Kit as they get added
-to ELPA itself. This has occasionally caused problems with certain
-packages. If you run into problems with such a package, try removing
-everything from inside the elpa/ directory and invoking M-x
-starter-kit-elpa-install in a fresh instance.
+from the user.  ELPA is now an official part of Emacs so no special
+configuration is required to download and install packages.  Packages
+installed through ELPA will be stored in the =elpa= directory.
 
 ** Contributing
    :PROPERTIES:
    :CUSTOM_ID: contributing
    :END:
-
 If you know your way around Emacs, please try out the starter kit as a
 replacement for your regular dotfiles for a while. If there's anything
 you just can't live without, add it or let me know so I can add
 it. Take a look at what happens in [[file:init.el][init.el]] to get started.
 
-Also: see the [[* Tasks][Tasks section]] in this document. Helping submit new
-libraries to ELPA is the easiest way to help out.  There are details
-at http://tromey.com/elpa/upload.html for how ELPA submission
-works. Grep the project for TODO for other things.
-
 Files are licensed under the same license as Emacs unless otherwise
 specified. See the file COPYING for details.
 
-The latest version is at http://github.com/technomancy/emacs-starter-kit/
-
-On Unix, =/home/$USER/.emacs.d=, on windows =Documents and
-Settings/%your user name%/Application Data=
-
+The latest version is at http://github.com/eschulte/emacs-starter-kit/
 
 * Implementation
   :PROPERTIES:
@@ -304,33 +256,6 @@ Work around a bug on OS X where system-name is FQDN
       (setq system-name (car (split-string system-name "\\."))))
 #+end_src
 
-*** System/User specific customizations
-You can keep system- or user-specific customizations here in either
-raw emacs-lisp files or as embedded elisp in org-mode files (as done
-in this document).
-
-#+srcname: starter-kit-user/system-setup
-#+begin_src emacs-lisp 
-  (setq
-   system-specific-config (concat starter-kit-dir system-name ".el")
-   system-specific-literate-config (concat starter-kit-dir system-name ".org")
-   user-specific-config (concat starter-kit-dir user-login-name ".el")
-   user-specific-literate-config (concat starter-kit-dir user-login-name ".org")
-   user-specific-dir (concat starter-kit-dir user-login-name))
-  (add-to-list 'load-path user-specific-dir)
-#+end_src
-
-You can keep elisp source in the =src= directory.  Packages loaded
-from here will override those installed by ELPA.  This is useful if
-you want to track the development versions of a project, or if a
-project is not in elpa.
-
-#+srcname: starter-kit-load-elisp-dir
-#+begin_src emacs-lisp
-(setq elisp-source-dir (concat starter-kit-dir "src"))
-(add-to-list 'load-path elisp-source-dir)
-#+end_src
-
 ** Load the rest of the starter kit core
 The following files contain the remainder of the core of the Emacs
 Starter Kit.  All of the code in this section should be loaded by
@@ -364,11 +289,6 @@ Registers for jumping to commonly used files in [[file:starter-kit-registers.org
 (starter-kit-load "starter-kit-registers.org")
 #+end_src
 
-** Language/Mode Specific Files
-These sections pertain to specific languages or modes.  Feel free to
-turn off these sections if you don't plan on using the related mode or
-language.
-
 *** Starter kit yasnippet
 [[http://code.google.com/p/yasnippet/][yasnippet]] is yet another snippet expansion system for Emacs.  It is
 inspired by TextMate's templating syntax.
@@ -389,6 +309,11 @@ load the snippets defined in the =./snippets/= directory
 #+begin_src emacs-lisp
   (yas/load-directory (expand-file-name "snippets" starter-kit-dir))
 #+end_src
+
+** Optional Language/Mode Specific Files
+These sections pertain to specific languages or modes.  Feel free to
+turn off these sections if you don't plan on using the related mode or
+language.
 
 *** Starter kit Org-mode
 Located in [[file:starter-kit-org.org][starter-kit-org]]
@@ -454,43 +379,60 @@ Located in [[file:starter-kit-latex.org][starter-kit-latex]]
 #+end_src
 
 ** Load User/System Specific Files
+*** System/User specific customizations
+You can keep system- or user-specific customizations here in either
+raw emacs-lisp files or as embedded elisp in org-mode files (as done
+in this document).
+
+You can keep elisp source in the =src= directory.  Packages loaded
+from here will override those installed by ELPA.  This is useful if
+you want to track the development versions of a project, or if a
+project is not in elpa.
+
+After we've loaded all the Starter Kit defaults, lets load the User's stuff.
+#+srcname: starter-kit-load-files
+#+begin_src emacs-lisp
+  (flet ((in-kit (file ext) (expand-file-name (concat file ext) starter-kit-dir)))
+    (let ((system-specific-config          (in-kit system-name ".el"))
+          (system-specific-literate-config (in-kit system-name ".org"))
+          (user-specific-config            (in-kit user-login-name ".el"))
+          (user-specific-literate-config   (in-kit user-login-name ".org"))
+          (user-specific-dir               (in-kit user-login-name)))
+      ;; load specific files
+      (when (file-exists-p elisp-source-dir)
+        (let ((default-directory elisp-source-dir))
+          (normal-top-level-add-subdirs-to-load-path)))
+      (when (file-exists-p system-specific-config)
+        (load system-specific-config))
+      (when (file-exists-p system-specific-literate-config)
+        (org-babel-load-file system-specific-literate-config))
+      (when (file-exists-p user-specific-config)
+        (load user-specific-config))
+      (when (file-exists-p user-specific-literate-config)
+        (org-babel-load-file user-specific-literate-config))
+      ;; add user's directory to the load path
+      (add-to-list 'load-path user-specific-dir)
+      ;; load any files in the user's directory
+      (when (file-exists-p user-specific-dir)
+        (let ((default-directory user-specific-dir))
+          (mapc #'load
+                (directory-files user-specific-dir nil ".*el$"))
+          (mapc #'org-babel-load-file
+                (directory-files user-specific-dir nil ".*org$"))))))
+#+end_src
+
+*** Add the =src= dir to the load path
+#+srcname: starter-kit-load-elisp-dir
+#+begin_src emacs-lisp
+(setq elisp-source-dir (concat starter-kit-dir "src"))
+(add-to-list 'load-path elisp-source-dir)
+#+end_src
+
 *** Settings from M-x customize
 #+srcname: m-x-customize-customizations
 #+begin_src emacs-lisp 
   (load custom-file 'noerror)
 #+end_src
-
-*** E-lisp customization
-After we've loaded all the Starter Kit defaults, lets load the User's stuff.
-#+srcname: starter-kit-load-files
-#+begin_src emacs-lisp
-  (if (file-exists-p elisp-source-dir)
-      (let ((default-directory elisp-source-dir))
-        (normal-top-level-add-subdirs-to-load-path)))
-  (if (file-exists-p system-specific-config) (load system-specific-config))
-  (if (file-exists-p system-specific-literate-config)
-      (org-babel-load-file system-specific-literate-config))
-  (if (file-exists-p user-specific-config) (load user-specific-config))
-  (if (file-exists-p user-specific-literate-config)
-      (org-babel-load-file user-specific-literate-config))
-  (when (file-exists-p user-specific-dir)
-    (let ((default-directory user-specific-dir))
-      (mapc #'load (directory-files user-specific-dir nil ".*el$"))
-      (mapc #'org-babel-load-file (directory-files user-specific-dir nil ".*org$"))))
-#+end_src
-
-
-* FAQ
-  :PROPERTIES:
-  :tangle:   no
-  :END:
-Frequently asked questions.
-
-Please share anything that you have come across which you think could
-be helpful, either in the form of a pull request, a patch, or just an
-email to me http://github.com/eschulte.
-
-
 
 * Footnotes
 
