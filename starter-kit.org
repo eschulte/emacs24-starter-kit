@@ -249,17 +249,11 @@ Settings/%your user name%/Application Data=
 This section contains all code implementing the Emacs Starter Kit.
 
 ** Starter kit basics
-
 *** Load path etc.
-
 #+srcname: starter-kit-load-paths
 #+begin_src emacs-lisp 
-  (setq starter-kit-dir (file-name-directory
-                      (or load-file-name (buffer-file-name))))
-  
   (add-to-list 'load-path starter-kit-dir)
   (add-to-list 'load-path (concat starter-kit-dir "/elpa-to-submit"))
-  (add-to-list 'load-path (concat starter-kit-dir "/elpa-to-submit/jabber"))
   
   (setq autoload-file (concat starter-kit-dir "loaddefs.el"))
   (setq package-user-dir (concat starter-kit-dir "elpa"))
@@ -267,7 +261,6 @@ This section contains all code implementing the Emacs Starter Kit.
 #+end_src
 
 *** Ubiquitous Packages
-
 These should be loaded on startup rather than autoloaded on demand
 since they are likely to be used in every session
 
@@ -281,25 +274,15 @@ since they are likely to be used in every session
   (require 'recentf)
 #+end_src
 
-*** Emacs 22 Backport
-
-backport some functionality to Emacs 22 if needed
-#+srcname: starter-kit-emacs-22-helper
-#+begin_src emacs-lisp 
-  (require 'dominating-file)
-#+end_src
-
 *** Function for loading starter-kit-*
 #+srcname: starter-kit-load
 #+begin_src emacs-lisp 
   (defun starter-kit-load (file)
     "This function is to be used to load starter-kit-*.org files."
-    (org-babel-load-file (expand-file-name file
-                                           starter-kit-dir)))
+    (org-babel-load-file (expand-file-name file starter-kit-dir)))
 #+end_src
 
 *** Work around OS X bug
-
 Work around a bug on OS X where system-name is FQDN
 #+srcname: starter-kit-osX-workaround
 #+begin_src emacs-lisp 
@@ -308,18 +291,18 @@ Work around a bug on OS X where system-name is FQDN
 #+end_src
 
 *** System/User specific customizations
-
 You can keep system- or user-specific customizations here in either
 raw emacs-lisp files or as embedded elisp in org-mode files (as done
 in this document).
 
 #+srcname: starter-kit-user/system-setup
 #+begin_src emacs-lisp 
-  (setq system-specific-config (concat starter-kit-dir system-name ".el")
-        system-specific-literate-config (concat starter-kit-dir system-name ".org")
-        user-specific-config (concat starter-kit-dir user-login-name ".el")
-        user-specific-literate-config (concat starter-kit-dir user-login-name ".org")
-        user-specific-dir (concat starter-kit-dir user-login-name))
+  (setq
+   system-specific-config (concat starter-kit-dir system-name ".el")
+   system-specific-literate-config (concat starter-kit-dir system-name ".org")
+   user-specific-config (concat starter-kit-dir user-login-name ".el")
+   user-specific-literate-config (concat starter-kit-dir user-login-name ".org")
+   user-specific-dir (concat starter-kit-dir user-login-name))
   (add-to-list 'load-path user-specific-dir)
 #+end_src
 
@@ -333,10 +316,6 @@ project is not in elpa.
 (setq elisp-source-dir (concat starter-kit-dir "src"))
 (add-to-list 'load-path elisp-source-dir)
 #+end_src
-
-*** Starter kit and Gnus
-If you would like help setting up the gnus email client, checkout
-[[file:starter-kit-gnus.org][Starter Kit Gnus]], a starter kit file that is not loaded by default.
 
 ** Load the rest of the starter kit core
 The following files contain the remainder of the core of the Emacs
