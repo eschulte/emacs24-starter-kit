@@ -244,9 +244,30 @@ This section contains all code implementing the Emacs Starter Kit.
   (setq custom-file (concat starter-kit-dir "custom.el"))
 #+end_src
 
+*** Ubiquitous Packages
+These should be loaded on startup rather than autoloaded on demand
+since they are likely to be used in every session
+#+srcname: starter-kit-load-on-startup
+#+begin_src emacs-lisp 
+  (require 'cl)
+  (require 'saveplace)
+  (require 'ffap)
+  (require 'uniquify)
+  (require 'ansi-color)
+  (require 'recentf)
+#+end_src
+
 *** Default ELPA Packages
 A few packages should always be installed from ELPA.
 #+begin_src emacs-lisp
+  (require 'package)
+  (setq package-archives
+        '(("original"    . "http://tromey.com/elpa/")
+          ("gnu"         . "http://elpa.gnu.org/packages/")
+          ("technomancy" . "http://repo.technomancy.us/emacs/")
+          ("marmalade"   . "http://marmalade-repo.org/packages/")))
+  (package-initialize)
+  
   (defvar starter-kit-packages
     (list 'yasnippet-bundle 'color-theme)
     "Libraries that should be installed by default.")
@@ -265,19 +286,6 @@ A few packages should always be installed from ELPA.
                   (functionp package))
         (message "Installing %s" (symbol-name package))
         (package-install package))))
-#+end_src
-
-*** Ubiquitous Packages
-These should be loaded on startup rather than autoloaded on demand
-since they are likely to be used in every session
-#+srcname: starter-kit-load-on-startup
-#+begin_src emacs-lisp 
-  (require 'cl)
-  (require 'saveplace)
-  (require 'ffap)
-  (require 'uniquify)
-  (require 'ansi-color)
-  (require 'recentf)
 #+end_src
 
 *** Function for loading starter-kit-*
