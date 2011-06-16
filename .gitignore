@@ -14,11 +14,13 @@ oddmuse/*
 eshell/*
 image-dired/*
 elim/*
+doc/*
+elpa/*
+src/*
 
 ## exported files
-*el
+starter-kit*el
 *elc
-doc
 starter-kit*html
 starter-kit*tex
 starter-kit*pdf

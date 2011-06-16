@@ -1,0 +1,47 @@
+#+TITLE: Starter Kit Publish
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
+
+This file is used to publish the starter kit documentation to =.html=
+in the =doc/= directory.
+
+This code defines the =starter-kit-project= which is used to publish
+the documentation for the Starter Kit to html.
+
+#+begin_src emacs-lisp :results silent
+  (unless (boundp 'org-publish-project-alist)
+    (setq org-publish-project-alist nil))
+  
+  (let* ((this-dir (file-name-directory (or load-file-name buffer-file-name)))
+        (org-export-htmlize-output-type 'css)
+        (load-path (cons (expand-file-name "elpa" this-dir) load-path))
+        (package-archives '(("original"    . "http://tromey.com/elpa/"))))
+    ;; load up htmlize
+    (package-initialize)
+    (let ((package 'htmlize))
+      (unless (or (member package package-activated-list)
+                  (functionp package))
+        (package-install package)))
+    (require 'htmlize)
+    (org-export-htmlize-generate-css)
+    ;; define the org-publish-project for the starter kit
+    (add-to-list
+     'org-publish-project-alist
+     `("starter-kit-documentation"
+       :base-directory ,this-dir
+       :base-extension "org"
+       :style "<link rel=\"stylesheet\" href=\"emacs.css\" type=\"text/css\"/>
+  <style type=\"text/css\">
+    pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+    code{font-size:10pt; color:#353535;}
+    .outline-text-2{margin-left: 1em;}
+    .outline-text-3{margin-left: 2em;}
+    .outline-text-3{margin-left: 3em;}
+  </style>"
+       :publishing-directory ,(expand-file-name "doc" this-dir)
+       :index-filename "starter-kit.org"
+       :html-postamble nil))
+    ;; publish the starter kit
+    (org-publish-project "starter-kit-documentation" 'force))
+#+end_src

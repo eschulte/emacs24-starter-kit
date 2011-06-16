@@ -1,4 +1,5 @@
 #+TITLE: Emacs Starter Kit
+#+OPTIONS: toc:2 num:nil ^:nil
 
 #+begin_quote
   Emacs outshines all other editing software in approximately the same
@@ -230,18 +231,17 @@ interested in the actual code implementing the starter kit.
 
 - ELPA archive repositories and two packages to install by default.
   #+begin_src emacs-lisp
-    (require 'package)
     (setq package-archives
           '(("original"    . "http://tromey.com/elpa/")
             ("gnu"         . "http://elpa.gnu.org/packages/")
             ("technomancy" . "http://repo.technomancy.us/emacs/")
             ("marmalade"   . "http://marmalade-repo.org/packages/")))
     (package-initialize)
-
+    
     (defvar starter-kit-packages
       (list 'yasnippet-bundle 'color-theme)
       "Libraries that should be installed by default.")
-
+    
     (when (and (functionp 'network-interface-list)
                (network-interface-list)
                (some (lambda (iface)
