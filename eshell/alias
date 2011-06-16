@@ -1,6 +1,0 @@
-alias ll ls -lh $*
-alias emacs find-file $1
-alias emaccs emacs $*
-alias emacsc emacs $*
-alias emasc emacs $*
-alias emamcs emacs $*

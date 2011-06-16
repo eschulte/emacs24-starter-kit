@@ -1,31 +1,28 @@
+## misc
 loaddefs.el*
-backups/*
 auto-save-list
 custom.el
-*elc
 places
-url/cookies
-elpa-to-submit/jabber/jabber.info
-elpa-to-submit/nxhtml/etc/schema/xhtml-loader.rnc
-thumbs/*
-oddmuse/*
-mail
-.newsrc-dribble
-.nnmail-cache
-/#.newsrc-dribble#
 .svn
 .DS_Store
-image-dired/
-elim/
-elpa-to-submit/nxhtml/etc/schema/xhtml-loader.rnc~
 tramp
+
+## directories
+backups/*
+thumbs/*
+oddmuse/*
+eshell/*
+image-dired/*
+elim/*
 
 ## exported files
 *el
-starter-kit*html
+*elc
 doc
-eshell/lastdir
-eshell/history
+starter-kit*html
+starter-kit*tex
+starter-kit*pdf
+starter-kit*txt
 
 ## org stuff
 .org-id-locations
@@ -34,3 +31,6 @@ eshell/history
 drafts
 Mail
 mail
+.newsrc-dribble
+.nnmail-cache
+/#.newsrc-dribble#
