@@ -17,6 +17,7 @@ elim/*
 doc/*
 elpa/*
 src/*
+themes/*
 
 ## exported files
 starter-kit*el
