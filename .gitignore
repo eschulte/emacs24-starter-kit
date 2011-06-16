@@ -20,12 +20,12 @@ src/*
 themes/*
 
 ## exported files
-starter-kit*el
+*el
 *elc
-starter-kit*html
-starter-kit*tex
-starter-kit*pdf
-starter-kit*txt
+*html
+*tex
+*pdf
+*txt
 
 ## org stuff
 .org-id-locations

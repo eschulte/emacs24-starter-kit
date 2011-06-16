@@ -28,6 +28,3 @@ doc/index.html:
 
 clean:
 	rm -f *.elc *.aux *.tex *.pdf starter-kit*.el starter-kit*.html doc/*html
-
-destructively-clean: clean
-	printf "rm -rf %s\n" `cat .gitignore|grep -v ^#`|/bin/sh
