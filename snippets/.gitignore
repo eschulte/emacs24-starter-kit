@@ -1,0 +1,3 @@
+## allow user-specific snippets to be kept in the base directory
+*
+!.gitignore
