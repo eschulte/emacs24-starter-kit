@@ -5,7 +5,6 @@ This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
 
 * Starter Kit Misc
 Things that don't fit anywhere else.
-
 ** Color Themes
 The [[http://www.nongnu.org/color-theme/][Color Themes]] package provides support for changing, saving,
 sharing Emacs color themes.  To view and apply color themes available
@@ -14,11 +13,6 @@ website and EmacsWiki pages for more information.
 - http://www.nongnu.org/color-theme/
 - http://www.emacswiki.org/emacs/ColorTheme
 
-This following loads color-theme so that it is available by default.
-#+begin_src emacs-lisp
-  (require 'color-theme)
-#+end_src
-
 Once you've selected a preferred color theme it can be installed by
 adding its function to your initialization.  For example
 #+begin_src emacs-lisp :tangle no
@@ -26,14 +20,16 @@ adding its function to your initialization.  For example
 #+end_src
 will load the =railscasts= color theme when Emacs starts.
 
-** Window system stuff
+This code loads color-theme so that it is available by default.
+#+begin_src emacs-lisp
+  (require 'color-theme)
+#+end_src
 
+** Window systems
 #+srcname: starter-kit-window-view-stuff
 #+begin_src emacs-lisp 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (tooltip-mode -1)
-  (tool-bar-mode -1)
   (blink-cursor-mode -1))
 
 (mouse-wheel-mode t)
@@ -60,39 +56,9 @@ will load the =railscasts= color theme when Emacs starts.
       save-place-file (concat starter-kit-dir "places"))
 #+end_src
 
-** Nxhtml -- utilities for we development
-[[http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html][Nxhtml]] is a large package of utilities for web development and for
-embedding multiple major modes in a single buffer.
-
-Nxhtml is not installed in this version of the starter-kit by default,
-for information on installing nxhtml see [[http://www.emacswiki.org/emacs/NxhtmlMode][EmacsWiki-Nxhtml]].
-
-** Set browser
-Set this to whatever browser you use e.g...
-: ;; (setq browse-url-browser-function 'browse-url-firefox)
-: ;; (setq browse-url-browser-function 'browse-default-macosx-browser)
-: ;; (setq browse-url-browser-function 'browse-default-windows-browser)
-: ;; (setq browse-url-browser-function 'browse-default-kde)
-: ;; (setq browse-url-browser-function 'browse-default-epiphany)
-: ;; (setq browse-url-browser-function 'browse-default-w3m)
-: ;; (setq browse-url-browser-function 'browse-url-generic
-: ;;       browse-url-generic-program "~/src/conkeror/conkeror")
-
 ** Transparently open compressed files
 #+begin_src emacs-lisp
 (auto-compression-mode t)
-#+end_src
-
-** Enable syntax highlighting for older Emacsen that have it off
-#+begin_src emacs-lisp
-(global-font-lock-mode t)
-#+end_src
-
-** No Menu Bar
-You really don't need this; trust me.
-#+srcname: starter-kit-no-menu
-#+begin_src emacs-lisp 
-(menu-bar-mode -1)
 #+end_src
 
 ** Save a list of recent files visited.
@@ -119,7 +85,7 @@ ido-mode is like magic pixie dust!
         ido-max-prospects 10))
 #+end_src
 
-** Other
+** Other, spell checking, tabs, imenu and a coding hook
 #+begin_src emacs-lisp 
   (set-default 'indent-tabs-mode nil)
   (set-default 'indicate-empty-lines t)
@@ -167,21 +133,11 @@ it's possible aspell isn't in your path
 #+end_src
 
 ** Don't clutter up directories with files~
+Rather than saving backup files scattered all over the file system,
+let them live in the =backups/= directory inside of the starter kit.
 #+begin_src emacs-lisp
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat starter-kit-dir "backups")))))
-#+end_src
-
-** Associate modes with file extensions
-#+begin_src emacs-lisp
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
-(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js2-mode))
-;; (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
 #+end_src
 
 ** Default to unified diffs
@@ -202,3 +158,4 @@ it's possible aspell isn't in your path
      (set-face-foreground 'magit-diff-add "green3")
      (set-face-foreground 'magit-diff-del "red3")))
 #+end_src
+

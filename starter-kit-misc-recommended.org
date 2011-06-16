@@ -1,0 +1,53 @@
+#+TITLE: Starter Kit Misc Recommended
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
+
+* Starter Kit Misc
+Things that don't fit anywhere else, and which aren't quite universal
+enough to live in =starter-kit-misc.org=.
+
+** Window systems -- remove visual cruft
+#+srcname: starter-kit-window-view-stuff-recommended
+#+begin_src emacs-lisp 
+(when window-system
+  (tooltip-mode -1)
+  (tool-bar-mode -1))
+#+end_src
+
+** No Menu Bar
+You really don't need this; trust me.
+#+srcname: starter-kit-no-menu
+#+begin_src emacs-lisp 
+(menu-bar-mode -1)
+#+end_src
+** Nxhtml -- utilities for we development
+[[http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html][Nxhtml]] is a large package of utilities for web development and for
+embedding multiple major modes in a single buffer.
+
+Nxhtml is not installed in this version of the starter-kit by default,
+for information on installing nxhtml see [[http://www.emacswiki.org/emacs/NxhtmlMode][EmacsWiki-Nxhtml]].
+
+** Set browser
+Set this to whatever browser you use e.g...
+: ;; (setq browse-url-browser-function 'browse-url-firefox)
+: ;; (setq browse-url-browser-function 'browse-default-macosx-browser)
+: ;; (setq browse-url-browser-function 'browse-default-windows-browser)
+: ;; (setq browse-url-browser-function 'browse-default-kde)
+: ;; (setq browse-url-browser-function 'browse-default-epiphany)
+: ;; (setq browse-url-browser-function 'browse-default-w3m)
+: ;; (setq browse-url-browser-function 'browse-url-generic
+: ;;       browse-url-generic-program "~/src/conkeror/conkeror")
+
+** Associate modes with file extensions
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
+(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js2-mode))
+;; (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
+#+end_src
+
