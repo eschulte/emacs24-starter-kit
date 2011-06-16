@@ -29,10 +29,11 @@ starter-kit*txt
 ## org stuff
 .org-id-locations
 
-## ignore mail directories for those who keep mail in this directory
+## ignore mail/gnus cruft for those who keep mail in this directory
 drafts
 Mail
 mail
 .newsrc-dribble
 .nnmail-cache
 /#.newsrc-dribble#
+*.SCORE
