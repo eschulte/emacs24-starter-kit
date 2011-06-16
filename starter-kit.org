@@ -44,8 +44,8 @@ The [[http://emacswiki.org][Emacs Wiki]] is also very handy.
    :END:
 
 1. Install Emacs version 24 or greater.  Use your package manager if
-   you have one and it has a version of Emacs 24, otherwise install it
-   directly [[http://savannah.gnu.org/projects/emacs/][from source]].
+   you have one and it has an install candidate for Emacs 24,
+   otherwise install it directly [[http://savannah.gnu.org/projects/emacs/][from source]].
 2. Checkout a version of the starter kit using git -- if you're new to
    git checkout this [[http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html][git-tutorial]], also we'd highly recommend that you
    try out [[http://zagadka.vm.bytemark.co.uk/magit/magit.html][magit]] the Emacs mode for git interaction.
@@ -60,7 +60,7 @@ downloads packages from [[* Emacs Lisp Package Archive][ELPA]] -- errors parsing
 =*tromey.com:80*= can generally be safely ignored.
 
 If you are missing some autoloads after an update (should manifest
-itself as "void function: foobar" errors) try M-x regen-autoloads.
+itself as =void function: foobar= errors) try M-x regen-autoloads.
 
 If you want to keep your regular =~/.emacs.d= in place and just launch
 a single instance using the starter kit, try the following invocation:
@@ -97,7 +97,7 @@ be easy for you to continue tracking your own personal customization
 inside the starter-kit while retaining your ability to pull down
 general starter-kit updates without conflict.
 
-- =git branch= :: The first step to user-specific customization is (like
+- git branch :: The first step to user-specific customization is (like
      in any git project) to MAKE A BRANCH FOR YOUR LOCAL CHANGES.
      Save the master branch for pulling down new versions of the
      starter kit, and save all of your personal information in a
@@ -132,39 +132,58 @@ general starter-kit updates without conflict.
        hostname
      #+end_src
 
-- Installing more elisp libraries :: While the starter kit include
-     many useful Emacs lisp libraries, you are bound to find more that
-     you will want to install.  The easiest way to install new
-     libraries is through the Emacs Lisp Package Archive (see [[* elpa][ELPA]]).
-     When a library is not available through ELPA you can grab it's
-     source and place it directly in the =src= directory.  Any
-     packages found there will automatically be added to your
-     load-path when Emacs starts up, and are guaranteed not to
-     conflict with future starter-kit updates.
-     
-Some additional miscellaneous configuration and getting started
-suggestions
-- First off see the [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html#Customization][Customization]] node in the Emacs manual.  Available
-  online or through the =info= command (run with =C-h i=).
-- =grep='ing through the =starter-kit-*= files in this directory can
-  provide useful examples for how to do things like install major
-  modes, define keybindings, etc..
-- read the following [[http://www.gnu.org/software/emacs/elisp/html_node/Key-Binding-Conventions.html][Key-Binding-Conventions]] before defining too many
-  personal key bindings
-- The starter-kit comes pre-bundled with a variety of color themes.
-  See [[file:starter-kit-misc.org::*Color%20Themes][Color Themes]] for instructions on how to change the colors used
-  by Emacs.
+- Activating more of the starter kit :: By default, the starter kit
+     only includes customizations which are likely to be useful across
+     nearly any Emacs install (the only automatically loaded external
+     files are those listed in [[#load-the-starter-kit-core][Load the rest of the starter kit core]]).
+     You may have noticed that there are many other
+     =starter-kit-*.org= files located in this directory.  A good
+     first step is to browse these files and begin optionally loading
+     those that look relevant to your workflow.  For example, if you
+     often work with Python source code you will probably want to load
+     =starter-kit-python.org= either by directly copying the sections
+     that look useful into your personal config, or simply by loading
+     the entire file directly with
+     #+begin_src emacs-lisp
+       (starter-kit-load "starter-kit-python.org")
+     #+end_src
+
+- Installing more elisp libraries :: The easiest way to install new
+     libraries is through the Emacs Lisp Package Archive (see [[#emacs-lisp-package-archive][Emacs
+     Lisp Package Archive]] below).  When a library is not available
+     through ELPA you can grab it's source and place it directly in
+     the =src= directory.  Any packages found there will automatically
+     be added to your load-path when Emacs starts up, and are
+     guaranteed not to conflict with future starter-kit updates.
+
+- Making use of the two pre-installed libraries :: By default the
+     starter kit downloads and installs two generally helpful elisp
+     libraries.
+   - color-themes :: The starter-kit comes pre-bundled with a variety
+        of color themes.  See [[file:starter-kit-misc.org::*Color%20Themes][Color Themes]] for instructions on how to
+        change the colors used by Emacs.
+
+- Misc :: Some additional miscellaneous configuration and getting
+     started suggestions
+   - First see the [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html#Customization][Customization]] node in the Emacs manual.  Available
+     online or through the =info= command (run with =C-h i=).
+   - =grep='ing through the =starter-kit-*= files in this directory
+     can provide useful examples for how to do things like install
+     major modes, define keybindings, etc..
+   - read the following [[http://www.gnu.org/software/emacs/elisp/html_node/Key-Binding-Conventions.html][Key-Binding-Conventions]] before defining too
+     many personal key bindings
 
 ** Emacs Lisp Package Archive
    :PROPERTIES:
-   :CUSTOM_ID: elpa
+   :CUSTOM_ID: emacs-lisp-package-archive
    :END:
 
 Libraries from [[http://tromey.com/elpa][ELPA]] are preferred when available since dependencies
 are handled automatically, and the burden to update them is removed
 from the user.  ELPA is now an official part of Emacs so no special
 configuration is required to download and install packages.  Packages
-installed through ELPA will be stored in the =elpa= directory.
+installed through ELPA will be stored in the =elpa/= sub-directory of
+this directory.
 
 ** Contributing
    :PROPERTIES:
@@ -184,199 +203,126 @@ The latest version is at http://github.com/eschulte/emacs-starter-kit/
   :PROPERTIES:
   :CUSTOM_ID: implementation
   :END:
-This section contains all code implementing the Emacs Starter Kit.
+
+This section contains all code implementing the Emacs Starter Kit.  It
+is probably safe to stop reading at this point unless you are
+interested in the actual code implementing the starter kit.
 
 ** Starter kit basics
-*** Load path etc.
-#+srcname: starter-kit-load-paths
-#+begin_src emacs-lisp 
-  (add-to-list 'load-path starter-kit-dir)
-  (setq autoload-file (concat starter-kit-dir "loaddefs.el"))
-  (setq package-user-dir (concat starter-kit-dir "elpa"))
-  (setq custom-file (concat starter-kit-dir "custom.el"))
-#+end_src
+- Load path etc.
+  #+srcname: starter-kit-load-paths
+  #+begin_src emacs-lisp 
+    (add-to-list 'load-path starter-kit-dir)
+    (setq autoload-file (concat starter-kit-dir "loaddefs.el"))
+    (setq package-user-dir (concat starter-kit-dir "elpa"))
+    (setq custom-file (concat starter-kit-dir "custom.el"))
+  #+end_src
 
-*** Ubiquitous Packages
-These should be loaded on startup rather than autoloaded on demand
-since they are likely to be used in every session
-#+srcname: starter-kit-load-on-startup
-#+begin_src emacs-lisp 
-  (require 'cl)
-  (require 'saveplace)
-  (require 'ffap)
-  (require 'uniquify)
-  (require 'ansi-color)
-  (require 'recentf)
-#+end_src
+- Ubiquitous Packages which should be loaded on startup rather than
+  autoloaded on demand since they are likely to be used in every
+  session.
+  #+srcname: starter-kit-load-on-startup
+  #+begin_src emacs-lisp 
+    (require 'cl)
+    (require 'saveplace)
+    (require 'ffap)
+    (require 'uniquify)
+    (require 'ansi-color)
+    (require 'recentf)
+  #+end_src
 
-*** Default ELPA Packages
-A few packages should always be installed from ELPA.
-#+begin_src emacs-lisp
-  (require 'package)
-  (setq package-archives
-        '(("original"    . "http://tromey.com/elpa/")
-          ("gnu"         . "http://elpa.gnu.org/packages/")
-          ("technomancy" . "http://repo.technomancy.us/emacs/")
-          ("marmalade"   . "http://marmalade-repo.org/packages/")))
-  (package-initialize)
-  
-  (defvar starter-kit-packages
-    (list 'yasnippet-bundle 'color-theme)
-    "Libraries that should be installed by default.")
-  
-  (when (and (functionp 'network-interface-list)
-             (network-interface-list)
-             (some (lambda (iface)
-                     (unless (equal "lo" (car iface))
-                       (member 'up (first (last (network-interface-info
-                                                 (car iface)))))))
-                   (network-interface-list)))
-    (unless package-archive-contents
-      (package-refresh-contents))
-    (dolist (package starter-kit-packages)
-      (unless (or (member package package-activated-list)
-                  (functionp package))
-        (message "Installing %s" (symbol-name package))
-        (package-install package))))
-#+end_src
+- ELPA archive repositories and two packages to install by default.
+  #+begin_src emacs-lisp
+    (require 'package)
+    (setq package-archives
+          '(("original"    . "http://tromey.com/elpa/")
+            ("gnu"         . "http://elpa.gnu.org/packages/")
+            ("technomancy" . "http://repo.technomancy.us/emacs/")
+            ("marmalade"   . "http://marmalade-repo.org/packages/")))
+    (package-initialize)
 
-*** Function for loading starter-kit-*
-#+srcname: starter-kit-load
-#+begin_src emacs-lisp 
-  (defun starter-kit-load (file)
-    "This function is to be used to load starter-kit-*.org files."
-    (org-babel-load-file (expand-file-name file starter-kit-dir)))
-#+end_src
+    (defvar starter-kit-packages
+      (list 'yasnippet-bundle 'color-theme)
+      "Libraries that should be installed by default.")
 
-*** Work around OS X bug
-Work around a bug on OS X where system-name is FQDN
-#+srcname: starter-kit-osX-workaround
-#+begin_src emacs-lisp 
-  (if (eq system-type 'darwin)
-      (setq system-name (car (split-string system-name "\\."))))
-#+end_src
+    (when (and (functionp 'network-interface-list)
+               (network-interface-list)
+               (some (lambda (iface)
+                       (unless (equal "lo" (car iface))
+                         (member 'up (first (last (network-interface-info
+                                                   (car iface)))))))
+                     (network-interface-list)))
+      (unless package-archive-contents
+        (package-refresh-contents))
+      (dolist (package starter-kit-packages)
+        (unless (or (member package package-activated-list)
+                    (functionp package))
+          (message "Installing %s" (symbol-name package))
+          (package-install package))))
+  #+end_src
 
-** Load the rest of the starter kit core
+- Function for loading other parts of the starter kit
+  #+srcname: starter-kit-load
+  #+begin_src emacs-lisp 
+    (defun starter-kit-load (file)
+      "This function is to be used to load starter-kit-*.org files."
+      (org-babel-load-file (expand-file-name file starter-kit-dir)))
+  #+end_src
+
+- Work around a bug on OS X where system-name is FQDN.
+  #+srcname: starter-kit-osX-workaround
+  #+begin_src emacs-lisp 
+    (if (eq system-type 'darwin)
+        (setq system-name (car (split-string system-name "\\."))))
+  #+end_src
+
+** Starter kit core
+   :PROPERTIES:
+   :CUSTOM_ID: starter-kit-core
+   :END:
 The following files contain the remainder of the core of the Emacs
 Starter Kit.  All of the code in this section should be loaded by
 everyone using the starter kit.
 
-*** Starter kit defuns
-Starter kit function definitions in [[file:starter-kit-defuns.org][starter-kit-defuns]]
+- Starter kit function definitions in [[file:starter-kit-defuns.org][starter-kit-defuns]]
+  #+begin_src emacs-lisp
+  (starter-kit-load "starter-kit-defuns.org")
+  #+end_src
 
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-defuns.org")
-#+end_src
+- Key Bindings in [[file:starter-kit-bindings.org][starter-kit-bindings]]
+  #+begin_src emacs-lisp
+  (starter-kit-load "starter-kit-bindings.org")
+  #+end_src
 
-*** Starter kit bindings
-Key Bindings in [[file:starter-kit-bindings.org][starter-kit-bindings]]
+- Miscellaneous settings in [[file:starter-kit-misc.org][starter-kit-misc]]
+  #+begin_src emacs-lisp
+  (starter-kit-load "starter-kit-misc.org")
+  #+end_src
 
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-bindings.org")
-#+end_src
+- Registers for jumping to commonly used files in [[file:starter-kit-registers.org][starter-kit-registers]]
+  #+begin_src emacs-lisp
+  (starter-kit-load "starter-kit-registers.org")
+  #+end_src
 
-*** Starter kit misc
-Miscellaneous settings in [[file:starter-kit-misc.org][starter-kit-misc]]
+- [[http://code.google.com/p/yasnippet/][yasnippet]] is yet another snippet expansion system for Emacs.  It is
+  inspired by TextMate's templating syntax.
+  - watch the [[http://www.youtube.com/watch?v=vOj7btx3ATg][video on YouTube]]
+  - see the [[http://yasnippet.googlecode.com/svn/trunk/doc/index.html][intro and tutorial]]
 
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-misc.org")
-#+end_src
+  load the yasnippet bundle
+  #+begin_src emacs-lisp
+    (add-to-list 'load-path
+                 (expand-file-name  "yasnippet"
+                                    (expand-file-name "src"
+                                                      starter-kit-dir)))
+    (require 'yasnippet)
+    (yas/initialize)
+  #+end_src
 
-*** Starter kit registers
-Registers for jumping to commonly used files in [[file:starter-kit-registers.org][starter-kit-registers]]
-
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-registers.org")
-#+end_src
-
-*** Starter kit yasnippet
-[[http://code.google.com/p/yasnippet/][yasnippet]] is yet another snippet expansion system for Emacs.  It is
-inspired by TextMate's templating syntax.
-- watch the [[http://www.youtube.com/watch?v=vOj7btx3ATg][video on YouTube]]
-- see the [[http://yasnippet.googlecode.com/svn/trunk/doc/index.html][intro and tutorial]]
-
-load the yasnippet bundle
-#+begin_src emacs-lisp
-  (add-to-list 'load-path
-               (expand-file-name  "yasnippet"
-                                  (expand-file-name "src"
-                                                    starter-kit-dir)))
-  (require 'yasnippet)
-  (yas/initialize)
-#+end_src
-
-load the snippets defined in the =./snippets/= directory
-#+begin_src emacs-lisp
-  (yas/load-directory (expand-file-name "snippets" starter-kit-dir))
-#+end_src
-
-** Optional Language/Mode Specific Files
-These sections pertain to specific languages or modes.  Feel free to
-turn off these sections if you don't plan on using the related mode or
-language.
-
-*** Starter kit Org-mode
-Located in [[file:starter-kit-org.org][starter-kit-org]]
-
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-org.org")
-#+end_src
-
-*** Starter kit eshell
-Located in [[file:starter-kit-eshell.org][starter-kit-eshell]]
-
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-eshell.org")
-#+end_src
-
-*** Starter kit lisp
-Located in [[file:starter-kit-lisp.org][starter-kit-lisp]]
-
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-lisp.org")
-#+end_src
-
-*** Starter kit Haskell
-Located in [[file:starter-kit-haskell.org][starter-kit-haskell]]
-
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-haskell.org")
-#+end_src
-
-*** Starter kit ruby
-Located in [[file:starter-kit-ruby.org][starter-kit-ruby]]
-
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-ruby.org")
-#+end_src
-
-*** Starter kit JS
-Located in [[file:starter-kit-js.org][starter-kit-js]]
-
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-js.org")
-#+end_src
-
-*** Starter Kit Perl
-Located in [[file:starter-kit-perl.org][starter-kit-perl]]
-
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-perl.org")
-#+end_src
-
-*** Starter Kit Python
-Located in [[file:starter-kit-python.org][starter-kit-python]]
-
-#+begin_src emacs-lisp
-(starter-kit-load "starter-kit-python.org")
-#+end_src
-
-*** Starter Kit Latex
-Located in [[file:starter-kit-latex.org][starter-kit-latex]]
-
-#+begin_src emacs-lisp
-;; (starter-kit-load "starter-kit-latex.org")
-#+end_src
+  load the snippets defined in the =./snippets/= directory
+  #+begin_src emacs-lisp
+    (yas/load-directory (expand-file-name "snippets" starter-kit-dir))
+  #+end_src
 
 ** Load User/System Specific Files
 *** System/User specific customizations
