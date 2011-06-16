@@ -1,7 +1,25 @@
 # Name of your emacs binary
 EMACS=emacs
 
-all:
+BATCH=$(EMACS) --batch -Q --eval '(setq starter-kit-dir default-directory)'
+
+FILES = starter-kit.org			\
+	starter-kit-bindings.org	\
+	starter-kit-defuns.org		\
+	starter-kit-misc.org		\
+	starter-kit-registers.org
+
+FILESO = $(FILES:.org=.el)
+
+all: el
+	$(BATCH) --eval '(mapc (lambda (x) (byte-compile-file (symbol-name x))) (quote ($(FILESO))))'
+
+el: $(FILES)
+	$(BATCH) --eval '(mapc (lambda (x) (org-babel-load-file (symbol-name x))) (quote ($(FILES))))'
+
+doc: doc/index.html
+
+doc/index.html:
 	mkdir -p doc
 	$(EMACS) --batch -Q --eval '(org-babel-load-file "starter-kit-publish.org")'
 	rm starter-kit-publish.el
