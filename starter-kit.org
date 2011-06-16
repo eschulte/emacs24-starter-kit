@@ -326,14 +326,15 @@ everyone using the starter kit.
   #+begin_src emacs-lisp
     (defun yas/org-very-safe-expand ()
       (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
-
-    (add-hook 'org-mode-hook
-              (lambda ()
-                ;; yasnippet (using the new org-cycle hooks)
-                (make-variable-buffer-local 'yas/trigger-key)
-                (setq yas/trigger-key [tab])
-                (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-                (define-key yas/keymap [tab] 'yas/next-field)))
+    
+    (defun yas/org-setup ()
+      ;; yasnippet (using the new org-cycle hooks)
+      (make-variable-buffer-local 'yas/trigger-key)
+      (setq yas/trigger-key [tab])
+      (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+      (define-key yas/keymap [tab] 'yas/next-field))
+    
+    (add-hook 'org-mode-hook #'yas/org-setup)
   #+end_src
 
 ** Load User/System Specific Files
