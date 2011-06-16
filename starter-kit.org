@@ -3,7 +3,7 @@
 #+OPTIONS: H:2 num:nil toc:t
 #+STARTUP: oddeven
 
-#+begin_quote 
+#+begin_quote
 Emacs outshines all other editing software in approximately the same
 way that the noonday sun does the stars. It is not just bigger and
 brighter; it simply makes everything else vanish.
@@ -113,7 +113,7 @@ general starter-kit updates without conflict.
      #+begin_src sh
        echo $USER
      #+end_src
-       
+
      If your configuration starts to feel cramped in a single file
      (although with the nested headlines of an Org-mode file, that
      could take a while) and you want to stretch your config's legs,
@@ -211,7 +211,7 @@ interested in the actual code implementing the starter kit.
 ** Starter kit basics
 - Load path etc.
   #+srcname: starter-kit-load-paths
-  #+begin_src emacs-lisp 
+  #+begin_src emacs-lisp
     (add-to-list 'load-path starter-kit-dir)
     (setq autoload-file (concat starter-kit-dir "loaddefs.el"))
     (setq package-user-dir (concat starter-kit-dir "elpa"))
@@ -222,7 +222,7 @@ interested in the actual code implementing the starter kit.
   autoloaded on demand since they are likely to be used in every
   session.
   #+srcname: starter-kit-load-on-startup
-  #+begin_src emacs-lisp 
+  #+begin_src emacs-lisp
     (require 'cl)
     (require 'saveplace)
     (require 'ffap)
@@ -263,7 +263,7 @@ interested in the actual code implementing the starter kit.
 
 - Function for loading other parts of the starter kit
   #+srcname: starter-kit-load
-  #+begin_src emacs-lisp 
+  #+begin_src emacs-lisp
     (defun starter-kit-load (file)
       "This function is to be used to load starter-kit-*.org files."
       (org-babel-load-file (expand-file-name file starter-kit-dir)))
@@ -271,7 +271,7 @@ interested in the actual code implementing the starter kit.
 
 - Work around a bug on OS X where system-name is FQDN.
   #+srcname: starter-kit-osX-workaround
-  #+begin_src emacs-lisp 
+  #+begin_src emacs-lisp
     (if (eq system-type 'darwin)
         (setq system-name (car (split-string system-name "\\."))))
   #+end_src
@@ -322,6 +322,21 @@ everyone using the starter kit.
   load the snippets defined in the =./snippets/= directory
   #+begin_src emacs-lisp
     (yas/load-directory (expand-file-name "snippets" starter-kit-dir))
+  #+end_src
+
+  The latest version of yasnippets doesn't play well with Org-mode, the
+  following function allows these two to play nicely together.
+  #+begin_src emacs-lisp
+    (defun yas/org-very-safe-expand ()
+      (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+    (add-hook 'org-mode-hook
+              (lambda ()
+                ;; yasnippet (using the new org-cycle hooks)
+                (make-variable-buffer-local 'yas/trigger-key)
+                (setq yas/trigger-key [tab])
+                (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+                (define-key yas/keymap [tab] 'yas/next-field)))
   #+end_src
 
 ** Load User/System Specific Files
@@ -376,7 +391,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 
 *** Settings from M-x customize
 #+srcname: m-x-customize-customizations
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
   (load custom-file 'noerror)
 #+end_src
 
