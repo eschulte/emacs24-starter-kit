@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>Starter Kit G-Client</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2011-06-16 15:51:42 PDT"/>
+<meta name="author" content="Eric Schulte"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+<style type="text/css">
+  pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+  code{font-size:10pt; color:#353535;}
+  .outline-text-2{margin-left: 1em;}
+  .outline-text-3{margin-left: 2em;}
+  .outline-text-3{margin-left: 3em;}
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">Starter Kit G-Client</h1>
+<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+</p>
+<p>
+G-Client is part of T.V. Raman's <a href="http://code.google.com/p/emacspeak/">emacspeak</a> package which provides for
+interaction with Google services (e.g., google-docs, google-calendar)
+from within Emacs.
+</p>
+
+<div id="outline-container-instillation" class="outline-2">
+<h2 id="instillation"><a name="sec-1" id="sec-1"></a>Instillation </h2>
+<div class="outline-text-2" id="text-instillation">
+
+
+<ol>
+<li>Grab the latest version of G-Client by running the following in
+   this directory.
+
+
+
+<pre class="src src-sh"><span class="org-builtin">cd</span> src/
+svn co http://emacspeak.googlecode.com/svn/trunk/lisp/g-client/
+
+</pre>
+
+
+
+</li>
+<li>The in the <code>g-client</code> directory run the following commands to build
+   the package.
+
+
+
+<pre class="src src-sh"><span class="org-builtin">cd</span> src/g-client
+make
+
+</pre>
+
+
+
+</li>
+<li>Add the <code>g-client</code> directory to the load path, and load the package
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path
+             (expand-file-name
+              <span class="org-string">"g-client"</span>
+              (expand-file-name
+               <span class="org-string">"src"</span>
+               (file-name-directory
+                (or load-file-name (buffer-file-name))))))
+(load-library <span class="org-string">"g"</span>)
+
+</pre>
+
+
+
+</li>
+<li>In your personal configuration set the value of the <code>g-user-email</code>
+   variable to your google email address
+
+
+
+<pre class="src src-emacs-lisp">(setq g-user-email <span class="org-string">"you@gmail.com"</span>)
+
+</pre>
+
+
+
+</li>
+<li>Finally, in the current version of g-client one small change to the
+   code is required.  In the definition `gdocs-publish-from-org' the
+   call to the `org-export-region-as-html' function should be changed
+   from
+
+
+
+<pre class="src src-emacs-lisp">(org-export-region-as-html (point-min) (point-max)
+                           nil g-scratch-buffer)
+
+</pre>
+
+
+<p>
+   to
+</p>
+
+
+<pre class="src src-emacs-lisp">(org-export-region-as-html (point-min) (point-max)
+                           'body-only g-scratch-buffer)
+
+</pre>
+
+
+<p>
+   so that the exported html only includes the body of the html
+   document.  The header information generated by Org-mode seems to
+   confuse google documents.
+</p></li>
+</ol>
+
+
+<p>
+For more information see
+</p><ul>
+<li>the <a href="#sec-2">usage</a> section immediately below
+</li>
+<li>the <a href="src/g-client/g-client.html">src/g-client/g-client</a> file included with <code>g-client</code>
+</li>
+<li>and this blog post <a href="http://blog.vivekhaldar.com/post/1649745633/editing-google-docs-in-emacs">blog.vivekhaldar.com/editing-google-docs-in-emacs</a>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-usage" class="outline-2">
+<h2 id="usage"><a name="sec-2" id="sec-2"></a>Usage </h2>
+<div class="outline-text-2" id="text-usage">
+
+<p>Usage is as simple as
+</p>
+<ol>
+<li>sign into google documents with `gdocs-sign-in'
+
+</li>
+<li>open an Emacs buffer which you would like to post to google docs
+
+</li>
+<li>publish the buffer with `gdocs-publish-from-text'
+</li>
+</ol>
+
+</div>
+</div>
+
+</div>
+</body>
+</html>

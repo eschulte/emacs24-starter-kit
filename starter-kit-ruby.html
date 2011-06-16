@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>Starter Kit Ruby</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2011-06-16 15:51:40 PDT"/>
+<meta name="author" content="Eric Schulte"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+<style type="text/css">
+  pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+  code{font-size:10pt; color:#353535;}
+  .outline-text-2{margin-left: 1em;}
+  .outline-text-3{margin-left: 2em;}
+  .outline-text-3{margin-left: 3em;}
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">Starter Kit Ruby</h1>
+<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Starter Kit Ruby </h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Support for the <a href="http://www.ruby-lang.org/en/">Ruby</a> dynamic, open-source programming language.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'ruby-mode
+  '(<span class="org-keyword">progn</span>
+     <span class="org-comment-delimiter">;; </span><span class="org-comment">work around possible elpa bug</span>
+     (<span class="org-keyword">ignore-errors</span> (<span class="org-keyword">require</span> '<span class="org-constant">ruby-compilation</span>))
+     (setq ruby-use-encoding-map nil)
+     (add-hook 'ruby-mode-hook 'inf-ruby-keys)
+     (define-key ruby-mode-map (kbd <span class="org-string">"RET"</span>) 'reindent-then-newline-and-indent)
+     (define-key ruby-mode-map (kbd <span class="org-string">"C-M-h"</span>) 'backward-kill-word)
+     (define-key ruby-mode-map (kbd <span class="org-string">"C-c l"</span>) <span class="org-string">"lambda"</span>)))
+
+</pre>
+
+
+
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-h r"</span>) 'ri)
+
+</pre>
+
+
+
+
+</div>
+
+<div id="outline-container-1_1" class="outline-3">
+<h3 id="sec-1_1">Rake files are ruby, too, as are gemspecs. </h3>
+<div class="outline-text-3" id="text-1_1">
+
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.rake$"</span> . ruby-mode))
+(add-to-list 'auto-mode-alist '(<span class="org-string">"Rakefile$"</span> . ruby-mode))
+(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.gemspec$"</span> . ruby-mode))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_2" class="outline-3">
+<h3 id="sec-1_2">We never want to edit Rubinius bytecode </h3>
+<div class="outline-text-3" id="text-1_2">
+
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'completion-ignored-extensions <span class="org-string">".rbc"</span>)
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_3" class="outline-3">
+<h3 id="sec-1_3">Rake </h3>
+<div class="outline-text-3" id="text-1_3">
+
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">pcomplete/rake</span> ()
+  <span class="org-doc">"Completion rules for the `</span><span class="org-doc"><span class="org-constant">ssh</span></span><span class="org-doc">' command."</span>
+  (pcomplete-here (pcmpl-rake-tasks)))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">pcmpl-rake-tasks</span> ()
+   <span class="org-doc">"Return a list of all the rake tasks defined in the current</span>
+<span class="org-doc">projects.  I know this is a hack to put all the logic in the</span>
+<span class="org-doc">exec-to-string command, but it works and seems fast"</span>
+   (delq nil (mapcar '(<span class="org-keyword">lambda</span>(line)
+                        (<span class="org-keyword">if</span> (string-match <span class="org-string">"rake </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string"> ]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span> line) (match-string 1 line)))
+                     (split-string (shell-command-to-string <span class="org-string">"rake -T"</span>) <span class="org-string">"[\n]"</span>))))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">rake</span> (task)
+  (interactive (list (completing-read <span class="org-string">"Rake (default: default): "</span>
+                                      (pcmpl-rake-tasks))))
+  (shell-command-to-string (concat <span class="org-string">"rake "</span> (<span class="org-keyword">if</span> (= 0 (length task)) <span class="org-string">"default"</span> task))))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_4" class="outline-3">
+<h3 id="sec-1_4">Compilation </h3>
+<div class="outline-text-3" id="text-1_4">
+
+<p>Clear the compilation buffer between test runs.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'ruby-compilation
+  '(<span class="org-keyword">progn</span>
+     (<span class="org-keyword">defadvice</span> <span class="org-function-name">ruby-do-run-w/compilation</span> (before kill-buffer (name cmdlist))
+       (<span class="org-keyword">let</span> ((comp-buffer-name (format <span class="org-string">"*%s*"</span> name)))
+         (<span class="org-keyword">when</span> (get-buffer comp-buffer-name)
+           (<span class="org-keyword">with-current-buffer</span> comp-buffer-name
+             (delete-region (point-min) (point-max))))))
+     (ad-activate 'ruby-do-run-w/compilation)))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_5" class="outline-3">
+<h3 id="sec-1_5">Hooks </h3>
+<div class="outline-text-3" id="text-1_5">
+
+
+
+
+<pre class="src src-emacs-lisp">(add-hook 'ruby-mode-hook 'run-starter-kit-coding-hook)
+
+</pre>
+
+
+
+<p>
+;; (add-hook 'ruby-mode-hook 'idle-highlight)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1_6" class="outline-3">
+<h3 id="sec-1_6">Flymake </h3>
+<div class="outline-text-3" id="text-1_6">
+
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'ruby-mode
+  '(<span class="org-keyword">progn</span>
+     (<span class="org-keyword">require</span> '<span class="org-constant">flymake</span>)
+
+     <span class="org-comment-delimiter">;; </span><span class="org-comment">Invoke ruby with '-c' to get syntax checking</span>
+     (<span class="org-keyword">defun</span> <span class="org-function-name">flymake-ruby-init</span> ()
+       (<span class="org-keyword">let*</span> ((temp-file (flymake-init-create-temp-buffer-copy
+                          'flymake-create-temp-inplace))
+              (local-file (file-relative-name
+                           temp-file
+                           (file-name-directory buffer-file-name))))
+         (list <span class="org-string">"ruby"</span> (list <span class="org-string">"-c"</span> local-file))))
+
+     (push '(<span class="org-string">".+\\.rb$"</span> flymake-ruby-init) flymake-allowed-file-name-masks)
+     (push '(<span class="org-string">"Rakefile$"</span> flymake-ruby-init) flymake-allowed-file-name-masks)
+
+     (push '(<span class="org-string">"^</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">:</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">$"</span> 1 2 nil 3)
+           flymake-err-line-patterns)
+
+     (add-hook 'ruby-mode-hook
+               (<span class="org-keyword">lambda</span> ()
+                 (<span class="org-keyword">when</span> (and buffer-file-name
+                            (file-writable-p
+                             (file-name-directory buffer-file-name))
+                            (file-writable-p buffer-file-name))
+                   (local-set-key (kbd <span class="org-string">"C-c d"</span>)
+                                  'flymake-display-err-menu-for-current-line)
+                   (flymake-mode t))))))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_7" class="outline-3">
+<h3 id="sec-1_7">Rinari (Minor Mode for Ruby On Rails) </h3>
+<div class="outline-text-3" id="text-1_7">
+
+<p>See <a href="http://rinari.rubyforge.org/">rinari.rubyforge</a> for more information on rinari.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(setq rinari-major-modes
+      (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
+            'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
+
+</pre>
+
+
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

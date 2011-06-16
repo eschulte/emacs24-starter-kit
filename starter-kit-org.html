@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>Starter Kit Org</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2011-06-16 15:51:41 PDT"/>
+<meta name="author" content="Eric Schulte"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+<style type="text/css">
+  pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+  code{font-size:10pt; color:#353535;}
+  .outline-text-2{margin-left: 1em;}
+  .outline-text-3{margin-left: 2em;}
+  .outline-text-3{margin-left: 3em;}
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">Starter Kit Org</h1>
+<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Starter Kit Org </h2>
+<div class="outline-text-2" id="text-1">
+
+<p>Configuration for the eminently useful <a href="http://orgmode.org/">Org Mode</a>.
+</p>
+<p>
+Org-mode is for keeping notes, maintaining ToDo lists, doing project
+planning, and authoring with a fast and effective plain-text system.
+Org Mode can be used as a very simple folding outliner or as a complex
+GTD system or tool for reproducible research and literate programming.
+</p>
+<p>
+For more information on org-mode check out <a href="http://orgmode.org/worg/">worg</a>, a large Org-mode wiki
+which is also <b>implemented using</b> Org-mode and <a href="http://git-scm.com/">git</a>.
+</p>
+
+</div>
+
+<div id="outline-container-1_1" class="outline-3">
+<h3 id="sec-1_1">Org-Mode Hook </h3>
+<div class="outline-text-3" id="text-1_1">
+
+<p>The latest version of yasnippets doesn't play well with Org-mode, the
+following function allows these two to play nicely together
+</p>
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">yas/org-very-safe-expand</span> ()
+  (<span class="org-keyword">let</span> ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+</pre>
+
+
+
+
+<pre class="src src-emacs-lisp">(add-hook 'org-mode-hook
+          (<span class="org-keyword">lambda</span> ()
+            (local-set-key <span class="org-string">"\M-\C-n"</span> 'outline-next-visible-heading)
+            (local-set-key <span class="org-string">"\M-\C-p"</span> 'outline-previous-visible-heading)
+            (local-set-key <span class="org-string">"\M-\C-u"</span> 'outline-up-heading)
+            <span class="org-comment-delimiter">;; </span><span class="org-comment">table</span>
+            (local-set-key <span class="org-string">"\M-\C-w"</span> 'org-table-copy-region)
+            (local-set-key <span class="org-string">"\M-\C-y"</span> 'org-table-paste-rectangle)
+            (local-set-key <span class="org-string">"\M-\C-l"</span> 'org-table-sort-lines)
+            <span class="org-comment-delimiter">;; </span><span class="org-comment">display images</span>
+            (local-set-key <span class="org-string">"\M-I"</span> 'org-toggle-iimage-in-org)))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_2" class="outline-3">
+<h3 id="sec-1_2">Speed keys </h3>
+<div class="outline-text-3" id="text-1_2">
+
+<p>Speed commands enable single-letter commands in Org-mode files when
+the point is at the beginning of a headline, or at the beginning of a
+code block.
+</p>
+<p>
+See the `=org-speed-commands-default=' variable for a list of the keys
+and commands enabled at the beginning of headlines.  All code blocks
+are available at the beginning of a code block, the following key
+sequence <code>C-c C-v h</code> (bound to `=org-babel-describe-bindings=') will
+display a list of the code blocks commands and their related keys.
+</p>
+
+
+
+<pre class="src src-emacs-lisp">(setq org-use-speed-commands t)
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_3" class="outline-3">
+<h3 id="sec-1_3">Code blocks </h3>
+<div class="outline-text-3" id="text-1_3">
+
+<p>This activates a number of widely used languages, you are encouraged
+to activate more languages using the customize interface for the
+`=org-babel-load-languages=' variable, or with an elisp form like the
+one below.  The customize interface of `=org-babel-load-languages='
+contains an up to date list of the currently supported languages.
+</p>
+
+
+<pre class="src src-emacs-lisp">(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (sh . t)))
+
+</pre>
+
+
+
+<p>
+You are encouraged to add the following to your personal configuration
+although it is not added by default as a security precaution.
+</p>
+
+
+<pre class="src src-emacs-lisp">(setq org-confirm-babel-evaluate nil)
+
+</pre>
+
+
+
+<p>
+The following displays the contents of code blocks in Org-mode files
+using the major-mode of the code.  It also changes the behavior of
+<code>TAB</code> to as if it were used in the appropriate major mode.  This means
+that reading and editing code form inside of your Org-mode files is
+much more like reading and editing of code using its major mode.
+</p>
+
+
+<pre class="src src-emacs-lisp">(setq org-src-fontify-natively t)
+(setq org-src-tab-acts-natively t)
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_4" class="outline-3">
+<h3 id="sec-1_4">Load up the Library of Babel </h3>
+<div class="outline-text-3" id="text-1_4">
+
+<p>The library of babel contains makes many useful functions available
+for use by code blocks in <b>any</b> emacs file.  See the actual
+<a href="src/org/contrib/babel/library-of-babel.html">library-of-babel.org</a> file for information on the functions, and see
+<a href="http://orgmode.org/worg/org-contrib/babel/intro.php#library-of-babel">worg:library-of-babel</a> for more usage information.
+</p>
+
+
+<pre class="src src-emacs-lisp">(org-babel-lob-ingest
+ (expand-file-name
+  <span class="org-string">"library-of-babel.org"</span>
+  (expand-file-name
+   <span class="org-string">"babel"</span>
+   (expand-file-name
+    <span class="org-string">"contrib"</span>
+    (expand-file-name
+     <span class="org-string">"org"</span>
+     (expand-file-name <span class="org-string">"src"</span> starter-kit-dir))))))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_5" class="outline-3">
+<h3 id="sec-1_5">Ensure the Latest Org-mode manual is in the info directory </h3>
+<div class="outline-text-3" id="text-1_5">
+
+<p>By placing the <code>doc/</code> directory in Org-mode at the front of the
+<code>Info-directory-list</code> we can be sure that the latest version of the
+Org-mode manual is available to the <code>info</code> command (bound to <code>C-h i</code>).
+</p>
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">unless</span> (boundp 'Info-directory-list)
+  (setq Info-directory-list Info-default-directory-list))
+(setq Info-directory-list
+      (cons (expand-file-name
+             <span class="org-string">"doc"</span>
+             (expand-file-name
+              <span class="org-string">"org"</span>
+              (expand-file-name <span class="org-string">"src"</span> starter-kit-dir)))
+            Info-directory-list))
+
+</pre>
+
+
+
+
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

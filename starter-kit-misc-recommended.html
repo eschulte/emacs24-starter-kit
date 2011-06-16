@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>Starter Kit Misc Recommended</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2011-06-16 15:51:41 PDT"/>
+<meta name="author" content="Eric Schulte"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+<style type="text/css">
+  pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+  code{font-size:10pt; color:#353535;}
+  .outline-text-2{margin-left: 1em;}
+  .outline-text-3{margin-left: 2em;}
+  .outline-text-3{margin-left: 3em;}
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">Starter Kit Misc Recommended</h1>
+<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Starter Kit Misc </h2>
+<div class="outline-text-2" id="text-1">
+
+<p>Things that don't fit anywhere else, and which aren't quite universal
+enough to live in <code>starter-kit-misc.org</code>.
+</p>
+
+</div>
+
+<div id="outline-container-1_1" class="outline-3">
+<h3 id="sec-1_1">Window systems &ndash; remove visual cruft </h3>
+<div class="outline-text-3" id="text-1_1">
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> window-system
+  (tooltip-mode -1)
+  (tool-bar-mode -1))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_2" class="outline-3">
+<h3 id="sec-1_2">No Menu Bar </h3>
+<div class="outline-text-3" id="text-1_2">
+
+<p>You really don't need this; trust me.
+</p>
+
+
+<pre class="src src-emacs-lisp">(menu-bar-mode -1)
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_3" class="outline-3">
+<h3 id="sec-1_3">Nxhtml &ndash; utilities for we development </h3>
+<div class="outline-text-3" id="text-1_3">
+
+<p><a href="http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html">Nxhtml</a> is a large package of utilities for web development and for
+embedding multiple major modes in a single buffer.
+</p>
+<p>
+Nxhtml is not installed in this version of the starter-kit by default,
+for information on installing nxhtml see <a href="http://www.emacswiki.org/emacs/NxhtmlMode">EmacsWiki-Nxhtml</a>.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1_4" class="outline-3">
+<h3 id="sec-1_4">Set browser </h3>
+<div class="outline-text-3" id="text-1_4">
+
+<p>Set this to whatever browser you use e.g&hellip;
+</p><pre class="example">
+;; (setq browse-url-browser-function 'browse-url-firefox)
+;; (setq browse-url-browser-function 'browse-default-macosx-browser)
+;; (setq browse-url-browser-function 'browse-default-windows-browser)
+;; (setq browse-url-browser-function 'browse-default-kde)
+;; (setq browse-url-browser-function 'browse-default-epiphany)
+;; (setq browse-url-browser-function 'browse-default-w3m)
+;; (setq browse-url-browser-function 'browse-url-generic
+;;       browse-url-generic-program "~/src/conkeror/conkeror")
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_5" class="outline-3">
+<h3 id="sec-1_5">Associate modes with file extensions </h3>
+<div class="outline-text-3" id="text-1_5">
+
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'auto-mode-alist '(<span class="org-string">"COMMIT_EDITMSG$"</span> . diff-mode))
+(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.css$"</span> . css-mode))
+(<span class="org-keyword">require</span> '<span class="org-constant">yaml-mode</span>)
+(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.ya?ml$"</span> . yaml-mode))
+(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.rb$"</span> . ruby-mode))
+(add-to-list 'auto-mode-alist '(<span class="org-string">"Rakefile$"</span> . ruby-mode))
+(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.js</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">on</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">?$"</span> . js2-mode))
+<span class="org-comment-delimiter">;; </span><span class="org-comment">(add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))</span>
+
+</pre>
+
+
+
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>Emacs Starter Kit</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2011-06-16 15:51:40 PDT"/>
+<meta name="author" content="Eric Schulte"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+<style type="text/css">
+  pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+  code{font-size:10pt; color:#353535;}
+  .outline-text-2{margin-left: 1em;}
+  .outline-text-3{margin-left: 2em;}
+  .outline-text-3{margin-left: 3em;}
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">Emacs Starter Kit</h1>
+<blockquote>
+
+<p>Emacs outshines all other editing software in approximately the same
+way that the noonday sun does the stars. It is not just bigger and
+brighter; it simply makes everything else vanish.
+</p>
+<p>
+&ndash; Neal Stephenson, "In the Beginning was the Command Line"
+</p>
+</blockquote>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#introduction">Introduction </a>
+<ul>
+<li><a href="#sec-1_1">Learning </a></li>
+<li><a href="#sec-1_2">Installation </a></li>
+<li><a href="#sec-1_3">Structure </a></li>
+<li><a href="#sec-1_4">Customization </a></li>
+<li><a href="#sec-1_5">Emacs Lisp Package Archive </a></li>
+<li><a href="#sec-1_6">Contributing </a></li>
+</ul>
+</li>
+<li><a href="#implementation">Implementation </a>
+<ul>
+<li><a href="#sec-2_1">Starter kit basics </a></li>
+<li><a href="#sec-2_2">Starter kit core </a></li>
+<li><a href="#sec-2_3">Load User/System Specific Files </a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-introduction" class="outline-2">
+<h2 id="introduction"><a name="sec-1" id="sec-1"></a>Introduction </h2>
+<div class="outline-text-2" id="text-introduction">
+
+<p>This should provide a saner set of defaults than you get normally with
+Emacs. It's intended for beginners, but provides a good elisp
+initialization structure for all levels of users.
+</p>
+<p>
+The main advantage of this Emacs Starter Kit are
+</p><ul>
+<li>better default settings
+</li>
+<li>inclusion of many useful libraries and configurations
+</li>
+<li>"literate" customization embedded in Org-mode files
+</li>
+<li>an organizational directory structure
+</li>
+<li>git provides for version control, backup, and sharing
+</li>
+</ul>
+
+
+<p>
+The latest version is at <a href="http://github.com/eschulte/emacs-starter-kit/">http://github.com/eschulte/emacs-starter-kit/</a>
+</p>
+
+</div>
+
+<div id="outline-container-1_1" class="outline-3">
+<h3 id="sec-1_1"><a name="sec-1-1" id="sec-1-1"></a>Learning </h3>
+<div class="outline-text-3" id="text-1_1">
+
+<p>This won't teach you Emacs, but it'll make it easier to get
+comfortable. To access the tutorial, press control-h followed by t
+from within Emacs.
+</p>
+<p>
+The <a href="http://emacswiki.org">Emacs Wiki</a> is also very handy.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1_2" class="outline-3">
+<h3 id="sec-1_2"><a name="sec-1-2" id="sec-1-2"></a>Installation </h3>
+<div class="outline-text-3" id="text-1_2">
+
+
+<ol>
+<li>Install Emacs version 24 or greater.  Use your package manager if
+   you have one and it has an install candidate for Emacs 24,
+   otherwise install it directly <a href="http://savannah.gnu.org/projects/emacs/">from source</a>.
+</li>
+<li>Checkout a version of the starter kit using git &ndash; if you're new to
+   git checkout this <a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html">git-tutorial</a>, also we'd highly recommend that you
+   try out <a href="http://zagadka.vm.bytemark.co.uk/magit/magit.html">magit</a> the Emacs mode for git interaction.
+
+
+
+<pre class="src src-sh">git clone http://github.com/eschulte/emacs-starter-kit.git
+
+</pre>
+
+
+</li>
+<li>Move the resulting directory to <code>~/.emacs.d</code> <sup><a class="footref" name="fnr.1" href="#fn.1">1</a></sup>
+</li>
+<li>Launch Emacs!
+</li>
+</ol>
+
+
+<p>
+After setup you may need to restart Emacs one or twice while it
+downloads packages from <a href="#sec-1-5">ELPA</a> &ndash; errors parsing html from
+<code>*tromey.com:80*</code> can generally be safely ignored.
+</p>
+<p>
+If you are missing some autoloads after an update (should manifest
+itself as <code>void function: foobar</code> errors) try M-x regen-autoloads.
+</p>
+<p>
+If you want to keep your regular <code>~/.emacs.d</code> in place and just launch
+a single instance using the starter kit, try the following invocation:
+</p>
+
+
+
+<pre class="src src-sh">emacs -q -l ~/src/emacs-starter-kit/init.el
+
+</pre>
+
+
+
+<p>
+Note that having a <code>~/.emacs</code> file might override the starter kit
+loading, so if you've having trouble loading it, make sure that file
+is not present.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1_3" class="outline-3">
+<h3 id="sec-1_3"><a name="sec-1-3" id="sec-1-3"></a>Structure </h3>
+<div class="outline-text-3" id="text-1_3">
+
+<p>The <code>init.el</code> file is where everything begins. It is loaded
+automatically by Emacs on startup, its sole purpose is to load the
+elisp code embedded in this file.  This file then loads some minimal
+configuration which should be generally useful, and goes on to load
+user-specific configuration files from the following locations
+mentioned in <a href="#customizations">customizations</a> immediately below.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1_4" class="outline-3">
+<h3 id="sec-1_4"><a name="sec-1-4" id="sec-1-4"></a>Customization </h3>
+<div class="outline-text-3" id="text-1_4">
+
+
+<p>
+The defaults built into the starter kit are only the beginning of
+most users customization of Emacs to suite their needs.  The starter
+kit provides a number of places for additional user and system
+specific customization.  These are designed in such a way that it will
+be easy for you to continue tracking your own personal customization
+inside the starter-kit while retaining your ability to pull down
+general starter-kit updates without conflict.
+</p>
+<dl>
+<dt>git branch</dt><dd>The first step to user-specific customization is (like
+     in any git project) to MAKE A BRANCH FOR YOUR LOCAL CHANGES.
+     Save the master branch for pulling down new versions of the
+     starter kit, and save all of your personal information in a
+     personal branch.  That way you never have to worry about
+     accidentally <code>git push</code>'ing up a patch with all of your gnus
+     email passwords.
+
+</dd>
+<dt>User specific config</dt><dd>Your personal configuration information can
+     be stored in a user-specific-config file.  This is the file named
+     after your user with the extensions <code>.el</code> or <code>.org</code> <sup><a class="footref" name="fnr.2" href="#fn.2">2</a></sup>.  If
+     you're unsure of your user name evaluate the following code block
+     to find out.
+
+
+
+<pre class="src src-sh"><span class="org-builtin">echo</span> $<span class="org-variable-name">USER</span>
+
+</pre>
+
+
+
+<p>
+     If your configuration starts to feel cramped in a single file
+     (although with the nested headlines of an Org-mode file, that
+     could take a while) and you want to stretch your config's legs,
+     you can also create a directory named after your system user
+     name.  If a such a directory exists, it will be added to the
+     load-path, and any elisp or org-mode w/embedded elisp files in it
+     will be loaded.
+</p>
+</dd>
+<dt>System specific config</dt><dd>Finally, you may want to configure
+     different settings for different machines.  The Starter Kit will
+     look for a file named after the current hostname ending in <code>.el</code>
+     or <code>.org</code> which will allow host-specific configuration.  If
+     you're unsure of your hostname the following can be executed to
+     find out.
+
+
+
+<pre class="src src-sh">hostname
+
+</pre>
+
+
+
+</dd>
+<dt>Activating more of the starter kit</dt><dd>By default, the starter kit
+     only includes customizations which are likely to be useful across
+     nearly any Emacs install (the only automatically loaded external
+     files are those listed in <a href="#load-the-starter-kit-core">Load the rest of the starter kit core</a>).
+     You may have noticed that there are many other
+     <code>starter-kit-*.org</code> files located in this directory.  A good
+     first step is to browse these files and begin optionally loading
+     those that look relevant to your workflow.  For example, if you
+     often work with Python source code you will probably want to load
+     <code>starter-kit-python.org</code> either by directly copying the sections
+     that look useful into your personal config, or simply by loading
+     the entire file directly with
+
+
+
+<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-python.org"</span>)
+
+</pre>
+
+
+
+</dd>
+<dt>Installing more elisp libraries</dt><dd>The easiest way to install new
+     libraries is through the Emacs Lisp Package Archive (see <a href="#emacs-lisp-package-archive">Emacs Lisp Package Archive</a> below).  When a library is not available
+     through ELPA you can grab it's source and place it directly in
+     the <code>src</code> directory.  Any packages found there will automatically
+     be added to your load-path when Emacs starts up, and are
+     guaranteed not to conflict with future starter-kit updates.
+
+</dd>
+<dt>Making use of the two pre-installed libraries</dt><dd>By default the
+     starter kit downloads and installs two generally helpful elisp
+     libraries.
+<dl>
+<dt>color-themes</dt><dd>The starter-kit comes pre-bundled with a variety
+        of color themes.  See <a href="starter-kit-misc.html">Color Themes</a> for instructions on how to
+        change the colors used by Emacs.
+
+</dd>
+</dl>
+
+</dd>
+<dt>Misc</dt><dd>Some additional miscellaneous configuration and getting
+     started suggestions
+<ul>
+<li>First see the <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html#Customization">Customization</a> node in the Emacs manual.  Available
+     online or through the <code>info</code> command (run with <code>C-h i</code>).
+</li>
+<li><code>grep</code>'ing through the <code>starter-kit-*</code> files in this directory
+     can provide useful examples for how to do things like install
+     major modes, define keybindings, etc..
+</li>
+<li>read the following <a href="http://www.gnu.org/software/emacs/elisp/html_node/Key-Binding-Conventions.html">Key-Binding-Conventions</a> before defining too
+     many personal key bindings
+</li>
+</ul>
+
+</dd>
+</dl>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_5" class="outline-3">
+<h3 id="sec-1_5"><a name="sec-1-5" id="sec-1-5"></a>Emacs Lisp Package Archive </h3>
+<div class="outline-text-3" id="text-1_5">
+
+
+<p>
+Libraries from <a href="http://tromey.com/elpa">ELPA</a> are preferred when available since dependencies
+are handled automatically, and the burden to update them is removed
+from the user.  ELPA is now an official part of Emacs so no special
+configuration is required to download and install packages.  Packages
+installed through ELPA will be stored in the <code>elpa/</code> sub-directory of
+this directory.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1_6" class="outline-3">
+<h3 id="sec-1_6"><a name="sec-1-6" id="sec-1-6"></a>Contributing </h3>
+<div class="outline-text-3" id="text-1_6">
+
+<p>If you know your way around Emacs, please try out the starter kit as a
+replacement for your regular dotfiles for a while. If there's anything
+you just can't live without, add it or let me know so I can add
+it. Take a look at what happens in <a href="init.el">init.el</a> to get started.
+</p>
+<p>
+Files are licensed under the same license as Emacs unless otherwise
+specified. See the file COPYING for details.
+</p>
+<p>
+The latest version is at <a href="http://github.com/eschulte/emacs-starter-kit/">http://github.com/eschulte/emacs-starter-kit/</a>
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-implementation" class="outline-2">
+<h2 id="implementation"><a name="sec-2" id="sec-2"></a>Implementation </h2>
+<div class="outline-text-2" id="text-implementation">
+
+
+<p>
+This section contains all code implementing the Emacs Starter Kit.  It
+is probably safe to stop reading at this point unless you are
+interested in the actual code implementing the starter kit.
+</p>
+
+</div>
+
+<div id="outline-container-2_1" class="outline-3">
+<h3 id="sec-2_1">Starter kit basics </h3>
+<div class="outline-text-3" id="text-2_1">
+
+<ul>
+<li>Load path etc.
+
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path starter-kit-dir)
+(setq autoload-file (concat starter-kit-dir <span class="org-string">"loaddefs.el"</span>))
+(setq package-user-dir (concat starter-kit-dir <span class="org-string">"elpa"</span>))
+(setq custom-file (concat starter-kit-dir <span class="org-string">"custom.el"</span>))
+
+</pre>
+
+
+
+</li>
+<li>Ubiquitous Packages which should be loaded on startup rather than
+  autoloaded on demand since they are likely to be used in every
+  session.
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">cl</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">saveplace</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">ffap</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">uniquify</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">ansi-color</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">recentf</span>)
+
+</pre>
+
+
+
+</li>
+<li>ELPA archive repositories and two packages to install by default.
+
+
+
+<pre class="src src-emacs-lisp">(setq package-archives
+      '((<span class="org-string">"original"</span>    . <span class="org-string">"http://tromey.com/elpa/"</span>)
+        (<span class="org-string">"gnu"</span>         . <span class="org-string">"http://elpa.gnu.org/packages/"</span>)
+        (<span class="org-string">"technomancy"</span> . <span class="org-string">"http://repo.technomancy.us/emacs/"</span>)
+        (<span class="org-string">"marmalade"</span>   . <span class="org-string">"http://marmalade-repo.org/packages/"</span>)))
+(package-initialize)
+
+(<span class="org-keyword">defvar</span> <span class="org-variable-name">starter-kit-packages</span>
+  (list 'yasnippet-bundle 'color-theme)
+  <span class="org-doc">"Libraries that should be installed by default."</span>)
+
+(<span class="org-keyword">when</span> (and (functionp 'network-interface-list)
+           (network-interface-list)
+           (some (<span class="org-keyword">lambda</span> (iface)
+                   (<span class="org-keyword">unless</span> (equal <span class="org-string">"lo"</span> (car iface))
+                     (member 'up (first (last (network-interface-info
+                                               (car iface)))))))
+                 (network-interface-list)))
+  (<span class="org-keyword">unless</span> package-archive-contents
+    (package-refresh-contents))
+  (<span class="org-keyword">dolist</span> (package starter-kit-packages)
+    (<span class="org-keyword">unless</span> (or (member package package-activated-list)
+                (functionp package))
+      (message <span class="org-string">"Installing %s"</span> (symbol-name package))
+      (package-install package))))
+
+</pre>
+
+
+
+</li>
+<li>Function for loading other parts of the starter kit
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-load</span> (file)
+  <span class="org-doc">"This function is to be used to load starter-kit-*.org files."</span>
+  (org-babel-load-file (expand-file-name file starter-kit-dir)))
+
+</pre>
+
+
+
+</li>
+<li>Work around a bug on OS X where system-name is FQDN.
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">if</span> (eq system-type 'darwin)
+    (setq system-name (car (split-string system-name <span class="org-string">"\\."</span>))))
+
+</pre>
+
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2_2" class="outline-3">
+<h3 id="sec-2_2"><a name="sec-2-2" id="sec-2-2"></a>Starter kit core </h3>
+<div class="outline-text-3" id="text-2_2">
+
+<p>The following files contain the remainder of the core of the Emacs
+Starter Kit.  All of the code in this section should be loaded by
+everyone using the starter kit.
+</p>
+<ul>
+<li>Starter kit function definitions in <a href="starter-kit-defuns.html">starter-kit-defuns</a>
+
+
+
+<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-defuns.org"</span>)
+
+</pre>
+
+
+
+</li>
+<li>Key Bindings in <a href="starter-kit-bindings.html">starter-kit-bindings</a>
+
+
+
+<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-bindings.org"</span>)
+
+</pre>
+
+
+
+</li>
+<li>Miscellaneous settings in <a href="starter-kit-misc.html">starter-kit-misc</a>
+
+
+
+<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-misc.org"</span>)
+
+</pre>
+
+
+
+</li>
+<li>Registers for jumping to commonly used files in <a href="starter-kit-registers.html">starter-kit-registers</a>
+
+
+
+<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-registers.org"</span>)
+
+</pre>
+
+
+
+</li>
+<li><a href="http://code.google.com/p/yasnippet/">yasnippet</a> is yet another snippet expansion system for Emacs.  It is
+  inspired by TextMate's templating syntax.
+<ul>
+<li>watch the <a href="http://www.youtube.com/watch?v=vOj7btx3ATg">video on YouTube</a>
+</li>
+<li>see the <a href="http://yasnippet.googlecode.com/svn/trunk/doc/index.html">intro and tutorial</a>
+
+</li>
+</ul>
+
+<p>  load the yasnippet bundle
+</p>
+
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path
+             (expand-file-name  <span class="org-string">"yasnippet"</span>
+                                (expand-file-name <span class="org-string">"src"</span>
+                                                  starter-kit-dir)))
+(<span class="org-keyword">require</span> '<span class="org-constant">yasnippet</span>)
+(yas/initialize)
+
+</pre>
+
+
+
+<p>
+  load the snippets defined in the <code>./snippets/</code> directory
+</p>
+
+
+<pre class="src src-emacs-lisp">(yas/load-directory (expand-file-name <span class="org-string">"snippets"</span> starter-kit-dir))
+
+</pre>
+
+
+
+<p>
+  The latest version of yasnippets doesn't play well with Org-mode, the
+  following function allows these two to play nicely together.
+</p>
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">yas/org-very-safe-expand</span> ()
+  (<span class="org-keyword">let</span> ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+(add-hook 'org-mode-hook
+          (<span class="org-keyword">lambda</span> ()
+            <span class="org-comment-delimiter">;; </span><span class="org-comment">yasnippet (using the new org-cycle hooks)</span>
+            (make-variable-buffer-local 'yas/trigger-key)
+            (setq yas/trigger-key [tab])
+            (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+            (define-key yas/keymap [tab] 'yas/next-field)))
+
+</pre>
+
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2_3" class="outline-3">
+<h3 id="sec-2_3">Load User/System Specific Files </h3>
+<div class="outline-text-3" id="text-2_3">
+
+
+</div>
+
+<div id="outline-container-2_3_1" class="outline-4">
+<h4 id="sec-2_3_1">System/User specific customizations </h4>
+<div class="outline-text-4" id="text-2_3_1">
+
+<p>You can keep system- or user-specific customizations here in either
+raw emacs-lisp files or as embedded elisp in org-mode files (as done
+in this document).
+</p>
+<p>
+You can keep elisp source in the <code>src</code> directory.  Packages loaded
+from here will override those installed by ELPA.  This is useful if
+you want to track the development versions of a project, or if a
+project is not in elpa.
+</p>
+<p>
+After we've loaded all the Starter Kit defaults, lets load the User's stuff.
+</p>
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">flet</span> ((in-kit (file <span class="org-type">&amp;optional</span> ext)
+               (expand-file-name (concat file ext) starter-kit-dir)))
+  (<span class="org-keyword">let</span> ((system-specific-config          (in-kit system-name <span class="org-string">".el"</span>))
+        (system-specific-literate-config (in-kit system-name <span class="org-string">".org"</span>))
+        (user-specific-config            (in-kit user-login-name <span class="org-string">".el"</span>))
+        (user-specific-literate-config   (in-kit user-login-name <span class="org-string">".org"</span>))
+        (user-specific-dir               (in-kit user-login-name))
+        (elisp-source-dir (concat starter-kit-dir <span class="org-string">"src"</span>)))
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">add the src directory to the load path</span>
+    (add-to-list 'load-path elisp-source-dir)
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">load specific files</span>
+    (<span class="org-keyword">when</span> (file-exists-p elisp-source-dir)
+      (<span class="org-keyword">let</span> ((default-directory elisp-source-dir))
+        (normal-top-level-add-subdirs-to-load-path)))
+    (<span class="org-keyword">when</span> (file-exists-p system-specific-config)
+      (load system-specific-config))
+    (<span class="org-keyword">when</span> (file-exists-p system-specific-literate-config)
+      (org-babel-load-file system-specific-literate-config))
+    (<span class="org-keyword">when</span> (file-exists-p user-specific-config)
+      (load user-specific-config))
+    (<span class="org-keyword">when</span> (file-exists-p user-specific-literate-config)
+      (org-babel-load-file user-specific-literate-config))
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">add user's directory to the load path</span>
+    (add-to-list 'load-path user-specific-dir)
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">load any files in the user's directory</span>
+    (<span class="org-keyword">when</span> (file-exists-p user-specific-dir)
+      (<span class="org-keyword">let</span> ((default-directory user-specific-dir))
+        (mapc #'load
+              (directory-files user-specific-dir nil <span class="org-string">".*el$"</span>))
+        (mapc #'org-babel-load-file
+              (directory-files user-specific-dir nil <span class="org-string">".*org$"</span>))))))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2_3_2" class="outline-4">
+<h4 id="sec-2_3_2">Settings from M-x customize </h4>
+<div class="outline-text-4" id="text-2_3_2">
+
+
+
+
+<pre class="src src-emacs-lisp">(load custom-file 'noerror)
+
+</pre>
+
+
+
+
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn.1" href="#fnr.1">1</a></sup> If you already have a directory at <code>~/.emacs.d</code> move it out of the
+    way and put this there instead.
+</p>
+
+<p class="footnote"><sup><a class="footnum" name="fn.2" href="#fnr.2">2</a></sup> The emacs starter kit uses <a href="http://orgmode.org/">Org Mode</a> to load embedded elisp code
+    directly from literate Org-mode documents.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</body>
+</html>

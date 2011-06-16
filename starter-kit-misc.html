@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>Starter Kit Misc</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2011-06-16 15:51:41 PDT"/>
+<meta name="author" content="Eric Schulte"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
+<style type="text/css">
+  pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+  code{font-size:10pt; color:#353535;}
+  .outline-text-2{margin-left: 1em;}
+  .outline-text-3{margin-left: 2em;}
+  .outline-text-3{margin-left: 3em;}
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">Starter Kit Misc</h1>
+<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Starter Kit Misc </h2>
+<div class="outline-text-2" id="text-1">
+
+<p>Things that don't fit anywhere else.
+</p>
+</div>
+
+<div id="outline-container-1_1" class="outline-3">
+<h3 id="sec-1_1">Color Themes </h3>
+<div class="outline-text-3" id="text-1_1">
+
+<p>The <a href="http://www.nongnu.org/color-theme/">Color Themes</a> package provides support for changing, saving,
+sharing Emacs color themes.  To view and apply color themes available
+on your system run <code>M-x color-theme-select</code>.  See the color theme
+website and EmacsWiki pages for more information.
+</p><ul>
+<li><a href="http://www.nongnu.org/color-theme/">http://www.nongnu.org/color-theme/</a>
+</li>
+<li><a href="http://www.emacswiki.org/emacs/ColorTheme">http://www.emacswiki.org/emacs/ColorTheme</a>
+</li>
+</ul>
+
+
+<p>
+Once you've selected a preferred color theme it can be installed by
+adding its function to your initialization.  For example
+</p>
+
+
+<pre class="src src-emacs-lisp">(color-theme-railscasts)
+
+</pre>
+
+
+<p>
+will load the <code>railscasts</code> color theme when Emacs starts.
+</p>
+<p>
+This code loads color-theme so that it is available by default.
+</p>
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">color-theme</span>)
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_2" class="outline-3">
+<h3 id="sec-1_2">Window systems </h3>
+<div class="outline-text-3" id="text-1_2">
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> window-system
+  (setq frame-title-format '(buffer-file-name <span class="org-string">"%f"</span> (<span class="org-string">"%b"</span>)))
+  (blink-cursor-mode -1))
+
+(mouse-wheel-mode t)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+(setq visible-bell t
+      echo-keystrokes 0.1
+      font-lock-maximum-decoration t
+      inhibit-startup-message t
+      transient-mark-mode t
+      color-theme-is-global t
+      delete-by-moving-to-trash t
+      shift-select-mode nil
+      truncate-partial-width-windows nil
+      uniquify-buffer-name-style 'forward
+      whitespace-style '(trailing lines space-before-tab
+                                  indentation space-after-tab)
+      whitespace-line-column 100
+      ediff-window-setup-function 'ediff-setup-windows-plain
+      oddmuse-directory (concat starter-kit-dir <span class="org-string">"oddmuse"</span>)
+      xterm-mouse-mode t
+      save-place-file (concat starter-kit-dir <span class="org-string">"places"</span>))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_3" class="outline-3">
+<h3 id="sec-1_3">Transparently open compressed files </h3>
+<div class="outline-text-3" id="text-1_3">
+
+
+
+
+<pre class="src src-emacs-lisp">(auto-compression-mode t)
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_4" class="outline-3">
+<h3 id="sec-1_4">Save a list of recent files visited. </h3>
+<div class="outline-text-3" id="text-1_4">
+
+<p>(recentf-mode 1)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1_5" class="outline-3">
+<h3 id="sec-1_5">Highlight matching parentheses when the point is on them. </h3>
+<div class="outline-text-3" id="text-1_5">
+
+
+
+
+<pre class="src src-emacs-lisp">(show-paren-mode 1)
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_6" class="outline-3">
+<h3 id="sec-1_6">ido mode </h3>
+<div class="outline-text-3" id="text-1_6">
+
+<p>ido-mode is like magic pixie dust!
+</p>
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (&gt; emacs-major-version 21)
+  (ido-mode t)
+  (setq ido-enable-prefix nil
+        ido-enable-flex-matching t
+        ido-create-new-buffer 'always
+        ido-use-filename-at-point t
+        ido-max-prospects 10))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_7" class="outline-3">
+<h3 id="sec-1_7">Other, spell checking, tabs, imenu and a coding hook </h3>
+<div class="outline-text-3" id="text-1_7">
+
+
+
+
+<pre class="src src-emacs-lisp">(set-default 'indent-tabs-mode nil)
+(set-default 'indicate-empty-lines t)
+(set-default 'imenu-auto-rescan t)
+
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-on-flyspell)
+
+(<span class="org-keyword">defvar</span> <span class="org-variable-name">starter-kit-coding-hook</span> nil
+  <span class="org-doc">"Hook that gets run on activation of any programming mode."</span>)
+
+(<span class="org-keyword">defalias</span> '<span class="org-function-name">yes-or-no-p</span> 'y-or-n-p)
+(random t) <span class="org-comment-delimiter">;; </span><span class="org-comment">Seed the random-number generator</span>
+
+</pre>
+
+
+
+
+</div>
+
+<div id="outline-container-1_7_1" class="outline-4">
+<h4 id="sec-1_7_1">possible issues/resolutions with flyspell </h4>
+<div class="outline-text-4" id="text-1_7_1">
+
+<p>Most of the solution came from <a href="http://www.emacswiki.org/emacs/FlySpell">EmacsWiki-FlySpell</a>.  Here is one
+possible fix.
+</p>
+<ul>
+<li id="sec-1-7-1-1">Emacs set path to aspell <br/>
+it's possible aspell isn't in your path
+
+
+
+<pre class="src src-emacs-lisp">(setq exec-path (append exec-path '(<span class="org-string">"/opt/local/bin"</span>)))
+
+</pre>
+
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2">Emacs specify spelling program <br/>
+<ul>
+<li>This didn't work at first, possibly because cocoAspell was
+  building its dictionary.  Now it seems to work fine.
+</li>
+</ul>
+
+
+
+
+<pre class="src src-emacs-lisp">(setq ispell-program-name <span class="org-string">"aspell"</span>
+      ispell-dictionary <span class="org-string">"english"</span>
+      ispell-dictionary-alist
+      (<span class="org-keyword">let</span> ((default '(<span class="org-string">"[A-Za-z]"</span> <span class="org-string">"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">A-Za-z]"</span> <span class="org-string">"[']"</span> nil
+                       (<span class="org-string">"-B"</span> <span class="org-string">"-d"</span> <span class="org-string">"english"</span> <span class="org-string">"--dict-dir"</span>
+                        <span class="org-string">"/Library/Application Support/cocoAspell/aspell6-en-6.0-0"</span>)
+                       nil iso-8859-1)))
+        `((nil ,@default)
+          (<span class="org-string">"english"</span> ,@default))))
+
+</pre>
+
+
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1_8" class="outline-3">
+<h3 id="sec-1_8">Hippie expand: at times perhaps too hip </h3>
+<div class="outline-text-3" id="text-1_8">
+
+
+
+
+<pre class="src src-emacs-lisp">(delete 'try-expand-line hippie-expand-try-functions-list)
+(delete 'try-expand-list hippie-expand-try-functions-list)
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_9" class="outline-3">
+<h3 id="sec-1_9">Don't clutter up directories with files~ </h3>
+<div class="outline-text-3" id="text-1_9">
+
+<p>Rather than saving backup files scattered all over the file system,
+let them live in the <code>backups/</code> directory inside of the starter kit.
+</p>
+
+
+<pre class="src src-emacs-lisp">(setq backup-directory-alist `((<span class="org-string">"."</span> . ,(expand-file-name
+                                        (concat starter-kit-dir <span class="org-string">"backups"</span>)))))
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_10" class="outline-3">
+<h3 id="sec-1_10">Default to unified diffs </h3>
+<div class="outline-text-3" id="text-1_10">
+
+
+
+
+<pre class="src src-emacs-lisp">(setq diff-switches <span class="org-string">"-u"</span>)
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1_11" class="outline-3">
+<h3 id="sec-1_11">Cosmetics </h3>
+<div class="outline-text-3" id="text-1_11">
+
+
+
+
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'diff-mode
+  '(<span class="org-keyword">progn</span>
+     (set-face-foreground 'diff-added <span class="org-string">"green4"</span>)
+     (set-face-foreground 'diff-removed <span class="org-string">"red3"</span>)))
+
+(<span class="org-keyword">eval-after-load</span> 'magit
+  '(<span class="org-keyword">progn</span>
+     (set-face-foreground 'magit-diff-add <span class="org-string">"green3"</span>)
+     (set-face-foreground 'magit-diff-del <span class="org-string">"red3"</span>)))
+
+</pre>
+
+
+
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>
