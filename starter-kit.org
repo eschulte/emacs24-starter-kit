@@ -144,7 +144,7 @@ general starter-kit updates without conflict.
      =starter-kit-python.org= either by directly copying the sections
      that look useful into your personal config, or simply by loading
      the entire file directly with
-     #+begin_src emacs-lisp
+     #+begin_src emacs-lisp :tangle no
        (starter-kit-load "starter-kit-python.org")
      #+end_src
 
@@ -353,12 +353,16 @@ project is not in elpa.
 After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 #+srcname: starter-kit-load-files
 #+begin_src emacs-lisp
-  (flet ((in-kit (file ext) (expand-file-name (concat file ext) starter-kit-dir)))
+  (flet ((in-kit (file &optional ext)
+                 (expand-file-name (concat file ext) starter-kit-dir)))
     (let ((system-specific-config          (in-kit system-name ".el"))
           (system-specific-literate-config (in-kit system-name ".org"))
           (user-specific-config            (in-kit user-login-name ".el"))
           (user-specific-literate-config   (in-kit user-login-name ".org"))
-          (user-specific-dir               (in-kit user-login-name)))
+          (user-specific-dir               (in-kit user-login-name))
+          (elisp-source-dir (concat starter-kit-dir "src")))
+      ;; add the src directory to the load path
+      (add-to-list 'load-path elisp-source-dir)
       ;; load specific files
       (when (file-exists-p elisp-source-dir)
         (let ((default-directory elisp-source-dir))
@@ -380,13 +384,6 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
                 (directory-files user-specific-dir nil ".*el$"))
           (mapc #'org-babel-load-file
                 (directory-files user-specific-dir nil ".*org$"))))))
-#+end_src
-
-*** Add the =src= dir to the load path
-#+srcname: starter-kit-load-elisp-dir
-#+begin_src emacs-lisp
-(setq elisp-source-dir (concat starter-kit-dir "src"))
-(add-to-list 'load-path elisp-source-dir)
 #+end_src
 
 *** Settings from M-x customize
