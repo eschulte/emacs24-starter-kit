@@ -7,7 +7,7 @@ lang="en" xml:lang="en">
 <title>Starter Kit Registers</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-16 15:51:40 PDT"/>
+<meta name="generated" content="2011-06-17 11:10:08 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -108,6 +108,14 @@ You should add registers here for the files you edit most often.
 
 <pre class="src src-emacs-lisp">(<span class="org-keyword">dolist</span>
     (r `((?i (file . ,(concat starter-kit-dir <span class="org-string">"init.el"</span>)))
+         (?I (file . ,(<span class="org-keyword">let*</span> ((user (getenv <span class="org-string">"USER"</span>))
+                             (org (expand-file-name (concat user <span class="org-string">".org"</span>) starter-kit-dir))
+                             (el  (expand-file-name (concat user <span class="org-string">".el"</span>) starter-kit-dir))
+                             (dir (expand-file-name user starter-kit-dir)))
+                        (<span class="org-keyword">cond</span>
+                         ((file-exists-p org) org)
+                         ((file-exists-p el)  el)
+                         (t dir)))))
          (?s (file . ,(concat starter-kit-dir <span class="org-string">"starter-kit.org"</span>)))
          (?r (file . ,(concat starter-kit-dir <span class="org-string">"starter-kit-registers.org"</span>)))))
   (set-register (car r) (cadr r)))

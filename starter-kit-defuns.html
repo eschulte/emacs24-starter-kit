@@ -7,7 +7,7 @@ lang="en" xml:lang="en">
 <title>Starter Kit Defuns</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-16 15:51:43 PDT"/>
+<meta name="generated" content="2011-06-17 11:10:10 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -108,21 +108,18 @@ a lambda doesn't already exist in the list.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">local-column-number-mode</span> ()
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-local-column-number-mode</span> ()
   (make-local-variable 'column-number-mode)
   (column-number-mode t))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">local-comment-auto-fill</span> ()
+(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-local-comment-auto-fill</span> ()
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
   (auto-fill-mode t))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">turn-on-hl-line-mode</span> ()
-  (<span class="org-keyword">if</span> window-system (hl-line-mode t)))
-
-(<span class="org-keyword">defun</span> <span class="org-function-name">turn-on-save-place-mode</span> ()
+(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-turn-on-save-place-mode</span> ()
   (setq save-place t))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">turn-on-whitespace</span> ()
+(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-turn-on-whitespace</span> ()
   (whitespace-mode t))
 
 </pre>
@@ -130,28 +127,21 @@ a lambda doesn't already exist in the list.
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'local-column-number-mode)
+<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'starter-kit-local-column-number-mode)
 
 </pre>
 
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'local-comment-auto-fill)
+<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'starter-kit-local-comment-auto-fill)
 
 </pre>
 
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'turn-on-hl-line-mode)
-
-</pre>
-
-
-
-
-<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'pretty-lambdas)
+<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'starter-kit-pretty-lambdas)
 
 </pre>
 

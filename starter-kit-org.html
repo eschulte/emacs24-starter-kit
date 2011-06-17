@@ -7,7 +7,7 @@ lang="en" xml:lang="en">
 <title>Starter Kit Org</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-16 15:51:41 PDT"/>
+<meta name="generated" content="2011-06-17 11:10:08 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -112,18 +112,8 @@ which is also <b>implemented using</b> Org-mode and <a href="http://git-scm.com/
 </div>
 
 <div id="outline-container-1_1" class="outline-3">
-<h3 id="sec-1_1">Org-Mode Hook </h3>
+<h3 id="sec-1_1">Org-Mode Hook &ndash; Keybindings </h3>
 <div class="outline-text-3" id="text-1_1">
-
-<p>The latest version of yasnippets doesn't play well with Org-mode, the
-following function allows these two to play nicely together
-</p>
-
-
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">yas/org-very-safe-expand</span> ()
-  (<span class="org-keyword">let</span> ((yas/fallback-behavior 'return-nil)) (yas/expand)))
-
-</pre>
 
 
 
@@ -209,8 +199,15 @@ although it is not added by default as a security precaution.
 
 
 
-<p>
-The following displays the contents of code blocks in Org-mode files
+</div>
+
+</div>
+
+<div id="outline-container-1_4" class="outline-3">
+<h3 id="sec-1_4">Code block fontification </h3>
+<div class="outline-text-3" id="text-1_4">
+
+<p>The following displays the contents of code blocks in Org-mode files
 using the major-mode of the code.  It also changes the behavior of
 <code>TAB</code> to as if it were used in the appropriate major mode.  This means
 that reading and editing code form inside of your Org-mode files is
@@ -229,9 +226,9 @@ much more like reading and editing of code using its major mode.
 
 </div>
 
-<div id="outline-container-1_4" class="outline-3">
-<h3 id="sec-1_4">Load up the Library of Babel </h3>
-<div class="outline-text-3" id="text-1_4">
+<div id="outline-container-1_5" class="outline-3">
+<h3 id="sec-1_5">Load up the Library of Babel </h3>
+<div class="outline-text-3" id="text-1_5">
 
 <p>The library of babel contains makes many useful functions available
 for use by code blocks in <b>any</b> emacs file.  See the actual
@@ -252,35 +249,6 @@ for use by code blocks in <b>any</b> emacs file.  See the actual
      (expand-file-name <span class="org-string">"src"</span> starter-kit-dir))))))
 
 </pre>
-
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1_5" class="outline-3">
-<h3 id="sec-1_5">Ensure the Latest Org-mode manual is in the info directory </h3>
-<div class="outline-text-3" id="text-1_5">
-
-<p>By placing the <code>doc/</code> directory in Org-mode at the front of the
-<code>Info-directory-list</code> we can be sure that the latest version of the
-Org-mode manual is available to the <code>info</code> command (bound to <code>C-h i</code>).
-</p>
-
-
-<pre class="src src-emacs-lisp">(<span class="org-keyword">unless</span> (boundp 'Info-directory-list)
-  (setq Info-directory-list Info-default-directory-list))
-(setq Info-directory-list
-      (cons (expand-file-name
-             <span class="org-string">"doc"</span>
-             (expand-file-name
-              <span class="org-string">"org"</span>
-              (expand-file-name <span class="org-string">"src"</span> starter-kit-dir)))
-            Info-directory-list))
-
-</pre>
-
 
 
 
