@@ -234,7 +234,6 @@ interested in the actual code implementing the starter kit.
     (setq package-archives
           '(("original"    . "http://tromey.com/elpa/")
             ("gnu"         . "http://elpa.gnu.org/packages/")
-            ("technomancy" . "http://repo.technomancy.us/emacs/")
             ("marmalade"   . "http://marmalade-repo.org/packages/")))
     (package-initialize)
     
@@ -252,9 +251,7 @@ interested in the actual code implementing the starter kit.
       (unless package-archive-contents
         (package-refresh-contents))
       (dolist (package starter-kit-packages)
-        (unless (or (member package package-activated-list)
-                    (functionp package))
-          (message "Installing %s" (symbol-name package))
+        (unless (package-installed-p package)
           (package-install package))))
   #+end_src
 
