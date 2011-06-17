@@ -263,7 +263,12 @@ interested in the actual code implementing the starter kit.
   #+begin_src emacs-lisp
     (defun starter-kit-load (file)
       "This function is to be used to load starter-kit-*.org files."
-      (org-babel-load-file (expand-file-name file starter-kit-dir)))
+      (org-babel-load-file
+       (expand-file-name
+        (if (string-matche "starter-kit-.+\.org" file)
+            file
+          (format "starter-kit-%s.org" file))
+        starter-kit-dir)))
   #+end_src
 
 - Work around a bug on OS X where system-name is FQDN.
