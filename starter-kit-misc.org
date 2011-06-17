@@ -98,7 +98,18 @@ ido-mode is like magic pixie dust!
     "Hook that gets run on activation of any programming mode.")
   
   (defalias 'yes-or-no-p 'y-or-n-p)
-  (random t) ;; Seed the random-number generator
+  ;; Seed the random-number generator
+  (random t)
+#+end_src
+
+*** functions for prettier source code
+#+begin_src emacs-lisp
+(defun starter-kit-pretty-lambdas ()
+  (font-lock-add-keywords
+   nil `(("(?\\(lambda\\>\\)"
+          (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                    ,(make-char 'greek-iso8859-7 107))
+                    nil)))))))
 #+end_src
 
 *** possible issues/resolutions with flyspell
