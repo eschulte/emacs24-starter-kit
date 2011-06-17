@@ -14,14 +14,7 @@ GTD system or tool for reproducible research and literate programming.
 For more information on org-mode check out [[http://orgmode.org/worg/][worg]], a large Org-mode wiki
 which is also *implemented using* Org-mode and [[http://git-scm.com/][git]].
 
-** Org-Mode Hook
-The latest version of yasnippets doesn't play well with Org-mode, the
-following function allows these two to play nicely together
-#+begin_src emacs-lisp
-  (defun yas/org-very-safe-expand ()
-    (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
-#+end_src
-
+** Org-Mode Hook -- Keybindings
 #+begin_src emacs-lisp
   (add-hook 'org-mode-hook
             (lambda ()
@@ -57,7 +50,7 @@ to activate more languages using the customize interface for the
 `=org-babel-load-languages=' variable, or with an elisp form like the
 one below.  The customize interface of `=org-babel-load-languages='
 contains an up to date list of the currently supported languages.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
@@ -70,6 +63,7 @@ although it is not added by default as a security precaution.
   (setq org-confirm-babel-evaluate nil)
 #+end_src
 
+** Code block fontification
 The following displays the contents of code blocks in Org-mode files
 using the major-mode of the code.  It also changes the behavior of
 =TAB= to as if it were used in the appropriate major mode.  This means
@@ -97,21 +91,4 @@ for use by code blocks in *any* emacs file.  See the actual
        "org"
        (expand-file-name "src" starter-kit-dir))))))
 #+end_src
-
-** Ensure the Latest Org-mode manual is in the info directory
-By placing the =doc/= directory in Org-mode at the front of the
-=Info-directory-list= we can be sure that the latest version of the
-Org-mode manual is available to the =info= command (bound to =C-h i=).
-#+begin_src emacs-lisp
-  (unless (boundp 'Info-directory-list)
-    (setq Info-directory-list Info-default-directory-list))
-  (setq Info-directory-list
-        (cons (expand-file-name
-               "doc"
-               (expand-file-name
-                "org"
-                (expand-file-name "src" starter-kit-dir)))
-              Info-directory-list))
-#+end_src
-
 
