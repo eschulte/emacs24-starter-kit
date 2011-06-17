@@ -4,13 +4,13 @@
 This is part of the [[file:starter-kit.gnus][Emacs Starter Kit]].
 
 * Starter Kit Gnus
-  :PROPERTIES:
-  :tangle:   yes
-  :END:
 Configuration for the notoriously difficult to configure [[http://www.gnus.org/][Gnus]] email
 client
 
-* IMAP
+** IMAP
+  :PROPERTIES:
+  :CUSTOM_ID: imap
+  :END:
 Based on the instructions at [[http://www.emacswiki.org/emacs/GnusGmail#toc2][emacswiki:GnusGmail]].
 
 to use this file:
@@ -50,7 +50,7 @@ to use this file:
    the very readable [[http://www.gnu.org/software/emacs/manual/html_node/gnus/index.html][Gnus Manual]] to learn untold tricks (see also
    [[file:starter-kit-gnus.org::#customization][Starter-kit-gnus:Customizations]]).
 
-** saving mail locally
+*** saving mail locally
 Where your mail will be saved locally default value will be =~/gmail=.
 #+begin_src emacs-lisp
   (require 'gnus)
@@ -64,7 +64,7 @@ All Gmail groups will be ignored by the default value of
   (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\”]\”[#’()]")
 #+end_src
 
-** getting mail
+*** getting mail
 Set Gmail as the primary source for incoming mail (Gnus can aggregate
 many email and/or newsgroup sources).
 #+begin_src emacs-lisp
@@ -85,7 +85,7 @@ and make sure that no-one else can read it with
   chmod 600 ~/.authinfo
 #+end_src
 
-** sending mail
+*** sending mail
 /Requirement/: gnus uses the [[http://en.wikipedia.org/wiki/STARTTLS][starttls]] tool for encrypted sending of
 email to the Gmail SMTP server.  This is easily installed on modern
 Debian (including Ubuntu) systems with
@@ -110,7 +110,10 @@ you can add the following line to your =~/.authinfo=.
   machine smtp.gmail.com login your-name@gmail.com your-password secret port 587
 #+end_src
 
-* Pop
+** Pop
+  :PROPERTIES:
+  :CUSTOM_ID: pop
+  :END:
 This file can be used to jump start a working Gnus instillation.  The
 following steps will result in a working vanilla Gnus POP
 instillation.
@@ -121,7 +124,7 @@ instillation.
 
 (if you run into any problems -- the [[http://www.gnus.org/manual.html][gnus manual]] is very thorough)
 
-** Basic configuration
+*** Basic configuration
 First off, load up =gnus=
 #+begin_src emacs-lisp
   (require 'gnus)
@@ -133,7 +136,7 @@ news reader -- after all it's not longer the late 80s.
   (setq gnus-select-method '(nnml ""))
 #+end_src
 
-** Required packages
+*** Required packages
    :PROPERTIES:
    :CUSTOM_ID: required-packages
    :END:
@@ -147,7 +150,7 @@ On Debian systems (including Ubuntu) instillation of =starttls= and
 =openssl= client is as simple as
 : sudo apt-get install starttls openssl
 
-** Gmail Setup
+*** Gmail Setup
    :PROPERTIES:
    :CUSTOM_ID: gmail
    :END:
@@ -186,14 +189,17 @@ following tables.
           smtpmail-smtp-service 587))
 #+end_src
 
-* Customizations
+** Customizations
   :PROPERTIES:
   :CUSTOM_ID: customization
   :END:
 Once gnus is installed and working, here are some recommended Gnus
 customizations.
 
-** BBDB
+*** BBDB
+    :PROPERTIES:
+    :CUSTOM_ID: bbdb
+    :END:
 [[http://bbdb.sourceforge.net/][BBDB]] -- _The Insidious Big Brother Database_ is Emacs' contact manager
 which is very useful for keeping all of your contacts organized for
 use with gnus.
@@ -213,7 +219,10 @@ use with gnus.
    )
 #+end_src
 
-** More attractive Summary View
+*** More attractive Summary View
+    :PROPERTIES:
+    :CUSTOM_ID: pretty-summary
+    :END:
 Thanks to Dan Davison.
 
 #+begin_src emacs-lisp

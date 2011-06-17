@@ -15,6 +15,9 @@ For more information on org-mode check out [[http://orgmode.org/worg/][worg]], a
 which is also *implemented using* Org-mode and [[http://git-scm.com/][git]].
 
 ** Org-Mode Hook -- Keybindings
+   :PROPERTIES:
+   :CUSTOM_ID: keybindings
+   :END:
 #+begin_src emacs-lisp
   (add-hook 'org-mode-hook
             (lambda ()
@@ -30,6 +33,9 @@ which is also *implemented using* Org-mode and [[http://git-scm.com/][git]].
 #+end_src
 
 ** Speed keys
+   :PROPERTIES:
+   :CUSTOM_ID: speed-keys
+   :END:
 Speed commands enable single-letter commands in Org-mode files when
 the point is at the beginning of a headline, or at the beginning of a
 code block.
@@ -45,6 +51,9 @@ display a list of the code blocks commands and their related keys.
 #+end_src
 
 ** Code blocks
+   :PROPERTIES:
+   :CUSTOM_ID: babel
+   :END:
 This activates a number of widely used languages, you are encouraged
 to activate more languages using the customize interface for the
 `=org-babel-load-languages=' variable, or with an elisp form like the
@@ -64,6 +73,9 @@ although it is not added by default as a security precaution.
 #+end_src
 
 ** Code block fontification
+   :PROPERTIES:
+   :CUSTOM_ID: code-block-fontification
+   :END:
 The following displays the contents of code blocks in Org-mode files
 using the major-mode of the code.  It also changes the behavior of
 =TAB= to as if it were used in the appropriate major mode.  This means
@@ -75,6 +87,9 @@ much more like reading and editing of code using its major mode.
 #+end_src
 
 ** Load up the Library of Babel
+   :PROPERTIES:
+   :CUSTOM_ID: library-of-babel
+   :END:
 The library of babel contains makes many useful functions available
 for use by code blocks in *any* emacs file.  See the actual
 [[file:src/org/contrib/babel/library-of-babel.org][library-of-babel.org]] file for information on the functions, and see

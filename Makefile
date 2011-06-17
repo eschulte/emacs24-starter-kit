@@ -27,4 +27,4 @@ doc/index.html:
 	echo "Documentation published to doc/"
 
 clean:
-	rm -f *.elc *.aux *.tex *.pdf starter-kit*.el starter-kit*.html doc/*html *~
+	rm -f *.elc *.aux *.tex *.pdf starter-kit*.el starter-kit*.html doc/*html *~ .starter-kit*.part.org

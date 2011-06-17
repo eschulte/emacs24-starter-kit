@@ -85,6 +85,7 @@ mentioned in [[customizations]] immediately below.
 ** Customization
    :PROPERTIES:
    :CUSTOM_ID: customization
+   :tangle:   no
    :END:
 
 The defaults built into the starter kit are only the beginning of
@@ -141,9 +142,25 @@ general starter-kit updates without conflict.
      often work with Python source code you will probably want to load
      =starter-kit-python.org= either by directly copying the sections
      that look useful into your personal config, or simply by loading
-     the entire file directly with
-     #+begin_src emacs-lisp :tangle no
-       (starter-kit-load "starter-kit-python.org")
+     the entire file directly with the following.
+     #+begin_src emacs-lisp
+       (starter-kit-load "python")
+     #+end_src
+
+     Alternately you can load only one particular subsection of an
+     included file, for example to load just the "pretty-summary"
+     section of =starter-kit-gnus.org= run the following.
+     #+begin_src emacs-lisp
+       (starter-kit-load "gnus" "pretty-summary")
+     #+end_src
+     
+     Finally you can load just those subsections of a file which have
+     a specific tag, so to load just the two sections of
+     =starter-kit-misc-recommended.org= which are tagged =visual= add
+     the following to your personal initialization.  Note: header id's
+     take priority over tags.
+     #+begin_src emacs-lisp
+       (starter-kit-load "gnus" "visual")
      #+end_src
 
 - Installing more elisp libraries :: The easiest way to install new
@@ -170,6 +187,22 @@ general starter-kit updates without conflict.
      major modes, define keybindings, etc..
    - read the following [[http://www.gnu.org/software/emacs/elisp/html_node/Key-Binding-Conventions.html][Key-Binding-Conventions]] before defining too
      many personal key bindings
+
+*** Optional starter kit packages
+The following customization packages are shipped with the starter kit
+but are not loaded by default.  If you have code which you find
+generally useful please submit it to the starter kit core!
+- [[file:starter-kit-eshell.org][eshell]]
+- [[file:starter-kit-g-client.org][g-client]]
+- [[file:starter-kit-gnus.org][gnus]]
+- [[file:starter-kit-haskell.org][haskell]]
+- [[file:starter-kit-js.org][js]]
+- [[file:starter-kit-lisp.org][lisp]]
+- [[file:starter-kit-misc-recommended.org][misc-recommended]]
+- [[file:starter-kit-org.org][org]]
+- [[file:starter-kit-perl.org][perl]]
+- [[file:starter-kit-python.org][python]]
+- [[file:starter-kit-ruby.org][ruby]]
 
 ** Emacs Lisp Package Archive
    :PROPERTIES:
@@ -255,17 +288,57 @@ interested in the actual code implementing the starter kit.
           (package-install package))))
   #+end_src
 
-- Function for loading other parts of the starter kit
+- Functions for loading other parts of the starter kit
   #+srcname: starter-kit-load
   #+begin_src emacs-lisp
-    (defun starter-kit-load (file)
-      "This function is to be used to load starter-kit-*.org files."
-      (org-babel-load-file
-       (expand-file-name
-        (if (string-match "starter-kit-.+\.org" file)
-            file
-          (format "starter-kit-%s.org" file))
-        starter-kit-dir)))
+    (defun starter-kit-load (file &optional header-or-tag)
+      "Load configuration from other starter-kit-*.org files.
+    If the optional argument is the id of a subtree then only
+    configuration from within that subtree will be loaded.  If it is
+    not an id then it will be interpreted as a tag, and only subtrees
+    marked with the given tag will be loaded.
+    
+    For example, to load all of starter-kit-lisp.org simply
+    add (starter-kit-load \"lisp\") to your configuration.
+    
+    To load only the 'window-system' config from
+    starter-kit-misc-recommended.org add
+     (starter-kit-load \"misc-recommended\" \"window-system\")
+    to your configuration."
+      (let ((file (expand-file-name (if (string-match "starter-kit-.+\.org" file)
+                                        file
+                                      (format "starter-kit-%s.org" file))
+                                    starter-kit-dir)))
+        (org-babel-load-file
+         (if header-or-tag
+             (let* ((base (file-name-nondirectory file))
+                    (dir  (file-name-directory file))
+                    (partial-file (expand-file-name
+                                   (concat "." (file-name-sans-extension base)
+                                           ".part." header-or-tag ".org")
+                                   dir)))
+               (unless (file-exists-p partial-file)
+                 (with-temp-file partial-file
+                   (insert
+                    (with-temp-buffer
+                      (insert-file-contents file)
+                      (save-excursion
+                        (condition-case nil ;; collect as a header
+                            (progn
+                              (org-link-search (concat"#"header-or-tag))
+                              (org-narrow-to-subtree)
+                              (buffer-string))
+                          (error ;; collect all entries with as tags
+                           (let (body)
+                             (org-map-entries
+                              (lambda ()
+                                (save-restriction
+                                  (org-narrow-to-subtree)
+                                  (setq body (concat body "\n" (buffer-string)))))
+                              header-or-tag)
+                             body))))))))
+               partial-file)
+           file))))
   #+end_src
 
 - Work around a bug on OS X where system-name is FQDN.

@@ -8,6 +8,9 @@ This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
 Support for the Python programming language.
 
 ** Use Python's python-mode.el instead of Emacs' python.el
+   :PROPERTIES:
+   :CUSTOM_ID: python
+   :END:
 Replace the Python mode that comes with Emacs by the Python mode
 supplied by the Python distribution itself.
 #+begin_src emacs-lisp
@@ -17,6 +20,9 @@ supplied by the Python distribution itself.
 #+end_src
 
 ** Use IPython if =ipython= command is present
+   :PROPERTIES:
+   :CUSTOM_ID: ipython
+   :END:
 If an =ipython= executable is on the path, then assume that IPython is
 the preferred method python evaluation.
 #+begin_src emacs-lisp
@@ -26,6 +32,9 @@ the preferred method python evaluation.
 #+end_src
 
 ** Use Cython mode
+   :PROPERTIES:
+   :CUSTOM_ID: cython
+   :END:
 #+begin_src emacs-lisp
 (require 'cython-mode)
 (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))

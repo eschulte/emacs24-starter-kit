@@ -24,6 +24,9 @@ Support for the [[http://www.ruby-lang.org/en/][Ruby]] dynamic, open-source prog
 #+end_src
 
 ** Rake files are ruby, too, as are gemspecs.
+   :PROPERTIES:
+   :CUSTOM_ID: additional-file-extensions
+   :END:
 #+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
@@ -31,11 +34,17 @@ Support for the [[http://www.ruby-lang.org/en/][Ruby]] dynamic, open-source prog
 #+end_src
 
 ** We never want to edit Rubinius bytecode
+   :PROPERTIES:
+   :CUSTOM_ID: ignore-rubinius
+   :END:
 #+begin_src emacs-lisp
 (add-to-list 'completion-ignored-extensions ".rbc")
 #+end_src
 
 ** Rake
+   :PROPERTIES:
+   :CUSTOM_ID: rake
+   :END:
 
 #+begin_src emacs-lisp
 (defun pcomplete/rake ()
@@ -57,6 +66,9 @@ exec-to-string command, but it works and seems fast"
 #+end_src
 
 ** Compilation
+   :PROPERTIES:
+   :CUSTOM_ID: compilation
+   :END:
 Clear the compilation buffer between test runs.
 
 #+begin_src emacs-lisp
@@ -71,6 +83,9 @@ Clear the compilation buffer between test runs.
 #+end_src
 
 ** Hooks
+   :PROPERTIES:
+   :CUSTOM_ID: hooks
+   :END:
 #+begin_src emacs-lisp
 (add-hook 'ruby-mode-hook 'run-starter-kit-coding-hook)
 #+end_src
@@ -80,6 +95,9 @@ Clear the compilation buffer between test runs.
 #+end_emacs-lisp
 
 ** Flymake
+   :PROPERTIES:
+   :CUSTOM_ID: flymake
+   :END:
 
 #+begin_src emacs-lisp
 (eval-after-load 'ruby-mode
@@ -113,6 +131,9 @@ Clear the compilation buffer between test runs.
 #+end_src
 
 ** Rinari (Minor Mode for Ruby On Rails)
+   :PROPERTIES:
+   :CUSTOM_ID: rinari
+   :END:
 See [[http://rinari.rubyforge.org/][rinari.rubyforge]] for more information on rinari.
 
 #+begin_src emacs-lisp

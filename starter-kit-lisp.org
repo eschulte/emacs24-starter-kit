@@ -8,6 +8,9 @@ Support for editing list dialects including [[* Emacs Lisp][Emacs Lisp]], [[* Sc
 [[* Common Lisp][Common Lisp]], and [[* Clojure][Clojure]].
 
 ** Define keys
+   :PROPERTIES:
+   :CUSTOM_ID: keys
+   :END:
 #+srcname: starter-kit-define-lisp-keys
 #+begin_src emacs-lisp 
   (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
@@ -18,6 +21,9 @@ Support for editing list dialects including [[* Emacs Lisp][Emacs Lisp]], [[* Sc
 #+end_src
 
 ** Paredit
+   :PROPERTIES:
+   :CUSTOM_ID: paredit
+   :END:
 [[http://www.emacswiki.org/emacs/ParEdit][Paredit]] might seem weird at first, but it really makes writing lisp a
 much more comfortable experience.  This is especially useful in
 combination with the sexp movement functions (=C-M-f= forward, =C-M-b=
@@ -33,6 +39,9 @@ back, =C-M-u= up, =C-M-d= down)
 : ;;   '(define-key paredit-mode-map (kbd ";")   'self-insert-command))
 
 ** Non-obtrusive parenthesis faces
+   :PROPERTIES:
+   :CUSTOM_ID: parenthesis-faces
+   :END:
 #+begin_src emacs-lisp
 (defface starter-kit-paren-face
    '((((class color) (background dark))
@@ -44,6 +53,9 @@ back, =C-M-u= up, =C-M-d= down)
 #+end_src
 
 ** Emacs Lisp
+   :PROPERTIES:
+   :CUSTOM_ID: emacs-lisp
+   :END:
 
 #+begin_src emacs-lisp
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -66,6 +78,9 @@ back, =C-M-u= up, =C-M-d= down)
 #+end_src
 
 ** Clojure
+   :PROPERTIES:
+   :CUSTOM_ID: clojure
+   :END:
 
 #+begin_src emacs-lisp
   (require 'clojure-mode)
@@ -173,6 +188,9 @@ pretty \lambda's in clojure
 #+end_src
 
 ** Scheme
+   :PROPERTIES:
+   :CUSTOM_ID: scheme
+   :END:
 
 #+begin_src emacs-lisp
 (add-hook 'scheme-mode-hook 'run-starter-kit-coding-hook)
@@ -182,6 +200,9 @@ pretty \lambda's in clojure
 #+end_src
 
 ** Common Lisp
+   :PROPERTIES:
+   :CUSTOM_ID: common-lisp
+   :END:
 
 #+begin_src emacs-lisp
 (add-hook 'lisp-mode-hook 'run-starter-kit-coding-hook)
