@@ -265,7 +265,7 @@ interested in the actual code implementing the starter kit.
       "This function is to be used to load starter-kit-*.org files."
       (org-babel-load-file
        (expand-file-name
-        (if (string-matche "starter-kit-.+\.org" file)
+        (if (string-match "starter-kit-.+\.org" file)
             file
           (format "starter-kit-%s.org" file))
         starter-kit-dir)))
