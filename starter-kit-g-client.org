@@ -1,5 +1,6 @@
 #+Title: Starter Kit G-Client
 #+OPTIONS: toc:nil num:nil ^:nil
+#+Babel: :exports code :tangle no
 
 This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
 
@@ -11,12 +12,11 @@ from within Emacs.
   :PROPERTIES:
   :results:  silent
   :CUSTOM_ID: instillation
-  :tangle:   no
   :END:
 
 1. Grab the latest version of G-Client by running the following in
    this directory.
-   #+begin_src sh :var
+   #+begin_src sh
      cd src/
      svn co http://emacspeak.googlecode.com/svn/trunk/lisp/g-client/
    #+end_src
