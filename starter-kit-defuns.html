@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Starter Kit Defuns</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:10 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:19 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -108,51 +96,57 @@ a lambda doesn't already exist in the list.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-local-column-number-mode</span> ()
-  (make-local-variable 'column-number-mode)
-  (column-number-mode t))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-local-column-number-mode</span> <span class="org-starter-kit-paren">()</span>
+  <span class="org-starter-kit-paren">(</span>make-local-variable 'column-number-mode<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>column-number-mode t<span class="org-starter-kit-paren">))</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-local-comment-auto-fill</span> ()
-  (set (make-local-variable 'comment-auto-fill-only-comments) t)
-  (auto-fill-mode t))
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-local-comment-auto-fill</span> <span class="org-starter-kit-paren">()</span>
+  <span class="org-starter-kit-paren">(</span>set <span class="org-starter-kit-paren">(</span>make-local-variable 'comment-auto-fill-only-comments<span class="org-starter-kit-paren">)</span> t<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>auto-fill-mode t<span class="org-starter-kit-paren">))</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-turn-on-save-place-mode</span> ()
-  (setq save-place t))
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-turn-on-save-place-mode</span> <span class="org-starter-kit-paren">()</span>
+  <span class="org-starter-kit-paren">(</span>setq save-place t<span class="org-starter-kit-paren">))</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-turn-on-whitespace</span> ()
-  (whitespace-mode t))
-
-</pre>
-
-
-
-
-<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'starter-kit-local-column-number-mode)
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-turn-on-whitespace</span> <span class="org-starter-kit-paren">()</span>
+  <span class="org-starter-kit-paren">(</span>whitespace-mode t<span class="org-starter-kit-paren">))</span>
 
 </pre>
 
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'starter-kit-local-comment-auto-fill)
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'starter-kit-coding-hook 'starter-kit-local-column-number-mode<span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'starter-kit-coding-hook 'starter-kit-pretty-lambdas)
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'starter-kit-coding-hook 'starter-kit-local-comment-auto-fill<span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">run-starter-kit-coding-hook</span> ()
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>window-system<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>add-hook 'starter-kit-coding-hook 'starter-kit-pretty-lambdas<span class="org-starter-kit-paren">))</span>
+
+</pre>
+
+
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">run-starter-kit-coding-hook</span> <span class="org-starter-kit-paren">()</span>
   <span class="org-doc">"Enable things that are convenient across all coding buffers."</span>
-  (run-hooks 'starter-kit-coding-hook))
+  <span class="org-starter-kit-paren">(</span>run-hooks 'starter-kit-coding-hook<span class="org-starter-kit-paren">))</span>
 
 </pre>
+
 
 
 </div>

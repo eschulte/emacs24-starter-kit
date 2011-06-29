@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Starter Kit Org</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:08 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:15 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -111,36 +99,37 @@ which is also <b>implemented using</b> Org-mode and <a href="http://git-scm.com/
 
 </div>
 
-<div id="outline-container-1_1" class="outline-3">
-<h3 id="sec-1_1">Org-Mode Hook &ndash; Keybindings </h3>
-<div class="outline-text-3" id="text-1_1">
+<div id="outline-container-keybindings" class="outline-3">
+<h3 id="keybindings"><a name="sec-1-1" id="sec-1-1"></a>Org-Mode Hook &ndash; Keybindings </h3>
+<div class="outline-text-3" id="text-keybindings">
 
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'org-mode-hook
-          (<span class="org-keyword">lambda</span> ()
-            (local-set-key <span class="org-string">"\M-\C-n"</span> 'outline-next-visible-heading)
-            (local-set-key <span class="org-string">"\M-\C-p"</span> 'outline-previous-visible-heading)
-            (local-set-key <span class="org-string">"\M-\C-u"</span> 'outline-up-heading)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'org-mode-hook
+          <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">()</span>
+            <span class="org-starter-kit-paren">(</span>local-set-key <span class="org-string">"\M-\C-n"</span> 'outline-next-visible-heading<span class="org-starter-kit-paren">)</span>
+            <span class="org-starter-kit-paren">(</span>local-set-key <span class="org-string">"\M-\C-p"</span> 'outline-previous-visible-heading<span class="org-starter-kit-paren">)</span>
+            <span class="org-starter-kit-paren">(</span>local-set-key <span class="org-string">"\M-\C-u"</span> 'outline-up-heading<span class="org-starter-kit-paren">)</span>
             <span class="org-comment-delimiter">;; </span><span class="org-comment">table</span>
-            (local-set-key <span class="org-string">"\M-\C-w"</span> 'org-table-copy-region)
-            (local-set-key <span class="org-string">"\M-\C-y"</span> 'org-table-paste-rectangle)
-            (local-set-key <span class="org-string">"\M-\C-l"</span> 'org-table-sort-lines)
+            <span class="org-starter-kit-paren">(</span>local-set-key <span class="org-string">"\M-\C-w"</span> 'org-table-copy-region<span class="org-starter-kit-paren">)</span>
+            <span class="org-starter-kit-paren">(</span>local-set-key <span class="org-string">"\M-\C-y"</span> 'org-table-paste-rectangle<span class="org-starter-kit-paren">)</span>
+            <span class="org-starter-kit-paren">(</span>local-set-key <span class="org-string">"\M-\C-l"</span> 'org-table-sort-lines<span class="org-starter-kit-paren">)</span>
             <span class="org-comment-delimiter">;; </span><span class="org-comment">display images</span>
-            (local-set-key <span class="org-string">"\M-I"</span> 'org-toggle-iimage-in-org)))
+            <span class="org-starter-kit-paren">(</span>local-set-key <span class="org-string">"\M-I"</span> 'org-toggle-iimage-in-org<span class="org-starter-kit-paren">)))</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_2" class="outline-3">
-<h3 id="sec-1_2">Speed keys </h3>
-<div class="outline-text-3" id="text-1_2">
+</div>
+
+<div id="outline-container-speed-keys" class="outline-3">
+<h3 id="speed-keys"><a name="sec-1-2" id="sec-1-2"></a>Speed keys </h3>
+<div class="outline-text-3" id="text-speed-keys">
 
 <p>Speed commands enable single-letter commands in Org-mode files when
 the point is at the beginning of a headline, or at the beginning of a
@@ -156,19 +145,20 @@ display a list of the code blocks commands and their related keys.
 
 
 
-<pre class="src src-emacs-lisp">(setq org-use-speed-commands t)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq org-use-speed-commands t<span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_3" class="outline-3">
-<h3 id="sec-1_3">Code blocks </h3>
-<div class="outline-text-3" id="text-1_3">
+</div>
+
+<div id="outline-container-babel" class="outline-3">
+<h3 id="babel"><a name="sec-1-3" id="sec-1-3"></a>Code blocks </h3>
+<div class="outline-text-3" id="text-babel">
 
 <p>This activates a number of widely used languages, you are encouraged
 to activate more languages using the customize interface for the
@@ -178,12 +168,13 @@ contains an up to date list of the currently supported languages.
 </p>
 
 
-<pre class="src src-emacs-lisp">(org-babel-do-load-languages
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>org-babel-do-load-languages
  'org-babel-load-languages
- '((emacs-lisp . t)
-   (sh . t)))
+ '<span class="org-starter-kit-paren">((</span>emacs-lisp . t<span class="org-starter-kit-paren">)</span>
+   <span class="org-starter-kit-paren">(</span>sh . t<span class="org-starter-kit-paren">)))</span>
 
 </pre>
+
 
 
 
@@ -193,19 +184,20 @@ although it is not added by default as a security precaution.
 </p>
 
 
-<pre class="src src-emacs-lisp">(setq org-confirm-babel-evaluate nil)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq org-confirm-babel-evaluate nil<span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_4" class="outline-3">
-<h3 id="sec-1_4">Code block fontification </h3>
-<div class="outline-text-3" id="text-1_4">
+</div>
+
+<div id="outline-container-code-block-fontification" class="outline-3">
+<h3 id="code-block-fontification"><a name="sec-1-4" id="sec-1-4"></a>Code block fontification </h3>
+<div class="outline-text-3" id="text-code-block-fontification">
 
 <p>The following displays the contents of code blocks in Org-mode files
 using the major-mode of the code.  It also changes the behavior of
@@ -215,20 +207,21 @@ much more like reading and editing of code using its major mode.
 </p>
 
 
-<pre class="src src-emacs-lisp">(setq org-src-fontify-natively t)
-(setq org-src-tab-acts-natively t)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq org-src-fontify-natively t<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>setq org-src-tab-acts-natively t<span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_5" class="outline-3">
-<h3 id="sec-1_5">Load up the Library of Babel </h3>
-<div class="outline-text-3" id="text-1_5">
+</div>
+
+<div id="outline-container-library-of-babel" class="outline-3">
+<h3 id="library-of-babel"><a name="sec-1-5" id="sec-1-5"></a>Load up the Library of Babel </h3>
+<div class="outline-text-3" id="text-library-of-babel">
 
 <p>The library of babel contains makes many useful functions available
 for use by code blocks in <b>any</b> emacs file.  See the actual
@@ -237,18 +230,19 @@ for use by code blocks in <b>any</b> emacs file.  See the actual
 </p>
 
 
-<pre class="src src-emacs-lisp">(org-babel-lob-ingest
- (expand-file-name
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>org-babel-lob-ingest
+ <span class="org-starter-kit-paren">(</span>expand-file-name
   <span class="org-string">"library-of-babel.org"</span>
-  (expand-file-name
+  <span class="org-starter-kit-paren">(</span>expand-file-name
    <span class="org-string">"babel"</span>
-   (expand-file-name
+   <span class="org-starter-kit-paren">(</span>expand-file-name
     <span class="org-string">"contrib"</span>
-    (expand-file-name
+    <span class="org-starter-kit-paren">(</span>expand-file-name
      <span class="org-string">"org"</span>
-     (expand-file-name <span class="org-string">"src"</span> starter-kit-dir))))))
+     <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"src"</span> starter-kit-dir<span class="org-starter-kit-paren">))))))</span>
 
 </pre>
+
 
 
 

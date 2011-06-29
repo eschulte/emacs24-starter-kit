@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Starter Kit Lisp</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:09 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:17 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -102,30 +90,31 @@ lang="en" xml:lang="en">
 
 </div>
 
-<div id="outline-container-1_1" class="outline-3">
-<h3 id="sec-1_1">Define keys </h3>
-<div class="outline-text-3" id="text-1_1">
+<div id="outline-container-keys" class="outline-3">
+<h3 id="keys"><a name="sec-1-1" id="sec-1-1"></a>Define keys </h3>
+<div class="outline-text-3" id="text-keys">
 
 
 
 
-<pre class="src src-emacs-lisp">(define-key read-expression-map (kbd <span class="org-string">"TAB"</span>) 'lisp-complete-symbol)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>define-key read-expression-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"TAB"</span><span class="org-starter-kit-paren">)</span> 'lisp-complete-symbol<span class="org-starter-kit-paren">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">(define-key lisp-mode-shared-map (kbd "C-c l") "lambda")</span>
-(define-key lisp-mode-shared-map (kbd <span class="org-string">"RET"</span>) 'reindent-then-newline-and-indent)
-(define-key lisp-mode-shared-map (kbd <span class="org-string">"C-\\"</span>) 'lisp-complete-symbol)
+<span class="org-starter-kit-paren">(</span>define-key lisp-mode-shared-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"RET"</span><span class="org-starter-kit-paren">)</span> 'reindent-then-newline-and-indent<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>define-key lisp-mode-shared-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-\\"</span><span class="org-starter-kit-paren">)</span> 'lisp-complete-symbol<span class="org-starter-kit-paren">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">(define-key lisp-mode-shared-map (kbd "C-c v") 'eval-buffer)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_2" class="outline-3">
-<h3 id="sec-1_2">Paredit </h3>
-<div class="outline-text-3" id="text-1_2">
+</div>
+
+<div id="outline-container-paredit" class="outline-3">
+<h3 id="paredit"><a name="sec-1-2" id="sec-1-2"></a>Paredit </h3>
+<div class="outline-text-3" id="text-paredit">
 
 <p><a href="http://www.emacswiki.org/emacs/ParEdit">Paredit</a> might seem weird at first, but it really makes writing lisp a
 much more comfortable experience.  This is especially useful in
@@ -135,10 +124,11 @@ back, <code>C-M-u</code> up, <code>C-M-d</code> down)
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">turn-on-paredit</span> ()
-  (paredit-mode +1))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">turn-on-paredit</span> <span class="org-starter-kit-paren">()</span>
+  <span class="org-starter-kit-paren">(</span>paredit-mode +1<span class="org-starter-kit-paren">))</span>
 
 </pre>
+
 
 
 
@@ -153,162 +143,165 @@ back, <code>C-M-u</code> up, <code>C-M-d</code> down)
 
 </div>
 
-<div id="outline-container-1_3" class="outline-3">
-<h3 id="sec-1_3">Non-obtrusive parenthesis faces </h3>
-<div class="outline-text-3" id="text-1_3">
+<div id="outline-container-parenthesis-faces" class="outline-3">
+<h3 id="parenthesis-faces"><a name="sec-1-3" id="sec-1-3"></a>Non-obtrusive parenthesis faces </h3>
+<div class="outline-text-3" id="text-parenthesis-faces">
 
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defface</span> <span class="org-variable-name">starter-kit-paren-face</span>
-   '((((class color) (background dark))
-      (<span class="org-builtin">:foreground</span> <span class="org-string">"grey50"</span>))
-     (((class color) (background light))
-      (<span class="org-builtin">:foreground</span> <span class="org-string">"grey55"</span>)))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defface</span> <span class="org-variable-name">starter-kit-paren-face</span>
+   '<span class="org-starter-kit-paren">((((</span>class color<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>background dark<span class="org-starter-kit-paren">))</span>
+      <span class="org-starter-kit-paren">(</span><span class="org-builtin">:foreground</span> <span class="org-string">"grey50"</span><span class="org-starter-kit-paren">))</span>
+     <span class="org-starter-kit-paren">(((</span>class color<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>background light<span class="org-starter-kit-paren">))</span>
+      <span class="org-starter-kit-paren">(</span><span class="org-builtin">:foreground</span> <span class="org-string">"grey55"</span><span class="org-starter-kit-paren">)))</span>
    <span class="org-doc">"Face used to dim parentheses."</span>
-   <span class="org-builtin">:group</span> 'starter-kit-faces)
+   <span class="org-builtin">:group</span> 'starter-kit-faces<span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_4" class="outline-3">
-<h3 id="sec-1_4">Emacs Lisp </h3>
-<div class="outline-text-3" id="text-1_4">
+</div>
+
+<div id="outline-container-emacs-lisp" class="outline-3">
+<h3 id="emacs-lisp"><a name="sec-1-4" id="sec-1-4"></a>Emacs Lisp </h3>
+<div class="outline-text-3" id="text-emacs-lisp">
 
 
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'emacs-lisp-mode-hook 'run-starter-kit-coding-hook)
-(add-hook 'emacs-lisp-mode-hook 'starter-kit-remove-elc-on-save)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>add-hook 'emacs-lisp-mode-hook 'run-starter-kit-coding-hook<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>add-hook 'emacs-lisp-mode-hook 'starter-kit-remove-elc-on-save<span class="org-starter-kit-paren">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">(add-hook 'emacs-lisp-mode-hook 'idle-highlight)</span>
-(add-hook 'emacs-lisp-mode-hook 'turn-on-paredit)
-(define-key emacs-lisp-mode-map (kbd <span class="org-string">"C-c v"</span>) 'eval-buffer)
+<span class="org-starter-kit-paren">(</span>add-hook 'emacs-lisp-mode-hook 'turn-on-paredit<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>define-key emacs-lisp-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-c v"</span><span class="org-starter-kit-paren">)</span> 'eval-buffer<span class="org-starter-kit-paren">)</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-remove-elc-on-save</span> ()
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-remove-elc-on-save</span> <span class="org-starter-kit-paren">()</span>
   <span class="org-doc">"If you're saving an elisp file, likely the .elc is no longer valid."</span>
-  (make-local-variable 'after-save-hook)
-  (add-hook 'after-save-hook
-            (<span class="org-keyword">lambda</span> ()
-              (<span class="org-keyword">if</span> (file-exists-p (concat buffer-file-name <span class="org-string">"c"</span>))
-                  (delete-file (concat buffer-file-name <span class="org-string">"c"</span>))))))
+  <span class="org-starter-kit-paren">(</span>make-local-variable 'after-save-hook<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>add-hook 'after-save-hook
+            <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">()</span>
+              <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>file-exists-p <span class="org-starter-kit-paren">(</span>concat buffer-file-name <span class="org-string">"c"</span><span class="org-starter-kit-paren">))</span>
+                  <span class="org-starter-kit-paren">(</span>delete-file <span class="org-starter-kit-paren">(</span>concat buffer-file-name <span class="org-string">"c"</span><span class="org-starter-kit-paren">))))))</span>
 
-(font-lock-add-keywords 'emacs-lisp-mode
-                        '((<span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face)))
+<span class="org-starter-kit-paren">(</span>font-lock-add-keywords 'emacs-lisp-mode
+                        '<span class="org-starter-kit-paren">((</span><span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face<span class="org-starter-kit-paren">)))</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_5" class="outline-3">
-<h3 id="sec-1_5">Clojure </h3>
-<div class="outline-text-3" id="text-1_5">
+</div>
+
+<div id="outline-container-clojure" class="outline-3">
+<h3 id="clojure"><a name="sec-1-5" id="sec-1-5"></a>Clojure </h3>
+<div class="outline-text-3" id="text-clojure">
 
 
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">clojure-mode</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">clojure-mode</span><span class="org-starter-kit-paren">)</span>
 
-(add-hook 'clojure-mode-hook 'run-starter-kit-coding-hook)
+<span class="org-starter-kit-paren">(</span>add-hook 'clojure-mode-hook 'run-starter-kit-coding-hook<span class="org-starter-kit-paren">)</span>
 
-(font-lock-add-keywords 'clojure-mode
-                        '((<span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face)))
+<span class="org-starter-kit-paren">(</span>font-lock-add-keywords 'clojure-mode
+                        '<span class="org-starter-kit-paren">((</span><span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face<span class="org-starter-kit-paren">)))</span>
 
-(define-key clojure-mode-map (kbd <span class="org-string">"C-c v"</span>) 'slime-eval-buffer)
-(define-key clojure-mode-map (kbd <span class="org-string">"C-c C-v"</span>) 'slime-eval-buffer)
+<span class="org-starter-kit-paren">(</span>define-key clojure-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-c v"</span><span class="org-starter-kit-paren">)</span> 'slime-eval-buffer<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>define-key clojure-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-c C-v"</span><span class="org-starter-kit-paren">)</span> 'slime-eval-buffer<span class="org-starter-kit-paren">)</span>
 
-(<span class="org-keyword">defface</span> <span class="org-variable-name">starter-kit-clojure-trace-face</span>
-   '((((class color) (background dark))
-      (<span class="org-builtin">:foreground</span> <span class="org-string">"grey50"</span>))
-     (((class color) (background light))
-      (<span class="org-builtin">:foreground</span> <span class="org-string">"grey55"</span>)))
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defface</span> <span class="org-variable-name">starter-kit-clojure-trace-face</span>
+   '<span class="org-starter-kit-paren">((((</span>class color<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>background dark<span class="org-starter-kit-paren">))</span>
+      <span class="org-starter-kit-paren">(</span><span class="org-builtin">:foreground</span> <span class="org-string">"grey50"</span><span class="org-starter-kit-paren">))</span>
+     <span class="org-starter-kit-paren">(((</span>class color<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>background light<span class="org-starter-kit-paren">))</span>
+      <span class="org-starter-kit-paren">(</span><span class="org-builtin">:foreground</span> <span class="org-string">"grey55"</span><span class="org-starter-kit-paren">)))</span>
    <span class="org-doc">"Face used to dim parentheses."</span>
-   <span class="org-builtin">:group</span> 'starter-kit-faces)
+   <span class="org-builtin">:group</span> 'starter-kit-faces<span class="org-starter-kit-paren">)</span>
 
-(setq starter-kit-clojure-trace-face 'starter-kit-clojure-trace-face)
+<span class="org-starter-kit-paren">(</span>setq starter-kit-clojure-trace-face 'starter-kit-clojure-trace-face<span class="org-starter-kit-paren">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">This will make relevant lines stand out more in stack traces</span>
-(<span class="org-keyword">defun</span> <span class="org-function-name">sldb-font-lock</span> ()
-  (font-lock-add-keywords nil
-                          '((<span class="org-string">"[0-9]+: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">clojure\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">core</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">lang</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
-                             1 starter-kit-clojure-trace-face)
-                            (<span class="org-string">"[0-9]+: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">java.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
-                             1 starter-kit-clojure-trace-face)
-                            (<span class="org-string">"[0-9]+: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">swank.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
-                             1 starter-kit-clojure-trace-face)
-                            (<span class="org-string">"\\[</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[A-Z]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">\\]"</span>
-                             1 font-lock-function-name-face))))
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">sldb-font-lock</span> <span class="org-starter-kit-paren">()</span>
+  <span class="org-starter-kit-paren">(</span>font-lock-add-keywords nil
+                          '<span class="org-starter-kit-paren">((</span><span class="org-string">"[0-9]+: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">clojure\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">core</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">lang</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
+                             1 starter-kit-clojure-trace-face<span class="org-starter-kit-paren">)</span>
+                            <span class="org-starter-kit-paren">(</span><span class="org-string">"[0-9]+: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">java.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
+                             1 starter-kit-clojure-trace-face<span class="org-starter-kit-paren">)</span>
+                            <span class="org-starter-kit-paren">(</span><span class="org-string">"[0-9]+: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">swank.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
+                             1 starter-kit-clojure-trace-face<span class="org-starter-kit-paren">)</span>
+                            <span class="org-starter-kit-paren">(</span><span class="org-string">"\\[</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[A-Z]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">\\]"</span>
+                             1 font-lock-function-name-face<span class="org-starter-kit-paren">))))</span>
 
-(add-hook 'sldb-mode-hook 'sldb-font-lock)
+<span class="org-starter-kit-paren">(</span>add-hook 'sldb-mode-hook 'sldb-font-lock<span class="org-starter-kit-paren">)</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">slime-jump-to-trace</span> (<span class="org-type">&amp;optional</span> on)
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">slime-jump-to-trace</span> <span class="org-starter-kit-paren">(</span><span class="org-type">&amp;optional</span> on<span class="org-starter-kit-paren">)</span>
   <span class="org-doc">"Jump to the file/line that the current stack trace line references.</span>
 <span class="org-doc">Only works with files in your project root's src/, not in dependencies."</span>
-  (interactive)
-  (<span class="org-keyword">save-excursion</span>
-    (beginning-of-line)
-    (search-forward-regexp <span class="org-string">"[0-9]: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">$(]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">.*?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">)"</span>)
-    (<span class="org-keyword">let</span> ((line (string-to-number (match-string 2)))
-          (ns-path (split-string (match-string 1) <span class="org-string">"\\."</span>))
-          (project-root (locate-dominating-file default-directory <span class="org-string">"src/"</span>)))
-      (find-file (format <span class="org-string">"%s/src/%s.clj"</span> project-root
-                         (mapconcat 'identity ns-path <span class="org-string">"/"</span>)))
-      (goto-line line))))
+  <span class="org-starter-kit-paren">(</span>interactive<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">save-excursion</span>
+    <span class="org-starter-kit-paren">(</span>beginning-of-line<span class="org-starter-kit-paren">)</span>
+    <span class="org-starter-kit-paren">(</span>search-forward-regexp <span class="org-string">"[0-9]: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">$(]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">.*?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">)"</span><span class="org-starter-kit-paren">)</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>line <span class="org-starter-kit-paren">(</span>string-to-number <span class="org-starter-kit-paren">(</span>match-string 2<span class="org-starter-kit-paren">)))</span>
+          <span class="org-starter-kit-paren">(</span>ns-path <span class="org-starter-kit-paren">(</span>split-string <span class="org-starter-kit-paren">(</span>match-string 1<span class="org-starter-kit-paren">)</span> <span class="org-string">"\\."</span><span class="org-starter-kit-paren">))</span>
+          <span class="org-starter-kit-paren">(</span>project-root <span class="org-starter-kit-paren">(</span>locate-dominating-file default-directory <span class="org-string">"src/"</span><span class="org-starter-kit-paren">)))</span>
+      <span class="org-starter-kit-paren">(</span>find-file <span class="org-starter-kit-paren">(</span>format <span class="org-string">"%s/src/%s.clj"</span> project-root
+                         <span class="org-starter-kit-paren">(</span>mapconcat 'identity ns-path <span class="org-string">"/"</span><span class="org-starter-kit-paren">)))</span>
+      <span class="org-starter-kit-paren">(</span>goto-line line<span class="org-starter-kit-paren">))))</span>
 
-(<span class="org-keyword">eval-after-load</span> 'slime
-  '(<span class="org-keyword">progn</span>
-     (<span class="org-keyword">defalias</span> '<span class="org-function-name">sldb-toggle-details</span> 'slime-jump-to-trace)
-     (<span class="org-keyword">defun</span> <span class="org-function-name">sldb-prune-initial-frames</span> (frames)
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'slime
+  '<span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
+     <span class="org-starter-kit-paren">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">sldb-toggle-details</span> 'slime-jump-to-trace<span class="org-starter-kit-paren">)</span>
+     <span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">sldb-prune-initial-frames</span> <span class="org-starter-kit-paren">(</span>frames<span class="org-starter-kit-paren">)</span>
        <span class="org-doc">"Show all stack trace lines by default."</span>
-       frames)))
+       frames<span class="org-starter-kit-paren">)))</span>
 
-(<span class="org-keyword">eval-after-load</span> 'find-file-in-project
-  '(add-to-list 'ffip-patterns <span class="org-string">"*.clj"</span>))
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'find-file-in-project
+  '<span class="org-starter-kit-paren">(</span>add-to-list 'ffip-patterns <span class="org-string">"*.clj"</span><span class="org-starter-kit-paren">))</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">You might like this, but it's a bit disorienting at first:</span>
-(add-hook 'clojure-mode-hook 'turn-on-paredit)
+<span class="org-starter-kit-paren">(</span>add-hook 'clojure-mode-hook 'turn-on-paredit<span class="org-starter-kit-paren">)</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">clojure-project</span> (path)
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">clojure-project</span> <span class="org-starter-kit-paren">(</span>path<span class="org-starter-kit-paren">)</span>
   <span class="org-doc">"Setup classpaths for a clojure project and starts a new SLIME session.</span>
 
 <span class="org-doc">Kills existing SLIME session, if any."</span>
-  (interactive (list
-                (ido-read-directory-name
+  <span class="org-starter-kit-paren">(</span>interactive <span class="org-starter-kit-paren">(</span>list
+                <span class="org-starter-kit-paren">(</span>ido-read-directory-name
                  <span class="org-string">"Project root: "</span>
-                 (locate-dominating-file default-directory <span class="org-string">"pom.xml"</span>))))
-  (<span class="org-keyword">when</span> (get-buffer <span class="org-string">"*inferior-lisp*"</span>)
-    (kill-buffer <span class="org-string">"*inferior-lisp*"</span>))
-  (add-to-list 'swank-clojure-extra-vm-args
-               (format <span class="org-string">"-Dclojure.compile.path=%s"</span>
-                       (expand-file-name <span class="org-string">"target/classes/"</span> path)))
-  (setq swank-clojure-binary nil
-        swank-clojure-jar-path (expand-file-name <span class="org-string">"target/dependency/"</span> path)
+                 <span class="org-starter-kit-paren">(</span>locate-dominating-file default-directory <span class="org-string">"pom.xml"</span><span class="org-starter-kit-paren">))))</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>get-buffer <span class="org-string">"*inferior-lisp*"</span><span class="org-starter-kit-paren">)</span>
+    <span class="org-starter-kit-paren">(</span>kill-buffer <span class="org-string">"*inferior-lisp*"</span><span class="org-starter-kit-paren">))</span>
+  <span class="org-starter-kit-paren">(</span>add-to-list 'swank-clojure-extra-vm-args
+               <span class="org-starter-kit-paren">(</span>format <span class="org-string">"-Dclojure.compile.path=%s"</span>
+                       <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"target/classes/"</span> path<span class="org-starter-kit-paren">)))</span>
+  <span class="org-starter-kit-paren">(</span>setq swank-clojure-binary nil
+        swank-clojure-jar-path <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"target/dependency/"</span> path<span class="org-starter-kit-paren">)</span>
         swank-clojure-extra-classpaths
-        (append (mapcar (<span class="org-keyword">lambda</span> (d) (expand-file-name d path))
-                        '(<span class="org-string">"src/"</span> <span class="org-string">"target/classes/"</span> <span class="org-string">"test/"</span>))
-                (<span class="org-keyword">let</span> ((lib (expand-file-name <span class="org-string">"lib"</span> path)))
-                  (<span class="org-keyword">if</span> (file-exists-p lib)
-                      (directory-files lib t <span class="org-string">".jar$"</span>))))
+        <span class="org-starter-kit-paren">(</span>append <span class="org-starter-kit-paren">(</span>mapcar <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">(</span>d<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>expand-file-name d path<span class="org-starter-kit-paren">))</span>
+                        '<span class="org-starter-kit-paren">(</span><span class="org-string">"src/"</span> <span class="org-string">"target/classes/"</span> <span class="org-string">"test/"</span><span class="org-starter-kit-paren">))</span>
+                <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>lib <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"lib"</span> path<span class="org-starter-kit-paren">)))</span>
+                  <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>file-exists-p lib<span class="org-starter-kit-paren">)</span>
+                      <span class="org-starter-kit-paren">(</span>directory-files lib t <span class="org-string">".jar$"</span><span class="org-starter-kit-paren">))))</span>
         slime-lisp-implementations
-        (cons `(clojure ,(swank-clojure-cmd) <span class="org-builtin">:init</span> swank-clojure-init)
-              (remove-if #'(<span class="org-keyword">lambda</span> (x) (eq (car x) 'clojure))
-                         slime-lisp-implementations)))
-  (<span class="org-keyword">save-window-excursion</span>
-    (slime)))
+        <span class="org-starter-kit-paren">(</span>cons `<span class="org-starter-kit-paren">(</span>clojure ,<span class="org-starter-kit-paren">(</span>swank-clojure-cmd<span class="org-starter-kit-paren">)</span> <span class="org-builtin">:init</span> swank-clojure-init<span class="org-starter-kit-paren">)</span>
+              <span class="org-starter-kit-paren">(</span>remove-if #'<span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">(</span>x<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>eq <span class="org-starter-kit-paren">(</span>car x<span class="org-starter-kit-paren">)</span> 'clojure<span class="org-starter-kit-paren">))</span>
+                         slime-lisp-implementations<span class="org-starter-kit-paren">)))</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">save-window-excursion</span>
+    <span class="org-starter-kit-paren">(</span>slime<span class="org-starter-kit-paren">)))</span>
 
 
 </pre>
+
 
 
 
@@ -318,57 +311,60 @@ pretty &lambda;'s in clojure
 </p>
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'clojure-mode
-  '(font-lock-add-keywords
-    'clojure-mode `((<span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">fn\\&gt;</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
-                     (0 (<span class="org-keyword">progn</span> (compose-region (match-beginning 1)
-                                               (match-end 1) <span class="org-string">"&#402;"</span>)
-                               nil))))))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'clojure-mode
+  '<span class="org-starter-kit-paren">(</span>font-lock-add-keywords
+    'clojure-mode `<span class="org-starter-kit-paren">((</span><span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">fn\\&gt;</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
+                     <span class="org-starter-kit-paren">(</span>0 <span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span> <span class="org-starter-kit-paren">(</span>compose-region <span class="org-starter-kit-paren">(</span>match-beginning 1<span class="org-starter-kit-paren">)</span>
+                                               <span class="org-starter-kit-paren">(</span>match-end 1<span class="org-starter-kit-paren">)</span> <span class="org-string">"&#402;"</span><span class="org-starter-kit-paren">)</span>
+                               nil<span class="org-starter-kit-paren">))))))</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_6" class="outline-3">
-<h3 id="sec-1_6">Scheme </h3>
-<div class="outline-text-3" id="text-1_6">
+</div>
+
+<div id="outline-container-scheme" class="outline-3">
+<h3 id="scheme"><a name="sec-1-6" id="sec-1-6"></a>Scheme </h3>
+<div class="outline-text-3" id="text-scheme">
 
 
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'scheme-mode-hook 'run-starter-kit-coding-hook)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'scheme-mode-hook 'run-starter-kit-coding-hook<span class="org-starter-kit-paren">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">(add-hook 'scheme-mode-hook 'idle-highlight)</span>
-(font-lock-add-keywords 'scheme-mode
-                        '((<span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face)))
+<span class="org-starter-kit-paren">(</span>font-lock-add-keywords 'scheme-mode
+                        '<span class="org-starter-kit-paren">((</span><span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face<span class="org-starter-kit-paren">)))</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_7" class="outline-3">
-<h3 id="sec-1_7">Common Lisp </h3>
-<div class="outline-text-3" id="text-1_7">
+</div>
+
+<div id="outline-container-common-lisp" class="outline-3">
+<h3 id="common-lisp"><a name="sec-1-7" id="sec-1-7"></a>Common Lisp </h3>
+<div class="outline-text-3" id="text-common-lisp">
 
 
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'lisp-mode-hook 'run-starter-kit-coding-hook)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'lisp-mode-hook 'run-starter-kit-coding-hook<span class="org-starter-kit-paren">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">(add-hook 'lisp-mode-hook 'idle-highlight)</span>
-(add-hook 'lisp-mode-hook 'turn-on-paredit)
-(font-lock-add-keywords 'lisp-mode
-                        '((<span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face)))
+<span class="org-starter-kit-paren">(</span>add-hook 'lisp-mode-hook 'turn-on-paredit<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>font-lock-add-keywords 'lisp-mode
+                        '<span class="org-starter-kit-paren">((</span><span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face<span class="org-starter-kit-paren">)))</span>
 
 </pre>
+
 
 
 </div>

@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Starter Kit Haskell</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:09 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:17 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -103,14 +91,15 @@ pretty lambdas in Haskell code
 </p>
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">pretty-lambdas-haskell</span> ()
-  (font-lock-add-keywords
-   nil `((,(concat <span class="org-string">"(?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">"</span> (regexp-quote <span class="org-string">"\\"</span>) <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>)
-          (0 (<span class="org-keyword">progn</span> (compose-region (match-beginning 1) (match-end 1)
-                                    ,(make-char 'greek-iso8859-7 107))
-                    nil))))))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">pretty-lambdas-haskell</span> <span class="org-starter-kit-paren">()</span>
+  <span class="org-starter-kit-paren">(</span>font-lock-add-keywords
+   nil `<span class="org-starter-kit-paren">((</span>,<span class="org-starter-kit-paren">(</span>concat <span class="org-string">"(?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">"</span> <span class="org-starter-kit-paren">(</span>regexp-quote <span class="org-string">"\\"</span><span class="org-starter-kit-paren">)</span> <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span><span class="org-starter-kit-paren">)</span>
+          <span class="org-starter-kit-paren">(</span>0 <span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span> <span class="org-starter-kit-paren">(</span>compose-region <span class="org-starter-kit-paren">(</span>match-beginning 1<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>match-end 1<span class="org-starter-kit-paren">)</span>
+                                    <span class="org-starter-kit-paren">(</span>make-char 'greek-iso8859-7 107<span class="org-starter-kit-paren">))</span>
+                    nil<span class="org-starter-kit-paren">))))))</span>
 
 </pre>
+
 
 
 
@@ -119,10 +108,12 @@ Haskell mode hook
 </p>
 
 
-<pre class="src src-emacs-lisp">(add-hook 'haskell-mode-hook 'run-starter-kit-coding-hook)
-(add-hook 'haskell-mode-hook 'pretty-lambdas-haskell)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'haskell-mode-hook 'run-starter-kit-coding-hook<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>window-system<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>add-hook 'haskell-mode-hook 'pretty-lambdas-haskell<span class="org-starter-kit-paren">))</span>
 
 </pre>
+
 
 
 </div>

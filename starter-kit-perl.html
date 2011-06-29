@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Starter Kit Perl</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:08 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:15 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -101,18 +89,19 @@ lang="en" xml:lang="en">
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'cperl-mode
-  '(<span class="org-keyword">progn</span>
-     (define-key cperl-mode-map (kbd <span class="org-string">"RET"</span>) 'reindent-then-newline-and-indent)
-     (define-key cperl-mode-map (kbd <span class="org-string">"C-M-h"</span>) 'backward-kill-word)))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'cperl-mode
+  '<span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
+     <span class="org-starter-kit-paren">(</span>define-key cperl-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"RET"</span><span class="org-starter-kit-paren">)</span> 'reindent-then-newline-and-indent<span class="org-starter-kit-paren">)</span>
+     <span class="org-starter-kit-paren">(</span>define-key cperl-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-M-h"</span><span class="org-starter-kit-paren">)</span> 'backward-kill-word<span class="org-starter-kit-paren">)))</span>
 
-(global-set-key (kbd <span class="org-string">"C-h P"</span>) 'perldoc)
+<span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-h P"</span><span class="org-starter-kit-paren">)</span> 'perldoc<span class="org-starter-kit-paren">)</span>
 
-(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.p[lm]$"</span> . cperl-mode))
-(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.pod$"</span> . pod-mode))
-(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.tt$"</span> . tt-mode))
+<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.p[lm]$"</span> . cperl-mode<span class="org-starter-kit-paren">))</span>
+<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.pod$"</span> . pod-mode<span class="org-starter-kit-paren">))</span>
+<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.tt$"</span> . tt-mode<span class="org-starter-kit-paren">))</span>
 
 </pre>
+
 
 
 </div>

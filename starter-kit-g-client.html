@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Starter Kit G-Client</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:10 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:18 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -115,6 +103,7 @@ svn co http://emacspeak.googlecode.com/svn/trunk/lisp/g-client/
 
 
 
+
 </li>
 <li>The in the <code>g-client</code> directory run the following commands to build
    the package.
@@ -128,21 +117,23 @@ make
 
 
 
+
 </li>
 <li>Add the <code>g-client</code> directory to the load path, and load the package
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'load-path
-             (expand-file-name
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'load-path
+             <span class="org-starter-kit-paren">(</span>expand-file-name
               <span class="org-string">"g-client"</span>
-              (expand-file-name
+              <span class="org-starter-kit-paren">(</span>expand-file-name
                <span class="org-string">"src"</span>
-               (file-name-directory
-                (or load-file-name (buffer-file-name))))))
-(load-library <span class="org-string">"g"</span>)
+               <span class="org-starter-kit-paren">(</span>file-name-directory
+                <span class="org-starter-kit-paren">(</span>or load-file-name <span class="org-starter-kit-paren">(</span>buffer-file-name<span class="org-starter-kit-paren">))))))</span>
+<span class="org-starter-kit-paren">(</span>load-library <span class="org-string">"g"</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
@@ -152,9 +143,10 @@ make
 
 
 
-<pre class="src src-emacs-lisp">(setq g-user-email <span class="org-string">"you@gmail.com"</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq g-user-email <span class="org-string">"you@gmail.com"</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
@@ -166,10 +158,11 @@ make
 
 
 
-<pre class="src src-emacs-lisp">(org-export-region-as-html (point-min) (point-max)
-                           nil g-scratch-buffer)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>org-export-region-as-html <span class="org-starter-kit-paren">(</span>point-min<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>point-max<span class="org-starter-kit-paren">)</span>
+                           nil g-scratch-buffer<span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 <p>
@@ -177,10 +170,11 @@ make
 </p>
 
 
-<pre class="src src-emacs-lisp">(org-export-region-as-html (point-min) (point-max)
-                           'body-only g-scratch-buffer)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>org-export-region-as-html <span class="org-starter-kit-paren">(</span>point-min<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>point-max<span class="org-starter-kit-paren">)</span>
+                           'body-only g-scratch-buffer<span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 <p>

@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Starter Kit Publish</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:08 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:15 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -102,25 +90,25 @@ the documentation for the Starter Kit to html.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">unless</span> (boundp 'org-publish-project-alist)
-  (setq org-publish-project-alist nil))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>boundp 'org-publish-project-alist<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>setq org-publish-project-alist nil<span class="org-starter-kit-paren">))</span>
 
-(<span class="org-keyword">let*</span> ((this-dir (file-name-directory (or load-file-name buffer-file-name)))
-      (org-export-htmlize-output-type 'css)
-      (load-path (cons (expand-file-name <span class="org-string">"elpa"</span> this-dir) load-path))
-      (package-archives '((<span class="org-string">"original"</span>    . <span class="org-string">"http://tromey.com/elpa/"</span>))))
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">let*</span> <span class="org-starter-kit-paren">((</span>this-dir <span class="org-starter-kit-paren">(</span>file-name-directory <span class="org-starter-kit-paren">(</span>or load-file-name buffer-file-name<span class="org-starter-kit-paren">)))</span>
+      <span class="org-starter-kit-paren">(</span>org-export-htmlize-output-type 'css<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span>load-path <span class="org-starter-kit-paren">(</span>cons <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"elpa"</span> this-dir<span class="org-starter-kit-paren">)</span> load-path<span class="org-starter-kit-paren">))</span>
+      <span class="org-starter-kit-paren">(</span>package-archives '<span class="org-starter-kit-paren">((</span><span class="org-string">"original"</span>    . <span class="org-string">"http://tromey.com/elpa/"</span><span class="org-starter-kit-paren">))))</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">load up htmlize</span>
-  (package-initialize)
-  (<span class="org-keyword">let</span> ((package 'htmlize))
-    (<span class="org-keyword">unless</span> (or (member package package-activated-list)
-                (functionp package))
-      (package-install package)))
-  (<span class="org-keyword">require</span> '<span class="org-constant">htmlize</span>)
-  (org-export-htmlize-generate-css)
+  <span class="org-starter-kit-paren">(</span>package-initialize<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>package 'htmlize<span class="org-starter-kit-paren">))</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>or <span class="org-starter-kit-paren">(</span>member package package-activated-list<span class="org-starter-kit-paren">)</span>
+                <span class="org-starter-kit-paren">(</span>functionp package<span class="org-starter-kit-paren">))</span>
+      <span class="org-starter-kit-paren">(</span>package-install package<span class="org-starter-kit-paren">)))</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">htmlize</span><span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>org-export-htmlize-generate-css<span class="org-starter-kit-paren">)</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">define the org-publish-project for the starter kit</span>
-  (add-to-list
+  <span class="org-starter-kit-paren">(</span>add-to-list
    'org-publish-project-alist
-   `(<span class="org-string">"starter-kit-documentation"</span>
+   `<span class="org-starter-kit-paren">(</span><span class="org-string">"starter-kit-documentation"</span>
      <span class="org-builtin">:base-directory</span> ,this-dir
      <span class="org-builtin">:base-extension</span> <span class="org-string">"org"</span>
      <span class="org-builtin">:style</span> <span class="org-string">"&lt;link rel=\"stylesheet\" href=\"emacs.css\" type=\"text/css\"/&gt;</span>
@@ -131,13 +119,14 @@ the documentation for the Starter Kit to html.
 <span class="org-string">  .outline-text-3{margin-left: 2em;}</span>
 <span class="org-string">  .outline-text-3{margin-left: 3em;}</span>
 <span class="org-string">&lt;/style&gt;"</span>
-     <span class="org-builtin">:publishing-directory</span> ,(expand-file-name <span class="org-string">"doc"</span> this-dir)
+     <span class="org-builtin">:publishing-directory</span> ,<span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"doc"</span> this-dir<span class="org-starter-kit-paren">)</span>
      <span class="org-builtin">:index-filename</span> <span class="org-string">"starter-kit.org"</span>
-     <span class="org-builtin">:html-postamble</span> nil))
+     <span class="org-builtin">:html-postamble</span> nil<span class="org-starter-kit-paren">))</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">publish the starter kit</span>
-  (org-publish-project <span class="org-string">"starter-kit-documentation"</span> 'force))
+  <span class="org-starter-kit-paren">(</span>org-publish-project <span class="org-string">"starter-kit-documentation"</span> 'force<span class="org-starter-kit-paren">))</span>
 
 </pre>
+
 
 
 

@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Starter Kit Misc</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:08 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:16 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -100,9 +88,9 @@ lang="en" xml:lang="en">
 </p>
 </div>
 
-<div id="outline-container-1_1" class="outline-3">
-<h3 id="sec-1_1">Color Themes </h3>
-<div class="outline-text-3" id="text-1_1">
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">Color Themes </h3>
+<div class="outline-text-3" id="text-1-1">
 
 <p>The <a href="http://www.nongnu.org/color-theme/">Color Themes</a> package provides support for changing, saving,
 sharing Emacs color themes.  To view and apply color themes available
@@ -122,9 +110,10 @@ adding its function to your initialization.  For example
 </p>
 
 
-<pre class="src src-emacs-lisp">(color-theme-railscasts)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>color-theme-railscasts<span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 <p>
@@ -135,33 +124,34 @@ This code loads color-theme so that it is available by default.
 </p>
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">color-theme</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">color-theme</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_2" class="outline-3">
-<h3 id="sec-1_2">Window systems </h3>
-<div class="outline-text-3" id="text-1_2">
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">Window systems </h3>
+<div class="outline-text-3" id="text-1-2">
 
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> window-system
-  (setq frame-title-format '(buffer-file-name <span class="org-string">"%f"</span> (<span class="org-string">"%b"</span>)))
-  (blink-cursor-mode -1))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> window-system
+  <span class="org-starter-kit-paren">(</span>setq frame-title-format '<span class="org-starter-kit-paren">(</span>buffer-file-name <span class="org-string">"%f"</span> <span class="org-starter-kit-paren">(</span><span class="org-string">"%b"</span><span class="org-starter-kit-paren">)))</span>
+  <span class="org-starter-kit-paren">(</span>blink-cursor-mode -1<span class="org-starter-kit-paren">))</span>
 
-(mouse-wheel-mode t)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
+<span class="org-starter-kit-paren">(</span>mouse-wheel-mode t<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>set-terminal-coding-system 'utf-8<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>set-keyboard-coding-system 'utf-8<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>prefer-coding-system 'utf-8<span class="org-starter-kit-paren">)</span>
 
-(setq visible-bell t
+<span class="org-starter-kit-paren">(</span>setq visible-bell t
       echo-keystrokes 0.1
       font-lock-maximum-decoration t
       inhibit-startup-message t
@@ -171,42 +161,44 @@ This code loads color-theme so that it is available by default.
       shift-select-mode nil
       truncate-partial-width-windows nil
       uniquify-buffer-name-style 'forward
-      whitespace-style '(trailing lines space-before-tab
-                                  indentation space-after-tab)
+      whitespace-style '<span class="org-starter-kit-paren">(</span>trailing lines space-before-tab
+                                  indentation space-after-tab<span class="org-starter-kit-paren">)</span>
       whitespace-line-column 100
       ediff-window-setup-function 'ediff-setup-windows-plain
-      oddmuse-directory (concat starter-kit-dir <span class="org-string">"oddmuse"</span>)
+      oddmuse-directory <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"oddmuse"</span><span class="org-starter-kit-paren">)</span>
       xterm-mouse-mode t
-      save-place-file (concat starter-kit-dir <span class="org-string">"places"</span>))
+      save-place-file <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"places"</span><span class="org-starter-kit-paren">))</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_3" class="outline-3">
-<h3 id="sec-1_3">Transparently open compressed files </h3>
-<div class="outline-text-3" id="text-1_3">
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">Transparently open compressed files </h3>
+<div class="outline-text-3" id="text-1-3">
 
 
 
 
-<pre class="src src-emacs-lisp">(auto-compression-mode t)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>auto-compression-mode t<span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_4" class="outline-3">
-<h3 id="sec-1_4">Save a list of recent files visited. </h3>
-<div class="outline-text-3" id="text-1_4">
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">Save a list of recent files visited. </h3>
+<div class="outline-text-3" id="text-1-4">
 
 <p>(recentf-mode 1)
 </p>
@@ -214,67 +206,91 @@ This code loads color-theme so that it is available by default.
 
 </div>
 
-<div id="outline-container-1_5" class="outline-3">
-<h3 id="sec-1_5">Highlight matching parentheses when the point is on them. </h3>
-<div class="outline-text-3" id="text-1_5">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5">Highlight matching parentheses when the point is on them. </h3>
+<div class="outline-text-3" id="text-1-5">
 
 
 
 
-<pre class="src src-emacs-lisp">(show-paren-mode 1)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>show-paren-mode 1<span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_6" class="outline-3">
-<h3 id="sec-1_6">ido mode </h3>
-<div class="outline-text-3" id="text-1_6">
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6">ido mode </h3>
+<div class="outline-text-3" id="text-1-6">
 
 <p>ido-mode is like magic pixie dust!
 </p>
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (&gt; emacs-major-version 21)
-  (ido-mode t)
-  (setq ido-enable-prefix nil
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>&gt; emacs-major-version 21<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>ido-mode t<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>setq ido-enable-prefix nil
         ido-enable-flex-matching t
         ido-create-new-buffer 'always
         ido-use-filename-at-point t
-        ido-max-prospects 10))
+        ido-max-prospects 10<span class="org-starter-kit-paren">))</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_7" class="outline-3">
-<h3 id="sec-1_7">Other, spell checking, tabs, imenu and a coding hook </h3>
-<div class="outline-text-3" id="text-1_7">
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7">Other, spell checking, tabs, imenu and a coding hook </h3>
+<div class="outline-text-3" id="text-1-7">
 
 
 
 
-<pre class="src src-emacs-lisp">(set-default 'indent-tabs-mode nil)
-(set-default 'indicate-empty-lines t)
-(set-default 'imenu-auto-rescan t)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>set-default 'indent-tabs-mode nil<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>set-default 'indicate-empty-lines t<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>set-default 'imenu-auto-rescan t<span class="org-starter-kit-paren">)</span>
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
+<span class="org-starter-kit-paren">(</span>add-hook 'text-mode-hook 'turn-on-auto-fill<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>add-hook 'text-mode-hook 'turn-on-flyspell<span class="org-starter-kit-paren">)</span>
 
-(<span class="org-keyword">defvar</span> <span class="org-variable-name">starter-kit-coding-hook</span> nil
-  <span class="org-doc">"Hook that gets run on activation of any programming mode."</span>)
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">starter-kit-coding-hook</span> nil
+  <span class="org-doc">"Hook that gets run on activation of any programming mode."</span><span class="org-starter-kit-paren">)</span>
 
-(<span class="org-keyword">defalias</span> '<span class="org-function-name">yes-or-no-p</span> 'y-or-n-p)
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">yes-or-no-p</span> 'y-or-n-p<span class="org-starter-kit-paren">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Seed the random-number generator</span>
-(random t)
+<span class="org-starter-kit-paren">(</span>random t<span class="org-starter-kit-paren">)</span>
+
+</pre>
+
+
+
+
+
+</div>
+
+<div id="outline-container-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1">functions for prettier source code </h4>
+<div class="outline-text-4" id="text-1-7-1">
+
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-pretty-lambdas</span> <span class="org-starter-kit-paren">()</span>
+  <span class="org-starter-kit-paren">(</span>font-lock-add-keywords
+   nil `<span class="org-starter-kit-paren">((</span><span class="org-string">"(?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">lambda\\&gt;</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
+          <span class="org-starter-kit-paren">(</span>0 <span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span> <span class="org-starter-kit-paren">(</span>compose-region <span class="org-starter-kit-paren">(</span>match-beginning 1<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>match-end 1<span class="org-starter-kit-paren">)</span>
+                                    <span class="org-starter-kit-paren">(</span>make-char 'greek-iso8859-7 107<span class="org-starter-kit-paren">))</span>
+                    nil<span class="org-starter-kit-paren">))))))</span>
 
 </pre>
 
@@ -283,31 +299,11 @@ This code loads color-theme so that it is available by default.
 
 </div>
 
-<div id="outline-container-1_7_1" class="outline-4">
-<h4 id="sec-1_7_1">functions for prettier source code </h4>
-<div class="outline-text-4" id="text-1_7_1">
-
-
-
-
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-pretty-lambdas</span> ()
-  (font-lock-add-keywords
-   nil `((<span class="org-string">"(?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">lambda\\&gt;</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>
-          (0 (<span class="org-keyword">progn</span> (compose-region (match-beginning 1) (match-end 1)
-                                    ,(make-char 'greek-iso8859-7 107))
-                    nil))))))
-
-</pre>
-
-
-
 </div>
 
-</div>
-
-<div id="outline-container-1_7_2" class="outline-4">
-<h4 id="sec-1_7_2">possible issues/resolutions with flyspell </h4>
-<div class="outline-text-4" id="text-1_7_2">
+<div id="outline-container-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2">possible issues/resolutions with flyspell </h4>
+<div class="outline-text-4" id="text-1-7-2">
 
 <p>Most of the solution came from <a href="http://www.emacswiki.org/emacs/FlySpell">EmacsWiki-FlySpell</a>.  Here is one
 possible fix.
@@ -318,9 +314,10 @@ it's possible aspell isn't in your path
 
 
 
-<pre class="src src-emacs-lisp">(setq exec-path (append exec-path '(<span class="org-string">"/opt/local/bin"</span>)))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq exec-path <span class="org-starter-kit-paren">(</span>append exec-path '<span class="org-starter-kit-paren">(</span><span class="org-string">"/opt/local/bin"</span><span class="org-starter-kit-paren">)))</span>
 
 </pre>
+
 
 
 
@@ -337,17 +334,18 @@ it's possible aspell isn't in your path
 
 
 
-<pre class="src src-emacs-lisp">(setq ispell-program-name <span class="org-string">"aspell"</span>
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq ispell-program-name <span class="org-string">"aspell"</span>
       ispell-dictionary <span class="org-string">"english"</span>
       ispell-dictionary-alist
-      (<span class="org-keyword">let</span> ((default '(<span class="org-string">"[A-Za-z]"</span> <span class="org-string">"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">A-Za-z]"</span> <span class="org-string">"[']"</span> nil
-                       (<span class="org-string">"-B"</span> <span class="org-string">"-d"</span> <span class="org-string">"english"</span> <span class="org-string">"--dict-dir"</span>
-                        <span class="org-string">"/Library/Application Support/cocoAspell/aspell6-en-6.0-0"</span>)
-                       nil iso-8859-1)))
-        `((nil ,@default)
-          (<span class="org-string">"english"</span> ,@default))))
+      <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>default '<span class="org-starter-kit-paren">(</span><span class="org-string">"[A-Za-z]"</span> <span class="org-string">"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">A-Za-z]"</span> <span class="org-string">"[']"</span> nil
+                       <span class="org-starter-kit-paren">(</span><span class="org-string">"-B"</span> <span class="org-string">"-d"</span> <span class="org-string">"english"</span> <span class="org-string">"--dict-dir"</span>
+                        <span class="org-string">"/Library/Application Support/cocoAspell/aspell6-en-6.0-</span><span class="org-string"><span class="org-column-marker-3">0</span></span><span class="org-string">"</span><span class="org-starter-kit-paren">)</span>
+                       nil iso-8859-1<span class="org-starter-kit-paren">)))</span>
+        `<span class="org-starter-kit-paren">((</span>nil ,@default<span class="org-starter-kit-paren">)</span>
+          <span class="org-starter-kit-paren">(</span><span class="org-string">"english"</span> ,@default<span class="org-starter-kit-paren">))))</span>
 
 </pre>
+
 
 
 
@@ -358,80 +356,84 @@ it's possible aspell isn't in your path
 
 </div>
 
-<div id="outline-container-1_8" class="outline-3">
-<h3 id="sec-1_8">Hippie expand: at times perhaps too hip </h3>
-<div class="outline-text-3" id="text-1_8">
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8">Hippie expand: at times perhaps too hip </h3>
+<div class="outline-text-3" id="text-1-8">
 
 
 
 
-<pre class="src src-emacs-lisp">(delete 'try-expand-line hippie-expand-try-functions-list)
-(delete 'try-expand-list hippie-expand-try-functions-list)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>delete 'try-expand-line hippie-expand-try-functions-list<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>delete 'try-expand-list hippie-expand-try-functions-list<span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_9" class="outline-3">
-<h3 id="sec-1_9">Don't clutter up directories with files~ </h3>
-<div class="outline-text-3" id="text-1_9">
+</div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9">Don't clutter up directories with files~ </h3>
+<div class="outline-text-3" id="text-1-9">
 
 <p>Rather than saving backup files scattered all over the file system,
 let them live in the <code>backups/</code> directory inside of the starter kit.
 </p>
 
 
-<pre class="src src-emacs-lisp">(setq backup-directory-alist `((<span class="org-string">"."</span> . ,(expand-file-name
-                                        (concat starter-kit-dir <span class="org-string">"backups"</span>)))))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq backup-directory-alist `<span class="org-starter-kit-paren">((</span><span class="org-string">"."</span> . ,<span class="org-starter-kit-paren">(</span>expand-file-name
+                                        <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"backups"</span><span class="org-starter-kit-paren">)))))</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_10" class="outline-3">
-<h3 id="sec-1_10">Default to unified diffs </h3>
-<div class="outline-text-3" id="text-1_10">
+</div>
+
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10">Default to unified diffs </h3>
+<div class="outline-text-3" id="text-1-10">
 
 
 
 
-<pre class="src src-emacs-lisp">(setq diff-switches <span class="org-string">"-u"</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq diff-switches <span class="org-string">"-u"</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_11" class="outline-3">
-<h3 id="sec-1_11">Cosmetics </h3>
-<div class="outline-text-3" id="text-1_11">
+</div>
+
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11">Cosmetics </h3>
+<div class="outline-text-3" id="text-1-11">
 
 
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'diff-mode
-  '(<span class="org-keyword">progn</span>
-     (set-face-foreground 'diff-added <span class="org-string">"green4"</span>)
-     (set-face-foreground 'diff-removed <span class="org-string">"red3"</span>)))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'diff-mode
+  '<span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
+     <span class="org-starter-kit-paren">(</span>set-face-foreground 'diff-added <span class="org-string">"green4"</span><span class="org-starter-kit-paren">)</span>
+     <span class="org-starter-kit-paren">(</span>set-face-foreground 'diff-removed <span class="org-string">"red3"</span><span class="org-starter-kit-paren">)))</span>
 
-(<span class="org-keyword">eval-after-load</span> 'magit
-  '(<span class="org-keyword">progn</span>
-     (set-face-foreground 'magit-diff-add <span class="org-string">"green3"</span>)
-     (set-face-foreground 'magit-diff-del <span class="org-string">"red3"</span>)))
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'magit
+  '<span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
+     <span class="org-starter-kit-paren">(</span>set-face-foreground 'magit-diff-add <span class="org-string">"green3"</span><span class="org-starter-kit-paren">)</span>
+     <span class="org-starter-kit-paren">(</span>set-face-foreground 'magit-diff-del <span class="org-string">"red3"</span><span class="org-starter-kit-paren">)))</span>
 
 </pre>
+
 
 
 

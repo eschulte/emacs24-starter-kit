@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Starter Kit Ruby</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:07 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:14 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -103,22 +91,42 @@ Support for the <a href="http://www.ruby-lang.org/en/">Ruby</a> dynamic, open-so
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'ruby-mode
-  '(<span class="org-keyword">progn</span>
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'ruby-mode
+  '<span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
      <span class="org-comment-delimiter">;; </span><span class="org-comment">work around possible elpa bug</span>
-     (<span class="org-keyword">ignore-errors</span> (<span class="org-keyword">require</span> '<span class="org-constant">ruby-compilation</span>))
-     (setq ruby-use-encoding-map nil)
-     (add-hook 'ruby-mode-hook 'inf-ruby-keys)
-     (define-key ruby-mode-map (kbd <span class="org-string">"RET"</span>) 'reindent-then-newline-and-indent)
-     (define-key ruby-mode-map (kbd <span class="org-string">"C-M-h"</span>) 'backward-kill-word)
-     (define-key ruby-mode-map (kbd <span class="org-string">"C-c l"</span>) <span class="org-string">"lambda"</span>)))
+     <span class="org-starter-kit-paren">(</span><span class="org-keyword">ignore-errors</span> <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">ruby-compilation</span><span class="org-starter-kit-paren">))</span>
+     <span class="org-starter-kit-paren">(</span>setq ruby-use-encoding-map nil<span class="org-starter-kit-paren">)</span>
+     <span class="org-starter-kit-paren">(</span>add-hook 'ruby-mode-hook 'inf-ruby-keys<span class="org-starter-kit-paren">)</span>
+     <span class="org-starter-kit-paren">(</span>define-key ruby-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"RET"</span><span class="org-starter-kit-paren">)</span> 'reindent-then-newline-and-indent<span class="org-starter-kit-paren">)</span>
+     <span class="org-starter-kit-paren">(</span>define-key ruby-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-M-h"</span><span class="org-starter-kit-paren">)</span> 'backward-kill-word<span class="org-starter-kit-paren">)</span>
+     <span class="org-starter-kit-paren">(</span>define-key ruby-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-c l"</span><span class="org-starter-kit-paren">)</span> <span class="org-string">"lambda"</span><span class="org-starter-kit-paren">)))</span>
 
 </pre>
 
 
 
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-h r"</span>) 'ri)
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-h r"</span><span class="org-starter-kit-paren">)</span> 'ri<span class="org-starter-kit-paren">)</span>
+
+</pre>
+
+
+
+
+
+</div>
+
+<div id="outline-container-additional-file-extensions" class="outline-3">
+<h3 id="additional-file-extensions"><a name="sec-1-1" id="sec-1-1"></a>Rake files are ruby, too, as are gemspecs. </h3>
+<div class="outline-text-3" id="text-additional-file-extensions">
+
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.rake$"</span> . ruby-mode<span class="org-starter-kit-paren">))</span>
+<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"Rakefile$"</span> . ruby-mode<span class="org-starter-kit-paren">))</span>
+<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.gemspec$"</span> . ruby-mode<span class="org-starter-kit-paren">))</span>
 
 </pre>
 
@@ -127,94 +135,80 @@ Support for the <a href="http://www.ruby-lang.org/en/">Ruby</a> dynamic, open-so
 
 </div>
 
-<div id="outline-container-1_1" class="outline-3">
-<h3 id="sec-1_1">Rake files are ruby, too, as are gemspecs. </h3>
-<div class="outline-text-3" id="text-1_1">
+</div>
+
+<div id="outline-container-ignore-rubinius" class="outline-3">
+<h3 id="ignore-rubinius"><a name="sec-1-2" id="sec-1-2"></a>We never want to edit Rubinius bytecode </h3>
+<div class="outline-text-3" id="text-ignore-rubinius">
 
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.rake$"</span> . ruby-mode))
-(add-to-list 'auto-mode-alist '(<span class="org-string">"Rakefile$"</span> . ruby-mode))
-(add-to-list 'auto-mode-alist '(<span class="org-string">"\\.gemspec$"</span> . ruby-mode))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'completion-ignored-extensions <span class="org-string">".rbc"</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
 
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1_2" class="outline-3">
-<h3 id="sec-1_2">We never want to edit Rubinius bytecode </h3>
-<div class="outline-text-3" id="text-1_2">
-
-
-
-
-<pre class="src src-emacs-lisp">(add-to-list 'completion-ignored-extensions <span class="org-string">".rbc"</span>)
-
-</pre>
-
-
 
 </div>
 
 </div>
 
-<div id="outline-container-1_3" class="outline-3">
-<h3 id="sec-1_3">Rake </h3>
-<div class="outline-text-3" id="text-1_3">
+<div id="outline-container-rake" class="outline-3">
+<h3 id="rake"><a name="sec-1-3" id="sec-1-3"></a>Rake </h3>
+<div class="outline-text-3" id="text-rake">
 
 
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">pcomplete/rake</span> ()
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">pcomplete/rake</span> <span class="org-starter-kit-paren">()</span>
   <span class="org-doc">"Completion rules for the `</span><span class="org-doc"><span class="org-constant">ssh</span></span><span class="org-doc">' command."</span>
-  (pcomplete-here (pcmpl-rake-tasks)))
+  <span class="org-starter-kit-paren">(</span>pcomplete-here <span class="org-starter-kit-paren">(</span>pcmpl-rake-tasks<span class="org-starter-kit-paren">)))</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">pcmpl-rake-tasks</span> ()
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">pcmpl-rake-tasks</span> <span class="org-starter-kit-paren">()</span>
    <span class="org-doc">"Return a list of all the rake tasks defined in the current</span>
 <span class="org-doc">projects.  I know this is a hack to put all the logic in the</span>
 <span class="org-doc">exec-to-string command, but it works and seems fast"</span>
-   (delq nil (mapcar '(<span class="org-keyword">lambda</span>(line)
-                        (<span class="org-keyword">if</span> (string-match <span class="org-string">"rake </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string"> ]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span> line) (match-string 1 line)))
-                     (split-string (shell-command-to-string <span class="org-string">"rake -T"</span>) <span class="org-string">"[\n]"</span>))))
+   <span class="org-starter-kit-paren">(</span>delq nil <span class="org-starter-kit-paren">(</span>mapcar '<span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span><span class="org-starter-kit-paren">(</span>line<span class="org-starter-kit-paren">)</span>
+                        <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>string-match <span class="org-string">"rake </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string"> ]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span> line<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>match-string<span class="org-column-marker-3"> </span>1 line<span class="org-starter-kit-paren">)))</span>
+                     <span class="org-starter-kit-paren">(</span>split-string <span class="org-starter-kit-paren">(</span>shell-command-to-string <span class="org-string">"rake -T"</span><span class="org-starter-kit-paren">)</span> <span class="org-string">"[\n]"</span><span class="org-starter-kit-paren">)))</span><span class="org-starter-kit-paren"><span class="org-column-marker-3">)</span></span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">rake</span> (task)
-  (interactive (list (completing-read <span class="org-string">"Rake (default: default): "</span>
-                                      (pcmpl-rake-tasks))))
-  (shell-command-to-string (concat <span class="org-string">"rake "</span> (<span class="org-keyword">if</span> (= 0 (length task)) <span class="org-string">"default"</span> task))))
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">rake</span> <span class="org-starter-kit-paren">(</span>task<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>interactive <span class="org-starter-kit-paren">(</span>list <span class="org-starter-kit-paren">(</span>completing-read <span class="org-string">"Rake (default: default): "</span>
+                                      <span class="org-starter-kit-paren">(</span>pcmpl-rake-tasks<span class="org-starter-kit-paren">))))</span>
+  <span class="org-starter-kit-paren">(</span>shell-command-to-string <span class="org-starter-kit-paren">(</span>concat <span class="org-string">"rake "</span> <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>= 0 <span class="org-starter-kit-paren">(</span>length task<span class="org-starter-kit-paren">))</span> <span class="org-string">"default"</span> tas<span class="org-column-marker-3">k</span><span class="org-starter-kit-paren">))))</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_4" class="outline-3">
-<h3 id="sec-1_4">Compilation </h3>
-<div class="outline-text-3" id="text-1_4">
+</div>
+
+<div id="outline-container-compilation" class="outline-3">
+<h3 id="compilation"><a name="sec-1-4" id="sec-1-4"></a>Compilation </h3>
+<div class="outline-text-3" id="text-compilation">
 
 <p>Clear the compilation buffer between test runs.
 </p>
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'ruby-compilation
-  '(<span class="org-keyword">progn</span>
-     (<span class="org-keyword">defadvice</span> <span class="org-function-name">ruby-do-run-w/compilation</span> (before kill-buffer (name cmdlist))
-       (<span class="org-keyword">let</span> ((comp-buffer-name (format <span class="org-string">"*%s*"</span> name)))
-         (<span class="org-keyword">when</span> (get-buffer comp-buffer-name)
-           (<span class="org-keyword">with-current-buffer</span> comp-buffer-name
-             (delete-region (point-min) (point-max))))))
-     (ad-activate 'ruby-do-run-w/compilation)))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'ruby-compilation
+  '<span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
+     <span class="org-starter-kit-paren">(</span><span class="org-keyword">defadvice</span> <span class="org-function-name">ruby-do-run-w/compilation</span> <span class="org-starter-kit-paren">(</span>before kill-buffer <span class="org-starter-kit-paren">(</span>name cmdlist<span class="org-starter-kit-paren">))</span>
+       <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>comp-buffer-name <span class="org-starter-kit-paren">(</span>format <span class="org-string">"*%s*"</span> name<span class="org-starter-kit-paren">)))</span>
+         <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>get-buffer comp-buffer-name<span class="org-starter-kit-paren">)</span>
+           <span class="org-starter-kit-paren">(</span><span class="org-keyword">with-current-buffer</span> comp-buffer-name
+             <span class="org-starter-kit-paren">(</span>delete-region <span class="org-starter-kit-paren">(</span>point-min<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>point-max<span class="org-starter-kit-paren">))))))</span>
+     <span class="org-starter-kit-paren">(</span>ad-activate 'ruby-do-run-w/compilation<span class="org-starter-kit-paren">)))</span>
 
 </pre>
+
 
 
 
@@ -222,16 +216,17 @@ Support for the <a href="http://www.ruby-lang.org/en/">Ruby</a> dynamic, open-so
 
 </div>
 
-<div id="outline-container-1_5" class="outline-3">
-<h3 id="sec-1_5">Hooks </h3>
-<div class="outline-text-3" id="text-1_5">
+<div id="outline-container-hooks" class="outline-3">
+<h3 id="hooks"><a name="sec-1-5" id="sec-1-5"></a>Hooks </h3>
+<div class="outline-text-3" id="text-hooks">
 
 
 
 
-<pre class="src src-emacs-lisp">(add-hook 'ruby-mode-hook 'run-starter-kit-coding-hook)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'ruby-mode-hook 'run-starter-kit-coding-hook<span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
@@ -242,65 +237,67 @@ Support for the <a href="http://www.ruby-lang.org/en/">Ruby</a> dynamic, open-so
 
 </div>
 
-<div id="outline-container-1_6" class="outline-3">
-<h3 id="sec-1_6">Flymake </h3>
-<div class="outline-text-3" id="text-1_6">
+<div id="outline-container-flymake" class="outline-3">
+<h3 id="flymake"><a name="sec-1-6" id="sec-1-6"></a>Flymake </h3>
+<div class="outline-text-3" id="text-flymake">
 
 
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'ruby-mode
-  '(<span class="org-keyword">progn</span>
-     (<span class="org-keyword">require</span> '<span class="org-constant">flymake</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'ruby-mode
+  '<span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
+     <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">flymake</span><span class="org-starter-kit-paren">)</span>
 
      <span class="org-comment-delimiter">;; </span><span class="org-comment">Invoke ruby with '-c' to get syntax checking</span>
-     (<span class="org-keyword">defun</span> <span class="org-function-name">flymake-ruby-init</span> ()
-       (<span class="org-keyword">let*</span> ((temp-file (flymake-init-create-temp-buffer-copy
-                          'flymake-create-temp-inplace))
-              (local-file (file-relative-name
+     <span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">flymake-ruby-init</span> <span class="org-starter-kit-paren">()</span>
+       <span class="org-starter-kit-paren">(</span><span class="org-keyword">let*</span> <span class="org-starter-kit-paren">((</span>temp-file <span class="org-starter-kit-paren">(</span>flymake-init-create-temp-buffer-copy
+                          'flymake-create-temp-inplace<span class="org-starter-kit-paren">))</span>
+              <span class="org-starter-kit-paren">(</span>local-file <span class="org-starter-kit-paren">(</span>file-relative-name
                            temp-file
-                           (file-name-directory buffer-file-name))))
-         (list <span class="org-string">"ruby"</span> (list <span class="org-string">"-c"</span> local-file))))
+                           <span class="org-starter-kit-paren">(</span>file-name-directory buffer-file-name<span class="org-starter-kit-paren">))))</span>
+         <span class="org-starter-kit-paren">(</span>list <span class="org-string">"ruby"</span> <span class="org-starter-kit-paren">(</span>list <span class="org-string">"-c"</span> local-file<span class="org-starter-kit-paren">))))</span>
 
-     (push '(<span class="org-string">".+\\.rb$"</span> flymake-ruby-init) flymake-allowed-file-name-masks)
-     (push '(<span class="org-string">"Rakefile$"</span> flymake-ruby-init) flymake-allowed-file-name-masks)
+     <span class="org-starter-kit-paren">(</span>push '<span class="org-starter-kit-paren">(</span><span class="org-string">".+\\.rb$"</span> flymake-ruby-init<span class="org-starter-kit-paren">)</span> flymake-allowed-file-name-masks<span class="org-starter-kit-paren">)</span>
+     <span class="org-starter-kit-paren">(</span>push '<span class="org-starter-kit-paren">(</span><span class="org-string">"Rakefile$"</span> flymake-ruby-init<span class="org-starter-kit-paren">)</span> flymake-allowed-file-name-masks<span class="org-starter-kit-paren">)</span>
 
-     (push '(<span class="org-string">"^</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">:</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">$"</span> 1 2 nil 3)
-           flymake-err-line-patterns)
+     <span class="org-starter-kit-paren">(</span>push '<span class="org-starter-kit-paren">(</span><span class="org-string">"^</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">:</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">: </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">.*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">$"</span> 1 2 nil 3<span class="org-starter-kit-paren">)</span>
+           flymake-err-line-patterns<span class="org-starter-kit-paren">)</span>
 
-     (add-hook 'ruby-mode-hook
-               (<span class="org-keyword">lambda</span> ()
-                 (<span class="org-keyword">when</span> (and buffer-file-name
-                            (file-writable-p
-                             (file-name-directory buffer-file-name))
-                            (file-writable-p buffer-file-name))
-                   (local-set-key (kbd <span class="org-string">"C-c d"</span>)
-                                  'flymake-display-err-menu-for-current-line)
-                   (flymake-mode t))))))
+     <span class="org-starter-kit-paren">(</span>add-hook 'ruby-mode-hook
+               <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">()</span>
+                 <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>and buffer-file-name
+                            <span class="org-starter-kit-paren">(</span>file-writable-p
+                             <span class="org-starter-kit-paren">(</span>file-name-directory buffer-file-name<span class="org-starter-kit-paren">))</span>
+                            <span class="org-starter-kit-paren">(</span>file-writable-p buffer-file-name<span class="org-starter-kit-paren">))</span>
+                   <span class="org-starter-kit-paren">(</span>local-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-c d"</span><span class="org-starter-kit-paren">)</span>
+                                  'flymake-display-err-menu-for-current-line<span class="org-starter-kit-paren">)</span>
+                   <span class="org-starter-kit-paren">(</span>flymake-mode t<span class="org-starter-kit-paren">))))))</span>
 
 </pre>
 
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1_7" class="outline-3">
-<h3 id="sec-1_7">Rinari (Minor Mode for Ruby On Rails) </h3>
-<div class="outline-text-3" id="text-1_7">
+</div>
+
+<div id="outline-container-rinari" class="outline-3">
+<h3 id="rinari"><a name="sec-1-7" id="sec-1-7"></a>Rinari (Minor Mode for Ruby On Rails) </h3>
+<div class="outline-text-3" id="text-rinari">
 
 <p>See <a href="http://rinari.rubyforge.org/">rinari.rubyforge</a> for more information on rinari.
 </p>
 
 
 
-<pre class="src src-emacs-lisp">(setq rinari-major-modes
-      (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
-            'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq rinari-major-modes
+      <span class="org-starter-kit-paren">(</span>list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hoo<span class="org-column-marker-3">k</span>
+            'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook<span class="org-starter-kit-paren">))</span>
 
 </pre>
+
 
 
 </div>

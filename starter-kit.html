@@ -7,13 +7,12 @@ lang="en" xml:lang="en">
 <title>Emacs Starter Kit</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-17 11:10:07 PDT"/>
+<meta name="generated" content="2011-06-29 13:25:13 PDT"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -21,30 +20,19 @@ lang="en" xml:lang="en">
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
+ border: 1pt solid #AEBDCC;
+    padding: 5pt;
+ font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  td, th { vertical-align: top; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
-  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -108,19 +96,19 @@ brighter; it simply makes everything else vanish.
 <ul>
 <li><a href="#introduction">Introduction </a>
 <ul>
-<li><a href="#sec-1_1">Learning </a></li>
-<li><a href="#sec-1_2">Installation </a></li>
-<li><a href="#sec-1_3">Structure </a></li>
-<li><a href="#sec-1_4">Customization </a></li>
-<li><a href="#sec-1_5">Emacs Lisp Package Archive </a></li>
-<li><a href="#sec-1_6">Contributing </a></li>
+<li><a href="#learning">Learning </a></li>
+<li><a href="#installation">Installation </a></li>
+<li><a href="#structure">Structure </a></li>
+<li><a href="#customization">Customization </a></li>
+<li><a href="#emacs-lisp-package-archive">Emacs Lisp Package Archive </a></li>
+<li><a href="#contributing">Contributing </a></li>
 </ul>
 </li>
 <li><a href="#implementation">Implementation </a>
 <ul>
-<li><a href="#sec-2_1">Starter kit basics </a></li>
-<li><a href="#sec-2_2">Starter kit core </a></li>
-<li><a href="#sec-2_3">Load User/System Specific Files </a></li>
+<li><a href="#sec-2-1">Starter kit basics </a></li>
+<li><a href="#starter-kit-core">Starter kit core </a></li>
+<li><a href="#sec-2-3">Load User/System Specific Files </a></li>
 </ul>
 </li>
 </ul>
@@ -157,9 +145,9 @@ The latest version is at <a href="http://github.com/eschulte/emacs-starter-kit/"
 
 </div>
 
-<div id="outline-container-1_1" class="outline-3">
-<h3 id="sec-1_1"><a name="sec-1-1" id="sec-1-1"></a>Learning </h3>
-<div class="outline-text-3" id="text-1_1">
+<div id="outline-container-learning" class="outline-3">
+<h3 id="learning"><a name="sec-1-1" id="sec-1-1"></a>Learning </h3>
+<div class="outline-text-3" id="text-learning">
 
 <p>This won't teach you Emacs, but it'll make it easier to get
 comfortable. To access the tutorial, press control-h followed by t
@@ -172,15 +160,17 @@ The <a href="http://emacswiki.org">Emacs Wiki</a> is also very handy.
 
 </div>
 
-<div id="outline-container-1_2" class="outline-3">
-<h3 id="sec-1_2"><a name="sec-1-2" id="sec-1-2"></a>Installation </h3>
-<div class="outline-text-3" id="text-1_2">
+<div id="outline-container-installation" class="outline-3">
+<h3 id="installation"><a name="sec-1-2" id="sec-1-2"></a>Installation </h3>
+<div class="outline-text-3" id="text-installation">
 
 
 <ol>
 <li>Install Emacs version 24 or greater.  Use your package manager if
    you have one and it has an install candidate for Emacs 24,
-   otherwise install it directly <a href="http://savannah.gnu.org/projects/emacs/">from source</a>.
+   otherwise install it directly <a href="http://savannah.gnu.org/projects/emacs/">from source</a>, or Mac binaries may be
+   downloaded from the <i>nightlies</i> section of
+   <a href="http://emacsformacosx.com/builds">http://emacsformacosx.com/builds</a>
 </li>
 <li>Checkout a version of the starter kit using git &ndash; if you're new to
    git checkout this <a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html">git-tutorial</a>, also we'd highly recommend that you
@@ -191,6 +181,7 @@ The <a href="http://emacswiki.org">Emacs Wiki</a> is also very handy.
 <pre class="src src-sh">git clone http://github.com/eschulte/emacs-starter-kit.git
 
 </pre>
+
 
 
 </li>
@@ -223,6 +214,7 @@ a single instance using the starter kit, try the following invocation:
 
 
 
+
 <p>
 Note that having a <code>~/.emacs</code> file might override the starter kit
 loading, so if you've having trouble loading it, make sure that file
@@ -232,9 +224,9 @@ is not present.
 
 </div>
 
-<div id="outline-container-1_3" class="outline-3">
-<h3 id="sec-1_3"><a name="sec-1-3" id="sec-1-3"></a>Structure </h3>
-<div class="outline-text-3" id="text-1_3">
+<div id="outline-container-structure" class="outline-3">
+<h3 id="structure"><a name="sec-1-3" id="sec-1-3"></a>Structure </h3>
+<div class="outline-text-3" id="text-structure">
 
 <p>The <code>init.el</code> file is where everything begins. It is loaded
 automatically by Emacs on startup, its sole purpose is to load the
@@ -247,9 +239,9 @@ mentioned in <a href="#customizations">customizations</a> immediately below.
 
 </div>
 
-<div id="outline-container-1_4" class="outline-3">
-<h3 id="sec-1_4"><a name="sec-1-4" id="sec-1-4"></a>Customization </h3>
-<div class="outline-text-3" id="text-1_4">
+<div id="outline-container-customization" class="outline-3">
+<h3 id="customization"><a name="sec-1-4" id="sec-1-4"></a>Customization </h3>
+<div class="outline-text-3" id="text-customization">
 
 
 <p>
@@ -285,6 +277,7 @@ general starter-kit updates without conflict.
 
 
 
+
 <p>
      If your configuration starts to feel cramped in a single file
      (although with the nested headlines of an Org-mode file, that
@@ -310,6 +303,7 @@ general starter-kit updates without conflict.
 
 
 
+
 </dd>
 <dt>Activating more of the starter kit</dt><dd>By default, the starter kit
      only includes customizations which are likely to be useful across
@@ -322,13 +316,44 @@ general starter-kit updates without conflict.
      often work with Python source code you will probably want to load
      <code>starter-kit-python.org</code> either by directly copying the sections
      that look useful into your personal config, or simply by loading
-     the entire file directly with
+     the entire file directly with the following.
 
 
 
-<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-python.org"</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"python"</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
+
+
+
+
+<p>
+     Alternately you can load only one particular subsection of an
+     included file, for example to load just the "pretty-summary"
+     section of <code>starter-kit-gnus.org</code> run the following.
+</p>
+
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"gnus"</span> <span class="org-string">"pretty-summary"</span><span class="org-starter-kit-paren">)</span>
+
+</pre>
+
+
+
+
+<p>     
+     Finally you can load just those subsections of a file which have
+     a specific tag, so to load just the two sections of
+     <code>starter-kit-misc-recommended.org</code> which are tagged <code>visual</code> add
+     the following to your personal initialization.  Note: header id's
+     take priority over tags.
+</p>
+
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"gnus"</span> <span class="org-string">"visual"</span><span class="org-starter-kit-paren">)</span>
+
+</pre>
+
 
 
 
@@ -372,13 +397,50 @@ general starter-kit updates without conflict.
 </dl>
 
 
+
+</div>
+
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1">Optional starter kit packages </h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+<p>The following customization packages are shipped with the starter kit
+but are not loaded by default.  If you have code which you find
+generally useful please submit it to the starter kit core!
+</p><ul>
+<li><a href="starter-kit-eshell.html">eshell</a>
+</li>
+<li><a href="starter-kit-g-client.html">g-client</a>
+</li>
+<li><a href="starter-kit-gnus.html">gnus</a>
+</li>
+<li><a href="starter-kit-haskell.html">haskell</a>
+</li>
+<li><a href="starter-kit-js.html">js</a>
+</li>
+<li><a href="starter-kit-lisp.html">lisp</a>
+</li>
+<li><a href="starter-kit-misc-recommended.html">misc-recommended</a>
+</li>
+<li><a href="starter-kit-org.html">org</a>
+</li>
+<li><a href="starter-kit-perl.html">perl</a>
+</li>
+<li><a href="starter-kit-python.html">python</a>
+</li>
+<li><a href="starter-kit-ruby.html">ruby</a>
+</li>
+</ul>
+
+
+</div>
 </div>
 
 </div>
 
-<div id="outline-container-1_5" class="outline-3">
-<h3 id="sec-1_5"><a name="sec-1-5" id="sec-1-5"></a>Emacs Lisp Package Archive </h3>
-<div class="outline-text-3" id="text-1_5">
+<div id="outline-container-emacs-lisp-package-archive" class="outline-3">
+<h3 id="emacs-lisp-package-archive"><a name="sec-1-5" id="sec-1-5"></a>Emacs Lisp Package Archive </h3>
+<div class="outline-text-3" id="text-emacs-lisp-package-archive">
 
 
 <p>
@@ -393,9 +455,9 @@ this directory.
 
 </div>
 
-<div id="outline-container-1_6" class="outline-3">
-<h3 id="sec-1_6"><a name="sec-1-6" id="sec-1-6"></a>Contributing </h3>
-<div class="outline-text-3" id="text-1_6">
+<div id="outline-container-contributing" class="outline-3">
+<h3 id="contributing"><a name="sec-1-6" id="sec-1-6"></a>Contributing </h3>
+<div class="outline-text-3" id="text-contributing">
 
 <p>If you know your way around Emacs, please try out the starter kit as a
 replacement for your regular dotfiles for a while. If there's anything
@@ -427,21 +489,22 @@ interested in the actual code implementing the starter kit.
 
 </div>
 
-<div id="outline-container-2_1" class="outline-3">
-<h3 id="sec-2_1">Starter kit basics </h3>
-<div class="outline-text-3" id="text-2_1">
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1">Starter kit basics </h3>
+<div class="outline-text-3" id="text-2-1">
 
 <ul>
 <li>Load path etc.
 
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'load-path starter-kit-dir)
-(setq autoload-file (concat starter-kit-dir <span class="org-string">"loaddefs.el"</span>))
-(setq package-user-dir (concat starter-kit-dir <span class="org-string">"elpa"</span>))
-(setq custom-file (concat starter-kit-dir <span class="org-string">"custom.el"</span>))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'load-path starter-kit-dir<span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>setq autoload-file <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"loaddefs.el"</span><span class="org-starter-kit-paren">))</span>
+<span class="org-starter-kit-paren">(</span>setq package-user-dir <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"elpa"</span><span class="org-starter-kit-paren">))</span>
+<span class="org-starter-kit-paren">(</span>setq custom-file <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"custom.el"</span><span class="org-starter-kit-paren">))</span>
 
 </pre>
+
 
 
 
@@ -452,14 +515,15 @@ interested in the actual code implementing the starter kit.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">cl</span>)
-(<span class="org-keyword">require</span> '<span class="org-constant">saveplace</span>)
-(<span class="org-keyword">require</span> '<span class="org-constant">ffap</span>)
-(<span class="org-keyword">require</span> '<span class="org-constant">uniquify</span>)
-(<span class="org-keyword">require</span> '<span class="org-constant">ansi-color</span>)
-(<span class="org-keyword">require</span> '<span class="org-constant">recentf</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">cl</span><span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">saveplace</span><span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">ffap</span><span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">uniquify</span><span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">ansi-color</span><span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">recentf</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
@@ -468,48 +532,90 @@ interested in the actual code implementing the starter kit.
 
 
 
-<pre class="src src-emacs-lisp">(setq package-archives
-      '((<span class="org-string">"original"</span>    . <span class="org-string">"http://tromey.com/elpa/"</span>)
-        (<span class="org-string">"gnu"</span>         . <span class="org-string">"http://elpa.gnu.org/packages/"</span>)
-        (<span class="org-string">"marmalade"</span>   . <span class="org-string">"http://marmalade-repo.org/packages/"</span>)))
-(package-initialize)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq package-archives
+      '<span class="org-starter-kit-paren">((</span><span class="org-string">"original"</span>    . <span class="org-string">"http://tromey.com/elpa/"</span><span class="org-starter-kit-paren">)</span>
+        <span class="org-starter-kit-paren">(</span><span class="org-string">"gnu"</span>         . <span class="org-string">"http://elpa.gnu.org/packages/"</span><span class="org-starter-kit-paren">)</span>
+        <span class="org-starter-kit-paren">(</span><span class="org-string">"marmalade"</span>   . <span class="org-string">"http://marmalade-repo.org/packages/"</span><span class="org-starter-kit-paren">)))</span>
+<span class="org-starter-kit-paren">(</span>package-initialize<span class="org-starter-kit-paren">)</span>
 
-(<span class="org-keyword">defvar</span> <span class="org-variable-name">starter-kit-packages</span>
-  (list 'yasnippet-bundle 'color-theme)
-  <span class="org-doc">"Libraries that should be installed by default."</span>)
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">starter-kit-packages</span>
+  <span class="org-starter-kit-paren">(</span>list 'yasnippet-bundle 'color-theme<span class="org-starter-kit-paren">)</span>
+  <span class="org-doc">"Libraries that should be installed by default."</span><span class="org-starter-kit-paren">)</span>
 
-(<span class="org-keyword">when</span> (and (functionp 'network-interface-list)
-           (network-interface-list)
-           (some (<span class="org-keyword">lambda</span> (iface)
-                   (<span class="org-keyword">unless</span> (equal <span class="org-string">"lo"</span> (car iface))
-                     (member 'up (first (last (network-interface-info
-                                               (car iface)))))))
-                 (network-interface-list)))
-  (<span class="org-keyword">unless</span> package-archive-contents
-    (package-refresh-contents))
-  (<span class="org-keyword">dolist</span> (package starter-kit-packages)
-    (<span class="org-keyword">unless</span> (package-installed-p package)
-      (package-install package))))
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>and <span class="org-starter-kit-paren">(</span>functionp 'network-interface-list<span class="org-starter-kit-paren">)</span>
+           <span class="org-starter-kit-paren">(</span>network-interface-list<span class="org-starter-kit-paren">)</span>
+           <span class="org-starter-kit-paren">(</span>some <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">(</span>iface<span class="org-starter-kit-paren">)</span>
+                   <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>equal <span class="org-string">"lo"</span> <span class="org-starter-kit-paren">(</span>car iface<span class="org-starter-kit-paren">))</span>
+                     <span class="org-starter-kit-paren">(</span>member 'up <span class="org-starter-kit-paren">(</span>first <span class="org-starter-kit-paren">(</span>last <span class="org-starter-kit-paren">(</span>network-interface-info
+                                               <span class="org-starter-kit-paren">(</span>car iface<span class="org-starter-kit-paren">)))))))</span>
+                 <span class="org-starter-kit-paren">(</span>network-interface-list<span class="org-starter-kit-paren">)))</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> package-archive-contents
+    <span class="org-starter-kit-paren">(</span>package-refresh-contents<span class="org-starter-kit-paren">))</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">dolist</span> <span class="org-starter-kit-paren">(</span>package starter-kit-packages<span class="org-starter-kit-paren">)</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>package-installed-p package<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span>package-install package<span class="org-starter-kit-paren">))))</span>
 
 </pre>
+
 
 
 
 </li>
-<li>Function for loading other parts of the starter kit
+<li>Functions for loading other parts of the starter kit
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-load</span> (file)
-  <span class="org-doc">"This function is to be used to load starter-kit-*.org files."</span>
-  (org-babel-load-file
-   (expand-file-name
-    (<span class="org-keyword">if</span> (string-match <span class="org-string">"starter-kit-.+\.org"</span> file)
-        file
-      (format <span class="org-string">"starter-kit-%s.org"</span> file))
-    starter-kit-dir)))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-load</span> <span class="org-starter-kit-paren">(</span>file <span class="org-type">&amp;optional</span> header-or-tag<span class="org-starter-kit-paren">)</span>
+  <span class="org-doc">"Load configuration from other starter-kit-*.org files.</span>
+<span class="org-doc">If the optional argument is the id of a subtree then only</span>
+<span class="org-doc">configuration from within that subtree will be loaded.  If it is</span>
+<span class="org-doc">not an id then it will be interpreted as a tag, and only subtrees</span>
+<span class="org-doc">marked with the given tag will be loaded.</span>
+
+<span class="org-doc">For example, to load all of starter-kit-lisp.org simply</span>
+<span class="org-doc">add (starter-kit-load \"lisp\") to your configuration.</span>
+
+<span class="org-doc">To load only the 'window-system' config from</span>
+<span class="org-doc">starter-kit-misc-recommended.org add</span>
+<span class="org-doc"> (starter-kit-load \"misc-recommended\" \"window-system\")</span>
+<span class="org-doc">to your configuration."</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>file <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>string-match <span class="org-string">"starter-kit-.+\.org"</span> file<span class="org-starter-kit-paren">)</span>
+                                    file
+                                  <span class="org-starter-kit-paren">(</span>format <span class="org-string">"starter-kit-%s.org"</span> file<span class="org-starter-kit-paren">))</span>
+                                starter-kit-dir<span class="org-starter-kit-paren">)))</span>
+    <span class="org-starter-kit-paren">(</span>org-babel-load-file
+     <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> header-or-tag
+         <span class="org-starter-kit-paren">(</span><span class="org-keyword">let*</span> <span class="org-starter-kit-paren">((</span>base <span class="org-starter-kit-paren">(</span>file-name-nondirectory file<span class="org-starter-kit-paren">))</span>
+                <span class="org-starter-kit-paren">(</span>dir  <span class="org-starter-kit-paren">(</span>file-name-directory file<span class="org-starter-kit-paren">))</span>
+                <span class="org-starter-kit-paren">(</span>partial-file <span class="org-starter-kit-paren">(</span>expand-file-name
+                               <span class="org-starter-kit-paren">(</span>concat <span class="org-string">"."</span> <span class="org-starter-kit-paren">(</span>file-name-sans-extension base<span class="org-starter-kit-paren">)</span>
+                                       <span class="org-string">".part."</span> header-or-tag <span class="org-string">".org"</span><span class="org-starter-kit-paren">)</span>
+                               dir<span class="org-starter-kit-paren">)))</span>
+           <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>file-exists-p partial-file<span class="org-starter-kit-paren">)</span>
+             <span class="org-starter-kit-paren">(</span><span class="org-keyword">with-temp-file</span> partial-file
+               <span class="org-starter-kit-paren">(</span>insert
+                <span class="org-starter-kit-paren">(</span><span class="org-keyword">with-temp-buffer</span>
+                  <span class="org-starter-kit-paren">(</span>insert-file-contents file<span class="org-starter-kit-paren">)</span>
+                  <span class="org-starter-kit-paren">(</span><span class="org-keyword">save-excursion</span>
+                    <span class="org-starter-kit-paren">(</span><span class="org-keyword">condition-case</span> nil <span class="org-comment-delimiter">;; </span><span class="org-comment">collect as a header</span>
+                        <span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
+                          <span class="org-starter-kit-paren">(</span>org-link-search <span class="org-starter-kit-paren">(</span>concat<span class="org-string">"#"</span>header-or-tag<span class="org-starter-kit-paren">))</span>
+                          <span class="org-starter-kit-paren">(</span>org-narrow-to-subtree<span class="org-starter-kit-paren">)</span>
+                          <span class="org-starter-kit-paren">(</span>buffer-string<span class="org-starter-kit-paren">))</span>
+                      <span class="org-starter-kit-paren">(</span><span class="org-warning">error</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">collect all entries with as tags</span>
+                       <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">(</span>body<span class="org-starter-kit-paren">)</span>
+                         <span class="org-starter-kit-paren">(</span>org-map-entries
+                          <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">()</span>
+                            <span class="org-starter-kit-paren">(</span><span class="org-keyword">save-restriction</span>
+                              <span class="org-starter-kit-paren">(</span>org-narrow-to-subtree<span class="org-starter-kit-paren">)</span>
+                              <span class="org-starter-kit-paren">(</span>setq body <span class="org-starter-kit-paren">(</span>concat body <span class="org-string">"\n"</span> <span class="org-starter-kit-paren">(</span>buffer-string<span class="org-starter-kit-paren">)))))</span>
+                          header-or-tag<span class="org-starter-kit-paren">)</span>
+                         body<span class="org-starter-kit-paren">))))))))</span>
+           partial-file<span class="org-starter-kit-paren">)</span>
+       file<span class="org-starter-kit-paren">))))</span>
 
 </pre>
+
 
 
 
@@ -518,10 +624,11 @@ interested in the actual code implementing the starter kit.
 
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">if</span> (eq system-type 'darwin)
-    (setq system-name (car (split-string system-name <span class="org-string">"\\."</span>))))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>eq system-type 'darwin<span class="org-starter-kit-paren">)</span>
+    <span class="org-starter-kit-paren">(</span>setq system-name <span class="org-starter-kit-paren">(</span>car <span class="org-starter-kit-paren">(</span>split-string system-name <span class="org-string">"\\."</span><span class="org-starter-kit-paren">))))</span>
 
 </pre>
+
 
 
 </li>
@@ -532,9 +639,9 @@ interested in the actual code implementing the starter kit.
 
 </div>
 
-<div id="outline-container-2_2" class="outline-3">
-<h3 id="sec-2_2"><a name="sec-2-2" id="sec-2-2"></a>Starter kit core </h3>
-<div class="outline-text-3" id="text-2_2">
+<div id="outline-container-starter-kit-core" class="outline-3">
+<h3 id="starter-kit-core"><a name="sec-2-2" id="sec-2-2"></a>Starter kit core </h3>
+<div class="outline-text-3" id="text-starter-kit-core">
 
 <p>The following files contain the remainder of the core of the Emacs
 Starter Kit.  All of the code in this section should be loaded by
@@ -545,9 +652,10 @@ everyone using the starter kit.
 
 
 
-<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-defuns.org"</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-defuns.org"</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
@@ -556,9 +664,10 @@ everyone using the starter kit.
 
 
 
-<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-bindings.org"</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-bindings.org"</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
@@ -567,9 +676,10 @@ everyone using the starter kit.
 
 
 
-<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-misc.org"</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-misc.org"</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
@@ -578,9 +688,10 @@ everyone using the starter kit.
 
 
 
-<pre class="src src-emacs-lisp">(starter-kit-load <span class="org-string">"starter-kit-registers.org"</span>)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-registers.org"</span><span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
@@ -599,14 +710,15 @@ everyone using the starter kit.
 </p>
 
 
-<pre class="src src-emacs-lisp">(add-to-list 'load-path
-             (expand-file-name  <span class="org-string">"yasnippet"</span>
-                                (expand-file-name <span class="org-string">"src"</span>
-                                                  starter-kit-dir)))
-(<span class="org-keyword">require</span> '<span class="org-constant">yasnippet</span>)
-(yas/initialize)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'load-path
+             <span class="org-starter-kit-paren">(</span>expand-file-name  <span class="org-string">"yasnippet"</span>
+                                <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"src"</span>
+                                                  starter-kit-dir<span class="org-starter-kit-paren">)))</span>
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">yasnippet</span><span class="org-starter-kit-paren">)</span>
+<span class="org-starter-kit-paren">(</span>yas/initialize<span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
@@ -615,9 +727,10 @@ everyone using the starter kit.
 </p>
 
 
-<pre class="src src-emacs-lisp">(yas/load-directory (expand-file-name <span class="org-string">"snippets"</span> starter-kit-dir))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>yas/load-directory <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"snippets"</span> starter-kit-dir<span class="org-starter-kit-paren">))</span>
 
 </pre>
+
 
 
 
@@ -627,19 +740,20 @@ everyone using the starter kit.
 </p>
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">yas/org-very-safe-expand</span> ()
-  (<span class="org-keyword">let</span> ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">yas/org-very-safe-expand</span> <span class="org-starter-kit-paren">()</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>yas/fallback-behavior 'return-nil<span class="org-starter-kit-paren">))</span> <span class="org-starter-kit-paren">(</span>yas/expand<span class="org-starter-kit-paren">)))</span>
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">yas/org-setup</span> ()
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">yas/org-setup</span> <span class="org-starter-kit-paren">()</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">yasnippet (using the new org-cycle hooks)</span>
-  (make-variable-buffer-local 'yas/trigger-key)
-  (setq yas/trigger-key [tab])
-  (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-  (define-key yas/keymap [tab] 'yas/next-field))
+  <span class="org-starter-kit-paren">(</span>make-variable-buffer-local 'yas/trigger-key<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>setq yas/trigger-key [tab]<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>define-key yas/keymap [tab] 'yas/next-field<span class="org-starter-kit-paren">))</span>
 
-(add-hook 'org-mode-hook #'yas/org-setup)
+<span class="org-starter-kit-paren">(</span>add-hook 'org-mode-hook #'yas/org-setup<span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 </li>
@@ -650,16 +764,16 @@ everyone using the starter kit.
 
 </div>
 
-<div id="outline-container-2_3" class="outline-3">
-<h3 id="sec-2_3">Load User/System Specific Files </h3>
-<div class="outline-text-3" id="text-2_3">
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3">Load User/System Specific Files </h3>
+<div class="outline-text-3" id="text-2-3">
 
 
 </div>
 
-<div id="outline-container-2_3_1" class="outline-4">
-<h4 id="sec-2_3_1">System/User specific customizations </h4>
-<div class="outline-text-4" id="text-2_3_1">
+<div id="outline-container-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1">System/User specific customizations </h4>
+<div class="outline-text-4" id="text-2-3-1">
 
 <p>You can keep system- or user-specific customizations here in either
 raw emacs-lisp files or as embedded elisp in org-mode files (as done
@@ -676,39 +790,40 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 </p>
 
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">flet</span> ((in-kit (file <span class="org-type">&amp;optional</span> ext)
-               (expand-file-name (concat file ext) starter-kit-dir)))
-  (<span class="org-keyword">let</span> ((system-specific-config          (in-kit system-name <span class="org-string">".el"</span>))
-        (system-specific-literate-config (in-kit system-name <span class="org-string">".org"</span>))
-        (user-specific-config            (in-kit user-login-name <span class="org-string">".el"</span>))
-        (user-specific-literate-config   (in-kit user-login-name <span class="org-string">".org"</span>))
-        (user-specific-dir               (in-kit user-login-name))
-        (elisp-source-dir (concat starter-kit-dir <span class="org-string">"src"</span>)))
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">flet</span> <span class="org-starter-kit-paren">((</span>in-kit <span class="org-starter-kit-paren">(</span>file <span class="org-type">&amp;optional</span> ext<span class="org-starter-kit-paren">)</span>
+               <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-starter-kit-paren">(</span>concat file ext<span class="org-starter-kit-paren">)</span> starter-kit-dir<span class="org-starter-kit-paren">)))</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>system-specific-config          <span class="org-starter-kit-paren">(</span>in-kit system-name <span class="org-string">".el"</span><span class="org-starter-kit-paren">))</span>
+        <span class="org-starter-kit-paren">(</span>system-specific-literate-config <span class="org-starter-kit-paren">(</span>in-kit system-name <span class="org-string">".org"</span><span class="org-starter-kit-paren">))</span>
+        <span class="org-starter-kit-paren">(</span>user-specific-config            <span class="org-starter-kit-paren">(</span>in-kit user-login-name <span class="org-string">".el"</span><span class="org-starter-kit-paren">))</span>
+        <span class="org-starter-kit-paren">(</span>user-specific-literate-config   <span class="org-starter-kit-paren">(</span>in-kit user-login-name <span class="org-string">".org"</span><span class="org-starter-kit-paren">))</span>
+        <span class="org-starter-kit-paren">(</span>user-specific-dir               <span class="org-starter-kit-paren">(</span>in-kit user-login-name<span class="org-starter-kit-paren">))</span>
+        <span class="org-starter-kit-paren">(</span>elisp-source-dir <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"src"</span><span class="org-starter-kit-paren">)))</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">add the src directory to the load path</span>
-    (add-to-list 'load-path elisp-source-dir)
+    <span class="org-starter-kit-paren">(</span>add-to-list 'load-path elisp-source-dir<span class="org-starter-kit-paren">)</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">load specific files</span>
-    (<span class="org-keyword">when</span> (file-exists-p elisp-source-dir)
-      (<span class="org-keyword">let</span> ((default-directory elisp-source-dir))
-        (normal-top-level-add-subdirs-to-load-path)))
-    (<span class="org-keyword">when</span> (file-exists-p system-specific-config)
-      (load system-specific-config))
-    (<span class="org-keyword">when</span> (file-exists-p system-specific-literate-config)
-      (org-babel-load-file system-specific-literate-config))
-    (<span class="org-keyword">when</span> (file-exists-p user-specific-config)
-      (load user-specific-config))
-    (<span class="org-keyword">when</span> (file-exists-p user-specific-literate-config)
-      (org-babel-load-file user-specific-literate-config))
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p elisp-source-dir<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>default-directory elisp-source-dir<span class="org-starter-kit-paren">))</span>
+        <span class="org-starter-kit-paren">(</span>normal-top-level-add-subdirs-to-load-path<span class="org-starter-kit-paren">)))</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p system-specific-config<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span>load system-specific-config<span class="org-starter-kit-paren">))</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p system-specific-literate-config<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span>org-babel-load-file system-specific-literate-config<span class="org-starter-kit-paren">))</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p user-specific-config<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span>load user-specific-config<span class="org-starter-kit-paren">))</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p user-specific-literate-config<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span>org-babel-load-file user-specific-literate-config<span class="org-starter-kit-paren">))</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">add user's directory to the load path</span>
-    (add-to-list 'load-path user-specific-dir)
+    <span class="org-starter-kit-paren">(</span>add-to-list 'load-path user-specific-dir<span class="org-starter-kit-paren">)</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">load any files in the user's directory</span>
-    (<span class="org-keyword">when</span> (file-exists-p user-specific-dir)
-      (<span class="org-keyword">let</span> ((default-directory user-specific-dir))
-        (mapc #'load
-              (directory-files user-specific-dir nil <span class="org-string">".*el$"</span>))
-        (mapc #'org-babel-load-file
-              (directory-files user-specific-dir nil <span class="org-string">".*org$"</span>))))))
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p user-specific-dir<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>default-directory user-specific-dir<span class="org-starter-kit-paren">))</span>
+        <span class="org-starter-kit-paren">(</span>mapc #'load
+              <span class="org-starter-kit-paren">(</span>directory-files user-specific-dir nil <span class="org-string">".*el$"</span><span class="org-starter-kit-paren">))</span>
+        <span class="org-starter-kit-paren">(</span>mapc #'org-babel-load-file
+              <span class="org-starter-kit-paren">(</span>directory-files user-specific-dir nil <span class="org-string">".*org$"</span><span class="org-starter-kit-paren">))))))</span>
 
 </pre>
+
 
 
 
@@ -716,16 +831,17 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 
 </div>
 
-<div id="outline-container-2_3_2" class="outline-4">
-<h4 id="sec-2_3_2">Settings from M-x customize </h4>
-<div class="outline-text-4" id="text-2_3_2">
+<div id="outline-container-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2">Settings from M-x customize </h4>
+<div class="outline-text-4" id="text-2-3-2">
 
 
 
 
-<pre class="src src-emacs-lisp">(load custom-file 'noerror)
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>load custom-file 'noerror<span class="org-starter-kit-paren">)</span>
 
 </pre>
+
 
 
 
