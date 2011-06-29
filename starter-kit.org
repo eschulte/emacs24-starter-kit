@@ -43,7 +43,9 @@ The [[http://emacswiki.org][Emacs Wiki]] is also very handy.
 
 1. Install Emacs version 24 or greater.  Use your package manager if
    you have one and it has an install candidate for Emacs 24,
-   otherwise install it directly [[http://savannah.gnu.org/projects/emacs/][from source]].
+   otherwise install it directly [[http://savannah.gnu.org/projects/emacs/][from source]], or Mac binaries may be
+   downloaded from the /nightlies/ section of
+   http://emacsformacosx.com/builds
 2. Checkout a version of the starter kit using git -- if you're new to
    git checkout this [[http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html][git-tutorial]], also we'd highly recommend that you
    try out [[http://zagadka.vm.bytemark.co.uk/magit/magit.html][magit]] the Emacs mode for git interaction.
