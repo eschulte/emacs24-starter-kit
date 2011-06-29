@@ -41,7 +41,8 @@ a lambda doesn't already exist in the list.
 
 #+srcname: starter-kit-add-pretty-lambdas
 #+begin_src emacs-lisp
-(add-hook 'starter-kit-coding-hook 'starter-kit-pretty-lambdas)
+  (when (window-system)
+    (add-hook 'starter-kit-coding-hook 'starter-kit-pretty-lambdas))
 #+end_src
 
 #+srcname: starter-kit-run-starter-kit-coding-hook
