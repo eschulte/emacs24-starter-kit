@@ -11,6 +11,7 @@ from within Emacs.
   :PROPERTIES:
   :results:  silent
   :CUSTOM_ID: instillation
+  :tangle:   no
   :END:
 
 1. Grab the latest version of G-Client by running the following in
