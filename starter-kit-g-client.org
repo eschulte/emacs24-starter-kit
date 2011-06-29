@@ -40,14 +40,8 @@ from within Emacs.
      (load-library "g")
    #+end_src
 
-4. In your personal configuration set the value of the =g-user-email=
-   variable to your google email address
-   #+begin_src emacs-lisp
-     (setq g-user-email "you@gmail.com")
-   #+end_src
-
-5. Finally, in the current version of g-client one small change to the
-   code is required.  In the definition `gdocs-publish-from-org' the
+4. Finally, in the current version of g-client one small change to the
+   code is required.  In the definition `[[file:src/g-client/gdocs.el::(defun%20gdocs-publish-from-org%20()][gdocs-publish-from-org]]' the
    call to the `org-export-region-as-html' function should be changed
    from
    #+begin_src emacs-lisp
@@ -74,8 +68,19 @@ For more information see
   :END:
 Usage is as simple as
 
-1. sign into google documents with `gdocs-sign-in'
+1. add g-client to your load path
+   #+begin_src emacs-lisp
+     (add-to-list 'load-path (expand-file-name
+                              "g-client" (expand-file-name "src" starter-kit-dir)))
+   #+end_src
 
-2. open an Emacs buffer which you would like to post to google docs
+2. load g-client
+   #+begin_src emacs-lisp
+     (load-library "g")
+   #+end_src
 
-3. publish the buffer with `gdocs-publish-from-text'
+3. sign into google documents with =M-x gdocs-sign-in=
+
+4. open an Emacs buffer which you would like to post to google docs
+
+5. publish the buffer with `gdocs-publish-from-text'
