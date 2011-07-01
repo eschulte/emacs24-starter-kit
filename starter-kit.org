@@ -276,18 +276,11 @@ interested in the actual code implementing the starter kit.
       (list 'yasnippet-bundle 'color-theme)
       "Libraries that should be installed by default.")
     
-    (when (and (functionp 'network-interface-list)
-               (network-interface-list)
-               (some (lambda (iface)
-                       (unless (equal "lo" (car iface))
-                         (member 'up (first (last (network-interface-info
-                                                   (car iface)))))))
-                     (network-interface-list)))
-      (unless package-archive-contents
-        (package-refresh-contents))
-      (dolist (package starter-kit-packages)
-        (unless (package-installed-p package)
-          (package-install package))))
+    (unless package-archive-contents
+      (package-refresh-contents))
+    (dolist (package starter-kit-packages)
+      (unless (package-installed-p package)
+        (package-install package)))
   #+end_src
 
 - Functions for loading other parts of the starter kit
