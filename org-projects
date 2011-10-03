@@ -1,0 +1,160 @@
+;;; org-projects.el --- Org Projects List
+
+;; Copyright (C) 2010  Jeffrey Horn
+
+;; Author: Jeffrey Horn <jrhorn424@gmail.com>
+;; Keywords: local
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Just cleaning up the .emacs config by separating out project
+;; definitions for org-mode publishing.
+
+;;; Code:
+
+;; See more publishing options at
+;; http://www.gnu.org/software/emacs/manual/html_node/org/Publishing-options.html#Publishing-options
+;; May need to set section numbers for teaching notes. Set style
+;; eventually. Create custom post-amble? Copy and modify original
+;; post-amble. Disable auto postamble. Add org-publish-org-to-pdf for
+;; teaching portion of website. Define projects for each course? Remove
+;; style from published pages, use custom stylesheet linked file.
+
+;; :auto-index t
+;; :index-filename "sitemap.org"
+;; :index-title "Sitemap"
+
+;;; Disqus Code Variables. TODO: Setup permalinks to comments?
+(setq disqus-script "\"<div id=\"disqus_thread\"></div>
+<script type=\"text/javascript\">
+  /**
+    * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+    */
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://failuretorefrain.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href=\"http://disqus.com/?ref_noscript=failuretorefrain\">comments powered by Disqus.</a></noscript>
+<a href=\"http://disqus.com\" class=\"dsq-brlink\">blog comments powered by <span class=\"logo-disqus\">Disqus</span></a>
+"
+      discus-comment-count "<script type=\"text/javascript\">
+var disqus_shortname = 'failuretorefrain';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/failuretorefrain/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>")
+
+(setq org-publish-project-alist nil)
+(setq org-publish-project-alist
+      '(("ftr-static"
+         :base-directory "~/org/ftr/"
+         :base-extension
+         "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/Sites/FTR/"
+         :recursive t
+         :publishing-function (org-publish-attachment))
+        ("ftr-jeff"
+         :base-directory "~/org/ftr/jeff/" 
+         :publishing-directory "~/Sites/FTR/jeff/"
+         :publishing-function (org-publish-org-to-html org-publish-org-to-org)
+         :plain-source t
+         :link-home "./index.html"
+         :link-up "../index.html"
+         :section-numbers nil
+         :table-of-contents nil
+         :todo-keywords nil
+         :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css\">")
+        ("ftr-jeff-teaching"
+         :base-directory "~/org/ftr/jeff/teaching/"
+         :publishing-directory "~/Sites/FTR/jeff/teaching"
+         :publishing-function (org-publish-org-to-html org-publish-org-to-org)
+         :plain-source t
+         :link-home "../index.html"
+         :link-up "../index.html"
+         :section-numbers nil
+         :table-of-contents nil
+         :todo-keywords nil
+         :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/main.css\">")
+        ("econ308"
+         :base-directory "~/org/ftr/jeff/teaching/2011/spring/econ308/"
+         :publishing-directory "~/Sites/FTR/jeff/teaching/2011/spring/econ308/"
+         :publishing-function (org-publish-org-to-html org-publish-org-to-org)
+         :plain-source t
+         :link-home "../../../../index.html"
+         :link-up "../../../index.html"
+         :section-numbers t
+         :table-of-contents nil
+         :todo-keywords nil
+         :recursive t
+         :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../../css/main.css\">")
+        ;; ("ftr-jeff-teaching-current-course-econ308-protected"
+        ;;  :base-directory "~/org/ftr/jeff/teaching/2011/spring/econ308/hw/"
+        ;;  :publishing-directory "~/Sites/FTR/jeff/teaching/2011/spring/econ308/hw/"
+        ;;  :publishing-function (org-publish-org-to-html org-publish-org-to-org org-publish-org-to-pdf)
+        ;;  :plain-source t
+        ;;  :link-home "../../../../../index.html"
+        ;;  :link-up "../index.html"
+        ;;  :section-numbers nil
+        ;;  :table-of-contents nil
+        ;;  :todo-keywords nil
+        ;;  :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../../../css/main.css\">")
+        ("econ202b"
+         :base-directory "~/org/ftr/jeff/teaching/2011/spring/econ202b/"
+         :publishing-directory "~/Sites/FTR/jeff/teaching/2011/spring/econ202b/"
+         :publishing-function (org-publish-org-to-html org-publish-org-to-org)
+         :plain-source t
+         :link-home "../../../../index.html"
+         :link-up "../../../index.html"
+         :section-numbers t
+         :table-of-contents nil
+         :todo-keywords nil
+         :recursive t
+         :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../../css/main.css\">")
+        ;; ("ftr-htaccess"
+        ;;  :base-directory "~/org/ftr/jeff"
+        ;;  :publishing-directory "~/Sites/FTR/jeff"
+        ;;  :recursive t
+        ;;  :base-extension "org"
+        ;;  :exclude ".org"
+        ;;  :include ("teaching/2010/fall/econ308/hw/.htaccess") ; Remember
+        ;;                                 ; to add new .htaccess files to
+        ;;                                 ; the list as they are created.
+        ;;  :publishing-function org-publish-attachment)
+        ;; Delete project below
+        ("ftr-old-econ308"
+         :base-directory "~/org/ftr/jeff/teaching/2010/fall/econ308/"
+         :publishing-directory "~/Sites/FTR/jeff/teaching/2010/fall/econ308/"
+         :publishing-function (org-publish-org-to-html org-publish-org-to-org)
+         :plain-source t
+         :link-home "../../../../index.html"
+         :link-up "../../../index.html"
+         :section-numbers t
+         :table-of-contents nil
+         :todo-keywords nil
+         :recursive t
+         :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../../css/main.css\">")
+        ;; Delete project above
+        ("ftr"
+         :components ("ftr-static" "ftr-jeff" "ftr-jeff-teaching"
+                      "econ308" "econ202b"
+                      "ftr-htaccess" "ftr-old-econ308"))))
+
+;;; org-projects.el ends here
+ 
