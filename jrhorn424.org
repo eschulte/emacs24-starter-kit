@@ -45,6 +45,27 @@ it.
   (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
   (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 #+end_src
+** [[http://sunsite.univie.ac.at/textbooks/octave/octave_34.html][Octave Mode]]
+To begin using Octave mode for all `.m' files you visit, add the
+following lines to a file loaded by Emacs at startup time, typically
+your `~/.emacs' file:
+#+begin_src emacs-lisp
+  (autoload 'octave-mode "octave-mod" nil t)
+  (setq auto-mode-alist
+        (cons '("\\.m$" . octave-mode) auto-mode-alist))
+#+end_src
+
+Finally, to turn on the abbrevs, auto-fill and font-lock features
+automatically, also add the following lines to one of the Emacs
+startup files:
+#+begin_src emacs-lisp
+  (add-hook 'octave-mode-hook
+            (lambda ()
+              (abbrev-mode 1)
+              (auto-fill-mode 1)
+              (if (eq window-system 'x)
+                  (font-lock-mode 1))))
+#+end_src
 ** Custom Functions
 *** Unfill Paragraph and Region
 #+begin_src emacs-lisp
