@@ -86,24 +86,15 @@ much more like reading and editing of code using its major mode.
   (setq org-src-tab-acts-natively t)
 #+end_src
 
-** Load up the Library of Babel
+** The Library of Babel
    :PROPERTIES:
    :CUSTOM_ID: library-of-babel
    :END:
 The library of babel contains makes many useful functions available
 for use by code blocks in *any* emacs file.  See the actual
-[[file:src/org/contrib/babel/library-of-babel.org][library-of-babel.org]] file for information on the functions, and see
+=library-of-babel.org= (located in the Org-mode =contrib/babel=
+directory) file for information on the functions, and see
 [[http://orgmode.org/worg/org-contrib/babel/intro.php#library-of-babel][worg:library-of-babel]] for more usage information.
-#+begin_src emacs-lisp
-  (org-babel-lob-ingest
-   (expand-file-name
-    "library-of-babel.org"
-    (expand-file-name
-     "babel"
-     (expand-file-name
-      "contrib"
-      (expand-file-name
-       "org"
-       (expand-file-name "src" starter-kit-dir))))))
-#+end_src
 
+Code blocks can be loaded into the library of babel from any Org-mode
+file using the `org-babel-lob-ingest' function.
