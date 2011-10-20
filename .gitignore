@@ -44,5 +44,5 @@ marks
 /abbrev_defs
 /scratch
 /secret.org
-.emacs.desktop
+.emacs.desktop*
 .*~
