@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Gnus</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Starter Kit Gnus"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-29 13:25:18 PDT"/>
+<meta name="generated" content="2011-11-08 10:40:10 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -74,14 +74,19 @@ lang="en" xml:lang="en">
 
 </head>
 <body>
-<div id="content">
 
+<div id="preamble">
+
+</div>
+
+<div id="content">
 <h1 class="title">Starter Kit Gnus</h1>
+
 <p>This is part of the <a href="starter-kit.gnus">Emacs Starter Kit</a>.
 </p>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Starter Kit Gnus </h2>
+<h2 id="sec-1">Starter Kit Gnus</h2>
 <div class="outline-text-2" id="text-1">
 
 <p>Configuration for the notoriously difficult to configure <a href="http://www.gnus.org/">Gnus</a> email
@@ -91,7 +96,7 @@ client
 </div>
 
 <div id="outline-container-imap" class="outline-3">
-<h3 id="imap"><a name="sec-1-1" id="sec-1-1"></a>IMAP </h3>
+<h3 id="imap"><a name="sec-1-1" id="sec-1-1"></a>IMAP</h3>
 <div class="outline-text-3" id="text-imap">
 
 <p>Based on the instructions at <a href="http://www.emacswiki.org/emacs/GnusGmail#toc2">emacswiki:GnusGmail</a>.
@@ -112,7 +117,7 @@ to use this file:
 
 </li>
 <li><i>load this configuration</i> If you have a recent version of Org-mode
-   (i.e. after 7.0) or are using the <a href="http://eschulte.github.com/emacs-starter-kit/">literate Emacs Starter Kit</a>, then
+   (i.e. after 7.0) or are using the <a href="http://eschulte.github.com/emacs24-starter-kit/">literate Emacs Starter Kit</a>, then
    this file can be loaded directly using the <code>org-babel-load-file</code>
    function, or by placing it in your load path (if you're using the
    starter kit).
@@ -154,7 +159,7 @@ to use this file:
 </div>
 
 <div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1">saving mail locally </h4>
+<h4 id="sec-1-1-1">saving mail locally</h4>
 <div class="outline-text-4" id="text-1-1-1">
 
 <p>Where your mail will be saved locally default value will be <code>~/gmail</code>.
@@ -164,10 +169,7 @@ to use this file:
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">gnus</span><span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>setq nnml-directory <span class="org-string">"~/gmail"</span><span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>setq message-directory <span class="org-string">"~/gmail"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 <p>
@@ -177,10 +179,7 @@ All Gmail groups will be ignored by the default value of
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq gnus-ignored-newsgroups <span class="org-string">"^to\\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">^[0-9. ]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string"> </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">$</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">^[\&#8221;]\&#8221;[#&#8217;()]"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 </div>
@@ -188,7 +187,7 @@ All Gmail groups will be ignored by the default value of
 </div>
 
 <div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2">getting mail </h4>
+<h4 id="sec-1-1-2">getting mail</h4>
 <div class="outline-text-4" id="text-1-1-2">
 
 <p>Set Gmail as the primary source for incoming mail (Gnus can aggregate
@@ -201,10 +200,7 @@ many email and/or newsgroup sources).
                <span class="org-starter-kit-paren">(</span>nnimap-address <span class="org-string">"imap.gmail.com"</span><span class="org-starter-kit-paren">)</span>
                <span class="org-starter-kit-paren">(</span>nnimap-server-port 993<span class="org-starter-kit-paren">)</span>
                <span class="org-starter-kit-paren">(</span>nnimap-stream ssl<span class="org-starter-kit-paren">)))</span>
-
 </pre>
-
-
 
 
 <p>
@@ -213,10 +209,7 @@ Place a line like the following in <code>~/.authinfo</code>
 
 
 <pre class="src src-fundamental">machine imap.gmail.com login your-name@gmail.com password your-password port 993
-
 </pre>
-
-
 
 
 <p>
@@ -225,10 +218,7 @@ and make sure that no-one else can read it with
 
 
 <pre class="src src-sh">chmod 600 ~/.authinfo
-
 </pre>
-
-
 
 
 </div>
@@ -236,7 +226,7 @@ and make sure that no-one else can read it with
 </div>
 
 <div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3">sending mail </h4>
+<h4 id="sec-1-1-3">sending mail</h4>
 <div class="outline-text-4" id="text-1-1-3">
 
 <p><i>Requirement</i>: gnus uses the <a href="http://en.wikipedia.org/wiki/STARTTLS">starttls</a> tool for encrypted sending of
@@ -246,10 +236,7 @@ Debian (including Ubuntu) systems with
 
 
 <pre class="src src-sh">apt-get install starttls
-
 </pre>
-
-
 
 
 <p>
@@ -264,10 +251,7 @@ email.
       smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span>
       smtpmail-smtp-server <span class="org-string">"smtp.gmail.com"</span>
       smtpmail-smtp-service 587<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 <p>
@@ -277,10 +261,7 @@ you can add the following line to your <code>~/.authinfo</code>.
 
 
 <pre class="src src-fundamental">machine smtp.gmail.com login your-name@gmail.com your-password secret port 587
-
 </pre>
-
-
 
 
 </div>
@@ -289,7 +270,7 @@ you can add the following line to your <code>~/.authinfo</code>.
 </div>
 
 <div id="outline-container-pop" class="outline-3">
-<h3 id="pop"><a name="sec-1-2" id="sec-1-2"></a>Pop </h3>
+<h3 id="pop"><a name="sec-1-2" id="sec-1-2"></a>Pop</h3>
 <div class="outline-text-3" id="text-pop">
 
 <p>This file can be used to jump start a working Gnus instillation.  The
@@ -313,7 +294,7 @@ instillation.
 </div>
 
 <div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1">Basic configuration </h4>
+<h4 id="sec-1-2-1">Basic configuration</h4>
 <div class="outline-text-4" id="text-1-2-1">
 
 <p>First off, load up <code>gnus</code>
@@ -321,10 +302,7 @@ instillation.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">gnus</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 <p>
@@ -334,10 +312,7 @@ news reader &ndash; after all it's not longer the late 80s.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq gnus-select-method '<span class="org-starter-kit-paren">(</span>nnml <span class="org-string">""</span><span class="org-starter-kit-paren">))</span>
-
 </pre>
-
-
 
 
 </div>
@@ -345,7 +320,7 @@ news reader &ndash; after all it's not longer the late 80s.
 </div>
 
 <div id="outline-container-required-packages" class="outline-4">
-<h4 id="required-packages"><a name="sec-1-2-2" id="sec-1-2-2"></a>Required packages </h4>
+<h4 id="required-packages"><a name="sec-1-2-2" id="sec-1-2-2"></a>Required packages</h4>
 <div class="outline-text-4" id="text-required-packages">
 
 <p>A <a href="http://en.wikipedia.org/wiki/STARTTLS">starttls</a> client allows encrypted communication with remote pop3 and
@@ -368,7 +343,7 @@ sudo apt-get install starttls openssl
 </div>
 
 <div id="outline-container-gmail" class="outline-4">
-<h4 id="gmail"><a name="sec-1-2-3" id="sec-1-2-3"></a>Gmail Setup </h4>
+<h4 id="gmail"><a name="sec-1-2-3" id="sec-1-2-3"></a>Gmail Setup</h4>
 <div class="outline-text-4" id="text-gmail">
 
 <p>For more information on configuring Gnus with Gmail see <a href="http://www.emacswiki.org/emacs/GnusGmail">GnusGmail</a> on
@@ -414,10 +389,7 @@ following tables.
         smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span>
         smtpmail-smtp-server <span class="org-string">"smtp.gmail.com"</span>
         smtpmail-smtp-service 587<span class="org-starter-kit-paren">))</span>
-
 </pre>
-
-
 
 
 </div>
@@ -426,7 +398,7 @@ following tables.
 </div>
 
 <div id="outline-container-customization" class="outline-3">
-<h3 id="customization"><a name="sec-1-3" id="sec-1-3"></a>Customizations </h3>
+<h3 id="customization"><a name="sec-1-3" id="sec-1-3"></a>Customizations</h3>
 <div class="outline-text-3" id="text-customization">
 
 <p>Once gnus is installed and working, here are some recommended Gnus
@@ -436,7 +408,7 @@ customizations.
 </div>
 
 <div id="outline-container-bbdb" class="outline-4">
-<h4 id="bbdb"><a name="sec-1-3-1" id="sec-1-3-1"></a>BBDB </h4>
+<h4 id="bbdb"><a name="sec-1-3-1" id="sec-1-3-1"></a>BBDB</h4>
 <div class="outline-text-4" id="text-bbdb">
 
 <p><a href="http://bbdb.sourceforge.net/">BBDB</a> &ndash; <span style="text-decoration:underline;">The Insidious Big Brother Database</span> is Emacs' contact manager
@@ -458,10 +430,7 @@ use with gnus.
  bbdb-always-add-addresses t
  bbdb-complete-name-allow-cycling t
  <span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 </div>
@@ -469,7 +438,7 @@ use with gnus.
 </div>
 
 <div id="outline-container-pretty-summary" class="outline-4">
-<h4 id="pretty-summary"><a name="sec-1-3-2" id="sec-1-3-2"></a>More attractive Summary View </h4>
+<h4 id="pretty-summary"><a name="sec-1-3-2" id="sec-1-3-2"></a>More attractive Summary View</h4>
 <div class="outline-text-4" id="text-pretty-summary">
 
 <p>Thanks to Dan Davison.
@@ -498,16 +467,13 @@ use with gnus.
        <span class="org-string">"%1{%B%}"</span>
        <span class="org-string">"%s\n"</span><span class="org-starter-kit-paren">))</span>
 <span class="org-starter-kit-paren">(</span>setq gnus-summary-display-arrow t<span class="org-starter-kit-paren">)</span>
-
 </pre>
 
+</div>
+</div>
+</div>
+</div>
+</div>
 
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
 </body>
 </html>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Defuns</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Starter Kit Defuns"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-29 13:25:19 PDT"/>
+<meta name="generated" content="2011-11-08 10:40:11 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -74,22 +74,33 @@ lang="en" xml:lang="en">
 
 </head>
 <body>
-<div id="content">
 
+<div id="preamble">
+
+</div>
+
+<div id="content">
 <h1 class="title">Starter Kit Defuns</h1>
+
 <p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">The starter-kit-coding-hook: </h2>
+<h2 id="sec-1">The starter-kit-coding-hook:</h2>
 <div class="outline-text-2" id="text-1">
 
 <p>A single hook holding those functions which should be run in <b>every</b>
 code buffer.
 </p>
-<p>
-We have a number of turn-on-* functions since it's advised that lambda
-functions not go in hooks. Repeatedly evaling an add-to-list with a
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">functions since it's advised that lambda</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>functions not go in hooks. Repeatedly evaling an add-to-list with a
 hook value will repeatedly add it since there's no way to ensure that
 a lambda doesn't already exist in the list.
 </p>
@@ -109,49 +120,34 @@ a lambda doesn't already exist in the list.
 
 <span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-turn-on-whitespace</span> <span class="org-starter-kit-paren">()</span>
   <span class="org-starter-kit-paren">(</span>whitespace-mode t<span class="org-starter-kit-paren">))</span>
-
 </pre>
-
-
 
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'starter-kit-coding-hook 'starter-kit-local-column-number-mode<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'starter-kit-coding-hook 'starter-kit-local-comment-auto-fill<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>window-system<span class="org-starter-kit-paren">)</span>
   <span class="org-starter-kit-paren">(</span>add-hook 'starter-kit-coding-hook 'starter-kit-pretty-lambdas<span class="org-starter-kit-paren">))</span>
-
 </pre>
-
-
 
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">run-starter-kit-coding-hook</span> <span class="org-starter-kit-paren">()</span>
   <span class="org-doc">"Enable things that are convenient across all coding buffers."</span>
   <span class="org-starter-kit-paren">(</span>run-hooks 'starter-kit-coding-hook<span class="org-starter-kit-paren">))</span>
-
 </pre>
 
-
-
 </div>
 </div>
-
 </div>
+
 </body>
 </html>

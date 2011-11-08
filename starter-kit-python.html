@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Python</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Starter Kit Python"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-29 13:25:14 PDT"/>
+<meta name="generated" content="2011-11-08 10:40:07 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -74,14 +74,19 @@ lang="en" xml:lang="en">
 
 </head>
 <body>
-<div id="content">
 
+<div id="preamble">
+
+</div>
+
+<div id="content">
 <h1 class="title">Starter Kit Python</h1>
+
 <p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Starter kit Python </h2>
+<h2 id="sec-1">Starter kit Python</h2>
 <div class="outline-text-2" id="text-1">
 
 
@@ -92,7 +97,7 @@ Support for the Python programming language.
 </div>
 
 <div id="outline-container-python" class="outline-3">
-<h3 id="python"><a name="sec-1-1" id="sec-1-1"></a>Use Python's python-mode.el instead of Emacs' python.el </h3>
+<h3 id="python"><a name="sec-1-1" id="sec-1-1"></a>Use Python's python-mode.el instead of Emacs' python.el</h3>
 <div class="outline-text-3" id="text-python">
 
 <p>Replace the Python mode that comes with Emacs by the Python mode
@@ -103,10 +108,7 @@ supplied by the Python distribution itself.
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">python-mode</span><span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.py\\'"</span> . python-mode<span class="org-starter-kit-paren">))</span>
 <span class="org-starter-kit-paren">(</span>add-to-list 'interpreter-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"python"</span> . python-mode<span class="org-starter-kit-paren">))</span>
-
 </pre>
-
-
 
 
 </div>
@@ -114,7 +116,7 @@ supplied by the Python distribution itself.
 </div>
 
 <div id="outline-container-ipython" class="outline-3">
-<h3 id="ipython"><a name="sec-1-2" id="sec-1-2"></a>Use IPython if <code>ipython</code> command is present </h3>
+<h3 id="ipython"><a name="sec-1-2" id="sec-1-2"></a>Use IPython if <code>ipython</code> command is present</h3>
 <div class="outline-text-3" id="text-ipython">
 
 <p>If an <code>ipython</code> executable is on the path, then assume that IPython is
@@ -125,10 +127,7 @@ the preferred method python evaluation.
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>executable-find <span class="org-string">"ipython"</span><span class="org-starter-kit-paren">)</span>
   <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">ipython</span><span class="org-starter-kit-paren">)</span>
   <span class="org-starter-kit-paren">(</span>setq org-babel-python-mode 'python-mode<span class="org-starter-kit-paren">))</span>
-
 </pre>
-
-
 
 
 </div>
@@ -136,7 +135,7 @@ the preferred method python evaluation.
 </div>
 
 <div id="outline-container-cython" class="outline-3">
-<h3 id="cython"><a name="sec-1-3" id="sec-1-3"></a>Use Cython mode </h3>
+<h3 id="cython"><a name="sec-1-3" id="sec-1-3"></a>Use Cython mode</h3>
 <div class="outline-text-3" id="text-cython">
 
 
@@ -146,15 +145,12 @@ the preferred method python evaluation.
 <span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.pyx\\'"</span> . cython-mode<span class="org-starter-kit-paren">))</span>
 <span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.pxd\\'"</span> . cython-mode<span class="org-starter-kit-paren">))</span>
 <span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.pxi\\'"</span> . cython-mode<span class="org-starter-kit-paren">))</span>
-
 </pre>
 
+</div>
+</div>
+</div>
+</div>
 
-
-</div>
-</div>
-</div>
-
-</div>
 </body>
 </html>

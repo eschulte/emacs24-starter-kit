@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Eshell</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Starter Kit Eshell"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-29 13:25:18 PDT"/>
+<meta name="generated" content="2011-11-08 10:40:11 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -74,14 +74,19 @@ lang="en" xml:lang="en">
 
 </head>
 <body>
-<div id="content">
 
+<div id="preamble">
+
+</div>
+
+<div id="content">
 <h1 class="title">Starter Kit Eshell</h1>
+
 <p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Starter Kit Eshell </h2>
+<h2 id="sec-1">Starter Kit Eshell</h2>
 <div class="outline-text-2" id="text-1">
 
 <p><a href="http://www.emacswiki.org/emacs/CategoryEshell">Eshell</a> is a great shell.
@@ -112,10 +117,7 @@ lang="en" xml:lang="en">
      <span class="org-starter-kit-paren">(</span>add-to-list 'eshell-command-completions-alist
                   '<span class="org-starter-kit-paren">(</span><span class="org-string">"tar"</span> <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\.tar|\\.tgz</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">\\.tar\\.gz</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">\\'"</span><span class="org-starter-kit-paren">))</span>
      <span class="org-starter-kit-paren">(</span>add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color<span class="org-starter-kit-paren">)))</span>
-
 </pre>
-
-
 
 
 <p>
@@ -130,15 +132,12 @@ is pre-populated with some generally applicable aliases.
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq eshell-directory-name
       <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"./"</span> <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"eshell"</span> starter-kit-dir<span class="org-starter-kit-paren">)))</span>
-
 </pre>
 
 
-
-
 </div>
 </div>
-
 </div>
+
 </body>
 </html>

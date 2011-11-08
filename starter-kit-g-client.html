@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit G-Client</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Starter Kit G-Client"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-29 13:25:18 PDT"/>
+<meta name="generated" content="2011-11-08 10:40:11 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -74,9 +74,14 @@ lang="en" xml:lang="en">
 
 </head>
 <body>
-<div id="content">
 
+<div id="preamble">
+
+</div>
+
+<div id="content">
 <h1 class="title">Starter Kit G-Client</h1>
+
 <p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 <p>
@@ -86,7 +91,7 @@ from within Emacs.
 </p>
 
 <div id="outline-container-instillation" class="outline-2">
-<h2 id="instillation"><a name="sec-1" id="sec-1"></a>Instillation </h2>
+<h2 id="instillation"><a name="sec-1" id="sec-1"></a>Instillation</h2>
 <div class="outline-text-2" id="text-instillation">
 
 
@@ -98,10 +103,7 @@ from within Emacs.
 
 <pre class="src src-sh"><span class="org-builtin">cd</span> src/
 svn co http://emacspeak.googlecode.com/svn/trunk/lisp/g-client/
-
 </pre>
-
-
 
 
 </li>
@@ -112,10 +114,7 @@ svn co http://emacspeak.googlecode.com/svn/trunk/lisp/g-client/
 
 <pre class="src src-sh"><span class="org-builtin">cd</span> src/g-client
 make
-
 </pre>
-
-
 
 
 </li>
@@ -131,28 +130,12 @@ make
                <span class="org-starter-kit-paren">(</span>file-name-directory
                 <span class="org-starter-kit-paren">(</span>or load-file-name <span class="org-starter-kit-paren">(</span>buffer-file-name<span class="org-starter-kit-paren">))))))</span>
 <span class="org-starter-kit-paren">(</span>load-library <span class="org-string">"g"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
-
-
-</li>
-<li>In your personal configuration set the value of the <code>g-user-email</code>
-   variable to your google email address
-
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq g-user-email <span class="org-string">"you@gmail.com"</span><span class="org-starter-kit-paren">)</span>
-
-</pre>
-
-
 
 
 </li>
 <li>Finally, in the current version of g-client one small change to the
-   code is required.  In the definition `gdocs-publish-from-org' the
+   code is required.  In the definition `<a href="src/g-client/gdocs.el#defun-gdocs-publish-from-org">gdocs-publish-from-org</a>' the
    call to the `org-export-region-as-html' function should be changed
    from
 
@@ -160,10 +143,7 @@ make
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>org-export-region-as-html <span class="org-starter-kit-paren">(</span>point-min<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>point-max<span class="org-starter-kit-paren">)</span>
                            nil g-scratch-buffer<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 <p>
    to
@@ -172,10 +152,7 @@ make
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>org-export-region-as-html <span class="org-starter-kit-paren">(</span>point-min<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>point-max<span class="org-starter-kit-paren">)</span>
                            'body-only g-scratch-buffer<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 <p>
    so that the exported html only includes the body of the html
@@ -202,13 +179,32 @@ For more information see
 </div>
 
 <div id="outline-container-usage" class="outline-2">
-<h2 id="usage"><a name="sec-2" id="sec-2"></a>Usage </h2>
+<h2 id="usage"><a name="sec-2" id="sec-2"></a>Usage</h2>
 <div class="outline-text-2" id="text-usage">
 
 <p>Usage is as simple as
 </p>
 <ol>
-<li>sign into google documents with `gdocs-sign-in'
+<li>add g-client to your load path
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'load-path <span class="org-starter-kit-paren">(</span>expand-file-name
+                         <span class="org-string">"g-client"</span> <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"src"</span> starter-kit-dir<span class="org-starter-kit-paren">)))</span>
+</pre>
+
+
+</li>
+<li>load g-client
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>load-library <span class="org-string">"g"</span><span class="org-starter-kit-paren">)</span>
+</pre>
+
+
+</li>
+<li>sign into google documents with <code>M-x gdocs-sign-in</code>
 
 </li>
 <li>open an Emacs buffer which you would like to post to google docs
@@ -220,7 +216,7 @@ For more information see
 
 </div>
 </div>
-
 </div>
+
 </body>
 </html>

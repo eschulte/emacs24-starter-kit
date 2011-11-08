@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Lisp</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Starter Kit Lisp"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-29 13:25:17 PDT"/>
+<meta name="generated" content="2011-11-08 10:40:09 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -74,14 +74,19 @@ lang="en" xml:lang="en">
 
 </head>
 <body>
-<div id="content">
 
+<div id="preamble">
+
+</div>
+
+<div id="content">
 <h1 class="title">Starter Kit Lisp</h1>
+
 <p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Starter Kit Lisp </h2>
+<h2 id="sec-1">Starter Kit Lisp</h2>
 <div class="outline-text-2" id="text-1">
 
 <p>Support for editing list dialects including <a href="#sec-1-4">Emacs Lisp</a>, <a href="#sec-1-6">Scheme</a>,
@@ -91,7 +96,7 @@ lang="en" xml:lang="en">
 </div>
 
 <div id="outline-container-keys" class="outline-3">
-<h3 id="keys"><a name="sec-1-1" id="sec-1-1"></a>Define keys </h3>
+<h3 id="keys"><a name="sec-1-1" id="sec-1-1"></a>Define keys</h3>
 <div class="outline-text-3" id="text-keys">
 
 
@@ -102,10 +107,7 @@ lang="en" xml:lang="en">
 <span class="org-starter-kit-paren">(</span>define-key lisp-mode-shared-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"RET"</span><span class="org-starter-kit-paren">)</span> 'reindent-then-newline-and-indent<span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>define-key lisp-mode-shared-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-\\"</span><span class="org-starter-kit-paren">)</span> 'lisp-complete-symbol<span class="org-starter-kit-paren">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">(define-key lisp-mode-shared-map (kbd "C-c v") 'eval-buffer)</span>
-
 </pre>
-
-
 
 
 </div>
@@ -113,7 +115,7 @@ lang="en" xml:lang="en">
 </div>
 
 <div id="outline-container-paredit" class="outline-3">
-<h3 id="paredit"><a name="sec-1-2" id="sec-1-2"></a>Paredit </h3>
+<h3 id="paredit"><a name="sec-1-2" id="sec-1-2"></a>Paredit</h3>
 <div class="outline-text-3" id="text-paredit">
 
 <p><a href="http://www.emacswiki.org/emacs/ParEdit">Paredit</a> might seem weird at first, but it really makes writing lisp a
@@ -126,10 +128,7 @@ back, <code>C-M-u</code> up, <code>C-M-d</code> down)
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">turn-on-paredit</span> <span class="org-starter-kit-paren">()</span>
   <span class="org-starter-kit-paren">(</span>paredit-mode +1<span class="org-starter-kit-paren">))</span>
-
 </pre>
-
-
 
 
 <pre class="example">
@@ -144,7 +143,7 @@ back, <code>C-M-u</code> up, <code>C-M-d</code> down)
 </div>
 
 <div id="outline-container-parenthesis-faces" class="outline-3">
-<h3 id="parenthesis-faces"><a name="sec-1-3" id="sec-1-3"></a>Non-obtrusive parenthesis faces </h3>
+<h3 id="parenthesis-faces"><a name="sec-1-3" id="sec-1-3"></a>Non-obtrusive parenthesis faces</h3>
 <div class="outline-text-3" id="text-parenthesis-faces">
 
 
@@ -157,10 +156,7 @@ back, <code>C-M-u</code> up, <code>C-M-d</code> down)
       <span class="org-starter-kit-paren">(</span><span class="org-builtin">:foreground</span> <span class="org-string">"grey55"</span><span class="org-starter-kit-paren">)))</span>
    <span class="org-doc">"Face used to dim parentheses."</span>
    <span class="org-builtin">:group</span> 'starter-kit-faces<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 </div>
@@ -168,7 +164,7 @@ back, <code>C-M-u</code> up, <code>C-M-d</code> down)
 </div>
 
 <div id="outline-container-emacs-lisp" class="outline-3">
-<h3 id="emacs-lisp"><a name="sec-1-4" id="sec-1-4"></a>Emacs Lisp </h3>
+<h3 id="emacs-lisp"><a name="sec-1-4" id="sec-1-4"></a>Emacs Lisp</h3>
 <div class="outline-text-3" id="text-emacs-lisp">
 
 
@@ -192,10 +188,7 @@ back, <code>C-M-u</code> up, <code>C-M-d</code> down)
 
 <span class="org-starter-kit-paren">(</span>font-lock-add-keywords 'emacs-lisp-mode
                         '<span class="org-starter-kit-paren">((</span><span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face<span class="org-starter-kit-paren">)))</span>
-
 </pre>
-
-
 
 
 </div>
@@ -203,7 +196,7 @@ back, <code>C-M-u</code> up, <code>C-M-d</code> down)
 </div>
 
 <div id="outline-container-clojure" class="outline-3">
-<h3 id="clojure"><a name="sec-1-5" id="sec-1-5"></a>Clojure </h3>
+<h3 id="clojure"><a name="sec-1-5" id="sec-1-5"></a>Clojure</h3>
 <div class="outline-text-3" id="text-clojure">
 
 
@@ -299,11 +292,7 @@ back, <code>C-M-u</code> up, <code>C-M-d</code> down)
   <span class="org-starter-kit-paren">(</span><span class="org-keyword">save-window-excursion</span>
     <span class="org-starter-kit-paren">(</span>slime<span class="org-starter-kit-paren">)))</span>
 
-
 </pre>
-
-
-
 
 
 <p>
@@ -317,10 +306,7 @@ pretty &lambda;'s in clojure
                      <span class="org-starter-kit-paren">(</span>0 <span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span> <span class="org-starter-kit-paren">(</span>compose-region <span class="org-starter-kit-paren">(</span>match-beginning 1<span class="org-starter-kit-paren">)</span>
                                                <span class="org-starter-kit-paren">(</span>match-end 1<span class="org-starter-kit-paren">)</span> <span class="org-string">"&#402;"</span><span class="org-starter-kit-paren">)</span>
                                nil<span class="org-starter-kit-paren">))))))</span>
-
 </pre>
-
-
 
 
 </div>
@@ -328,7 +314,7 @@ pretty &lambda;'s in clojure
 </div>
 
 <div id="outline-container-scheme" class="outline-3">
-<h3 id="scheme"><a name="sec-1-6" id="sec-1-6"></a>Scheme </h3>
+<h3 id="scheme"><a name="sec-1-6" id="sec-1-6"></a>Scheme</h3>
 <div class="outline-text-3" id="text-scheme">
 
 
@@ -339,10 +325,7 @@ pretty &lambda;'s in clojure
 <span class="org-comment-delimiter">;; </span><span class="org-comment">(add-hook 'scheme-mode-hook 'idle-highlight)</span>
 <span class="org-starter-kit-paren">(</span>font-lock-add-keywords 'scheme-mode
                         '<span class="org-starter-kit-paren">((</span><span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face<span class="org-starter-kit-paren">)))</span>
-
 </pre>
-
-
 
 
 </div>
@@ -350,7 +333,7 @@ pretty &lambda;'s in clojure
 </div>
 
 <div id="outline-container-common-lisp" class="outline-3">
-<h3 id="common-lisp"><a name="sec-1-7" id="sec-1-7"></a>Common Lisp </h3>
+<h3 id="common-lisp"><a name="sec-1-7" id="sec-1-7"></a>Common Lisp</h3>
 <div class="outline-text-3" id="text-common-lisp">
 
 
@@ -362,15 +345,12 @@ pretty &lambda;'s in clojure
 <span class="org-starter-kit-paren">(</span>add-hook 'lisp-mode-hook 'turn-on-paredit<span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>font-lock-add-keywords 'lisp-mode
                         '<span class="org-starter-kit-paren">((</span><span class="org-string">"(</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">)"</span> . 'starter-kit-paren-face<span class="org-starter-kit-paren">)))</span>
-
 </pre>
 
+</div>
+</div>
+</div>
+</div>
 
-
-</div>
-</div>
-</div>
-
-</div>
 </body>
 </html>

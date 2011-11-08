@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit JS</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Starter Kit JS"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-29 13:25:17 PDT"/>
+<meta name="generated" content="2011-11-08 10:40:10 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -74,14 +74,19 @@ lang="en" xml:lang="en">
 
 </head>
 <body>
-<div id="content">
 
+<div id="preamble">
+
+</div>
+
+<div id="content">
 <h1 class="title">Starter Kit JS</h1>
+
 <p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">Starter Kit JS </h2>
+<h2 id="sec-1">Starter Kit JS</h2>
 <div class="outline-text-2" id="text-1">
 
 <p>Java-script Helpers
@@ -94,20 +99,14 @@ lang="en" xml:lang="en">
                    <span class="org-starter-kit-paren">(</span>0 <span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span> <span class="org-starter-kit-paren">(</span>compose-region <span class="org-starter-kit-paren">(</span>match-beginning 1<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>match-end 1<span class="org-starter-kit-paren">)</span>
                                              <span class="org-string">"&#402;"</span><span class="org-starter-kit-paren">)</span>
                              nil<span class="org-starter-kit-paren">)))))</span>
-
 </pre>
-
-
 
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>font-lock-add-keywords 'espresso-mode
                         '<span class="org-starter-kit-paren">((</span><span class="org-string">"\\&lt;</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">FIX</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">TODO</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">FIXME</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">HACK</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">REFACTOR</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">:"</span>
                            1 font-lock-warning-face t<span class="org-starter-kit-paren">)))</span>
-
 </pre>
-
-
 
 
 
@@ -119,10 +118,7 @@ lang="en" xml:lang="en">
 <span class="org-starter-kit-paren">(</span>add-hook 'espresso-mode-hook 'run-starter-kit-coding-hook<span class="org-starter-kit-paren">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">(add-hook 'espresso-mode-hook 'idle-highlight)</span>
 <span class="org-starter-kit-paren">(</span>setq espresso-indent-level 2<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 
@@ -135,14 +131,11 @@ lang="en" xml:lang="en">
     <span class="org-starter-kit-paren">(</span>delete-region <span class="org-starter-kit-paren">(</span>point-min<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>point-max<span class="org-starter-kit-paren">))</span>
     <span class="org-starter-kit-paren">(</span>insert <span class="org-starter-kit-paren">(</span>pp json-object<span class="org-starter-kit-paren">))</span>
     <span class="org-starter-kit-paren">(</span>goto-char <span class="org-starter-kit-paren">(</span>point-min<span class="org-starter-kit-paren">))))</span>
-
 </pre>
 
-
-
 </div>
 </div>
-
 </div>
+
 </body>
 </html>

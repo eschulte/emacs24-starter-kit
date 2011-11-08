@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Emacs Starter Kit</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Emacs Starter Kit"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-06-29 13:25:13 PDT"/>
+<meta name="generated" content="2011-11-08 10:40:06 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -74,9 +74,14 @@ lang="en" xml:lang="en">
 
 </head>
 <body>
-<div id="content">
 
+<div id="preamble">
+
+</div>
+
+<div id="content">
 <h1 class="title">Emacs Starter Kit</h1>
+
 <blockquote>
 
 <p>Emacs outshines all other editing software in approximately the same
@@ -94,21 +99,21 @@ brighter; it simply makes everything else vanish.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#introduction">Introduction </a>
+<li><a href="#introduction">Introduction</a>
 <ul>
-<li><a href="#learning">Learning </a></li>
-<li><a href="#installation">Installation </a></li>
-<li><a href="#structure">Structure </a></li>
-<li><a href="#customization">Customization </a></li>
-<li><a href="#emacs-lisp-package-archive">Emacs Lisp Package Archive </a></li>
-<li><a href="#contributing">Contributing </a></li>
+<li><a href="#learning">Learning</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#structure">Structure</a></li>
+<li><a href="#customization">Customization</a></li>
+<li><a href="#emacs-lisp-package-archive">Emacs Lisp Package Archive</a></li>
+<li><a href="#contributing">Contributing</a></li>
 </ul>
 </li>
-<li><a href="#implementation">Implementation </a>
+<li><a href="#implementation">Implementation</a>
 <ul>
-<li><a href="#sec-2-1">Starter kit basics </a></li>
-<li><a href="#starter-kit-core">Starter kit core </a></li>
-<li><a href="#sec-2-3">Load User/System Specific Files </a></li>
+<li><a href="#sec-2-1">Starter kit basics</a></li>
+<li><a href="#starter-kit-core">Starter kit core</a></li>
+<li><a href="#sec-2-3">Load User/System Specific Files</a></li>
 </ul>
 </li>
 </ul>
@@ -116,7 +121,7 @@ brighter; it simply makes everything else vanish.
 </div>
 
 <div id="outline-container-introduction" class="outline-2">
-<h2 id="introduction"><a name="sec-1" id="sec-1"></a>Introduction </h2>
+<h2 id="introduction"><a name="sec-1" id="sec-1"></a>Introduction</h2>
 <div class="outline-text-2" id="text-introduction">
 
 <p>This should provide a saner set of defaults than you get normally with
@@ -140,13 +145,13 @@ The main advantage of this Emacs Starter Kit are
 
 
 <p>
-The latest version is at <a href="http://github.com/eschulte/emacs-starter-kit/">http://github.com/eschulte/emacs-starter-kit/</a>
+The latest version is at <a href="http://github.com/eschulte/emacs24-starter-kit/">http://github.com/eschulte/emacs24-starter-kit/</a>
 </p>
 
 </div>
 
 <div id="outline-container-learning" class="outline-3">
-<h3 id="learning"><a name="sec-1-1" id="sec-1-1"></a>Learning </h3>
+<h3 id="learning"><a name="sec-1-1" id="sec-1-1"></a>Learning</h3>
 <div class="outline-text-3" id="text-learning">
 
 <p>This won't teach you Emacs, but it'll make it easier to get
@@ -161,7 +166,7 @@ The <a href="http://emacswiki.org">Emacs Wiki</a> is also very handy.
 </div>
 
 <div id="outline-container-installation" class="outline-3">
-<h3 id="installation"><a name="sec-1-2" id="sec-1-2"></a>Installation </h3>
+<h3 id="installation"><a name="sec-1-2" id="sec-1-2"></a>Installation</h3>
 <div class="outline-text-3" id="text-installation">
 
 
@@ -178,11 +183,8 @@ The <a href="http://emacswiki.org">Emacs Wiki</a> is also very handy.
 
 
 
-<pre class="src src-sh">git clone http://github.com/eschulte/emacs-starter-kit.git
-
+<pre class="src src-sh">git clone http://github.com/eschulte/emacs24-starter-kit.git
 </pre>
-
-
 
 </li>
 <li>Move the resulting directory to <code>~/.emacs.d</code> <sup><a class="footref" name="fnr.1" href="#fn.1">1</a></sup>
@@ -208,11 +210,8 @@ a single instance using the starter kit, try the following invocation:
 
 
 
-<pre class="src src-sh">emacs -q -l ~/src/emacs-starter-kit/init.el
-
+<pre class="src src-sh">emacs -q -l ~/path/to/emacs24-starter-kit/init.el
 </pre>
-
-
 
 
 <p>
@@ -225,7 +224,7 @@ is not present.
 </div>
 
 <div id="outline-container-structure" class="outline-3">
-<h3 id="structure"><a name="sec-1-3" id="sec-1-3"></a>Structure </h3>
+<h3 id="structure"><a name="sec-1-3" id="sec-1-3"></a>Structure</h3>
 <div class="outline-text-3" id="text-structure">
 
 <p>The <code>init.el</code> file is where everything begins. It is loaded
@@ -240,7 +239,7 @@ mentioned in <a href="#customizations">customizations</a> immediately below.
 </div>
 
 <div id="outline-container-customization" class="outline-3">
-<h3 id="customization"><a name="sec-1-4" id="sec-1-4"></a>Customization </h3>
+<h3 id="customization"><a name="sec-1-4" id="sec-1-4"></a>Customization</h3>
 <div class="outline-text-3" id="text-customization">
 
 
@@ -272,10 +271,7 @@ general starter-kit updates without conflict.
 
 
 <pre class="src src-sh"><span class="org-builtin">echo</span> $<span class="org-variable-name">USER</span>
-
 </pre>
-
-
 
 
 <p>
@@ -298,10 +294,7 @@ general starter-kit updates without conflict.
 
 
 <pre class="src src-sh">hostname
-
 </pre>
-
-
 
 
 </dd>
@@ -321,10 +314,7 @@ general starter-kit updates without conflict.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"python"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 <p>
@@ -335,10 +325,7 @@ general starter-kit updates without conflict.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"gnus"</span> <span class="org-string">"pretty-summary"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 <p>     
@@ -351,10 +338,7 @@ general starter-kit updates without conflict.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"gnus"</span> <span class="org-string">"visual"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 </dd>
@@ -401,7 +385,7 @@ general starter-kit updates without conflict.
 </div>
 
 <div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1">Optional starter kit packages </h4>
+<h4 id="sec-1-4-1">Optional starter kit packages</h4>
 <div class="outline-text-4" id="text-1-4-1">
 
 <p>The following customization packages are shipped with the starter kit
@@ -439,7 +423,7 @@ generally useful please submit it to the starter kit core!
 </div>
 
 <div id="outline-container-emacs-lisp-package-archive" class="outline-3">
-<h3 id="emacs-lisp-package-archive"><a name="sec-1-5" id="sec-1-5"></a>Emacs Lisp Package Archive </h3>
+<h3 id="emacs-lisp-package-archive"><a name="sec-1-5" id="sec-1-5"></a>Emacs Lisp Package Archive</h3>
 <div class="outline-text-3" id="text-emacs-lisp-package-archive">
 
 
@@ -456,7 +440,7 @@ this directory.
 </div>
 
 <div id="outline-container-contributing" class="outline-3">
-<h3 id="contributing"><a name="sec-1-6" id="sec-1-6"></a>Contributing </h3>
+<h3 id="contributing"><a name="sec-1-6" id="sec-1-6"></a>Contributing</h3>
 <div class="outline-text-3" id="text-contributing">
 
 <p>If you know your way around Emacs, please try out the starter kit as a
@@ -469,7 +453,7 @@ Files are licensed under the same license as Emacs unless otherwise
 specified. See the file COPYING for details.
 </p>
 <p>
-The latest version is at <a href="http://github.com/eschulte/emacs-starter-kit/">http://github.com/eschulte/emacs-starter-kit/</a>
+The latest version is at <a href="http://github.com/eschulte/emacs24-starter-kit/">http://github.com/eschulte/emacs24-starter-kit/</a>
 </p>
 </div>
 </div>
@@ -477,7 +461,7 @@ The latest version is at <a href="http://github.com/eschulte/emacs-starter-kit/"
 </div>
 
 <div id="outline-container-implementation" class="outline-2">
-<h2 id="implementation"><a name="sec-2" id="sec-2"></a>Implementation </h2>
+<h2 id="implementation"><a name="sec-2" id="sec-2"></a>Implementation</h2>
 <div class="outline-text-2" id="text-implementation">
 
 
@@ -490,11 +474,12 @@ interested in the actual code implementing the starter kit.
 </div>
 
 <div id="outline-container-2-1" class="outline-3">
-<h3 id="sec-2-1">Starter kit basics </h3>
+<h3 id="sec-2-1">Starter kit basics</h3>
 <div class="outline-text-3" id="text-2-1">
 
 <ul>
 <li>Load path etc.
+  #+srcname: starter-kit-load-paths
 
 
 
@@ -502,16 +487,14 @@ interested in the actual code implementing the starter kit.
 <span class="org-starter-kit-paren">(</span>setq autoload-file <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"loaddefs.el"</span><span class="org-starter-kit-paren">))</span>
 <span class="org-starter-kit-paren">(</span>setq package-user-dir <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"elpa"</span><span class="org-starter-kit-paren">))</span>
 <span class="org-starter-kit-paren">(</span>setq custom-file <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"custom.el"</span><span class="org-starter-kit-paren">))</span>
-
 </pre>
-
-
 
 
 </li>
 <li>Ubiquitous Packages which should be loaded on startup rather than
   autoloaded on demand since they are likely to be used in every
   session.
+  #+srcname: starter-kit-load-on-startup
 
 
 
@@ -521,10 +504,7 @@ interested in the actual code implementing the starter kit.
 <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">uniquify</span><span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">ansi-color</span><span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">recentf</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 </li>
@@ -542,26 +522,17 @@ interested in the actual code implementing the starter kit.
   <span class="org-starter-kit-paren">(</span>list 'yasnippet-bundle 'color-theme<span class="org-starter-kit-paren">)</span>
   <span class="org-doc">"Libraries that should be installed by default."</span><span class="org-starter-kit-paren">)</span>
 
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>and <span class="org-starter-kit-paren">(</span>functionp 'network-interface-list<span class="org-starter-kit-paren">)</span>
-           <span class="org-starter-kit-paren">(</span>network-interface-list<span class="org-starter-kit-paren">)</span>
-           <span class="org-starter-kit-paren">(</span>some <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">(</span>iface<span class="org-starter-kit-paren">)</span>
-                   <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>equal <span class="org-string">"lo"</span> <span class="org-starter-kit-paren">(</span>car iface<span class="org-starter-kit-paren">))</span>
-                     <span class="org-starter-kit-paren">(</span>member 'up <span class="org-starter-kit-paren">(</span>first <span class="org-starter-kit-paren">(</span>last <span class="org-starter-kit-paren">(</span>network-interface-info
-                                               <span class="org-starter-kit-paren">(</span>car iface<span class="org-starter-kit-paren">)))))))</span>
-                 <span class="org-starter-kit-paren">(</span>network-interface-list<span class="org-starter-kit-paren">)))</span>
-  <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> package-archive-contents
-    <span class="org-starter-kit-paren">(</span>package-refresh-contents<span class="org-starter-kit-paren">))</span>
-  <span class="org-starter-kit-paren">(</span><span class="org-keyword">dolist</span> <span class="org-starter-kit-paren">(</span>package starter-kit-packages<span class="org-starter-kit-paren">)</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>package-installed-p package<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span>package-install package<span class="org-starter-kit-paren">))))</span>
-
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> package-archive-contents
+  <span class="org-starter-kit-paren">(</span>package-refresh-contents<span class="org-starter-kit-paren">))</span>
+<span class="org-starter-kit-paren">(</span><span class="org-keyword">dolist</span> <span class="org-starter-kit-paren">(</span>package starter-kit-packages<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>package-installed-p package<span class="org-starter-kit-paren">)</span>
+    <span class="org-starter-kit-paren">(</span>package-install package<span class="org-starter-kit-paren">)))</span>
 </pre>
-
-
 
 
 </li>
 <li>Functions for loading other parts of the starter kit
+  #+srcname: starter-kit-load
 
 
 
@@ -613,23 +584,18 @@ interested in the actual code implementing the starter kit.
                          body<span class="org-starter-kit-paren">))))))))</span>
            partial-file<span class="org-starter-kit-paren">)</span>
        file<span class="org-starter-kit-paren">))))</span>
-
 </pre>
-
-
 
 
 </li>
 <li>Work around a bug on OS X where system-name is FQDN.
+  #+srcname: starter-kit-osX-workaround
 
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>eq system-type 'darwin<span class="org-starter-kit-paren">)</span>
     <span class="org-starter-kit-paren">(</span>setq system-name <span class="org-starter-kit-paren">(</span>car <span class="org-starter-kit-paren">(</span>split-string system-name <span class="org-string">"\\."</span><span class="org-starter-kit-paren">))))</span>
-
 </pre>
-
-
 
 </li>
 </ul>
@@ -640,7 +606,7 @@ interested in the actual code implementing the starter kit.
 </div>
 
 <div id="outline-container-starter-kit-core" class="outline-3">
-<h3 id="starter-kit-core"><a name="sec-2-2" id="sec-2-2"></a>Starter kit core </h3>
+<h3 id="starter-kit-core"><a name="sec-2-2" id="sec-2-2"></a>Starter kit core</h3>
 <div class="outline-text-3" id="text-starter-kit-core">
 
 <p>The following files contain the remainder of the core of the Emacs
@@ -653,10 +619,7 @@ everyone using the starter kit.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-defuns.org"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 </li>
@@ -665,10 +628,7 @@ everyone using the starter kit.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-bindings.org"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 </li>
@@ -677,10 +637,7 @@ everyone using the starter kit.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-misc.org"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 </li>
@@ -689,10 +646,7 @@ everyone using the starter kit.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-registers.org"</span><span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 </li>
@@ -716,10 +670,7 @@ everyone using the starter kit.
                                                   starter-kit-dir<span class="org-starter-kit-paren">)))</span>
 <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">yasnippet</span><span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>yas/initialize<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 
 <p>
@@ -728,10 +679,7 @@ everyone using the starter kit.
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>yas/load-directory <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"snippets"</span> starter-kit-dir<span class="org-starter-kit-paren">))</span>
-
 </pre>
-
-
 
 
 <p>
@@ -751,10 +699,7 @@ everyone using the starter kit.
   <span class="org-starter-kit-paren">(</span>define-key yas/keymap [tab] 'yas/next-field<span class="org-starter-kit-paren">))</span>
 
 <span class="org-starter-kit-paren">(</span>add-hook 'org-mode-hook #'yas/org-setup<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
 
 </li>
 </ul>
@@ -765,14 +710,14 @@ everyone using the starter kit.
 </div>
 
 <div id="outline-container-2-3" class="outline-3">
-<h3 id="sec-2-3">Load User/System Specific Files </h3>
+<h3 id="sec-2-3">Load User/System Specific Files</h3>
 <div class="outline-text-3" id="text-2-3">
 
 
 </div>
 
 <div id="outline-container-2-3-1" class="outline-4">
-<h4 id="sec-2-3-1">System/User specific customizations </h4>
+<h4 id="sec-2-3-1">System/User specific customizations</h4>
 <div class="outline-text-4" id="text-2-3-1">
 
 <p>You can keep system- or user-specific customizations here in either
@@ -821,10 +766,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
               <span class="org-starter-kit-paren">(</span>directory-files user-specific-dir nil <span class="org-string">".*el$"</span><span class="org-starter-kit-paren">))</span>
         <span class="org-starter-kit-paren">(</span>mapc #'org-babel-load-file
               <span class="org-starter-kit-paren">(</span>directory-files user-specific-dir nil <span class="org-string">".*org$"</span><span class="org-starter-kit-paren">))))))</span>
-
 </pre>
-
-
 
 
 </div>
@@ -832,18 +774,14 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 </div>
 
 <div id="outline-container-2-3-2" class="outline-4">
-<h4 id="sec-2-3-2">Settings from M-x customize </h4>
+<h4 id="sec-2-3-2">Settings from M-x customize</h4>
 <div class="outline-text-4" id="text-2-3-2">
 
 
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>load custom-file 'noerror<span class="org-starter-kit-paren">)</span>
-
 </pre>
-
-
-
 
 
 
@@ -864,7 +802,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 
 </div>
 </div>
-
 </div>
+
 </body>
 </html>
