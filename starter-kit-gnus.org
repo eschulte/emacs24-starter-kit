@@ -25,7 +25,7 @@ to use this file:
    file which will be used by gnus.
 
 3) /load this configuration/ If you have a recent version of Org-mode
-   (i.e. after 7.0) or are using the [[http://eschulte.github.com/emacs-starter-kit/][literate Emacs Starter Kit]], then
+   (i.e. after 7.0) or are using the [[http://eschulte.github.com/emacs24-starter-kit/][literate Emacs Starter Kit]], then
    this file can be loaded directly using the =org-babel-load-file=
    function, or by placing it in your load path (if you're using the
    starter kit).
