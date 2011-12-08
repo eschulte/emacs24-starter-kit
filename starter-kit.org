@@ -421,37 +421,33 @@ project is not in elpa.
 After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 #+srcname: starter-kit-load-files
 #+begin_src emacs-lisp
-  (flet ((in-kit (file &optional ext)
-                 (expand-file-name (concat file ext) starter-kit-dir)))
-    (let ((system-specific-config          (in-kit system-name ".el"))
-          (system-specific-literate-config (in-kit system-name ".org"))
-          (user-specific-config            (in-kit user-login-name ".el"))
-          (user-specific-literate-config   (in-kit user-login-name ".org"))
-          (user-specific-dir               (in-kit user-login-name))
-          (elisp-source-dir (concat starter-kit-dir "src")))
+  (flet ((sk-load (base)
+           (let* ((path     (expand-file-name base starter-kit-dir))
+                  (literate (concat path ".org"))
+                  (plain    (concat path ".el")))
+             (cond
+              ((file-exists-p literate) (org-babel-load-file literate))
+              ((file-exists-p plain)    (load plain))))))
+    (let ((elisp-dir (expand-file-name "src" starter-kit-dir))
+          (user-dir (expand-file-name user-login-name starter-kit-dir)))
       ;; add the src directory to the load path
-      (add-to-list 'load-path elisp-source-dir)
+      (add-to-list 'load-path elisp-dir)
       ;; load specific files
-      (when (file-exists-p elisp-source-dir)
-        (let ((default-directory elisp-source-dir))
+      (when (file-exists-p elisp-dir)
+        (let ((default-directory elisp-dir))
           (normal-top-level-add-subdirs-to-load-path)))
-      (when (file-exists-p system-specific-config)
-        (load system-specific-config))
-      (when (file-exists-p system-specific-literate-config)
-        (org-babel-load-file system-specific-literate-config))
-      (when (file-exists-p user-specific-config)
-        (load user-specific-config))
-      (when (file-exists-p user-specific-literate-config)
-        (org-babel-load-file user-specific-literate-config))
-      ;; add user's directory to the load path
-      (add-to-list 'load-path user-specific-dir)
+      ;; load system-specific config
+      (sk-load system-name)
+      ;; load user-specific config
+      (sk-load user-login-name)
       ;; load any files in the user's directory
-      (when (file-exists-p user-specific-dir)
-        (let ((default-directory user-specific-dir))
-          (mapc #'load
-                (directory-files user-specific-dir nil ".*el$"))
-          (mapc #'org-babel-load-file
-                (directory-files user-specific-dir nil ".*org$"))))))
+      (when (file-exists-p user-dir)
+        (add-to-list 'load-path user-dir)
+        (mapc #'sk-load
+              (remove-duplicates
+               (mapcar #'file-name-sans-extension
+                       (directory-files user-dir t ".*\.\\(org\\|el\\)$"))
+               :test #'string=)))))
 #+end_src
 
 *** Settings from M-x customize
