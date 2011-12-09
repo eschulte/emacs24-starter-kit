@@ -273,7 +273,11 @@ interested in the actual code implementing the starter kit.
     (package-initialize)
     
     (defvar starter-kit-packages
-      (list 'yasnippet-bundle 'color-theme)
+      (list 'yasnippet-bundle)
+      ;; Unfortunately 'color-theme in marmalade is broken in marmalade.
+      ;; In the interum You can download a working color-theme.el from
+      ;; http://download.savannah.gnu.org/releases/color-theme/ and unpack
+      ;; it into your src/ directory
       "Libraries that should be installed by default.")
     
     (unless package-archive-contents
