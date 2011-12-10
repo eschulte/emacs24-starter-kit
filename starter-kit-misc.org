@@ -21,7 +21,7 @@ adding its function to your initialization.  For example
 will load the =railscasts= color theme when Emacs starts.
 
 This code loads color-theme so that it is available by default.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
   (require 'color-theme)
 #+end_src
 
