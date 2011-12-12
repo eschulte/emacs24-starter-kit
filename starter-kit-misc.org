@@ -10,7 +10,8 @@ Things that don't fit anywhere else.
 Emacs24 has build in support for saving and loading themes.
 
 A Theme builder is available at http://elpa.gnu.org/themes/ along with
-a list of pre-built themes at http://elpa.gnu.org/themes/view.html.
+a list of pre-built themes at http://elpa.gnu.org/themes/view.html and
+themes are available through ELPA.
 
 Downloaded themes may be saved to the =themes/= directory in the base
 of the starter kit which ignored by git.  Once downloaded and
