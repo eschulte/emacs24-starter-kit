@@ -43,5 +43,8 @@ the documentation for the Starter Kit to html.
        :index-filename "starter-kit.org"
        :html-postamble nil))
     ;; publish the starter kit
-    (org-publish-project "starter-kit-documentation" 'force))
+    (org-publish-project "starter-kit-documentation" 'force)
+    ;; copy starter-kit.html to index.html
+    (copy-file (expand-file-name "starter-kit.html" (expand-file-name "doc" this-dir))
+               (expand-file-name "index.html" (expand-file-name "doc" this-dir))))
 #+end_src

@@ -24,7 +24,7 @@ The main advantage of this Emacs Starter Kit are
 - an organizational directory structure
 - git provides for version control, backup, and sharing
 
-The latest version is at http://github.com/eschulte/emacs-starter-kit/
+The latest version is at http://github.com/eschulte/emacs24-starter-kit/
 
 ** Learning
    :PROPERTIES:
@@ -50,7 +50,7 @@ The [[http://emacswiki.org][Emacs Wiki]] is also very handy.
    git checkout this [[http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html][git-tutorial]], also we'd highly recommend that you
    try out [[http://zagadka.vm.bytemark.co.uk/magit/magit.html][magit]] the Emacs mode for git interaction.
    #+begin_src sh
-     git clone http://github.com/eschulte/emacs-starter-kit.git
+     git clone http://github.com/eschulte/emacs24-starter-kit.git
    #+end_src
 3. Move the resulting directory to =~/.emacs.d= [1]
 7. Launch Emacs!
@@ -66,7 +66,7 @@ If you want to keep your regular =~/.emacs.d= in place and just launch
 a single instance using the starter kit, try the following invocation:
 
 #+begin_src sh
-  emacs -q -l ~/src/emacs-starter-kit/init.el
+  emacs -q -l ~/path/to/emacs24-starter-kit/init.el
 #+end_src
 
 Note that having a =~/.emacs= file might override the starter kit
@@ -230,7 +230,7 @@ it. Take a look at what happens in [[file:init.el][init.el]] to get started.
 Files are licensed under the same license as Emacs unless otherwise
 specified. See the file COPYING for details.
 
-The latest version is at http://github.com/eschulte/emacs-starter-kit/
+The latest version is at http://github.com/eschulte/emacs24-starter-kit/
 
 * Implementation
   :PROPERTIES:
@@ -273,7 +273,11 @@ interested in the actual code implementing the starter kit.
     (package-initialize)
     
     (defvar starter-kit-packages
-      (list 'yasnippet-bundle 'color-theme)
+      (list 'yasnippet-bundle)
+      ;; Unfortunately 'color-theme in marmalade is broken in marmalade.
+      ;; In the interum You can download a working color-theme.el from
+      ;; http://download.savannah.gnu.org/releases/color-theme/ and unpack
+      ;; it into your src/ directory
       "Libraries that should be installed by default.")
     
     (unless package-archive-contents
@@ -421,37 +425,33 @@ project is not in elpa.
 After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 #+srcname: starter-kit-load-files
 #+begin_src emacs-lisp
-  (flet ((in-kit (file &optional ext)
-                 (expand-file-name (concat file ext) starter-kit-dir)))
-    (let ((system-specific-config          (in-kit system-name ".el"))
-          (system-specific-literate-config (in-kit system-name ".org"))
-          (user-specific-config            (in-kit user-login-name ".el"))
-          (user-specific-literate-config   (in-kit user-login-name ".org"))
-          (user-specific-dir               (in-kit user-login-name))
-          (elisp-source-dir (concat starter-kit-dir "src")))
+  (flet ((sk-load (base)
+           (let* ((path     (expand-file-name base starter-kit-dir))
+                  (literate (concat path ".org"))
+                  (plain    (concat path ".el")))
+             (cond
+              ((file-exists-p literate) (org-babel-load-file literate))
+              ((file-exists-p plain)    (load plain))))))
+    (let ((elisp-dir (expand-file-name "src" starter-kit-dir))
+          (user-dir (expand-file-name user-login-name starter-kit-dir)))
       ;; add the src directory to the load path
-      (add-to-list 'load-path elisp-source-dir)
+      (add-to-list 'load-path elisp-dir)
       ;; load specific files
-      (when (file-exists-p elisp-source-dir)
-        (let ((default-directory elisp-source-dir))
+      (when (file-exists-p elisp-dir)
+        (let ((default-directory elisp-dir))
           (normal-top-level-add-subdirs-to-load-path)))
-      (when (file-exists-p system-specific-config)
-        (load system-specific-config))
-      (when (file-exists-p system-specific-literate-config)
-        (org-babel-load-file system-specific-literate-config))
-      (when (file-exists-p user-specific-config)
-        (load user-specific-config))
-      (when (file-exists-p user-specific-literate-config)
-        (org-babel-load-file user-specific-literate-config))
-      ;; add user's directory to the load path
-      (add-to-list 'load-path user-specific-dir)
+      ;; load system-specific config
+      (sk-load system-name)
+      ;; load user-specific config
+      (sk-load user-login-name)
       ;; load any files in the user's directory
-      (when (file-exists-p user-specific-dir)
-        (let ((default-directory user-specific-dir))
-          (mapc #'load
-                (directory-files user-specific-dir nil ".*el$"))
-          (mapc #'org-babel-load-file
-                (directory-files user-specific-dir nil ".*org$"))))))
+      (when (file-exists-p user-dir)
+        (add-to-list 'load-path user-dir)
+        (mapc #'sk-load
+              (remove-duplicates
+               (mapcar #'file-name-sans-extension
+                       (directory-files user-dir t ".*\.\\(org\\|el\\)$"))
+               :test #'string=)))))
 #+end_src
 
 *** Settings from M-x customize
