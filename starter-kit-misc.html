@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Starter Kit Misc"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-11-08 10:45:12 MST"/>
+<meta name="generated" content="2011-12-12 14:03:19 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -91,45 +91,24 @@
 
 <p>Things that don't fit anywhere else.
 </p>
+
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
 <h3 id="sec-1-1">Color Themes</h3>
 <div class="outline-text-3" id="text-1-1">
 
-<p>The <a href="http://www.nongnu.org/color-theme/">Color Themes</a> package provides support for changing, saving,
-sharing Emacs color themes.  To view and apply color themes available
-on your system run <code>M-x color-theme-select</code>.  See the color theme
-website and EmacsWiki pages for more information.
-</p><ul>
-<li><a href="http://www.nongnu.org/color-theme/">http://www.nongnu.org/color-theme/</a>
-</li>
-<li><a href="http://www.emacswiki.org/emacs/ColorTheme">http://www.emacswiki.org/emacs/ColorTheme</a>
-</li>
-</ul>
-
-
-<p>
-Once you've selected a preferred color theme it can be installed by
-adding its function to your initialization.  For example
-</p>
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>color-theme-railscasts<span class="org-starter-kit-paren">)</span>
-</pre>
-
-<p>
-will load the <code>railscasts</code> color theme when Emacs starts.
+<p>Emacs24 has build in support for saving and loading themes.
 </p>
 <p>
-This code loads color-theme so that it is available by default.
+A Theme builder is available at <a href="http://elpa.gnu.org/themes/">http://elpa.gnu.org/themes/</a> along with
+a list of pre-built themes at <a href="http://elpa.gnu.org/themes/view.html">http://elpa.gnu.org/themes/view.html</a>.
 </p>
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">color-theme</span><span class="org-starter-kit-paren">)</span>
-</pre>
-
-
+<p>
+Downloaded themes may be saved to the <code>themes/</code> directory in the base
+of the starter kit which ignored by git.  Once downloaded and
+evaluated a theme is activated using the <code>load-theme</code> function.
+</p>
 </div>
 
 </div>

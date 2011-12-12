@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Starter Kit Defuns"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-11-08 10:45:14 MST"/>
+<meta name="generated" content="2011-12-12 14:03:21 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -92,15 +92,9 @@
 <p>A single hook holding those functions which should be run in <b>every</b>
 code buffer.
 </p>
-</div>
-
-</div>
-
-<div id="outline-container-2" class="outline-2">
-<h2 id="sec-2">functions since it's advised that lambda</h2>
-<div class="outline-text-2" id="text-2">
-
-<p>functions not go in hooks. Repeatedly evaling an add-to-list with a
+<p>
+We have a number of turn-on-* functions since it's advised that lambda
+functions not go in hooks. Repeatedly evaling an add-to-list with a
 hook value will repeatedly add it since there's no way to ensure that
 a lambda doesn't already exist in the list.
 </p>

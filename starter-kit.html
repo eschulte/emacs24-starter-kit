@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Emacs Starter Kit"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-11-08 10:45:09 MST"/>
+<meta name="generated" content="2011-12-12 14:03:17 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -350,18 +350,6 @@ general starter-kit updates without conflict.
      guaranteed not to conflict with future starter-kit updates.
 
 </dd>
-<dt>Making use of the two pre-installed libraries</dt><dd>By default the
-     starter kit downloads and installs two generally helpful elisp
-     libraries.
-<dl>
-<dt>color-themes</dt><dd>The starter-kit comes pre-bundled with a variety
-        of color themes.  See <a href="starter-kit-misc.html">Color Themes</a> for instructions on how to
-        change the colors used by Emacs.
-
-</dd>
-</dl>
-
-</dd>
 <dt>Misc</dt><dd>Some additional miscellaneous configuration and getting
      started suggestions
 <ul>
@@ -519,7 +507,7 @@ interested in the actual code implementing the starter kit.
 <span class="org-starter-kit-paren">(</span>package-initialize<span class="org-starter-kit-paren">)</span>
 
 <span class="org-starter-kit-paren">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">starter-kit-packages</span>
-  <span class="org-starter-kit-paren">(</span>list 'yasnippet-bundle 'color-theme<span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span>list 'yasnippet-bundle<span class="org-starter-kit-paren">)</span>
   <span class="org-doc">"Libraries that should be installed by default."</span><span class="org-starter-kit-paren">)</span>
 
 <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> package-archive-contents
@@ -527,6 +515,7 @@ interested in the actual code implementing the starter kit.
 <span class="org-starter-kit-paren">(</span><span class="org-keyword">dolist</span> <span class="org-starter-kit-paren">(</span>package starter-kit-packages<span class="org-starter-kit-paren">)</span>
   <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>package-installed-p package<span class="org-starter-kit-paren">)</span>
     <span class="org-starter-kit-paren">(</span>package-install package<span class="org-starter-kit-paren">)))</span>
+
 </pre>
 
 
@@ -735,37 +724,33 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 </p>
 
 
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">flet</span> <span class="org-starter-kit-paren">((</span>in-kit <span class="org-starter-kit-paren">(</span>file <span class="org-type">&amp;optional</span> ext<span class="org-starter-kit-paren">)</span>
-               <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-starter-kit-paren">(</span>concat file ext<span class="org-starter-kit-paren">)</span> starter-kit-dir<span class="org-starter-kit-paren">)))</span>
-  <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>system-specific-config          <span class="org-starter-kit-paren">(</span>in-kit system-name <span class="org-string">".el"</span><span class="org-starter-kit-paren">))</span>
-        <span class="org-starter-kit-paren">(</span>system-specific-literate-config <span class="org-starter-kit-paren">(</span>in-kit system-name <span class="org-string">".org"</span><span class="org-starter-kit-paren">))</span>
-        <span class="org-starter-kit-paren">(</span>user-specific-config            <span class="org-starter-kit-paren">(</span>in-kit user-login-name <span class="org-string">".el"</span><span class="org-starter-kit-paren">))</span>
-        <span class="org-starter-kit-paren">(</span>user-specific-literate-config   <span class="org-starter-kit-paren">(</span>in-kit user-login-name <span class="org-string">".org"</span><span class="org-starter-kit-paren">))</span>
-        <span class="org-starter-kit-paren">(</span>user-specific-dir               <span class="org-starter-kit-paren">(</span>in-kit user-login-name<span class="org-starter-kit-paren">))</span>
-        <span class="org-starter-kit-paren">(</span>elisp-source-dir <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"src"</span><span class="org-starter-kit-paren">)))</span>
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">flet</span> <span class="org-starter-kit-paren">((</span>sk-load <span class="org-starter-kit-paren">(</span>base<span class="org-starter-kit-paren">)</span>
+         <span class="org-starter-kit-paren">(</span><span class="org-keyword">let*</span> <span class="org-starter-kit-paren">((</span>path     <span class="org-starter-kit-paren">(</span>expand-file-name base starter-kit-dir<span class="org-starter-kit-paren">))</span>
+                <span class="org-starter-kit-paren">(</span>literate <span class="org-starter-kit-paren">(</span>concat path <span class="org-string">".org"</span><span class="org-starter-kit-paren">))</span>
+                <span class="org-starter-kit-paren">(</span>plain    <span class="org-starter-kit-paren">(</span>concat path <span class="org-string">".el"</span><span class="org-starter-kit-paren">)))</span>
+           <span class="org-starter-kit-paren">(</span><span class="org-keyword">cond</span>
+            <span class="org-starter-kit-paren">((</span>file-exists-p literate<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>org-babel-load-file literate<span class="org-starter-kit-paren">))</span>
+            <span class="org-starter-kit-paren">((</span>file-exists-p plain<span class="org-starter-kit-paren">)</span>    <span class="org-starter-kit-paren">(</span>load plain<span class="org-starter-kit-paren">))))))</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>elisp-dir <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"src"</span> starter-kit-dir<span class="org-starter-kit-paren">))</span>
+        <span class="org-starter-kit-paren">(</span>user-dir <span class="org-starter-kit-paren">(</span>expand-file-name user-login-name starter-kit-dir<span class="org-starter-kit-paren">)))</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">add the src directory to the load path</span>
-    <span class="org-starter-kit-paren">(</span>add-to-list 'load-path elisp-source-dir<span class="org-starter-kit-paren">)</span>
+    <span class="org-starter-kit-paren">(</span>add-to-list 'load-path elisp-dir<span class="org-starter-kit-paren">)</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">load specific files</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p elisp-source-dir<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>default-directory elisp-source-dir<span class="org-starter-kit-paren">))</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p elisp-dir<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>default-directory elisp-dir<span class="org-starter-kit-paren">))</span>
         <span class="org-starter-kit-paren">(</span>normal-top-level-add-subdirs-to-load-path<span class="org-starter-kit-paren">)))</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p system-specific-config<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span>load system-specific-config<span class="org-starter-kit-paren">))</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p system-specific-literate-config<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span>org-babel-load-file system-specific-literate-config<span class="org-starter-kit-paren">))</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p user-specific-config<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span>load user-specific-config<span class="org-starter-kit-paren">))</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p user-specific-literate-config<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span>org-babel-load-file user-specific-literate-config<span class="org-starter-kit-paren">))</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">add user's directory to the load path</span>
-    <span class="org-starter-kit-paren">(</span>add-to-list 'load-path user-specific-dir<span class="org-starter-kit-paren">)</span>
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">load system-specific config</span>
+    <span class="org-starter-kit-paren">(</span>sk-load system-name<span class="org-starter-kit-paren">)</span>
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">load user-specific config</span>
+    <span class="org-starter-kit-paren">(</span>sk-load user-login-name<span class="org-starter-kit-paren">)</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">load any files in the user's directory</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p user-specific-dir<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>default-directory user-specific-dir<span class="org-starter-kit-paren">))</span>
-        <span class="org-starter-kit-paren">(</span>mapc #'load
-              <span class="org-starter-kit-paren">(</span>directory-files user-specific-dir nil <span class="org-string">".*el$"</span><span class="org-starter-kit-paren">))</span>
-        <span class="org-starter-kit-paren">(</span>mapc #'org-babel-load-file
-              <span class="org-starter-kit-paren">(</span>directory-files user-specific-dir nil <span class="org-string">".*org$"</span><span class="org-starter-kit-paren">))))))</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p user-dir<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span>add-to-list 'load-path user-dir<span class="org-starter-kit-paren">)</span>
+      <span class="org-starter-kit-paren">(</span>mapc #'sk-load
+            <span class="org-starter-kit-paren">(</span>remove-duplicates
+             <span class="org-starter-kit-paren">(</span>mapcar #'file-name-sans-extension
+                     <span class="org-starter-kit-paren">(</span>directory-files user-dir t <span class="org-string">".*\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">org</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">el</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">$"</span><span class="org-starter-kit-paren">))</span>
+             <span class="org-builtin">:test</span> #'string=<span class="org-starter-kit-paren">)))))</span>
 </pre>
 
 
