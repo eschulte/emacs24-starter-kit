@@ -5,25 +5,16 @@ This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
 
 * Starter Kit Misc
 Things that don't fit anywhere else.
+
 ** Color Themes
-The [[http://www.nongnu.org/color-theme/][Color Themes]] package provides support for changing, saving,
-sharing Emacs color themes.  To view and apply color themes available
-on your system run =M-x color-theme-select=.  See the color theme
-website and EmacsWiki pages for more information.
-- http://www.nongnu.org/color-theme/
-- http://www.emacswiki.org/emacs/ColorTheme
+Emacs24 has build in support for saving and loading themes.
 
-Once you've selected a preferred color theme it can be installed by
-adding its function to your initialization.  For example
-#+begin_src emacs-lisp :tangle no
-  (color-theme-railscasts)
-#+end_src
-will load the =railscasts= color theme when Emacs starts.
+A Theme builder is available at http://elpa.gnu.org/themes/ along with
+a list of pre-built themes at http://elpa.gnu.org/themes/view.html.
 
-This code loads color-theme so that it is available by default.
-#+begin_src emacs-lisp :tangle no
-  (require 'color-theme)
-#+end_src
+Downloaded themes may be saved to the =themes/= directory in the base
+of the starter kit which ignored by git.  Once downloaded and
+evaluated a theme is activated using the =load-theme= function.
 
 ** Window systems
 #+srcname: starter-kit-window-view-stuff
