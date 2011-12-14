@@ -173,13 +173,6 @@ general starter-kit updates without conflict.
      be added to your load-path when Emacs starts up, and are
      guaranteed not to conflict with future starter-kit updates.
 
-- Making use of the two pre-installed libraries :: By default the
-     starter kit downloads and installs two generally helpful elisp
-     libraries.
-   - color-themes :: The starter-kit comes pre-bundled with a variety
-        of color themes.  See [[file:starter-kit-misc.org::*Color%20Themes][Color Themes]] for instructions on how to
-        change the colors used by Emacs.
-
 - Misc :: Some additional miscellaneous configuration and getting
      started suggestions
    - First see the [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html#Customization][Customization]] node in the Emacs manual.  Available
@@ -274,10 +267,6 @@ interested in the actual code implementing the starter kit.
     
     (defvar starter-kit-packages
       (list 'yasnippet-bundle)
-      ;; Unfortunately 'color-theme in marmalade is broken in marmalade.
-      ;; In the interum You can download a working color-theme.el from
-      ;; http://download.savannah.gnu.org/releases/color-theme/ and unpack
-      ;; it into your src/ directory
       "Libraries that should be installed by default.")
     
     (unless package-archive-contents

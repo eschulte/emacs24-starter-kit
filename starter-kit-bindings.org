@@ -41,16 +41,9 @@ Key Bindings.
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 #+end_src
 
-** Jump to a definition in the current file. (This is awesome.)
-#+begin_src emacs-lisp 
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
-#+end_src
-
 ** File finding
 #+begin_src emacs-lisp 
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
-(global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
-(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 (global-set-key (kbd "C-x C-p") 'find-file-at-point)
 (global-set-key (kbd "C-c y") 'bury-buffer)
 (global-set-key (kbd "C-c r") 'revert-buffer)
@@ -76,16 +69,18 @@ Key Bindings.
 #+end_src
 
 ** Help should search more than just commands
-+begin_src emacs-lisp 
-(global-set-key (kbd "C-h a") 'apropos)
-+end_src
+#+begin_src emacs-lisp 
+  (global-set-key (kbd "C-h a") 'apropos)
+#+end_src
 
 ** Activate occur easily inside isearch
 #+begin_src emacs-lisp 
-(define-key isearch-mode-map (kbd "C-o")
-  (lambda () (interactive)
-    (let ((case-fold-search isearch-case-fold-search))
-      (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
+  (define-key isearch-mode-map (kbd "C-o")
+    (lambda () (interactive)
+      (let ((case-fold-search isearch-case-fold-search))
+        (occur (if isearch-regexp
+                   isearch-string
+                 (regexp-quote isearch-string))))))
 #+end_src
 
 ** Org-mode
@@ -93,14 +88,14 @@ Two global binding for Org-mode (see [[file:starter-kit-org.org][starter-kit-org
 
 The [[http://orgmode.org/manual/Agenda-Views.html#Agenda-Views][Org-mode agenda]] is good to have close at hand
 #+begin_src emacs-lisp
-(define-key global-map "\C-ca" 'org-agenda)
+  (define-key global-map "\C-ca" 'org-agenda)
 #+end_src
 
 Org-mode supports [[http://orgmode.org/manual/Hyperlinks.html#Hyperlinks][links]], this command allows you to store links
 globally for later insertion into an Org-mode buffer.  See
 [[http://orgmode.org/manual/Handling-links.html#Handling-links][Handling-links]] in the Org-mode manual.
 #+begin_src emacs-lisp
-(define-key global-map "\C-cl" 'org-store-link)
+  (define-key global-map "\C-cl" 'org-store-link)
 #+end_src
 
 ** Rgrep
@@ -110,9 +105,4 @@ Rgrep is infinitely useful in multi-file projects.
 
 #+begin_src emacs-lisp
   (define-key global-map "\C-x\C-r" 'rgrep)
-#+end_src
-** Closing
-#+begin_src emacs-lisp 
-(provide 'starter-kit-bindings)
-;;; starter-kit-bindings.el ends here
 #+end_src
