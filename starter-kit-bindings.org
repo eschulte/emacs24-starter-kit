@@ -41,11 +41,6 @@ Key Bindings.
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 #+end_src
 
-** Jump to a definition in the current file. (This is awesome.)
-#+begin_src emacs-lisp 
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
-#+end_src
-
 ** File finding
 #+begin_src emacs-lisp 
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
