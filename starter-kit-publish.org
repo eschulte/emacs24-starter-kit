@@ -33,7 +33,7 @@ the documentation for the Starter Kit to html.
        :base-extension "org"
        :style "<link rel=\"stylesheet\" href=\"emacs.css\" type=\"text/css\"/>
   <style type=\"text/css\">
-    pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+    pre{background:#232323; color:#E6E1DC;}
     code{font-size:10pt; color:#353535;}
     .outline-text-2{margin-left: 1em;}
     .outline-text-3{margin-left: 2em;}
@@ -46,5 +46,5 @@ the documentation for the Starter Kit to html.
     (org-publish-project "starter-kit-documentation" 'force)
     ;; copy starter-kit.html to index.html
     (copy-file (expand-file-name "starter-kit.html" (expand-file-name "doc" this-dir))
-               (expand-file-name "index.html" (expand-file-name "doc" this-dir))))
+               (expand-file-name "index.html" (expand-file-name "doc" this-dir)) t))
 #+end_src
