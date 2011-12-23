@@ -7,12 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Starter Kit Bindings"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-12 14:03:22 MST"/>
+<meta name="generated" content="2011-12-23 11:19:35 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -20,19 +21,36 @@
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
- border: 1pt solid #AEBDCC;
-    padding: 5pt;
- font-family: courier, monospace;
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -43,7 +61,7 @@
   /*]]>*/-->
 </style><link rel="stylesheet" href="emacs.css" type="text/css"/>
 <style type="text/css">
-  pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+  pre{background:#232323; color:#E6E1DC;}
   code{font-size:10pt; color:#353535;}
   .outline-text-2{margin-left: 1em;}
   .outline-text-3{margin-left: 2em;}
@@ -191,30 +209,13 @@ Key Bindings.
 </div>
 
 <div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7">Jump to a definition in the current file. (This is awesome.)</h3>
+<h3 id="sec-1-7">File finding</h3>
 <div class="outline-text-3" id="text-1-7">
 
 
 
 
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-x C-i"</span><span class="org-starter-kit-paren">)</span> 'ido-imenu<span class="org-starter-kit-paren">)</span>
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8">File finding</h3>
-<div class="outline-text-3" id="text-1-8">
-
-
-
-
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-x M-f"</span><span class="org-starter-kit-paren">)</span> 'ido-find-file-other-window<span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-x C-M-f"</span><span class="org-starter-kit-paren">)</span> 'find-file-in-project<span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-x f"</span><span class="org-starter-kit-paren">)</span> 'recentf-ido-find-file<span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-x C-p"</span><span class="org-starter-kit-paren">)</span> 'find-file-at-point<span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-c y"</span><span class="org-starter-kit-paren">)</span> 'bury-buffer<span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-c r"</span><span class="org-starter-kit-paren">)</span> 'revert-buffer<span class="org-starter-kit-paren">)</span>
@@ -227,9 +228,9 @@ Key Bindings.
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9">Window switching. (C-x o goes to the next window)</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8">Window switching. (C-x o goes to the next window)</h3>
+<div class="outline-text-3" id="text-1-8">
 
 
 
@@ -244,9 +245,9 @@ Key Bindings.
 
 </div>
 
-<div id="outline-container-1-10" class="outline-3">
-<h3 id="sec-1-10">Indentation help</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9">Indentation help</h3>
+<div class="outline-text-3" id="text-1-9">
 
 
 
@@ -259,9 +260,9 @@ Key Bindings.
 
 </div>
 
-<div id="outline-container-1-11" class="outline-3">
-<h3 id="sec-1-11">If you want to be able to M-x without meta</h3>
-<div class="outline-text-3" id="text-1-11">
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10">If you want to be able to M-x without meta</h3>
+<div class="outline-text-3" id="text-1-10">
 
 
 
@@ -274,29 +275,14 @@ Key Bindings.
 
 </div>
 
-<div id="outline-container-1-12" class="outline-3">
-<h3 id="sec-1-12">Help should search more than just commands</h3>
-<div class="outline-text-3" id="text-1-12">
-
-<p>+begin_src emacs-lisp 
-(global-set-key (kbd "C-h a") 'apropos)
-+end_src
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-13" class="outline-3">
-<h3 id="sec-1-13">Activate occur easily inside isearch</h3>
-<div class="outline-text-3" id="text-1-13">
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11">Help should search more than just commands</h3>
+<div class="outline-text-3" id="text-1-11">
 
 
 
 
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>define-key isearch-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-o"</span><span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">()</span> <span class="org-starter-kit-paren">(</span>interactive<span class="org-starter-kit-paren">)</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>case-fold-search isearch-case-fold-search<span class="org-starter-kit-paren">))</span>
-      <span class="org-starter-kit-paren">(</span>occur <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> isearch-regexp isearch-string <span class="org-starter-kit-paren">(</span>regexp-quote isearch-string<span class="org-starter-kit-paren">)))))</span><span class="org-starter-kit-paren"><span class="org-column-marker-3">)</span></span>
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>global-set-key <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-h a"</span><span class="org-starter-kit-paren">)</span> 'apropos<span class="org-starter-kit-paren">)</span>
 </pre>
 
 
@@ -304,9 +290,29 @@ Key Bindings.
 
 </div>
 
-<div id="outline-container-1-14" class="outline-3">
-<h3 id="sec-1-14">Org-mode</h3>
-<div class="outline-text-3" id="text-1-14">
+<div id="outline-container-1-12" class="outline-3">
+<h3 id="sec-1-12">Activate occur easily inside isearch</h3>
+<div class="outline-text-3" id="text-1-12">
+
+
+
+
+<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>define-key isearch-mode-map <span class="org-starter-kit-paren">(</span>kbd <span class="org-string">"C-o"</span><span class="org-starter-kit-paren">)</span>
+  <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">()</span> <span class="org-starter-kit-paren">(</span>interactive<span class="org-starter-kit-paren">)</span>
+    <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>case-fold-search isearch-case-fold-search<span class="org-starter-kit-paren">))</span>
+      <span class="org-starter-kit-paren">(</span>occur <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> isearch-regexp
+                 isearch-string
+               <span class="org-starter-kit-paren">(</span>regexp-quote isearch-string<span class="org-starter-kit-paren">))))))</span>
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-13" class="outline-3">
+<h3 id="sec-1-13">Org-mode</h3>
+<div class="outline-text-3" id="text-1-13">
 
 <p>Two global binding for Org-mode (see <a href="starter-kit-org.html">starter-kit-org</a>)
 </p>
@@ -334,9 +340,9 @@ globally for later insertion into an Org-mode buffer.  See
 
 </div>
 
-<div id="outline-container-1-15" class="outline-3">
-<h3 id="sec-1-15">Rgrep</h3>
-<div class="outline-text-3" id="text-1-15">
+<div id="outline-container-1-14" class="outline-3">
+<h3 id="sec-1-14">Rgrep</h3>
+<div class="outline-text-3" id="text-1-14">
 
 <p>Rgrep is infinitely useful in multi-file projects.
 </p>
@@ -347,21 +353,6 @@ globally for later insertion into an Org-mode buffer.  See
 
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>define-key global-map <span class="org-string">"\C-x\C-r"</span> 'rgrep<span class="org-starter-kit-paren">)</span>
-</pre>
-
-</div>
-
-</div>
-
-<div id="outline-container-1-16" class="outline-3">
-<h3 id="sec-1-16">Closing</h3>
-<div class="outline-text-3" id="text-1-16">
-
-
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">provide</span> '<span class="org-constant">starter-kit-bindings</span><span class="org-starter-kit-paren">)</span>
-<span class="org-comment-delimiter">;;; </span><span class="org-comment">starter-kit-bindings.el ends here</span>
 </pre>
 
 </div>

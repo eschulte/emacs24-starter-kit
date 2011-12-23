@@ -7,12 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Starter Kit Lisp"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-12 14:03:20 MST"/>
+<meta name="generated" content="2011-12-23 11:19:33 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
   .todo   { color: red; }
   .done   { color: green; }
@@ -20,19 +21,36 @@
   .target { }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
   p.verse { margin-left: 3% }
   pre {
- border: 1pt solid #AEBDCC;
-    padding: 5pt;
- font-family: courier, monospace;
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
         font-size: 90%;
         overflow:auto;
   }
   table { border-collapse: collapse; }
-  td, th { vertical-align: top; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
   dt { font-weight: bold; }
   div.figure { padding: 0.5em; }
   div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
   .linenr { font-size:smaller }
   .code-highlighted {background-color:#ffff00;}
   .org-info-js_info-navigation { border-style:none; }
@@ -43,7 +61,7 @@
   /*]]>*/-->
 </style><link rel="stylesheet" href="emacs.css" type="text/css"/>
 <style type="text/css">
-  pre{background:#232323; color:#E6E1DC; padding:1em 1em 0 1em;}
+  pre{background:#232323; color:#E6E1DC;}
   code{font-size:10pt; color:#353535;}
   .outline-text-2{margin-left: 1em;}
   .outline-text-3{margin-left: 2em;}
