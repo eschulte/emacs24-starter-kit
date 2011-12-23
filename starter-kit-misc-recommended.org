@@ -11,7 +11,7 @@ enough to live in =starter-kit-misc.org=.
    :PROPERTIES:
    :CUSTOM_ID: window-system
    :END:
-#+srcname: starter-kit-window-view-stuff-recommended
+#+name: starter-kit-window-view-stuff-recommended
 #+begin_src emacs-lisp 
 (when window-system
   (tooltip-mode -1)
@@ -20,7 +20,7 @@ enough to live in =starter-kit-misc.org=.
 
 ** No Menu Bar                                                       :visual:
 You really don't need this; trust me.
-#+srcname: starter-kit-no-menu
+#+name: starter-kit-no-menu
 #+begin_src emacs-lisp 
 (menu-bar-mode -1)
 #+end_src

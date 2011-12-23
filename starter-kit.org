@@ -236,7 +236,7 @@ interested in the actual code implementing the starter kit.
 
 ** Starter kit basics
 - Load path etc.
-  #+srcname: starter-kit-load-paths
+  #+name: starter-kit-load-paths
   #+begin_src emacs-lisp
     (add-to-list 'load-path starter-kit-dir)
     (setq autoload-file (concat starter-kit-dir "loaddefs.el"))
@@ -247,7 +247,7 @@ interested in the actual code implementing the starter kit.
 - Ubiquitous Packages which should be loaded on startup rather than
   autoloaded on demand since they are likely to be used in every
   session.
-  #+srcname: starter-kit-load-on-startup
+  #+name: starter-kit-load-on-startup
   #+begin_src emacs-lisp
     (require 'cl)
     (require 'saveplace)
@@ -277,7 +277,7 @@ interested in the actual code implementing the starter kit.
   #+end_src
 
 - Functions for loading other parts of the starter kit
-  #+srcname: starter-kit-load
+  #+name: starter-kit-load
   #+begin_src emacs-lisp
     (defun starter-kit-load (file &optional header-or-tag)
       "Load configuration from other starter-kit-*.org files.
@@ -330,7 +330,7 @@ interested in the actual code implementing the starter kit.
   #+end_src
 
 - Work around a bug on OS X where system-name is FQDN.
-  #+srcname: starter-kit-osX-workaround
+  #+name: starter-kit-osX-workaround
   #+begin_src emacs-lisp
     (if (eq system-type 'darwin)
         (setq system-name (car (split-string system-name "\\."))))
@@ -412,7 +412,7 @@ you want to track the development versions of a project, or if a
 project is not in elpa.
 
 After we've loaded all the Starter Kit defaults, lets load the User's stuff.
-#+srcname: starter-kit-load-files
+#+name: starter-kit-load-files
 #+begin_src emacs-lisp
   (flet ((sk-load (base)
            (let* ((path     (expand-file-name base starter-kit-dir))
@@ -444,7 +444,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 #+end_src
 
 *** Settings from M-x customize
-#+srcname: m-x-customize-customizations
+#+name: m-x-customize-customizations
 #+begin_src emacs-lisp
   (load custom-file 'noerror)
 #+end_src

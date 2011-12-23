@@ -10,7 +10,7 @@ for this file) to jump to it.
 
 You should add registers here for the files you edit most often.
 
-#+srcname: starter-kit-registers
+#+name: starter-kit-registers
 #+begin_src emacs-lisp :results silent
   (dolist
       (r `((?i (file . ,(concat starter-kit-dir "init.el")))
