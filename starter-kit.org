@@ -221,7 +221,7 @@ you just can't live without, add it or let me know so I can add
 it. Take a look at what happens in [[file:init.el][init.el]] to get started.
 
 Files are licensed under the same license as Emacs unless otherwise
-specified. See the file COPYING for details.
+specified. See the file [[file:COPYING][COPYING]] for details.
 
 The latest version is at http://github.com/eschulte/emacs24-starter-kit/
 
