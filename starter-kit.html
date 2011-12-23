@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Emacs Starter Kit"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-23 11:19:30 MST"/>
+<meta name="generated" content="2011-12-23 11:23:53 MST"/>
 <meta name="author" content="Eric Schulte"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -485,9 +485,8 @@ interested in the actual code implementing the starter kit.
 
 <ul>
 <li>Load path etc.
-  #+srcname: starter-kit-load-paths
 
-
+  
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'load-path starter-kit-dir<span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span>setq autoload-file <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"loaddefs.el"</span><span class="org-starter-kit-paren">))</span>
@@ -500,9 +499,8 @@ interested in the actual code implementing the starter kit.
 <li>Ubiquitous Packages which should be loaded on startup rather than
   autoloaded on demand since they are likely to be used in every
   session.
-  #+srcname: starter-kit-load-on-startup
 
-
+  
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">cl</span><span class="org-starter-kit-paren">)</span>
 <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">saveplace</span><span class="org-starter-kit-paren">)</span>
@@ -538,9 +536,8 @@ interested in the actual code implementing the starter kit.
 
 </li>
 <li>Functions for loading other parts of the starter kit
-  #+srcname: starter-kit-load
 
-
+  
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-load</span> <span class="org-starter-kit-paren">(</span>file <span class="org-type">&amp;optional</span> header-or-tag<span class="org-starter-kit-paren">)</span>
   <span class="org-doc">"Load configuration from other starter-kit-*.org files.</span>
@@ -595,9 +592,8 @@ interested in the actual code implementing the starter kit.
 
 </li>
 <li>Work around a bug on OS X where system-name is FQDN.
-  #+srcname: starter-kit-osX-workaround
 
-
+  
 
 <pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>eq system-type 'darwin<span class="org-starter-kit-paren">)</span>
     <span class="org-starter-kit-paren">(</span>setq system-name <span class="org-starter-kit-paren">(</span>car <span class="org-starter-kit-paren">(</span>split-string system-name <span class="org-string">"\\."</span><span class="org-starter-kit-paren">))))</span>
