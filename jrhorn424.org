@@ -26,20 +26,6 @@ Lone require statements.
     (require 'autopair)
     (require 'deft)
    #+end_src
-** That Terrible Color Theme Package
-I had to manually add the code for color-theme-initialize from
-color-theme 6.0 to 6.1.1. Or something like that. Anyway, initialize
-it. 
-#+begin_src emacs-lisp
-  (require 'color-theme)
-  (color-theme-initialize)
-  
-  (add-to-list 'load-path "~/.emacs.d/elpa/color-theme-6.6.1/themes") ;themes directory
-  (require 'color-theme-subdued)
-  (color-theme-subdued)
-  ;; (require 'color-theme-less)
-  ;; (color-theme-less)
-#+end_src
 ** Markdown Mode
 #+begin_src emacs-lisp
   (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
@@ -85,26 +71,19 @@ startup files:
   
   (global-set-key (kbd "C-c C-x q") 'unfill-region)
 #+end_src
-*** Recent files by ido
+*** Jump to <++> Placeholders
+# #+begin_emacs-lisp 
+# : (global-set-key (kbd "C-c C-j") '(fset 'jump-to-placeholder
+# :   [?\C-s ?< ?\\ ?+ ?. ?  ?\C-? ?* ?\\ ?+ ?> ?\C-m ?\C-  ?\C-r ?< ?\\ ?+ ?\C-m])
+# : )
+# #+end_emacs-lisp
+*** Advise org-export to skip auto-insert
 #+begin_src emacs-lisp
-  (defun recentf-ido-find-file ()
-  "Find a recent file using Ido."
-  (interactive)
-  (let* ((file-assoc-list
-          (mapcar (lambda (x)
-                    (cons (file-name-nondirectory x)
-                          x))
-                  recentf-list))
-         (filename-list
-          (remove-duplicates (mapcar #'car file-assoc-list)
-                             :test #'string=))
-         (filename (ido-completing-read "Choose recent file: "
-                                        filename-list
-                                        nil
-                                        t)))
-    (when filename
-      (find-file (cdr (assoc filename
-                             file-assoc-list))))))
+  (defadvice org-export (around org-export-no-auto-insert)
+  (let ((auto-insert nil))
+  ad-do-it))
+  
+  (ad-activate 'org-export) 
 #+end_src
 ** Session Management
 *** Desktop
