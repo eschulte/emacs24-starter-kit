@@ -8,7 +8,7 @@ G-Client is part of T.V. Raman's [[http://code.google.com/p/emacspeak/][emacspea
 interaction with Google services (e.g., google-docs, google-calendar)
 from within Emacs.
 
-* Instillation
+* Installation
   :PROPERTIES:
   :results:  silent
   :CUSTOM_ID: instillation
