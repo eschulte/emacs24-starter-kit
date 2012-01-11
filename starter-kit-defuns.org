@@ -51,3 +51,25 @@ a lambda doesn't already exist in the list.
   "Enable things that are convenient across all coding buffers."
   (run-hooks 'starter-kit-coding-hook))
 #+end_src
+
+#+srcname: starter-kit-recentf-ido-find-file
+#+begin_src emacs-lisp 
+  (defun recentf-ido-find-file () 
+    "Find a recent file using Ido." 
+    (interactive) 
+    (let* ((file-assoc-list 
+            (mapcar (lambda (x) 
+                      (cons (file-name-nondirectory x) 
+                            x)) 
+                    recentf-list)) 
+           (filename-list 
+            (remove-duplicates (mapcar #'car file-assoc-list) 
+                               :test #'string=)) 
+           (filename (ido-completing-read "Choose recent file: " 
+                                          filename-list 
+                                          nil 
+                                          t))) 
+      (when filename 
+        (find-file (cdr (assoc filename 
+                               file-assoc-list)))))) 
+ #+end_src 
