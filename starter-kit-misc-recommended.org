@@ -7,6 +7,16 @@ This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
 Things that don't fit anywhere else, and which aren't quite universal
 enough to live in =starter-kit-misc.org=.
 
+** Check Dependencies
+
+Determine whether required packages are installed. If not, use ELPA to
+install them. Other dependencies are provided by Emacs 24.
+#+begin_src emacs-lisp
+  (dolist (package '(yaml-mode js2-mode))
+    (unless (package-installed-p package)
+      (package-install package)))
+#+end_src
+
 ** Window systems -- remove visual cruft                             :visual:
    :PROPERTIES:
    :CUSTOM_ID: window-system
@@ -25,7 +35,7 @@ You really don't need this; trust me.
 (menu-bar-mode -1)
 #+end_src
 
-** Nxhtml -- utilities for we development
+** Nxhtml -- utilities for web development
 [[http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html][Nxhtml]] is a large package of utilities for web development and for
 embedding multiple major modes in a single buffer.
 
