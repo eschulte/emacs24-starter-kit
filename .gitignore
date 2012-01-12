@@ -20,7 +20,8 @@ src/*
 themes/*
 url/*
 
-## exported files
+## exported and encrypted files
+*gpg
 *el
 *elc
 *html
