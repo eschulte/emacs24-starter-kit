@@ -37,12 +37,12 @@ Mail
 mail
 .newsrc-dribble
 .nnmail-cache
-/#.newsrc-dribble#
+#.newsrc-dribble#
 *.SCORE
 marks
-/.session
-/abbrev_defs
-/scratch
-/secret.org
+.session
+abbrev_defs
+scratch
+secret.org
 .emacs.desktop*
 .*~
