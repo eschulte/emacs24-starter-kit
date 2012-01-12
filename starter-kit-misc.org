@@ -6,6 +6,16 @@ This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
 * Starter Kit Misc
 Things that don't fit anywhere else.
 
+** Check Dependencies
+
+Determine whether required packages are installed. If not, use ELPA to
+install them. Other dependencies are provided by Emacs 24.
+#+begin_src emacs-lisp
+  (dolist (package '(magit))
+    (unless (package-installed-p package)
+      (package-install package)))
+#+end_src
+
 ** Color Themes
 Emacs24 has build in support for saving and loading themes.
 
