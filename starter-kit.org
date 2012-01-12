@@ -415,12 +415,14 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 #+name: starter-kit-load-files
 #+begin_src emacs-lisp
   (flet ((sk-load (base)
-           (let* ((path     (expand-file-name base starter-kit-dir))
-                  (literate (concat path ".org"))
-                  (plain    (concat path ".el")))
+           (let* ((path      (expand-file-name base starter-kit-dir))
+                  (literate  (concat path ".org"))
+                  (encrypted (concat path ".org.gpg"))
+                  (plain     (concat path ".el")))
              (cond
-              ((file-exists-p literate) (org-babel-load-file literate))
-              ((file-exists-p plain)    (load plain))))))
+              ((file-exists-p encrypted) (org-babel-load-file literate))
+              ((file-exists-p literate)  (org-babel-load-file literate))
+              ((file-exists-p plain)     (load plain))))))
     (let ((elisp-dir (expand-file-name "src" starter-kit-dir))
           (user-dir (expand-file-name user-login-name starter-kit-dir)))
       ;; add the src directory to the load path
