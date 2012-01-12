@@ -40,3 +40,9 @@ mail
 /#.newsrc-dribble#
 *.SCORE
 marks
+/.session
+/abbrev_defs
+/scratch
+/secret.org
+.emacs.desktop*
+.*~
