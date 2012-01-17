@@ -112,7 +112,7 @@ general starter-kit updates without conflict.
      you're unsure of your user name evaluate the following code block
      to find out.
      #+begin_src sh
-       echo $USER
+       echo $USER # note: on windows this is the USERNAME variable
      #+end_src
 
      If your configuration starts to feel cramped in a single file
