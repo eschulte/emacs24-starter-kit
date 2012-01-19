@@ -12,7 +12,7 @@ functions not go in hooks. Repeatedly evaling an add-to-list with a
 hook value will repeatedly add it since there's no way to ensure that
 a lambda doesn't already exist in the list.
 
-#+srcname: starter-kit-hook-functions
+#+name: starter-kit-hook-functions
 #+begin_src emacs-lisp
 (defun starter-kit-local-column-number-mode ()
   (make-local-variable 'column-number-mode)
@@ -29,23 +29,23 @@ a lambda doesn't already exist in the list.
   (whitespace-mode t))
 #+end_src
 
-#+srcname: starter-kit-add-local-column-number-mode
+#+name: starter-kit-add-local-column-number-mode
 #+begin_src emacs-lisp
 (add-hook 'starter-kit-coding-hook 'starter-kit-local-column-number-mode)
 #+end_src
 
-#+srcname: start-kit-add-local-comment-auto-fill
+#+name: start-kit-add-local-comment-auto-fill
 #+begin_src emacs-lisp
 (add-hook 'starter-kit-coding-hook 'starter-kit-local-comment-auto-fill)
 #+end_src
 
-#+srcname: starter-kit-add-pretty-lambdas
+#+name: starter-kit-add-pretty-lambdas
 #+begin_src emacs-lisp
   (when (window-system)
     (add-hook 'starter-kit-coding-hook 'starter-kit-pretty-lambdas))
 #+end_src
 
-#+srcname: starter-kit-run-starter-kit-coding-hook
+#+name: starter-kit-run-starter-kit-coding-hook
 #+begin_src emacs-lisp
 (defun run-starter-kit-coding-hook ()
   "Enable things that are convenient across all coding buffers."

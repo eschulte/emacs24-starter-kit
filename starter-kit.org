@@ -112,7 +112,7 @@ general starter-kit updates without conflict.
      you're unsure of your user name evaluate the following code block
      to find out.
      #+begin_src sh
-       echo $USER
+       echo $USER # note: on windows this is the USERNAME variable
      #+end_src
 
      If your configuration starts to feel cramped in a single file
@@ -221,7 +221,7 @@ you just can't live without, add it or let me know so I can add
 it. Take a look at what happens in [[file:init.el][init.el]] to get started.
 
 Files are licensed under the same license as Emacs unless otherwise
-specified. See the file COPYING for details.
+specified. See the file [[file:COPYING][COPYING]] for details.
 
 The latest version is at http://github.com/eschulte/emacs24-starter-kit/
 
@@ -236,7 +236,7 @@ interested in the actual code implementing the starter kit.
 
 ** Starter kit basics
 - Load path etc.
-  #+srcname: starter-kit-load-paths
+  #+name: starter-kit-load-paths
   #+begin_src emacs-lisp
     (add-to-list 'load-path starter-kit-dir)
     (setq autoload-file (concat starter-kit-dir "loaddefs.el"))
@@ -247,7 +247,7 @@ interested in the actual code implementing the starter kit.
 - Ubiquitous Packages which should be loaded on startup rather than
   autoloaded on demand since they are likely to be used in every
   session.
-  #+srcname: starter-kit-load-on-startup
+  #+name: starter-kit-load-on-startup
   #+begin_src emacs-lisp
     (require 'cl)
     (require 'saveplace)
@@ -277,7 +277,7 @@ interested in the actual code implementing the starter kit.
   #+end_src
 
 - Functions for loading other parts of the starter kit
-  #+srcname: starter-kit-load
+  #+name: starter-kit-load
   #+begin_src emacs-lisp
     (defun starter-kit-load (file &optional header-or-tag)
       "Load configuration from other starter-kit-*.org files.
@@ -330,7 +330,7 @@ interested in the actual code implementing the starter kit.
   #+end_src
 
 - Work around a bug on OS X where system-name is FQDN.
-  #+srcname: starter-kit-osX-workaround
+  #+name: starter-kit-osX-workaround
   #+begin_src emacs-lisp
     (if (eq system-type 'darwin)
         (setq system-name (car (split-string system-name "\\."))))
@@ -412,15 +412,19 @@ you want to track the development versions of a project, or if a
 project is not in elpa.
 
 After we've loaded all the Starter Kit defaults, lets load the User's stuff.
-#+srcname: starter-kit-load-files
+#+name: starter-kit-load-files
 #+begin_src emacs-lisp
   (flet ((sk-load (base)
-           (let* ((path     (expand-file-name base starter-kit-dir))
-                  (literate (concat path ".org"))
-                  (plain    (concat path ".el")))
+           (let* ((path          (expand-file-name base starter-kit-dir))
+                  (literate      (concat path ".org"))
+                  (encrypted-org (concat path ".org.gpg"))
+                  (plain         (concat path ".el"))
+                  (encrypted-el  (concat path ".el.gpg")))
              (cond
-              ((file-exists-p literate) (org-babel-load-file literate))
-              ((file-exists-p plain)    (load plain))))))
+              ((file-exists-p encrypted-org) (org-babel-load-file encrypted-org))
+              ((file-exists-p encrypted-el)  (load encrypted-el))
+              ((file-exists-p literate)      (org-babel-load-file literate))
+              ((file-exists-p plain)         (load plain))))))
     (let ((elisp-dir (expand-file-name "src" starter-kit-dir))
           (user-dir (expand-file-name user-login-name starter-kit-dir)))
       ;; add the src directory to the load path
@@ -444,7 +448,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 #+end_src
 
 *** Settings from M-x customize
-#+srcname: m-x-customize-customizations
+#+name: m-x-customize-customizations
 #+begin_src emacs-lisp
   (load custom-file 'noerror)
 #+end_src
