@@ -1,0 +1,30 @@
+[submodule "src/pony-mode"]
+	path = src/pony-mode
+	url = https://github.com/davidmiller/pony-mode.git
+[submodule "src/deft"]
+	path = src/deft
+	url = git://jblevins.org/git/deft.git
+[submodule "src/dirtree"]
+	path = src/dirtree
+	url = https://github.com/zkim/emacs-dirtree.git
+[submodule "src/fci"]
+	path = src/fci
+	url = https://github.com/alpaker/Fill-Column-Indicator.git
+[submodule "src/pymacs"]
+	path = src/pymacs
+	url = https://github.com/pinard/Pymacs
+[submodule "src/scratch"]
+	path = src/scratch
+	url = https://github.com/ieure/scratch-el.git
+[submodule "src/markdown-mode"]
+	path = src/markdown-mode
+	url = git://jblevins.org/git/markdown-mode.git
+[submodule "src/django-mode"]
+	path = src/django-mode
+	url = https://github.com/myfreeweb/django-mode.git
+[submodule "src/emacs-for-python"]
+	path = src/emacs-for-python
+	url = https://github.com/gabrielelanaro/emacs-for-python.git
+[submodule "src/yasnippet"]
+	path = src/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
