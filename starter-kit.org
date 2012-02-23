@@ -271,6 +271,7 @@ interested in the actual code implementing the starter kit.
       ;; occurs, requiring one to restart emacs and break work flow when it
       ;; comes up.
       ;; (list 'yasnippet-bundle)
+      ()
       "Libraries that should be installed by default.")
     
     (unless package-archive-contents
