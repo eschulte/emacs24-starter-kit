@@ -254,7 +254,7 @@ Cause flymake to show error in minibuffer when cursor is on line, rather
 than requiring a mouse-over.
 #+begin_src emacs-lisp
   ;; You can find this in emacs-for-python
-  (require 'flymake-cursor)
+  (load-library "flymake-cursor")
 #+end_src
 *** Flymake XMLlint
 Flymake seems to be picking up (x)html files, no matter what I do. When
