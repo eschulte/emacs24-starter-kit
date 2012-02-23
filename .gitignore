@@ -19,6 +19,7 @@ elpa/*
 src/*
 themes/*
 url/*
+snippets/*
 
 ## exported and encrypted files
 *gpg
@@ -49,3 +50,8 @@ secret.org
 *~
 .AppleDouble
 session*
+session
+bookmarks
+eproject*
+*.dat
+*.log
