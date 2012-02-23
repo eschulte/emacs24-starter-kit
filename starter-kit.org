@@ -266,7 +266,12 @@ interested in the actual code implementing the starter kit.
     (package-initialize)
     
     (defvar starter-kit-packages
-      (list 'yasnippet-bundle)
+      ;; Yasnippet-bundle is old and conflicts with django-html-mumamo-mode.
+      ;; Others may not use this mode, but it is crippling when the bug
+      ;; occurs, requiring one to restart emacs and break work flow when it
+      ;; comes up.
+      ;; (list 'yasnippet-bundle)
+      ()
       "Libraries that should be installed by default.")
     
     (unless package-archive-contents

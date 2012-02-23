@@ -1,0 +1,586 @@
+#+TITLE: Init File for user jrhorn424
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is *not* part of the [[file:starter-kit.org][Emacs Starter Kit]].
+
+* Jeffrey Horn
+** Activate Starter Kit Extensions
+#+begin_src emacs-lisp
+  (starter-kit-load "python")
+  (starter-kit-load "misc-recommended")
+  (starter-kit-load "org")
+#+end_src
+** The Cheese Stands Alone
+:PROPERTIES:
+:ID: DCEDAE21-FF35-4E00-A129-FE41DF7CCEDA
+:END:
+Lone require statements.
+#+begin_src emacs-lisp
+  (require 'info)
+  (require 'boxquote)
+  (require 'lisppaste)
+  (require 'xscheme)
+  (require 'dired) ; is there a more sensible way to trick this into
+                                          ; auto-loading?
+  (require 'ado-mode)
+  (require 'autopair)
+  (require 'deft)
+  (require 'dirtree)
+  (require 'fill-column-indicator)
+#+end_src
+** Key Bindings
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-M-r") 'org-capture)
+  (global-set-key (kbd "C-c SPC") 'deft)
+  (global-set-key (kbd "C-c c") 'customize-option)
+#+end_src
+** Make emacs ESHELL respect ZSH options
+This isn't enough on a Mac. The GUI emacs won't pick up shell path,
+presumably because the Fnder doesn't pick up the shell path. The
+[[http://stackoverflow.com/a/6415812/402618][solution]] requires using a function only called on Darwin machines.
+# #+begin_src emacs-lisp
+#   (defun set-exec-path-from-shell-PATH ()
+#     (let ((path-from-shell 
+#            (replace-regexp-in-string
+#             "[ \t\n]*$" ""
+#             (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+#       (setenv "PATH" path-from-shell)
+#       (setq exec-path (split-string path-from-shell path-separator))))
+#   (when (equal system-type 'darwin)
+#     (if window-system (set-exec-path-from-shell-PATH)))
+# #+end_src
+[[http://dskang.com/2011/04/28/emacs-path-problem-on-os-x/][This blog post]] discusses the myriad solutions and proffers an opinion
+on the best solution. It didn't work for me alone, but seems to work
+fine paired with the solution above.
+#+begin_src emacs-lisp
+  (defun env-line-to-cons (env-line)
+    "Convert a string of the form \"VAR=VAL\" to a
+  cons cell containing (\"VAR\" . \"VAL\")."
+    (if (string-match "\\([^=]+\\)=\\(.*\\)" env-line)
+        (cons (match-string 1 env-line) (match-string 2 env-line))))
+  
+  (defun interactive-env-alist (&optional shell-cmd env-cmd)
+    "Launch /usr/bin/env or the equivalent from a login
+  shell, parsing and returning the environment as an alist."
+    (let ((cmd (concat (or shell-cmd "$SHELL -lc")
+                       " "
+                       (or env-cmd "/usr/bin/env"))))
+      (mapcar 'env-line-to-cons
+              (remove-if
+               (lambda (str)
+                 (string-equal str ""))
+               (split-string (shell-command-to-string cmd) "[\r\n]")))))
+  
+  (defun setenv-from-cons (var-val)
+    "Set an environment variable from a cons cell containing
+  two strings, where the car is the variable name and cdr is
+  the value, e.g. (\"VAR\" . \"VAL\")"
+    (setenv (car var-val) (cdr var-val)))
+  
+  (defun setenv-from-shell-environment (&optional shell-cmd env-cmd)
+    "Apply the environment reported by `/usr/bin/env' (or env-cmd)
+  as launched by `$SHELL -lc' (or shell-cmd) to the current
+  environment."
+    (mapc 'setenv-from-cons (interactive-env-alist shell-cmd env-cmd)))
+  
+  (setenv-from-shell-environment)
+  (setq exec-path (split-string (getenv "PATH") path-separator))
+#+end_src
+** Auto-complete
+#+begin_src emacs-lisp
+  (require 'auto-complete-config)
+  (ac-config-default)
+  (require 'auto-complete)
+  
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;; Auto-completion
+  ;;;  Integrates:
+  ;;;   1) Rope
+  ;;;   2) Yasnippet
+  ;;;   all with AutoComplete.el
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (defun prefix-list-elements (list prefix)
+    (let (value)
+      (nreverse
+       (dolist (element list value)
+        (setq value (cons (format "%s%s" prefix element) value))))))
+  (defvar ac-source-rope
+    '((candidates
+       . (lambda ()
+           (prefix-list-elements (rope-completions) ac-target))))
+    "Source for Rope")
+  (defun ac-python-find ()
+    "Python `ac-find-function'."
+    (require 'thingatpt)
+    (let ((symbol (car-safe (bounds-of-thing-at-point 'symbol))))
+      (if (null symbol)
+          (if (string= "." (buffer-substring (- (point) 1) (point)))
+              (point)
+            nil)
+        symbol)))
+  (defun ac-python-candidate ()
+    "Python `ac-candidates-function'"
+    (let (candidates)
+      (dolist (source ac-sources)
+        (if (symbolp source)
+            (setq source (symbol-value source)))
+        (let* ((ac-limit (or (cdr-safe (assq 'limit source)) ac-limit))
+               (requires (cdr-safe (assq 'requires source)))
+               cand)
+          (if (or (null requires)
+                  (>= (length ac-target) requires))
+              (setq cand
+                    (delq nil
+                          (mapcar (lambda (candidate)
+                                    (propertize candidate 'source source))
+                                  (funcall (cdr (assq 'candidates source)))))))
+          (if (and (> ac-limit 1)
+                   (> (length cand) ac-limit))
+              (setcdr (nthcdr (1- ac-limit) cand) nil))
+          (setq candidates (append candidates cand))))
+      (delete-dups candidates)))
+  (add-hook 'python-mode-hook
+            (lambda ()
+                   (auto-complete-mode 1)
+                   (set (make-local-variable 'ac-sources)
+                        (append ac-sources '(ac-source-rope) '(ac-source-yasnippet)))
+                   (set (make-local-variable 'ac-find-function) 'ac-python-find)
+                   (set (make-local-variable 'ac-candidate-function) 'ac-python-candidate)
+                   (set (make-local-variable 'ac-auto-start) nil)))
+  ;;Ryan's python specific tab completion
+  (defun ryan-python-tab ()
+    ; Try the following:
+    ; 1) Do a yasnippet expansion
+    ; 2) Do a Rope code completion
+    ; 3) Do an indent
+    (interactive)
+    (if (eql (ac-start) 0)
+        (indent-for-tab-command)))
+  (defadvice ac-start (before advice-turn-on-auto-start activate)
+    (set (make-local-variable 'ac-auto-start) t))
+  (defadvice ac-cleanup (after advice-turn-off-auto-start activate)
+    (set (make-local-variable 'ac-auto-start) nil))
+  (define-key py-mode-map "\t" 'ryan-python-tab)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;; End Auto Completion
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#+end_src
+** Python Integration
+*** Install rope, ropemode, pymacs, ropemacs
+Install these packages in this order:
+1) [[http://rope.sourceforge.net/][rope]]
+2) [[http://pypi.python.org/pypi/ropemode][ropemode]]
+3) [[https://github.com/pinard/Pymacs][pymacs]]
+4) [[http://rope.sourceforge.net/ropemacs.html][ropemacs]]
+
+Use the dev versions. The rest of this setup is largely taken and
+modified from [[http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/][EnigmaCurry]].
+*** [[https://github.com/gabrielelanaro/emacs-for-python][emacs-for-python]] :disabled:
+# Enable all features.
+# #+begin_src emacs-lisp
+#   ;; (load-file "/Users/jrhorn424/.emacs.d/src/emacs-for-python/epy-init.el")
+#   (load-library "epy-init")
+# #+end_src
+# 
+# Enable only a few features.
+# #+begin_src emacs-lisp
+#   ;; (add-to-list 'load-path "path/to/emacs-for-python/") ;; tell where to load the various files
+#   ;; (require 'epy-setup) ;; It will setup other loads, it is required!
+#   ;; (require 'epy-python) ;; If you want the python facilities [optional]
+#   ;; (require 'epy-completion) ;; If you want the autocompletion settings [optional]
+#   ;; (require 'epy-editing) ;; For configurations related to editing [optional]
+#   ;; (require 'epy-bindings) ;; For my suggested keybindings [optional]
+# #+end_src
+# 
+# Enable flymake checker
+# #+begin_src emacs-lisp
+#   (epy-setup-checker "pyflakes %f")
+# #+end_src
+# 
+# Add django snippets.
+# # #+begin_src emacs-lisp
+# #   (epy-django-snippets)
+# # #+end_src
+# 
+# Use ipython as default interpreter.
+# #+begin_src emacs-lisp
+#   (epy-setup-ipython)
+#+end_src
+# 
+# Highlight indentation.
+# # #+begin_src emacs-lisp
+# #   (require 'highlight-indentation)
+# #   (add-hook 'python-mode-hook 'highlight-indentation)
+# # #+end_src
+*** Pymacs
+There's a problem on OSX where emacs is picking up the Mac OSX Python framework
+instead of using the one installed by homebrew. Let's make sure that this
+doesn't cause us issues. I tried managing this in the customize file, but
+it isn't sourced until after this file is loaded. Try commenting all this out
+first, and see if that works?
+#+begin_src emacs-lisp
+  (autoload 'pymacs-apply "pymacs")
+  (autoload 'pymacs-call "pymacs")
+  (autoload 'pymacs-eval "pymacs" nil t)
+  (autoload 'pymacs-exec "pymacs" nil t)
+  (autoload 'pymacs-load "pymacs" nil t)
+  (autoload 'pymacs-autoload "pymacs")
+
+  (setq pymacs-auto-restart 'ask)
+  (setq pymacs-timeout-at-start 60)
+#+end_src
+*** Ropemacs
+#+begin_src emacs-lisp
+  (pymacs-load "ropemacs" "rope-")
+  (setq ropemacs-enable-autoimport t)
+#+end_src
+*** PyFlakes
+Live, in-buffer notification of python errors.
+#+begin_src emacs-lisp
+  (when (load "flymake" t) 
+    (defun flymake-pyflakes-init () 
+      (let* ((temp-file (flymake-init-create-temp-buffer-copy 
+                         'flymake-create-temp-inplace)) 
+             (local-file (file-relative-name 
+                          temp-file 
+                          (file-name-directory buffer-file-name)))) 
+        (list "pyflakes" (list local-file)))) 
+    (add-to-list 'flymake-allowed-file-name-masks 
+                 '("\\.py\\'" flymake-pyflakes-init)))
+  (add-hook 'python-mode-hook 'flymake-mode)
+#+end_src
+
+Cause flymake to show error in minibuffer when cursor is on line, rather
+than requiring a mouse-over.
+#+begin_src emacs-lisp
+  ;; You can find this in emacs-for-python
+  (load-library "flymake-cursor")
+#+end_src
+*** Flymake XMLlint
+Flymake seems to be picking up (x)html files, no matter what I do. When
+editing those files, it might be nice to have the correct checker registered
+with flymake. In any case, I've changed my django templates to use the
+extension djhtml to avoid flymake being activated when I'm using them.
+#+begin_src emacs-lisp
+  ;; (defun flymake-xml-init ()
+  ;;   (list "xmllint" (list "--valid" (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))))
+
+  ;; (delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
+
+  (defun flymake-xml-init ())
+#+end_src
+*** Django
+The several options for syntax highlighting and convenience functions are
+detailed at the [[https://code.djangoproject.com/wiki/Emacs][django wiki]].
+
+django-mumamo provides great syntax highlighting, but isn't so great at adding
+yasnippets and other niceties. django-mode falls short on the syntax
+highlighting. pony-mode might have more features, or is just
+better-documented, but also lacks snippets for template tags.
+
+Which one doesn't choke on flymake?
+**** nxhtml django-mumamo
+#+begin_src emacs-lisp
+  (autoload 'django-html-mumamo-mode "~/.emacs.d/src/nxhtml/autostart.el")
+  (setq mumamo-background-colors nil)
+  (add-to-list 'auto-mode-alist '("\\.html$" . django-html-mumamo-mode))
+#+end_src
+**** Django-mode                                                   :disabled:
+Install dev version of  [[https://github.com/myfreeweb/django-mode][django-mode]]. Copy into src directory and sync
+up snippets.
+# #+begin_src emacs-lisp
+#   (require 'django-html-mode)
+#   (require 'django-mode)
+#   (add-to-list 'auto-mode-alist '("\\.html$" . django-html-mode))
+# #+end_src
+**** Pony-mode                                                     :disabled:
+# #+begin_src emacs-lisp
+#   (require 'pony-mode)
+# #+end_src
+** yasnippet
+Use trunk yasnippet instead of yasnippet-bundle. Make sure you install it
+into the src subdirectory.
+#+begin_src emacs-lisp
+  (require 'yasnippet) ;; not yasnippet-bundle
+  (yas/global-mode 1)
+#+end_src
+** Eproject/Dirtree Integration
+#+begin_src emacs-lisp
+  (defun ep-dirtree ()
+    (interactive)
+    (dirtree-in-buffer eproject-root t))
+#+end_src
+** Markdown Mode
+#+begin_src emacs-lisp
+  (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+  (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+#+end_src
+** [[http://sunsite.univie.ac.at/textbooks/octave/octave_34.html][Octave Mode]]
+To begin using Octave mode for all `.m' files you visit, add the
+following lines to a file loaded by Emacs at startup time, typically
+your `~/.emacs' file:
+#+begin_src emacs-lisp
+  (autoload 'octave-mode "octave-mod" nil t)
+  (setq auto-mode-alist
+        (cons '("\\.m$" . octave-mode) auto-mode-alist))
+#+end_src
+
+Finally, to turn on the abbrevs, auto-fill and font-lock features
+automatically, also add the following lines to one of the Emacs
+startup files:
+#+begin_src emacs-lisp
+  (add-hook 'octave-mode-hook
+            (lambda ()
+              (abbrev-mode 1)
+              (auto-fill-mode 1)
+              (if (eq window-system 'x)
+                  (font-lock-mode 1))))
+#+end_src
+** Custom Functions
+*** Unfill Paragraph and Region
+#+begin_src emacs-lisp
+  (defun unfill-paragraph ()
+    "Replace newline chars in current paragraph by single spaces.
+  This command does the reverse of `fill-paragraph'."
+    (interactive)
+    (let ((fill-column 90002000))
+      (fill-paragraph nil)))
+  
+  (defun unfill-region (start end)
+    "Replace newline chars in region by single spaces.
+  This command does the reverse of `fill-region'."
+    (interactive "r")
+    (let ((fill-column 90002000))
+      (fill-region start end)))
+  
+  (global-set-key (kbd "C-c C-x q") 'unfill-region)
+#+end_src
+*** Jump to <++> Placeholders
+# #+begin_emacs-lisp 
+# : (global-set-key (kbd "C-c C-j") '(fset 'jump-to-placeholder
+# :   [?\C-s ?< ?\\ ?+ ?. ?  ?\C-? ?* ?\\ ?+ ?> ?\C-m ?\C-  ?\C-r ?< ?\\ ?+ ?\C-m])
+# : )
+# #+end_emacs-lisp
+*** Advise org-export to skip auto-insert
+#+begin_src emacs-lisp
+  (defadvice org-export (around org-export-no-auto-insert)
+  (let ((auto-insert nil))
+  ad-do-it))
+  
+  (ad-activate 'org-export) 
+#+end_src
+** Session Management
+*** Desktop
+Currently maintained in Oh, and One More Thing.
+*** Session
+:PROPERTIES:
+:ID: D958011D-229E-4944-B6C1-768C970B30DE
+:END:
+#+begin_src emacs-lisp
+  (require 'session)
+  (add-hook 'after-init-hook 'session-initialize)
+#+end_src
+** IRC with RCIRC
+With help from [[http://www.emacswiki.org/emacs/rcircExampleSettings][EmacsWiki]].
+*** Setup and options
+:PROPERTIES:
+:ID: C8EC84EF-8EED-47D9-943D-7D64FC4479CE
+:END:
+#+begin_src emacs-lisp
+  (require 'rcirc)
+  (setq rcirc-debug-flag t)
+  (add-hook 'rcirc-mode-hook
+             (lambda ()
+               (set (make-local-variable 'scroll-conservatively)
+                    8192)))
+  (eval-after-load 'rcirc '(require 'rcirc-notify))
+#+end_src
+*** Delay Joining Channels
+:PROPERTIES:
+:ID: 572CC690-059E-4CB0-AC51-1247D55BF449
+:END:
+This prevents identd authentication issues when joining restricted
+channels on connect.
+#+begin_src emacs-lisp
+  (defun rcirc-join-channels (process channels)
+    "Hacked version to wait 10 seconds before joining CHANNELS."
+    (lexical-let ((process process)
+                  (channels channels))
+      (run-at-time 10 nil
+                   (lambda ()
+                     (save-window-excursion
+                       (with-rcirc-process-buffer process
+                         (dolist (channel channels)
+                           (rcirc-cmd-join
+                            channel process))))))))
+#+end_src
+*** Auto-away
+:PROPERTIES:
+:ID: CA414166-8CC1-49D8-A185-3D12925F3ECE
+:END:
+#+begin_src emacs-lisp
+  (defvar rcirc-auto-away-server-regexps nil
+    "List of regexps to match servers for auto-away.")
+  
+  (defvar rcirc-auto-away-after 1800
+    "Auto-away after this many seconds.")
+  
+  (defvar rcirc-auto-away-reason "idle"
+    "Reason sent to server when auto-away.")
+  
+  (defun rcirc-auto-away ()
+    (message "rcirc-auto-away")
+    (rcirc-auto-away-1 rcirc-auto-away-reason)
+    (add-hook 'post-command-hook 'rcirc-auto-unaway))
+  
+  (defun rcirc-auto-away-1 (reason)
+    (let ((regexp (mapconcat (lambda (x) (concat "\\(" x "\\)")) 
+                             rcirc-auto-away-server-regexps "\\|")))
+      (dolist (process (rcirc-process-list))
+        (when (string-match regexp (process-name process))
+          (rcirc-send-string process (concat "AWAY :" reason))))))
+  
+  (defun rcirc-auto-unaway ()
+    (remove-hook 'post-command-hook 'rcirc-auto-unaway)
+    (rcirc-auto-away-1 ""))
+  
+  (run-with-idle-timer rcirc-auto-away-after t 'rcirc-auto-away)
+  ;;(cancel-function-timers 'rcirc-auto-away)
+#+end_src
+** Scratch
+:PROPERTIES:
+:ID: B2F7225C-57A6-42EA-8A9C-49074ABC7ADD
+:END:
+When called, this nifty [[http://atomized.org/2010/08/scratch-buffers-for-emacs/][extension]] automatically creates a new scratch
+buffer based on the mode of the current buffer. 
+#+begin_src emacs-lisp
+(autoload 'scratch "scratch" nil t)
+#+end_src
+** Org-mode
+*** Setup
+#+begin_src emacs-lisp
+  (require 'org-exp)
+  (require 'org-latex)
+#+end_src
+*** Publishing
+#+begin_src emacs-lisp
+  (load-file "~/.emacs.d/org-projects.el")
+#+end_src
+** RefTex
+#+begin_src emacs-lisp
+  (defun org-mode-reftex-setup ()
+    (load-library "reftex")
+    (and (buffer-file-name)
+         (file-exists-p (buffer-file-name))
+         (reftex-parse-all))
+    (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
+    )
+  (add-hook 'org-mode-hook 'org-mode-reftex-setup)
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)     ; with AUCTeX LaTeX mode
+  (add-hook 'latex-mode-hook 'turn-on-reftex)     ; with Emacs latex mode
+  (setq reftex-plug-into-AUCTeX t)
+#+end_src
+** CDLaTeX
+#+begin_src emacs-lisp
+  (autoload 'cdlatex-mode "cdlatex" "CDLaTeX Mode" t)
+  (autoload 'turn-on-cdlatex "cdlatex" "CDLaTeX Mode" nil)
+  (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
+  (add-hook 'latex-mode-hook 'turn-on-cdlatex)   ; with Emacs latex mode
+#+end_src
+** Python
+This overrides the default python major mode that ships with emacs.
+#+begin_src emacs-lisp
+  (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+  (setq interpreter-mode-alist (cons '("python" . python-mode)
+                                     interpreter-mode-alist))
+  (autoload 'python-mode "python-mode" "Python editing mode." t)
+#+end_src
+** yasnippet
+The starter-kit handles yasnippet very well. The following code adds
+the ability to use =org-very-safe-expand= in a LaTeX indirect
+buffer. Thanks to [[http://notes.seanwhitton.com/2010/12/making-yasnippet-and-cdlatex-mode-play-nice-together.html][Sean Whitton]].
+#+begin_src emacs-lisp
+  (defun yas/advise-indent-function (function-symbol)
+    (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
+             ,(format
+               "Try to expand a snippet before point, then call `%s' as usual"
+               function-symbol)
+             (let ((yas/fallback-behavior nil))
+               (unless (and (interactive-p)
+                            (yas/expand))
+                 ad-do-it)))))
+  
+  (yas/advise-indent-function 'cdlatex-tab)
+#+end_src
+** w3m
+#+begin_src emacs-lisp
+  (require 'w3m-load)
+  (setq browse-url-browser-function 'w3m-browse-url)
+  (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+  (setq w3m-use-cookies t)
+  ;;(require 'mime-w3m)
+  ;; optional keyboard short-cut
+  ;;(global-set-key "\C-xm" 'browse-url-at-point)
+#+end_src
+** <<<Oh, and One More Thing>>>
+These commands should be last in the init file to minimize collateral
+damage if they generate errors.
+
+Commands which should only run in windowed emacsen:
+#+begin_src emacs-lisp
+  (when window-system
+    ;; (tabbar-mode 0)
+    ;; Emacs Desktop
+    (desktop-save-mode 1)
+    (setq desktop-save 'ask-if-exists)
+    (setq desktop-path nil)
+    (add-to-list 'desktop-path "~/.emacs.d/")
+    ;; Browser
+    (setq browse-url-browser-function 'browse-url-default-macosx-browser)
+  
+    (define-key dired-mode-map "o" 'dired-open-mac) ; is there something
+                                          ; to add that will
+                                          ; automatically call dired autoload?
+    (defun dired-open-mac ()
+      (interactive)
+      (let ((file-name (dired-get-file-for-visit)))
+        (if (file-exists-p file-name)
+            (shell-command (concat "open '" file-name "'" nil ))))))
+  (when (featurep 'aquamacs)
+    (setq pop-up-frames nil)
+    (setq aquamacs-save-options-on-quit nil)
+    (setq pop-up-windows nil)
+    (one-buffer-one-frame-mode -1)
+    (tabbar-mode -1)
+  )
+#+end_src
+
+Load up secret auth file.
+#+begin_src emacs-lisp
+ (org-babel-load-file "~/.emacs.d/secret.org")
+#+end_src
+
+#+begin_src emacs-lisp
+ (server-start)  
+#+end_src
+** More Sensible Defaults
+*** Set Custom File
+Consider setting auto-insert-mode, but note that it is annoying when
+org-mode exports new latex files. confirm-kill-emacs prevents
+accidental exiting and debug-on-error and debug-on-quit are extremely
+useful for obtaining assistance.
+
+Having backups breaks hard and soft links. Disable it altogether to
+prevent re-making links constantly.
+
+Now managed in [[file:jrhorn424-custom.el]].
+#+begin_src emacs-lisp
+  (setq custom-file "~/.emacs.d/jrhorn424-custom.el")
+  (load custom-file)
+#+end_src
+*** Bindings
+#+begin_src emacs-lisp
+  (global-set-key "\C-cm" 'menu-bar-open)
+  ;; (global-set-key (kbd "C-z") 'undo) ; use `fg` to resume a suspended emacs
+#+end_src
+
