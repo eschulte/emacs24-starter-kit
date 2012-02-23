@@ -22,9 +22,6 @@
 [submodule "src/django-mode"]
 	path = src/django-mode
 	url = https://github.com/myfreeweb/django-mode.git
-[submodule "src/emacs-for-python"]
-	path = src/emacs-for-python
-	url = https://github.com/gabrielelanaro/emacs-for-python.git
 [submodule "src/yasnippet"]
 	path = src/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
