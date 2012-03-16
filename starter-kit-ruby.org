@@ -90,9 +90,9 @@ Clear the compilation buffer between test runs.
 (add-hook 'ruby-mode-hook 'run-starter-kit-coding-hook)
 #+end_src
 
-#+begin_emacs-lisp
+#+begin_src emacs-lisp
 ;; (add-hook 'ruby-mode-hook 'idle-highlight)
-#+end_emacs-lisp
+#+end_src emacs-lisp
 
 ** Flymake
    :PROPERTIES:

@@ -64,9 +64,9 @@ evaluated a theme is activated using the =load-theme= function.
 #+end_src
 
 ** Save a list of recent files visited.
-#+begin_emacs-lisp 
+#+begin_src emacs-lisp 
 (recentf-mode 1)
-#+end_emacs-lisp
+#+end_src emacs-lisp
 
 ** Highlight matching parentheses when the point is on them.
 #+srcname: starter-kit-match-parens
