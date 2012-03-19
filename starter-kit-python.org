@@ -28,6 +28,10 @@ supplied by the Python distribution itself.
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 #+end_src
+Add =starter-kit-coding-hook= to programming modes.
+#+begin_src emacs-lisp
+(add-hook 'python-mode-hook 'run-starter-kit-coding-hook)
+#+end_src
 
 ** Use IPython if =ipython= command is present
    :PROPERTIES:
@@ -52,7 +56,3 @@ the preferred method python evaluation.
 (add-to-list 'auto-mode-alist '("\\.pxi\\'" . cython-mode))
 #+end_src
 
-** Add =starter-kit-coding-hook= to programming modes
-#+begin_src emacs-lisp
-(add-hook python-mode-hook 'run-starter-kit-coding-hook)
-#+end_src
