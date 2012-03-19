@@ -17,4 +17,5 @@ Helpers for the [[http://www.perl.org/][Perl]] programming language.
 (add-to-list 'auto-mode-alist '("\\.p[lm]$" . cperl-mode))
 (add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
 (add-to-list 'auto-mode-alist '("\\.tt$" . tt-mode))
+(add-hook 'cperl-mode-hook 'run-starter-kit-coding-hook)
 #+end_src

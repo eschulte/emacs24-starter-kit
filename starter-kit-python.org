@@ -51,3 +51,8 @@ the preferred method python evaluation.
 (add-to-list 'auto-mode-alist '("\\.pxd\\'" . cython-mode))
 (add-to-list 'auto-mode-alist '("\\.pxi\\'" . cython-mode))
 #+end_src
+
+** Add =starter-kit-coding-hook= to programming modes
+#+begin_src emacs-lisp
+(add-hook python-mode-hook 'run-starter-kit-coding-hook)
+#+end_src
