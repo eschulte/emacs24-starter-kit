@@ -424,7 +424,10 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
               ((file-exists-p encrypted-org) (org-babel-load-file encrypted-org))
               ((file-exists-p encrypted-el)  (load encrypted-el))
               ((file-exists-p literate)      (org-babel-load-file literate))
-              ((file-exists-p plain)         (load plain))))))
+              ((file-exists-p plain)         (load plain)))))
+         (remove-extension (name)
+           (string-match "\\(.*?\\)\.\\(org\\(\\.el\\)?\\|el\\)\\(\\.gpg\\)?$" name)
+           (match-string 1 name)))
     (let ((elisp-dir (expand-file-name "src" starter-kit-dir))
           (user-dir (expand-file-name user-login-name starter-kit-dir)))
       ;; add the src directory to the load path
@@ -442,8 +445,8 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
         (add-to-list 'load-path user-dir)
         (mapc #'sk-load
               (remove-duplicates
-               (mapcar #'file-name-sans-extension
-                       (directory-files user-dir t ".*\.\\(org\\|el\\)$"))
+               (mapcar #'remove-extension
+                       (directory-files user-dir t ".*\.\\(org\\|el\\)\\(\\.gpg\\)?$"))
                :test #'string=)))))
 #+end_src
 
