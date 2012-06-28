@@ -4,7 +4,7 @@ This should provide a saner set of defaults than you get normally with
 Emacs. It's intended for beginners, but provides a good elisp
 initialization structure for all levels of users.
 
-The main advantage of this Emacs Starter Kit are
+The main advantages of this Emacs Starter Kit are
 - better default settings
 - easy loading of many useful libraries and configurations
 - "literate" customization embedded in Org-mode files
@@ -14,5 +14,5 @@ The main advantage of this Emacs Starter Kit are
 
 The latest version is at http://github.com/eschulte/emacs24-starter-kit/
 
-For more information including use and instillation instructions see
+For more information including use and installation instructions see
 http://eschulte.github.com/emacs24-starter-kit/
