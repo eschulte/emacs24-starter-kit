@@ -429,14 +429,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
          (remove-extension (name)
            (string-match "\\(.*?\\)\.\\(org\\(\\.el\\)?\\|el\\)\\(\\.gpg\\)?$" name)
            (match-string 1 name)))
-    (let ((elisp-dir (expand-file-name "src" starter-kit-dir))
-          (user-dir (expand-file-name user-login-name starter-kit-dir)))
-      ;; add the src directory to the load path
-      (add-to-list 'load-path elisp-dir)
-      ;; load specific files
-      (when (file-exists-p elisp-dir)
-        (let ((default-directory elisp-dir))
-          (normal-top-level-add-subdirs-to-load-path)))
+    (let ((user-dir (expand-file-name user-login-name starter-kit-dir)))
       ;; load system-specific config
       (sk-load system-name)
       ;; load user-specific config

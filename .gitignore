@@ -51,3 +51,4 @@ secret.org
 .emacs.desktop*
 .*~
 agent/*
+/#starter-kit-registers.el#
