@@ -141,8 +141,9 @@ it's possible aspell isn't in your path
 
 ** Hippie expand: at times perhaps too hip
 #+begin_src emacs-lisp
-(delete 'try-expand-line hippie-expand-try-functions-list)
-(delete 'try-expand-list hippie-expand-try-functions-list)
+  (when (boundp 'hippie-expand-try-functions-list)
+    (delete 'try-expand-line hippie-expand-try-functions-list)
+    (delete 'try-expand-list hippie-expand-try-functions-list))
 #+end_src
 
 ** Don't clutter up directories with files~
