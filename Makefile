@@ -1,7 +1,7 @@
 # Name of your emacs binary
 EMACS=emacs
 
-BATCH=$(EMACS) --batch -Q --eval '(setq starter-kit-dir default-directory)'
+BATCH=$(EMACS) --batch -Q --eval '(require (quote org))' --eval '(setq starter-kit-dir default-directory)'
 
 FILES = starter-kit.org			\
 	starter-kit-bindings.org	\
