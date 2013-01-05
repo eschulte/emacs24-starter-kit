@@ -17,6 +17,9 @@ all: el
 el: $(FILES)
 	$(BATCH) --eval '(mapc (lambda (x) (org-babel-load-file (symbol-name x))) (quote ($(FILES))))'
 
+%.el: %.org
+	$(BATCH) --eval '(org-babel-load-file "$<")'
+
 doc: doc/index.html
 
 doc/index.html:
