@@ -33,7 +33,7 @@ evaluated a theme is activated using the =load-theme= function.
   (when window-system
     (setq frame-title-format '(buffer-file-name "%f" ("%b")))
     (blink-cursor-mode -1)
-    (mouse-wheel-mode t))
+    (when (require 'mwheel nil 'no-error) (mouse-wheel-mode t)))
   
   (set-terminal-coding-system 'utf-8)
   (set-keyboard-coding-system 'utf-8)
