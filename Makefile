@@ -1,7 +1,7 @@
 # Name of your emacs binary
 EMACS=emacs
 
-BATCH=$(EMACS) --batch -Q --eval '(setq starter-kit-dir default-directory)'
+BATCH=$(EMACS) --batch -Q --eval '(require (quote org))' --eval '(setq starter-kit-dir default-directory)'
 
 FILES = starter-kit.org			\
 	starter-kit-bindings.org	\
@@ -16,6 +16,9 @@ all: el
 
 el: $(FILES)
 	$(BATCH) --eval '(mapc (lambda (x) (org-babel-load-file (symbol-name x))) (quote ($(FILES))))'
+
+%.el: %.org
+	$(BATCH) --eval '(org-babel-load-file "$<")'
 
 doc: doc/index.html
 

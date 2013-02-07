@@ -46,8 +46,8 @@ the preferred method python evaluation.
    :CUSTOM_ID: cython
    :END:
 #+begin_src emacs-lisp
-(require 'cython-mode)
-(add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))
-(add-to-list 'auto-mode-alist '("\\.pxd\\'" . cython-mode))
-(add-to-list 'auto-mode-alist '("\\.pxi\\'" . cython-mode))
+  (when (require 'cython-mode nil 'no-error)
+    (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))
+    (add-to-list 'auto-mode-alist '("\\.pxd\\'" . cython-mode))
+    (add-to-list 'auto-mode-alist '("\\.pxi\\'" . cython-mode)))
 #+end_src
