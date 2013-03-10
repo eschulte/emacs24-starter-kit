@@ -30,6 +30,7 @@ combination with the sexp movement functions (=C-M-f= forward, =C-M-b=
 back, =C-M-u= up, =C-M-d= down)
 
 #+begin_src emacs-lisp
+(require 'paredit)
 (defun turn-on-paredit ()
   (paredit-mode +1))
 #+end_src
