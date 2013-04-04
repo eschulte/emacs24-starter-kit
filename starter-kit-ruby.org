@@ -137,7 +137,6 @@ Clear the compilation buffer between test runs.
 See [[http://rinari.rubyforge.org/][rinari.rubyforge]] for more information on rinari.
 
 #+begin_src emacs-lisp
-(setq rinari-major-modes
-      (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
-	    'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
+  (setq rinari-major-modes
+        '(dired-mode 'ruby-mode  'css-mode 'yaml-mode 'javascript-mode))
 #+end_src
