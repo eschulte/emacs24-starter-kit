@@ -34,8 +34,11 @@ supplied by the Python distribution itself.
    :CUSTOM_ID: ipython
    :END:
 If an =ipython= executable is on the path, then assume that IPython is
-the preferred method python evaluation.
-#+begin_src emacs-lisp
+the preferred method python evaluation.  To use IPython either remove
+the =:tangle no= from the following code block, or copy it's contents
+to your personal configuration.
+
+#+begin_src emacs-lisp :tangle no
   (when (executable-find "ipython")
     (require 'ipython)
     (setq org-babel-python-mode 'python-mode))
