@@ -263,7 +263,8 @@ interested in the actual code implementing the starter kit.
           '(("gnu"         . "http://elpa.gnu.org/packages/")
             ("original"    . "http://tromey.com/elpa/")
             ("org"         . "http://orgmode.org/elpa/")
-            ("marmalade"   . "http://marmalade-repo.org/packages/")))
+            ("marmalade"   . "http://marmalade-repo.org/packages/")
+            ("melpa"       . "http://melpa.milkbox.net/packages/")))
     (package-initialize)
     
     (defvar starter-kit-packages
