@@ -271,6 +271,14 @@ interested in the actual code implementing the starter kit.
       (list 'yasnippet)
       "Libraries that should be installed by default.")
     
+    ;; If `yasnippet-bundle' has previously been installed through ELPA,
+    ;; delete it before installing the new `yasnippet'
+    (let ((yas-bundle-desc (assq 'yasnippet-bundle package-alist)))
+      (when yas-bundle-desc
+        (package-delete "yasnippet-bundle"
+                        (package-version-join
+                         (package-desc-vers (cdr yas-bundle-desc))))))
+    
     (unless package-archive-contents
       (package-refresh-contents))
     (dolist (package starter-kit-packages)
