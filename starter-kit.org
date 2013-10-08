@@ -342,7 +342,9 @@ interested in the actual code implementing the starter kit.
 - Work around a bug on OS X where system-name is FQDN.
   #+name: starter-kit-osX-workaround
   #+begin_src emacs-lisp
-    (if (eq system-type 'darwin)
+    (if (or
+        (eq system-type 'darwin)
+        (eq system-type 'berkeley-unix))
         (setq system-name (car (split-string system-name "\\."))))
   #+end_src
 
