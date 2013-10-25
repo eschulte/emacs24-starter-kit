@@ -13,7 +13,6 @@ Support for the [[http://www.ruby-lang.org/en/][Ruby]] dynamic, open-source prog
      ;; work around possible elpa bug
      (ignore-errors (require 'ruby-compilation))
      (setq ruby-use-encoding-map nil)
-     (add-hook 'ruby-mode-hook 'inf-ruby-keys)
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
      (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
      (define-key ruby-mode-map (kbd "C-c l") "lambda")))
@@ -47,22 +46,22 @@ Support for the [[http://www.ruby-lang.org/en/][Ruby]] dynamic, open-source prog
    :END:
 
 #+begin_src emacs-lisp
-(defun pcomplete/rake ()
-  "Completion rules for the `ssh' command."
-  (pcomplete-here (pcmpl-rake-tasks)))
+  (defun pcomplete/rake ()
+    "Completion rules for the `ssh' command."
+    (pcomplete-here (pcmpl-rake-tasks)))
 
-(defun pcmpl-rake-tasks ()
-   "Return a list of all the rake tasks defined in the current
-projects.  I know this is a hack to put all the logic in the
-exec-to-string command, but it works and seems fast"
-   (delq nil (mapcar '(lambda(line)
-			(if (string-match "rake \\([^ ]+\\)" line) (match-string 1 line)))
-		     (split-string (shell-command-to-string "rake -T") "[\n]"))))
+  (defun pcmpl-rake-tasks ()
+    "Return a list of all the rake tasks defined in the current
+  projects.  I know this is a hack to put all the logic in the
+  exec-to-string command, but it works and seems fast"
+    (delq nil (mapcar (lambda (line)
+                        (if (string-match "rake \\([^ ]+\\)" line) (match-string 1 line)))
+                      (split-string (shell-command-to-string "rake -T") "[\n]"))))
 
-(defun rake (task)
-  (interactive (list (completing-read "Rake (default: default): "
-                                      (pcmpl-rake-tasks))))
-  (shell-command-to-string (concat "rake " (if (= 0 (length task)) "default" task))))
+  (defun rake (task)
+    (interactive (list (completing-read "Rake (default: default): "
+                                        (pcmpl-rake-tasks))))
+    (shell-command-to-string (concat "rake " (if (= 0 (length task)) "default" task))))
 #+end_src
 
 ** Compilation
@@ -137,7 +136,6 @@ Clear the compilation buffer between test runs.
 See [[http://rinari.rubyforge.org/][rinari.rubyforge]] for more information on rinari.
 
 #+begin_src emacs-lisp
-(setq rinari-major-modes
-      (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
-	    'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
+  (setq rinari-major-modes
+        '(dired-mode 'ruby-mode  'css-mode 'yaml-mode 'javascript-mode))
 #+end_src

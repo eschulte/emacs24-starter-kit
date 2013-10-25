@@ -263,12 +263,21 @@ interested in the actual code implementing the starter kit.
           '(("gnu"         . "http://elpa.gnu.org/packages/")
             ("original"    . "http://tromey.com/elpa/")
             ("org"         . "http://orgmode.org/elpa/")
-            ("marmalade"   . "http://marmalade-repo.org/packages/")))
+            ("marmalade"   . "http://marmalade-repo.org/packages/")
+            ("melpa"       . "http://melpa.milkbox.net/packages/")))
     (package-initialize)
     
     (defvar starter-kit-packages
-      (list 'yasnippet-bundle)
+      (list 'yasnippet)
       "Libraries that should be installed by default.")
+    
+    ;; If `yasnippet-bundle' has previously been installed through ELPA,
+    ;; delete it before installing the new `yasnippet'
+    (let ((yas-bundle-desc (assq 'yasnippet-bundle package-alist)))
+      (when yas-bundle-desc
+        (package-delete "yasnippet-bundle"
+                        (package-version-join
+                         (package-desc-vers (cdr yas-bundle-desc))))))
     
     (unless package-archive-contents
       (package-refresh-contents))
@@ -333,7 +342,9 @@ interested in the actual code implementing the starter kit.
 - Work around a bug on OS X where system-name is FQDN.
   #+name: starter-kit-osX-workaround
   #+begin_src emacs-lisp
-    (if (eq system-type 'darwin)
+    (if (or
+        (eq system-type 'darwin)
+        (eq system-type 'berkeley-unix))
         (setq system-name (car (split-string system-name "\\."))))
   #+end_src
 
@@ -377,7 +388,7 @@ everyone using the starter kit.
                                     (expand-file-name "src"
                                                       starter-kit-dir)))
     (require 'yasnippet)
-    (yas/initialize)
+    (yas-global-mode 1)
   #+end_src
 
   load the snippets defined in the =./snippets/= directory
