@@ -66,7 +66,8 @@ If you want to keep your regular =~/.emacs.d= in place and just launch
 a single instance using the starter kit, try the following invocation:
 
 #+begin_src sh
-  emacs -q -l ~/path/to/emacs24-starter-kit/init.el
+  emacs -q -l ~/path/to/emacs24-starter-kit/init.el \
+      --eval "(run-hooks 'after-init-hook)"
 #+end_src
 
 Note that having a =~/.emacs= file might override the starter kit

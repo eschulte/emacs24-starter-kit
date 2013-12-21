@@ -228,7 +228,8 @@ a single instance using the starter kit, try the following invocation:
 
 
 
-<pre class="src src-sh">emacs -q -l ~/path/to/emacs24-starter-kit/init.el
+<pre class="src src-sh">emacs -q -l ~/path/to/emacs24-starter-kit/init.el \
+      --eval <span class="org-string">"(run-hooks 'after-init-hook)"</span>
 </pre>
 
 
