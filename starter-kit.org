@@ -305,7 +305,7 @@ interested in the actual code implementing the starter kit.
     (unless package-archive-contents
       (package-refresh-contents))
     (dolist (package starter-kit-packages)
-      (unless (package-installed-p package)
+      (unless (or (starter-kit-loadable-p package) (package-installed-p package))
         (package-install package)))
   #+end_src
 

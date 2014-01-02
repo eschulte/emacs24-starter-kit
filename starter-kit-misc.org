@@ -12,7 +12,7 @@ Determine whether required packages are installed. If not, use ELPA to
 install them. Other dependencies are provided by Emacs 24.
 #+begin_src emacs-lisp
   (dolist (package '(magit))
-    (unless (package-installed-p package)
+    (unless (or (starter-kit-loadable-p package) (package-installed-p package))
       (package-install package)))
 #+end_src
 

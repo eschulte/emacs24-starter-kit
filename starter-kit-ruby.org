@@ -25,7 +25,7 @@ Support for the [[http://www.ruby-lang.org/en/][Ruby]] dynamic, open-source prog
 ** Yaml mode
 #+begin_src emacs-lisp
   (dolist (package '(yaml-mode))
-    (unless (package-installed-p package)
+    (unless (or (starter-kit-loadable-p package) (package-installed-p package))
       (package-install package)))
   (require 'yaml-mode)
   (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))

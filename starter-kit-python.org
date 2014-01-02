@@ -13,7 +13,7 @@ Determine whether required packages are installed. If not, use ELPA to
 install them.
 #+begin_src emacs-lisp
   (dolist (package '(python-mode ipython))
-    (unless (package-installed-p package)
+    (unless (or (starter-kit-loadable-p package) (package-installed-p package))
       (package-install package)))
 #+end_src
 
