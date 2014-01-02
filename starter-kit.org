@@ -240,6 +240,13 @@ interested in the actual code implementing the starter kit.
   #+name: starter-kit-load-paths
   #+begin_src emacs-lisp
     (add-to-list 'load-path starter-kit-dir)
+    (let ((elisp-dir (expand-file-name "src" starter-kit-dir)))
+      ;; add the src directory to the load path
+      (add-to-list 'load-path elisp-dir)
+      ;; load specific files
+      (when (file-exists-p elisp-dir)
+        (let ((default-directory elisp-dir))
+          (normal-top-level-add-subdirs-to-load-path))))
     (setq autoload-file (concat starter-kit-dir "loaddefs.el"))
     (setq package-user-dir (concat starter-kit-dir "elpa"))
     (setq custom-file (concat starter-kit-dir "custom.el"))
@@ -287,7 +294,7 @@ interested in the actual code implementing the starter kit.
         (package-install package)))
   #+end_src
 
-- Functions for loading other parts of the starter kit
+- Function for loading other parts of the starter kit
   #+name: starter-kit-load
   #+begin_src emacs-lisp
     (defun starter-kit-load (file &optional header-or-tag)
@@ -338,6 +345,21 @@ interested in the actual code implementing the starter kit.
                              body))))))))
                partial-file)
            file))))
+  #+end_src
+
+- Function to check if a packages exist in the load path.  This may be
+  used to preempt the installation of ELPA versions of packages whose
+  source may already be found in the load path.
+  #+name: starter-kit-loadable
+  #+begin_src emacs-lisp
+    (defun starter-kit-loadable-p (package)
+      "Check if PACKAGE is loadable from a directory in `load-path'."
+      (let ((load-file (concat (symbol-name package) ".el")))
+        (catch 'file-found
+          (dolist (dir load-path)
+            (let ((path (expand-file-name load-file dir)))
+              (when (file-exists-p path)
+                (throw 'file-found path)))))))
   #+end_src
 
 - Work around a bug on OS X where system-name is FQDN.
@@ -441,14 +463,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
          (remove-extension (name)
            (string-match "\\(.*?\\)\.\\(org\\(\\.el\\)?\\|el\\)\\(\\.gpg\\)?$" name)
            (match-string 1 name)))
-    (let ((elisp-dir (expand-file-name "src" starter-kit-dir))
-          (user-dir (expand-file-name user-login-name starter-kit-dir)))
-      ;; add the src directory to the load path
-      (add-to-list 'load-path elisp-dir)
-      ;; load specific files
-      (when (file-exists-p elisp-dir)
-        (let ((default-directory elisp-dir))
-          (normal-top-level-add-subdirs-to-load-path)))
+    (let ((user-dir (expand-file-name user-login-name starter-kit-dir)))
       ;; load system-specific config
       (sk-load system-name)
       ;; load user-specific config
