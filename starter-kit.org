@@ -288,19 +288,10 @@ interested in the actual code implementing the starter kit.
             ("melpa"       . "http://melpa.milkbox.net/packages/")))
     (package-initialize)
     
-    (defvar starter-kit-packages
-      (list 'yasnippet)
-      "Libraries that should be installed by default.")
+    (defvar starter-kit-packages nil
+      "Libraries that should be installed by default (currently none).")
     
-    ;; If `yasnippet-bundle' has previously been installed through ELPA,
-    ;; delete it before installing the new `yasnippet'
-    (let ((yas-bundle-desc (assq 'yasnippet-bundle package-alist)))
-      (when yas-bundle-desc
-        (package-delete "yasnippet-bundle"
-                        (package-version-join
-                         (package-desc-vers (cdr yas-bundle-desc))))))
-    
-    (unless package-archive-contents
+    (unless (or (null starter-kit-packages) package-archive-contents)
       (package-refresh-contents))
     (dolist (package starter-kit-packages)
       (unless (or (starter-kit-loadable-p package) (package-installed-p package))
@@ -395,42 +386,6 @@ everyone using the starter kit.
 - Registers for jumping to commonly used files in [[file:starter-kit-registers.org][starter-kit-registers]]
   #+begin_src emacs-lisp
   (starter-kit-load "starter-kit-registers.org")
-  #+end_src
-
-- [[http://code.google.com/p/yasnippet/][yasnippet]] is yet another snippet expansion system for Emacs.  It is
-  inspired by TextMate's templating syntax.
-  - watch the [[http://www.youtube.com/watch?v=vOj7btx3ATg][video on YouTube]]
-  - see the [[http://yasnippet.googlecode.com/svn/trunk/doc/index.html][intro and tutorial]]
-
-  load the yasnippet bundle
-  #+begin_src emacs-lisp
-    (add-to-list 'load-path
-                 (expand-file-name  "yasnippet"
-                                    (expand-file-name "src"
-                                                      starter-kit-dir)))
-    (require 'yasnippet)
-    (yas-global-mode 1)
-  #+end_src
-
-  load the snippets defined in the =./snippets/= directory
-  #+begin_src emacs-lisp
-    (yas/load-directory (expand-file-name "snippets" starter-kit-dir))
-  #+end_src
-
-  The latest version of yasnippets doesn't play well with Org-mode, the
-  following function allows these two to play nicely together.
-  #+begin_src emacs-lisp
-    (defun yas/org-very-safe-expand ()
-      (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
-    
-    (defun yas/org-setup ()
-      ;; yasnippet (using the new org-cycle hooks)
-      (make-variable-buffer-local 'yas/trigger-key)
-      (setq yas/trigger-key [tab])
-      (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-      (define-key yas/keymap [tab] 'yas/next-field))
-    
-    (add-hook 'org-mode-hook #'yas/org-setup)
   #+end_src
 
 ** Load User/System Specific Files
