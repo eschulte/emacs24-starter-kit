@@ -11,12 +11,7 @@ inspired by TextMate's templating syntax.
 
 Install yasnippet.
 #+begin_src emacs-lisp
-  (unless (or (null starter-kit-packages) package-archive-contents)
-        (package-refresh-contents))
-
-  (let ((package 'yasnippet))
-    (unless (or (starter-kit-loadable-p package) (package-installed-p package))
-      (package-install package)))
+  (starter-kit-install-if-needed 'yasnippet)
 
   ;; If `yasnippet-bundle' has previously been installed through ELPA,
   ;; delete it before installing the new `yasnippet'

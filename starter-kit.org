@@ -291,11 +291,15 @@ interested in the actual code implementing the starter kit.
     (defvar starter-kit-packages nil
       "Libraries that should be installed by default (currently none).")
     
-    (unless (or (null starter-kit-packages) package-archive-contents)
-      (package-refresh-contents))
-    (dolist (package starter-kit-packages)
-      (unless (or (starter-kit-loadable-p package) (package-installed-p package))
-        (package-install package)))
+    (defun starter-kit-install-if-needed (&rest packages)
+      "Install PACKAGES using ELPA if they are not loadable or installed locally."
+      (when packages
+        (unless package-archive-contents
+          (package-refresh-contents))
+        (dolist (package packages)
+          (unless (or (starter-kit-loadable-p package)
+                      (package-installed-p package))
+            (package-install package)))))
   #+end_src
 
 - Function for loading other parts of the starter kit

@@ -19,10 +19,8 @@ the documentation for the Starter Kit to html.
         (package-archives '(("original"    . "http://tromey.com/elpa/"))))
     ;; load up htmlize
     (package-initialize)
-    (let ((package 'htmlize))
-      (unless (or (member package package-activated-list)
-                  (functionp package))
-        (package-install package)))
+    (unless (functionp 'htmlize)
+      (starter-kit-install-if-needed 'htmlize))
     (require 'htmlize)
     (org-export-htmlize-generate-css)
     ;; define the org-publish-project for the starter kit
