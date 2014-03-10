@@ -239,7 +239,6 @@ interested in the actual code implementing the starter kit.
 - Load path etc.
   #+name: starter-kit-load-paths
   #+begin_src emacs-lisp
-    (add-to-list 'load-path starter-kit-dir)
     (let ((elisp-dir (expand-file-name "src" starter-kit-dir)))
       ;; add the src directory to the load path
       (add-to-list 'load-path elisp-dir)
