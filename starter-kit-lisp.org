@@ -29,6 +29,11 @@ much more comfortable experience.  This is especially useful in
 combination with the sexp movement functions (=C-M-f= forward, =C-M-b=
 back, =C-M-u= up, =C-M-d= down)
 
+
+#+begin_src emacs-lisp
+(starter-kit-install-if-needed 'paredit)
+#+end_src
+
 #+begin_src emacs-lisp
 (require 'paredit)
 (defun turn-on-paredit ()
@@ -82,6 +87,10 @@ back, =C-M-u= up, =C-M-d= down)
    :PROPERTIES:
    :CUSTOM_ID: clojure
    :END:
+
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'clojure-mode)
+#+end_src
 
 #+begin_src emacs-lisp
   (require 'clojure-mode)
