@@ -152,7 +152,7 @@ Provide templates for many standard operations.
 
 *** Install Yasnippet
 #+begin_src emacs-lisp
-  (starter-kit-install-if-needed 'yasnippet-bundle 'yasnippet)
+  (starter-kit-install-if-needed 'yasnippet)
 #+end_src
 
 *** Configure Yasnippet
