@@ -158,7 +158,7 @@ Provide templates for many standard operations.
 *** Configure Yasnippet
 #+begin_src emacs-lisp
   (add-hook 'scala-mode-hook '(lambda ()
-    (yas/minor-mode-on)))
+    (yas-minor-mode)))
 #+end_src
 
 ** Whitespace
