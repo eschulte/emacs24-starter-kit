@@ -199,6 +199,7 @@ generally useful please submit it to the starter kit core!
 - [[file:starter-kit-perl.org][perl]]
 - [[file:starter-kit-python.org][python]]
 - [[file:starter-kit-ruby.org][ruby]]
+- [[file:starter-kit-scala.org][scala]]
 
 ** Emacs Lisp Package Archive
    :PROPERTIES:
