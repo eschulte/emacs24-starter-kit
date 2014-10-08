@@ -25,7 +25,7 @@ url/*
 
 ## exported and encrypted files
 *gpg
-*el
+## *el
 *elc
 *html
 *tex
