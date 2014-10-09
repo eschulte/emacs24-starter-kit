@@ -46,8 +46,8 @@
  ;;     (set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding"))
 
       ;; you may want to add different for other charset in this way.
-      (set-fontset-font t 'han (font-spec :name "兰亭黑-简"))
-      )
+      (set-fontset-font t 'han (font-spec :name "兰亭黑-简" :size 16))
+)
 
 
 
@@ -68,6 +68,7 @@
       '("xelatex -interaction nonstopmode -output-directory %o %f"
         "xelatex -interaction nonstopmode -output-directory %o %f"
         "xelatex -interaction nonstopmode -output-directory %o %f"))
+
 (setq org-latex-to-pdf-process
       '("xelatex -interaction nonstopmode %f"
         "xelatex -interaction nonstopmode %f"))
@@ -94,11 +95,6 @@
 (require 'evil)
 (evil-mode 1)
 
-(require 'evil-exchange)
-;; change default key bindings (if you want) HERE
-;; (setq evil-exchange-key (kbd "zx"))
-(evil-exchange-install)
-
 (require 'evil-org)
 
 ;;======== FCI ========
@@ -124,10 +120,10 @@
 (require 'tabbar)
 (tabbar-mode 1)
 
-(setq tabbar-ruler-global-tabbar t) ; If you want tabbar
-(setq tabbar-ruler-global-ruler t) ; if you want a global ruler
-(setq tabbar-ruler-popup-menu t) ; If you want a popup menu.
-(setq tabbar-ruler-popup-toolbar t) ; If you want a popup toolbar
+;;(setq tabbar-ruler-global-tabbar t) ; If you want tabbar
+;;(setq tabbar-ruler-global-ruler t) ; if you want a global ruler
+;;(setq tabbar-ruler-popup-menu t) ; If you want a popup menu.
+;;(setq tabbar-ruler-popup-toolbar t) ; If you want a popup toolbar
 ;;(setq tabbar-ruler-popup-scrollbar t) ; If you want to only show the
                                       ; scroll bar when your mouse is moving.
 (require 'tabbar-ruler)
@@ -256,6 +252,15 @@
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+(setq lua-indent-level 2)
+
+;;(add-hook 'lua-mode-hook 
+;;          (lambda () (unless (fboundp 'lua-calculate-indentation-right-shift-next)
+;;                       (load-file (locate-file "my-lua.el" load-path)))))
+
+;;======== DTRT-INDENT ========
+;;(require 'dtrt-indent)
+;;(dtrt-indent-mode 1)
 
 
 ;;======== WEATHER-METRO ========
@@ -294,7 +299,7 @@
 (global-set-key "\C-cc" 'org-capture)
 
 (setq org-capture-templates 
-      '(("p" "Project" entry (file+headline (concat org-directory "/project.org") "projects") "** TODO %?\n %i\n  %a")
+      '(("p" "Project" entry (file+headline (concat org-directory "/project.org") "project") "** TODO %?\n %i\n  %a")
         ("i" "Inbox" entry (file (concat org-directory "/inbox.org")) "** TODO %? %^G %i\n %a")
         ("P" "Personal" entry (file+headline (concat org-directory "/personal.org") "personal") "** TODO %? %^G %a")
         ("n" "Note" entry (file+datetree (concat org-directory "/note.org")) "* %?\nEntered on %U\n %i\n  %a")
@@ -345,7 +350,6 @@
                       ("@document" . ?D)
                       (:endgroup . nil)
 ))
-
 
 
 
