@@ -46,7 +46,7 @@
  ;;     (set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding"))
 
       ;; you may want to add different for other charset in this way.
-      (set-fontset-font t 'han (font-spec :name "兰亭黑-简" :size 16))
+      (set-fontset-font t 'han (font-spec :name "兰亭黑-简"))
 )
 
 
@@ -143,6 +143,8 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
+(require 'auto-highlight-symbol)
+(global-auto-highlight-symbol-mode t)
 
 (require 'org-ac)
 (org-ac/config-default)
@@ -174,7 +176,7 @@
   )
 
 ;; tag list
-;; (setq tags-table-list '("~/Work/libraries/quick-3.2rc0/quick/framework"))
+(setq tags-table-list '("~/Work/libraries/quick-3.2rc1/quick/framework"))
 
 
 
