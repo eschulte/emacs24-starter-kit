@@ -1,4 +1,4 @@
-;;; My settings
+;; My settings
 (starter-kit-load "yasnippet")
 (starter-kit-load "misc-recommended")
 (starter-kit-load "org")
@@ -112,9 +112,12 @@
 
 
 ;;========== autopair =========
-(require 'autopair)  
-(autopair-global-mode)
+;;(require 'autopair)  
+;;(autopair-global-mode)
 
+;;========== SMARTPARENS =========
+(require 'smartparens-config)
+(smartparens-global-mode)
 
 ;;========== TABBAR ==========
 (require 'tabbar)
@@ -138,6 +141,15 @@
    '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
 
+;;======== COMPANY-MODE =========
+;;(add-hook 'after-init-hook 'global-company-mode)
+;;(setq company-auto-complete t)
+;;(setq company-idle-delay 0.1)
+;;(setq company-minimum-prefix-length 1)
+
+
+
+
 ;;======== AUTO_COMPLETE =========
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -146,38 +158,30 @@
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
 
-(require 'org-ac)
-(org-ac/config-default)
+;;(require 'org-ac)
+;;(org-ac/config-default)
 
 (require 'ac-helm)
 (global-set-key (kbd "C-:") 'ac-complete-with-helm)
 (define-key ac-complete-mode-map (kbd "C-:") 'ac-complete-with-helm)
 
 
-;; ac-etags
-(custom-set-variables
-  '(ac-etags-requires 1))
+(require 'auto-complete-etags)
+(defun ac-common-setup ()
+  (setq ac-sources (append ac-sources '(ac-source-etags))))
 
-(eval-after-load "etags"
-  '(progn
-      (ac-etags-setup)))
-
-(add-hook 'c-mode-common-hook 'ac-etags-ac-setup)
-(add-hook 'lua-mode-common-hook 'ac-etags-ac-setup)
 
 (setq path-to-ctags "/usr/local/Cellar/ctags/5.8/bin/ctags")
 (defun create-tags (dir-name)        
   "Create tags file."
   (interactive "DDirectory: ") 
   (shell-command 
-   (format "%s -f %s/tags -eR %s" path-to-ctags        
+   (format "%s -f %s/TAGS -eR %s" path-to-ctags        
            (directory-file-name dir-name) 
            (directory-file-name dir-name)))
   )
-
 ;; tag list
-(setq tags-table-list '("~/Work/libraries/quick-3.2rc1/quick/framework"))
-
+(setq tags-table-list '("~/Work/libraries/quick-3.2rc1/quick/framework/TAGS"))
 
 
 ;;======== MOVE-TEXT ========
@@ -261,8 +265,8 @@
 ;;                       (load-file (locate-file "my-lua.el" load-path)))))
 
 ;;======== DTRT-INDENT ========
-;;(require 'dtrt-indent)
-;;(dtrt-indent-mode 1)
+(require 'dtrt-indent)
+(dtrt-indent-mode 1)
 
 
 ;;======== WEATHER-METRO ========
