@@ -18,6 +18,7 @@
 ;;======== HIGHLIGHT-CURRENT_LINE ========
 (global-hl-line-mode t)
 
+
 ;;======== 滚动设置 ========
 (setq scroll-step 1
       scroll-margin 3
@@ -32,6 +33,7 @@
 (when (eq system-type 'darwin)
       ;; default Latin font (e.g. Consolas)
       (set-face-attribute 'default nil :family "Anonymous Pro")
+;;     (set-face-attribute 'default nil :family "Monaco")
 
       ;; default font size (140)
       ;;
@@ -46,7 +48,10 @@
  ;;     (set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding"))
 
       ;; you may want to add different for other charset in this way.
-      (set-fontset-font t 'han (font-spec :name "兰亭黑-简"))
+;;      (set-fontset-font t 'han (font-spec :name "兰亭黑-简"))
+;;      (set-fontset-font t 'han (font-spec :name "圆体-简"))
+      (set-fontset-font t 'han (font-spec :name "冬青黑体简体中文"))
+      
 )
 
 
@@ -78,10 +83,13 @@
 ;;(require 'color-theme)
 ;;(color-theme-initialize)
 ;;(color-theme-billw)
-(require 'color-theme-sanityinc-tomorrow)
-(color-theme-sanityinc-tomorrow--define-theme night)
+;;(require 'color-theme-sanityinc-tomorrow)
+;;(color-theme-sanityinc-tomorrow--define-theme night)
+(load-theme 'anti-zenburn t)
+;;(load-theme 'zenburn t)
 
-
+;;======== BUFF-MOVE ========
+(require 'buffer-move)
 
 ;;======== EVIL ========
 (require 'evil-leader)
@@ -104,11 +112,20 @@
 ;;======== POWERLINE =======
 ;;(require 'powerline)
 ;;(powerline-default-theme)
-(setq powerline-arrow-shape 'arrow)
+;;(setq powerline-arrow-shape 'arrow)
 ;;(setq powerline-arrow-shape 'arrow14) ;; best for small fonts
 (require 'powerline-evil)
 ;;(powerline-center-evil-theme)
 (powerline-evil-vim-color-theme)
+
+
+;;========== SR-SPEEDBAR ==========
+(require 'sr-speedbar)
+(global-set-key (kbd "s-s") 'sr-speedbar-toggle)
+(add-hook 'speedbar-mode-hook '(lambda () (linum-mode -1)))
+(speedbar-add-supported-extension ".lua")
+   (add-to-list 'speedbar-fetch-etags-parse-list
+    	    '("\\.lua" . speedbar-parse-c-or-c++tag))
 
 
 ;;========== autopair =========
@@ -122,7 +139,9 @@
 ;;========== TABBAR ==========
 (require 'tabbar)
 (tabbar-mode 1)
-
+(setq tabbar-use-images nil)
+(global-set-key [(meta j)] 'tabbar-backward)  
+(global-set-key [(meta k)] 'tabbar-forward)  
 ;;(setq tabbar-ruler-global-tabbar t) ; If you want tabbar
 ;;(setq tabbar-ruler-global-ruler t) ; if you want a global ruler
 ;;(setq tabbar-ruler-popup-menu t) ; If you want a popup menu.
@@ -185,8 +204,8 @@
 
 
 ;;======== MOVE-TEXT ========
-(require 'move-text)
-(move-text-default-bindings)
+;;(require 'move-text)
+;;(move-text-default-bindings)
 
 ;;======== DIRED-SINGLE ======
 (autoload 'dired-single-buffer "dired-single" "" t)
@@ -233,8 +252,9 @@
 
 ;;======== FLYCHECK =======
 (require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-check-syntax-automatically t)
+;;(add-hook 'after-init-hook #'global-flycheck-mode)
+(global-flycheck-mode)
+;;(setq flycheck-check-syntax-automatically 1)
 
 ;;======== HELM_FLYCHECK =========
 (eval-after-load 'flycheck
@@ -358,6 +378,33 @@
 ))
 
 
+
+;;======== CEDET =======
+;;(require 'cedet)
+;;(load-file "~/.emacs.d/cedet-1.0pre6/common/cedet.el")
+;;(setq stack-trace-on-error t)
+;;(global-semantic-tag-folding-mode 1)
+;;(global-ede-mode 1)
+;;(semantic-load-enable-minimum-features)
+;;(semantic-load-enable-code-helpers)
+
+;;======== ECB ========
+;;(require 'ecb)
+(require 'ecb-autoloads)
+(setq ecb-tip-of-the-day nil)
+(define-key global-map [(f3)] 'ecb-goto-window-directories)
+(define-key global-map [(f4)] 'ecb-goto-window-sources)
+(define-key global-map [(f5)] 'ecb-goto-window-methods)
+(define-key global-map [(f6)] 'ecb-goto-window-history)
+
+;;;; 隐藏和显示ecb窗口
+(define-key global-map [(control f1)] 'ecb-hide-ecb-windows)
+(define-key global-map [(control f2)] 'ecb-show-ecb-windows)
+
+(global-set-key [M-left]  'windmove-left)
+(global-set-key [M-right] 'windmove-right)
+(global-set-key [M-up]    'windmove-up)
+(global-set-key [M-down]  'windmove-down)
 
 ;; 开启后最大化窗口
 (custom-set-variables '(initial-frame-alist 
