@@ -1,73 +1,117 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Eshell</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Starter Kit Eshell"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-23 11:23:57 MST"/>
-<meta name="author" content="Eric Schulte"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-10-13 Mon 22:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-<style type="text/css">
-  pre{background:#232323; color:#E6E1DC;}
-  code{font-size:10pt; color:#353535;}
-  .outline-text-2{margin-left: 1em;}
-  .outline-text-3{margin-left: 2em;}
-  .outline-text-3{margin-left: 3em;}
 </style>
 <script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -89,54 +133,48 @@
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">Starter Kit Eshell</h1>
-
-<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+<p>
+This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Starter Kit Eshell</h2>
 <div class="outline-text-2" id="text-1">
-
-<p><a href="http://www.emacswiki.org/emacs/CategoryEshell">Eshell</a> is a great shell.
+<p>
+<a href="http://www.emacswiki.org/emacs/CategoryEshell">Eshell</a> is a great shell.
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq eshell-cmpl-cycle-completions nil
+<pre class="src src-emacs-lisp">(setq eshell-cmpl-cycle-completions nil
       eshell-save-history-on-exit t
-      eshell-cmpl-dir-ignore <span class="org-string">"\\`</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\.\\.?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">CVS</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">\\.svn</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">\\.git</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">/\\'"</span><span class="org-starter-kit-paren">)</span>
+      eshell-cmpl-dir-ignore <span style="font-style: italic;">"\\`</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">\\.\\.?</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">CVS</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">\\.svn</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">\\.git</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">/\\'"</span>)
 
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">eval-after-load</span> 'esh-opt
-  '<span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
-     <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">em-cmpl</span><span class="org-starter-kit-paren">)</span>
-     <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">em-prompt</span><span class="org-starter-kit-paren">)</span>
-     <span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">em-term</span><span class="org-starter-kit-paren">)</span>
-     <span class="org-comment-delimiter">;; </span><span class="org-comment"><span class="org-warning">TODO</span></span><span class="org-comment">: for some reason requiring this here breaks it, but</span>
-     <span class="org-comment-delimiter">;; </span><span class="org-comment">requiring it after an eshell session is started works fine.</span>
-     <span class="org-comment-delimiter">;; </span><span class="org-comment">(require 'eshell-vc)</span>
-     <span class="org-starter-kit-paren">(</span>setenv <span class="org-string">"PAGER"</span> <span class="org-string">"cat"</span><span class="org-starter-kit-paren">)</span>
-     <span class="org-comment-delimiter">; </span><span class="org-comment">(set-face-attribute 'eshell-prompt nil :foreground "turquoise1")</span>
-     <span class="org-starter-kit-paren">(</span>add-hook 'eshell-mode-hook <span class="org-comment-delimiter">;; </span><span class="org-comment">for some reason this needs to be a hook</span>
-               '<span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">()</span> <span class="org-starter-kit-paren">(</span>define-key eshell-mode-map <span class="org-string">"\C-a"</span> 'eshell-bol<span class="org-starter-kit-paren">)))</span>
-     <span class="org-starter-kit-paren">(</span>add-to-list 'eshell-visual-commands <span class="org-string">"ssh"</span><span class="org-starter-kit-paren">)</span>
-     <span class="org-starter-kit-paren">(</span>add-to-list 'eshell-visual-commands <span class="org-string">"tail"</span><span class="org-starter-kit-paren">)</span>
-     <span class="org-starter-kit-paren">(</span>add-to-list 'eshell-command-completions-alist
-                  '<span class="org-starter-kit-paren">(</span><span class="org-string">"gunzip"</span> <span class="org-string">"gz\\'"</span><span class="org-starter-kit-paren">))</span>
-     <span class="org-starter-kit-paren">(</span>add-to-list 'eshell-command-completions-alist
-                  '<span class="org-starter-kit-paren">(</span><span class="org-string">"tar"</span> <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\.tar|\\.tgz</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">\\.tar\\.gz</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">\\'"</span><span class="org-starter-kit-paren">))</span>
-     <span class="org-starter-kit-paren">(</span>add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color<span class="org-starter-kit-paren">)))</span>
+(eval-after-load 'esh-opt
+  '(<span style="font-weight: bold;">progn</span>
+     (<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">em-cmpl</span>)
+     (<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">em-prompt</span>)
+     (<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">em-term</span>)
+     <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">TODO: for some reason requiring this here breaks it, but</span>
+     <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">requiring it after an eshell session is started works fine.</span>
+     <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(require 'eshell-vc)</span>
+     (setenv <span style="font-style: italic;">"PAGER"</span> <span style="font-style: italic;">"cat"</span>)
+     <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">(set-face-attribute 'eshell-prompt nil :foreground "turquoise1")</span>
+     (add-hook 'eshell-mode-hook <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">for some reason this needs to be a hook</span>
+               '(<span style="font-weight: bold;">lambda</span> () (define-key eshell-mode-map <span style="font-style: italic;">"\C-a"</span> 'eshell-bol)))
+     (add-to-list 'eshell-visual-commands <span style="font-style: italic;">"ssh"</span>)
+     (add-to-list 'eshell-visual-commands <span style="font-style: italic;">"tail"</span>)
+     (add-to-list 'eshell-command-completions-alist
+                  '(<span style="font-style: italic;">"gunzip"</span> <span style="font-style: italic;">"gz\\'"</span>))
+     (add-to-list 'eshell-command-completions-alist
+                  '(<span style="font-style: italic;">"tar"</span> <span style="font-style: italic;">"</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">\\.tar|\\.tgz</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">\\.tar\\.gz</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">\\'"</span>))
+     (add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color)))
 </pre>
-
+</div>
 
 <p>
 The <code>eshell</code> directory holds alias definitions and history
@@ -146,16 +184,14 @@ point to the <code>eshell</code> directory in this directory.  The <code>alias</
 is pre-populated with some generally applicable aliases.
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq eshell-directory-name
-      <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"./"</span> <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"eshell"</span> starter-kit-dir<span class="org-starter-kit-paren">)))</span>
+<pre class="src src-emacs-lisp">(setq eshell-directory-name
+      (expand-file-name <span style="font-style: italic;">"./"</span> (expand-file-name <span style="font-style: italic;">"eshell"</span> starter-kit-dir)))
 </pre>
-
-
 </div>
 </div>
 </div>
-
+</div>
 </body>
 </html>

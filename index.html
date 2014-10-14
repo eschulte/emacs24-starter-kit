@@ -1,73 +1,117 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Emacs Starter Kit</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Emacs Starter Kit"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-23 11:33:04 MST"/>
-<meta name="author" content="Eric Schulte"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-10-13 Mon 22:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-<style type="text/css">
-  pre{background:#232323; color:#E6E1DC;}
-  code{font-size:10pt; color:#353535;}
-  .outline-text-2{margin-left: 1em;}
-  .outline-text-3{margin-left: 2em;}
-  .outline-text-3{margin-left: 3em;}
 </style>
 <script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -89,30 +133,10 @@
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">Emacs Starter Kit</h1>
-
-<blockquote>
-
-<p>Emacs outshines all other editing software in approximately the same
-way that the noonday sun does the stars. It is not just bigger and
-brighter; it simply makes everything else vanish.
-</p>
-<p>
-&ndash; Neal Stephenson, "In the Beginning was the Command Line"
-</p>
-</blockquote>
-
-
-
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -137,18 +161,31 @@ brighter; it simply makes everything else vanish.
 </ul>
 </div>
 </div>
+<blockquote>
+<p>
+Emacs outshines all other editing software in approximately the same
+way that the noonday sun does the stars. It is not just bigger and
+brighter; it simply makes everything else vanish.
+</p>
+
+<p>
+&#x2013; Neal Stephenson, "In the Beginning was the Command Line"
+</p>
+</blockquote>
 
 <div id="outline-container-introduction" class="outline-2">
-<h2 id="introduction"><a name="sec-1" id="sec-1"></a>Introduction</h2>
+<h2 id="introduction"><a id="sec-1" name="sec-1"></a>Introduction</h2>
 <div class="outline-text-2" id="text-introduction">
-
-<p>This should provide a saner set of defaults than you get normally with
+<p>
+This should provide a saner set of defaults than you get normally with
 Emacs. It's intended for beginners, but provides a good elisp
 initialization structure for all levels of users.
 </p>
+
 <p>
 The main advantage of this Emacs Starter Kit are
-</p><ul>
+</p>
+<ul class="org-ul">
 <li>better default settings
 </li>
 <li>inclusion of many useful libraries and configurations
@@ -161,77 +198,74 @@ The main advantage of this Emacs Starter Kit are
 </li>
 </ul>
 
-
 <p>
 The latest version is at <a href="http://github.com/eschulte/emacs24-starter-kit/">http://github.com/eschulte/emacs24-starter-kit/</a>
 </p>
-
 </div>
 
 <div id="outline-container-learning" class="outline-3">
-<h3 id="learning"><a name="sec-1-1" id="sec-1-1"></a>Learning</h3>
+<h3 id="learning"><a id="sec-1-1" name="sec-1-1"></a>Learning</h3>
 <div class="outline-text-3" id="text-learning">
-
-<p>This won't teach you Emacs, but it'll make it easier to get
+<p>
+This won't teach you Emacs, but it'll make it easier to get
 comfortable. To access the tutorial, press control-h followed by t
 from within Emacs.
 </p>
+
 <p>
 The <a href="http://emacswiki.org">Emacs Wiki</a> is also very handy.
 </p>
 </div>
-
 </div>
 
 <div id="outline-container-installation" class="outline-3">
-<h3 id="installation"><a name="sec-1-2" id="sec-1-2"></a>Installation</h3>
+<h3 id="installation"><a id="sec-1-2" name="sec-1-2"></a>Installation</h3>
 <div class="outline-text-3" id="text-installation">
 
-
-<ol>
+<ol class="org-ol">
 <li>Install Emacs version 24 or greater.  Use your package manager if
-   you have one and it has an install candidate for Emacs 24,
-   otherwise install it directly <a href="http://savannah.gnu.org/projects/emacs/">from source</a>, or Mac binaries may be
-   downloaded from the <i>nightlies</i> section of
-   <a href="http://emacsformacosx.com/builds">http://emacsformacosx.com/builds</a>
+you have one and it has an install candidate for Emacs 24,
+otherwise install it directly <a href="http://savannah.gnu.org/projects/emacs/">from source</a>, or Mac binaries may be
+downloaded from the <i>nightlies</i> section of
+<a href="http://emacsformacosx.com/builds">http://emacsformacosx.com/builds</a>
 </li>
-<li>Checkout a version of the starter kit using git &ndash; if you're new to
-   git checkout this <a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html">git-tutorial</a>, also we'd highly recommend that you
-   try out <a href="http://zagadka.vm.bytemark.co.uk/magit/magit.html">magit</a> the Emacs mode for git interaction.
-
-
+<li>Checkout a version of the starter kit using git &#x2013; if you're new to
+git checkout this <a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html">git-tutorial</a>, also we'd highly recommend that you
+try out <a href="http://zagadka.vm.bytemark.co.uk/magit/magit.html">magit</a> the Emacs mode for git interaction.
+<div class="org-src-container">
 
 <pre class="src src-sh">git clone http://github.com/eschulte/emacs24-starter-kit.git
 </pre>
-
+</div>
 </li>
-<li>Move the resulting directory to <code>~/.emacs.d</code> <sup><a class="footref" name="fnr.1" href="#fn.1">1</a></sup>
+<li>Move the resulting directory to <code>~/.emacs.d</code> <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </li>
 <li>Launch Emacs!
 </li>
 </ol>
 
-
 <p>
 After setup you may need to restart Emacs one or twice while it
-downloads packages from <a href="#sec-1-5">ELPA</a> &ndash; errors parsing html from
+downloads packages from <a href="#sec-1-5">ELPA</a> &#x2013; errors parsing html from
 <code>*tromey.com:80*</code> can generally be safely ignored.
 </p>
+
 <p>
 If you are missing some autoloads after an update (should manifest
 itself as <code>void function: foobar</code> errors) try M-x regen-autoloads.
 </p>
+
 <p>
 If you want to keep your regular <code>~/.emacs.d</code> in place and just launch
 a single instance using the starter kit, try the following invocation:
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="src src-sh">emacs -q -l ~/path/to/emacs24-starter-kit/init.el \
-      --eval <span class="org-string">"(run-hooks 'after-init-hook)"</span>
+<pre class="src src-sh">emacs -q -l ~/path/to/emacs24-starter-kit/init.el <span style="font-style: italic;">\</span>
+    --eval <span style="font-style: italic;">"(run-hooks 'after-init-hook)"</span>
 </pre>
-
+</div>
 
 <p>
 Note that having a <code>~/.emacs</code> file might override the starter kit
@@ -239,28 +273,25 @@ loading, so if you've having trouble loading it, make sure that file
 is not present.
 </p>
 </div>
-
 </div>
 
 <div id="outline-container-structure" class="outline-3">
-<h3 id="structure"><a name="sec-1-3" id="sec-1-3"></a>Structure</h3>
+<h3 id="structure"><a id="sec-1-3" name="sec-1-3"></a>Structure</h3>
 <div class="outline-text-3" id="text-structure">
-
-<p>The <code>init.el</code> file is where everything begins. It is loaded
+<p>
+The <code>init.el</code> file is where everything begins. It is loaded
 automatically by Emacs on startup, its sole purpose is to load the
 elisp code embedded in this file.  This file then loads some minimal
 configuration which should be generally useful, and goes on to load
 user-specific configuration files from the following locations
-mentioned in <a href="#customizations">customizations</a> immediately below.
+mentioned in <i>customizations</i> immediately below.
 </p>
 </div>
-
 </div>
 
 <div id="outline-container-customization" class="outline-3">
-<h3 id="customization"><a name="sec-1-4" id="sec-1-4"></a>Customization</h3>
+<h3 id="customization"><a id="sec-1-4" name="sec-1-4"></a>Customization</h3>
 <div class="outline-text-3" id="text-customization">
-
 
 <p>
 The defaults built into the starter kit are only the beginning of
@@ -271,134 +302,131 @@ be easy for you to continue tracking your own personal customization
 inside the starter-kit while retaining your ability to pull down
 general starter-kit updates without conflict.
 </p>
-<dl>
-<dt>git branch</dt><dd>The first step to user-specific customization is (like
-     in any git project) to MAKE A BRANCH FOR YOUR LOCAL CHANGES.
-     Save the master branch for pulling down new versions of the
-     starter kit, and save all of your personal information in a
-     personal branch.  That way you never have to worry about
-     accidentally <code>git push</code>'ing up a patch with all of your gnus
-     email passwords.
 
+<dl class="org-dl">
+<dt> git branch </dt><dd>The first step to user-specific customization is (like
+in any git project) to MAKE A BRANCH FOR YOUR LOCAL CHANGES.
+Save the master branch for pulling down new versions of the
+starter kit, and save all of your personal information in a
+personal branch.  That way you never have to worry about
+accidentally <code>git push</code>'ing up a patch with all of your gnus
+email passwords.
 </dd>
-<dt>User specific config</dt><dd>Your personal configuration information can
-     be stored in a user-specific-config file.  This is the file named
-     after your user with the extensions <code>.el</code> or <code>.org</code> <sup><a class="footref" name="fnr.2" href="#fn.2">2</a></sup>.  If
-     you're unsure of your user name evaluate the following code block
-     to find out.
 
+<dt> User specific config </dt><dd>Your personal configuration information can
+be stored in a user-specific-config file.  This is the file named
+after your user with the extensions <code>.el</code> or <code>.org</code> <sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>.  If
+you're unsure of your user name evaluate the following code block
+to find out.
+<div class="org-src-container">
 
-
-<pre class="src src-sh"><span class="org-builtin">echo</span> $<span class="org-variable-name">USER</span>
+<pre class="src src-sh"><span style="font-weight: bold;">echo</span> $<span style="font-weight: bold; font-style: italic;">USER</span> <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">note: on windows this is the USERNAME variable</span>
 </pre>
-
+</div>
 
 <p>
-     If your configuration starts to feel cramped in a single file
-     (although with the nested headlines of an Org-mode file, that
-     could take a while) and you want to stretch your config's legs,
-     you can also create a directory named after your system user
-     name.  If a such a directory exists, it will be added to the
-     load-path, and any elisp or org-mode w/embedded elisp files in it
-     will be loaded.
+If your configuration starts to feel cramped in a single file
+(although with the nested headlines of an Org-mode file, that
+could take a while) and you want to stretch your config's legs,
+you can also create a directory named after your system user
+name.  If a such a directory exists, it will be added to the
+load-path, and any elisp or org-mode w/embedded elisp files in it
+will be loaded.
 </p>
 </dd>
-<dt>System specific config</dt><dd>Finally, you may want to configure
-     different settings for different machines.  The Starter Kit will
-     look for a file named after the current hostname ending in <code>.el</code>
-     or <code>.org</code> which will allow host-specific configuration.  If
-     you're unsure of your hostname the following can be executed to
-     find out.
 
-
+<dt> System specific config </dt><dd>Finally, you may want to configure
+different settings for different machines.  The Starter Kit will
+look for a file named after the current hostname ending in <code>.el</code>
+or <code>.org</code> which will allow host-specific configuration.  If
+you're unsure of your hostname the following can be executed to
+find out.
+<div class="org-src-container">
 
 <pre class="src src-sh">hostname
 </pre>
-
-
+</div>
 </dd>
-<dt>Activating more of the starter kit</dt><dd>By default, the starter kit
-     only includes customizations which are likely to be useful across
-     nearly any Emacs install (the only automatically loaded external
-     files are those listed in <a href="#load-the-starter-kit-core">Load the rest of the starter kit core</a>).
-     You may have noticed that there are many other
-     <code>starter-kit-*.org</code> files located in this directory.  A good
-     first step is to browse these files and begin optionally loading
-     those that look relevant to your workflow.  For example, if you
-     often work with Python source code you will probably want to load
-     <code>starter-kit-python.org</code> either by directly copying the sections
-     that look useful into your personal config, or simply by loading
-     the entire file directly with the following.
 
+<dt> Activating more of the starter kit </dt><dd>By default, the starter kit
+only includes customizations which are likely to be useful across
+nearly any Emacs install (the only automatically loaded external
+files are those listed in <i>Load the rest of the starter kit core</i>).
+You may have noticed that there are many other
+<code>starter-kit-*.org</code> files located in this directory.  A good
+first step is to browse these files and begin optionally loading
+those that look relevant to your workflow.  For example, if you
+often work with Python source code you will probably want to load
+<code>starter-kit-python.org</code> either by directly copying the sections
+that look useful into your personal config, or simply by loading
+the entire file directly with the following.
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"python"</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(starter-kit-load <span style="font-style: italic;">"python"</span>)
 </pre>
-
-
-<p>
-     Alternately you can load only one particular subsection of an
-     included file, for example to load just the "pretty-summary"
-     section of <code>starter-kit-gnus.org</code> run the following.
-</p>
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"gnus"</span> <span class="org-string">"pretty-summary"</span><span class="org-starter-kit-paren">)</span>
-</pre>
-
-
-<p>     
-     Finally you can load just those subsections of a file which have
-     a specific tag, so to load just the two sections of
-     <code>starter-kit-misc-recommended.org</code> which are tagged <code>visual</code> add
-     the following to your personal initialization.  Note: header id's
-     take priority over tags.
-</p>
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"gnus"</span> <span class="org-string">"visual"</span><span class="org-starter-kit-paren">)</span>
-</pre>
-
-
-</dd>
-<dt>Installing more elisp libraries</dt><dd>The easiest way to install new
-     libraries is through the Emacs Lisp Package Archive (see <a href="#emacs-lisp-package-archive">Emacs Lisp Package Archive</a> below).  When a library is not available
-     through ELPA you can grab it's source and place it directly in
-     the <code>src</code> directory.  Any packages found there will automatically
-     be added to your load-path when Emacs starts up, and are
-     guaranteed not to conflict with future starter-kit updates.
-
-</dd>
-<dt>Misc</dt><dd>Some additional miscellaneous configuration and getting
-     started suggestions
-<ul>
-<li>First see the <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html#Customization">Customization</a> node in the Emacs manual.  Available
-     online or through the <code>info</code> command (run with <code>C-h i</code>).
-</li>
-<li><code>grep</code>'ing through the <code>starter-kit-*</code> files in this directory
-     can provide useful examples for how to do things like install
-     major modes, define keybindings, etc..
-</li>
-<li>read the following <a href="http://www.gnu.org/software/emacs/elisp/html_node/Key-Binding-Conventions.html">Key-Binding-Conventions</a> before defining too
-     many personal key bindings
-</li>
-</ul>
-
-</dd>
-</dl>
-
-
-
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
+<p>
+Alternately you can load only one particular subsection of an
+included file, for example to load just the "pretty-summary"
+section of <code>starter-kit-gnus.org</code> run the following.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-load <span style="font-style: italic;">"gnus"</span> <span style="font-style: italic;">"pretty-summary"</span>)
+</pre>
+</div>
+
+<p>
+Finally you can load just those subsections of a file which have
+a specific tag, so to load just the two sections of
+<code>starter-kit-misc-recommended.org</code> which are tagged <code>visual</code> add
+the following to your personal initialization.  Note: header id's
+take priority over tags.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-load <span style="font-style: italic;">"gnus"</span> <span style="font-style: italic;">"visual"</span>)
+</pre>
+</div>
+</dd>
+
+<dt> Installing more elisp libraries </dt><dd>The easiest way to install new
+libraries is through the Emacs Lisp Package Archive (see <a href="#emacs-lisp-package-archive">Emacs
+Lisp Package Archive</a> below).  When a library is not available
+through ELPA you can grab it's source and place it directly in
+the <code>src</code> directory.  Any packages found there will automatically
+be added to your load-path when Emacs starts up, and are
+guaranteed not to conflict with future starter-kit updates.
+</dd>
+
+<dt> Misc </dt><dd>Some additional miscellaneous configuration and getting
+started suggestions
+<ul class="org-ul">
+<li>First see the <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html#Customization">Customization</a> node in the Emacs manual.  Available
+online or through the <code>info</code> command (run with <code>C-h i</code>).
+</li>
+<li><code>grep</code>'ing through the <code>starter-kit-*</code> files in this directory
+can provide useful examples for how to do things like install
+major modes, define keybindings, etc..
+</li>
+<li>read the following <a href="http://www.gnu.org/software/emacs/elisp/html_node/Key-Binding-Conventions.html">Key-Binding-Conventions</a> before defining too
+many personal key bindings
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+
+<div id="outline-container-sec-1-4-1" class="outline-4">
 <h4 id="sec-1-4-1">Optional starter kit packages</h4>
 <div class="outline-text-4" id="text-1-4-1">
-
-<p>The following customization packages are shipped with the starter kit
+<p>
+The following customization packages are shipped with the starter kit
 but are not loaded by default.  If you have code which you find
 generally useful please submit it to the starter kit core!
-</p><ul>
+</p>
+<ul class="org-ul">
 <li><a href="starter-kit-eshell.html">eshell</a>
 </li>
 <li><a href="starter-kit-g-client.html">g-client</a>
@@ -421,18 +449,16 @@ generally useful please submit it to the starter kit core!
 </li>
 <li><a href="starter-kit-ruby.html">ruby</a>
 </li>
+<li><a href="starter-kit-scala.html">scala</a>
+</li>
 </ul>
-
-
 </div>
 </div>
-
 </div>
 
 <div id="outline-container-emacs-lisp-package-archive" class="outline-3">
-<h3 id="emacs-lisp-package-archive"><a name="sec-1-5" id="sec-1-5"></a>Emacs Lisp Package Archive</h3>
+<h3 id="emacs-lisp-package-archive"><a id="sec-1-5" name="sec-1-5"></a>Emacs Lisp Package Archive</h3>
 <div class="outline-text-3" id="text-emacs-lisp-package-archive">
-
 
 <p>
 Libraries from <a href="http://tromey.com/elpa">ELPA</a> are preferred when available since dependencies
@@ -443,365 +469,319 @@ installed through ELPA will be stored in the <code>elpa/</code> sub-directory of
 this directory.
 </p>
 </div>
-
 </div>
 
 <div id="outline-container-contributing" class="outline-3">
-<h3 id="contributing"><a name="sec-1-6" id="sec-1-6"></a>Contributing</h3>
+<h3 id="contributing"><a id="sec-1-6" name="sec-1-6"></a>Contributing</h3>
 <div class="outline-text-3" id="text-contributing">
-
-<p>If you know your way around Emacs, please try out the starter kit as a
+<p>
+If you know your way around Emacs, please try out the starter kit as a
 replacement for your regular dotfiles for a while. If there's anything
 you just can't live without, add it or let me know so I can add
 it. Take a look at what happens in <a href="init.el">init.el</a> to get started.
 </p>
+
 <p>
 Files are licensed under the same license as Emacs unless otherwise
 specified. See the file <a href="COPYING">COPYING</a> for details.
 </p>
+
 <p>
 The latest version is at <a href="http://github.com/eschulte/emacs24-starter-kit/">http://github.com/eschulte/emacs24-starter-kit/</a>
 </p>
 </div>
 </div>
-
 </div>
 
 <div id="outline-container-implementation" class="outline-2">
-<h2 id="implementation"><a name="sec-2" id="sec-2"></a>Implementation</h2>
+<h2 id="implementation"><a id="sec-2" name="sec-2"></a>Implementation</h2>
 <div class="outline-text-2" id="text-implementation">
-
 
 <p>
 This section contains all code implementing the Emacs Starter Kit.  It
 is probably safe to stop reading at this point unless you are
 interested in the actual code implementing the starter kit.
 </p>
-
 </div>
 
-<div id="outline-container-2-1" class="outline-3">
+<div id="outline-container-sec-2-1" class="outline-3">
 <h3 id="sec-2-1">Starter kit basics</h3>
 <div class="outline-text-3" id="text-2-1">
-
-<ul>
+<ul class="org-ul">
 <li>Load path etc.
+<div class="org-src-container">
 
-  
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'load-path starter-kit-dir<span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span>setq autoload-file <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"loaddefs.el"</span><span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span>setq package-user-dir <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"elpa"</span><span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span>setq custom-file <span class="org-starter-kit-paren">(</span>concat starter-kit-dir <span class="org-string">"custom.el"</span><span class="org-starter-kit-paren">))</span>
+<pre class="src src-emacs-lisp" id="starter-kit-load-paths">(<span style="font-weight: bold;">let</span> ((elisp-dir (expand-file-name <span style="font-style: italic;">"src"</span> starter-kit-dir)))
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">add the src directory to the load path</span>
+  (add-to-list 'load-path elisp-dir)
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">load specific files</span>
+  (<span style="font-weight: bold;">when</span> (file-exists-p elisp-dir)
+    (<span style="font-weight: bold;">let</span> ((default-directory elisp-dir))
+      (normal-top-level-add-subdirs-to-load-path))))
+(setq autoload-file (concat starter-kit-dir <span style="font-style: italic;">"loaddefs.el"</span>))
+(setq package-user-dir (concat starter-kit-dir <span style="font-style: italic;">"elpa"</span>))
+(setq custom-file (concat starter-kit-dir <span style="font-style: italic;">"custom.el"</span>))
 </pre>
-
-
+</div>
 </li>
+
 <li>Ubiquitous Packages which should be loaded on startup rather than
-  autoloaded on demand since they are likely to be used in every
-  session.
+autoloaded on demand since they are likely to be used in every
+session.
+<div class="org-src-container">
 
-  
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">cl</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">saveplace</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">ffap</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">uniquify</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">ansi-color</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">recentf</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp" id="starter-kit-load-on-startup">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">cl</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">cl-lib</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">saveplace</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ffap</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">uniquify</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ansi-color</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">recentf</span>)
 </pre>
-
-
+</div>
 </li>
+
+<li>Function to check if a packages exist in the load path.  This may be
+used to preempt the installation of ELPA versions of packages whose
+source may already be found in the load path.
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp" id="starter-kit-loadable">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">starter-kit-loadable-p</span> (package)
+  <span style="font-style: italic;">"Check if PACKAGE is loadable from a directory in `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">load-path</span><span style="font-style: italic;">'."</span>
+  (<span style="font-weight: bold;">let</span> ((load-file (concat (symbol-name package) <span style="font-style: italic;">".el"</span>)))
+    (<span style="font-weight: bold;">catch</span> '<span style="font-weight: bold; text-decoration: underline;">file-found</span>
+      (<span style="font-weight: bold;">dolist</span> (dir load-path)
+        (<span style="font-weight: bold;">let</span> ((path (expand-file-name load-file dir)))
+          (<span style="font-weight: bold;">when</span> (file-exists-p path)
+            (<span style="font-weight: bold;">throw</span> '<span style="font-weight: bold; text-decoration: underline;">file-found</span> path)))))))
+</pre>
+</div>
+</li>
+
 <li>ELPA archive repositories and two packages to install by default.
+<div class="org-src-container">
 
+<pre class="src src-emacs-lisp">(setq package-archives
+      '((<span style="font-style: italic;">"gnu"</span>         . <span style="font-style: italic;">"http://elpa.gnu.org/packages/"</span>)
+        (<span style="font-style: italic;">"org"</span>         . <span style="font-style: italic;">"http://orgmode.org/elpa/"</span>)
+        (<span style="font-style: italic;">"melpa"</span>       . <span style="font-style: italic;">"http://melpa.milkbox.net/packages/"</span>)
+        (<span style="font-style: italic;">"marmalade"</span>   . <span style="font-style: italic;">"http://marmalade-repo.org/packages/"</span>)))
+(package-initialize)
 
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">starter-kit-packages</span> nil
+  <span style="font-style: italic;">"Libraries that should be installed by default (currently none)."</span>)
 
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq package-archives
-      '<span class="org-starter-kit-paren">((</span><span class="org-string">"original"</span>    . <span class="org-string">"http://tromey.com/elpa/"</span><span class="org-starter-kit-paren">)</span>
-        <span class="org-starter-kit-paren">(</span><span class="org-string">"gnu"</span>         . <span class="org-string">"http://elpa.gnu.org/packages/"</span><span class="org-starter-kit-paren">)</span>
-        <span class="org-starter-kit-paren">(</span><span class="org-string">"marmalade"</span>   . <span class="org-string">"http://marmalade-repo.org/packages/"</span><span class="org-starter-kit-paren">)))</span>
-<span class="org-starter-kit-paren">(</span>package-initialize<span class="org-starter-kit-paren">)</span>
-
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">defvar</span> <span class="org-variable-name">starter-kit-packages</span>
-  <span class="org-starter-kit-paren">(</span>list 'yasnippet-bundle<span class="org-starter-kit-paren">)</span>
-  <span class="org-doc">"Libraries that should be installed by default."</span><span class="org-starter-kit-paren">)</span>
-
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> package-archive-contents
-  <span class="org-starter-kit-paren">(</span>package-refresh-contents<span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">dolist</span> <span class="org-starter-kit-paren">(</span>package starter-kit-packages<span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>package-installed-p package<span class="org-starter-kit-paren">)</span>
-    <span class="org-starter-kit-paren">(</span>package-install package<span class="org-starter-kit-paren">)))</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">starter-kit-install-if-needed</span> (<span style="font-weight: bold; text-decoration: underline;">&amp;rest</span> packages)
+  <span style="font-style: italic;">"Install PACKAGES using ELPA if they are not loadable or installed locally."</span>
+  (<span style="font-weight: bold;">when</span> packages
+    (<span style="font-weight: bold;">unless</span> package-archive-contents
+      (package-refresh-contents))
+    (<span style="font-weight: bold;">dolist</span> (package packages)
+      (<span style="font-weight: bold;">unless</span> (or (starter-kit-loadable-p package)
+                  (package-installed-p package))
+        (package-install package)))))
 </pre>
-
-
+</div>
 </li>
-<li>Functions for loading other parts of the starter kit
 
-  
+<li>Function for loading other parts of the starter kit
+<div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-load</span> <span class="org-starter-kit-paren">(</span>file <span class="org-type">&amp;optional</span> header-or-tag<span class="org-starter-kit-paren">)</span>
-  <span class="org-doc">"Load configuration from other starter-kit-*.org files.</span>
-<span class="org-doc">If the optional argument is the id of a subtree then only</span>
-<span class="org-doc">configuration from within that subtree will be loaded.  If it is</span>
-<span class="org-doc">not an id then it will be interpreted as a tag, and only subtrees</span>
-<span class="org-doc">marked with the given tag will be loaded.</span>
+<pre class="src src-emacs-lisp" id="starter-kit-load">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">starter-kit-load</span> (file <span style="font-weight: bold; text-decoration: underline;">&amp;optional</span> header-or-tag)
+  <span style="font-style: italic;">"Load configuration from other starter-kit-*.org files.</span>
+<span style="font-style: italic;">If the optional argument is the id of a subtree then only</span>
+<span style="font-style: italic;">configuration from within that subtree will be loaded.  If it is</span>
+<span style="font-style: italic;">not an id then it will be interpreted as a tag, and only subtrees</span>
+<span style="font-style: italic;">marked with the given tag will be loaded.</span>
 
-<span class="org-doc">For example, to load all of starter-kit-lisp.org simply</span>
-<span class="org-doc">add (starter-kit-load \"lisp\") to your configuration.</span>
+<span style="font-style: italic;">For example, to load all of starter-kit-lisp.org simply</span>
+<span style="font-style: italic;">add (starter-kit-load \"lisp\") to your configuration.</span>
 
-<span class="org-doc">To load only the 'window-system' config from</span>
-<span class="org-doc">starter-kit-misc-recommended.org add</span>
-<span class="org-doc"> (starter-kit-load \"misc-recommended\" \"window-system\")</span>
-<span class="org-doc">to your configuration."</span>
-  <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>file <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>string-match <span class="org-string">"starter-kit-.+\.org"</span> file<span class="org-starter-kit-paren">)</span>
+<span style="font-style: italic;">To load only the 'window-system' config from</span>
+<span style="font-style: italic;">starter-kit-misc-recommended.org add</span>
+<span style="font-style: italic;"> (starter-kit-load \"misc-recommended\" \"window-system\")</span>
+<span style="font-style: italic;">to your configuration."</span>
+  (<span style="font-weight: bold;">let</span> ((file (expand-file-name (<span style="font-weight: bold;">if</span> (string-match <span style="font-style: italic;">"starter-kit-.+\.org"</span> file)
                                     file
-                                  <span class="org-starter-kit-paren">(</span>format <span class="org-string">"starter-kit-%s.org"</span> file<span class="org-starter-kit-paren">))</span>
-                                starter-kit-dir<span class="org-starter-kit-paren">)))</span>
-    <span class="org-starter-kit-paren">(</span>org-babel-load-file
-     <span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> header-or-tag
-         <span class="org-starter-kit-paren">(</span><span class="org-keyword">let*</span> <span class="org-starter-kit-paren">((</span>base <span class="org-starter-kit-paren">(</span>file-name-nondirectory file<span class="org-starter-kit-paren">))</span>
-                <span class="org-starter-kit-paren">(</span>dir  <span class="org-starter-kit-paren">(</span>file-name-directory file<span class="org-starter-kit-paren">))</span>
-                <span class="org-starter-kit-paren">(</span>partial-file <span class="org-starter-kit-paren">(</span>expand-file-name
-                               <span class="org-starter-kit-paren">(</span>concat <span class="org-string">"."</span> <span class="org-starter-kit-paren">(</span>file-name-sans-extension base<span class="org-starter-kit-paren">)</span>
-                                       <span class="org-string">".part."</span> header-or-tag <span class="org-string">".org"</span><span class="org-starter-kit-paren">)</span>
-                               dir<span class="org-starter-kit-paren">)))</span>
-           <span class="org-starter-kit-paren">(</span><span class="org-keyword">unless</span> <span class="org-starter-kit-paren">(</span>file-exists-p partial-file<span class="org-starter-kit-paren">)</span>
-             <span class="org-starter-kit-paren">(</span><span class="org-keyword">with-temp-file</span> partial-file
-               <span class="org-starter-kit-paren">(</span>insert
-                <span class="org-starter-kit-paren">(</span><span class="org-keyword">with-temp-buffer</span>
-                  <span class="org-starter-kit-paren">(</span>insert-file-contents file<span class="org-starter-kit-paren">)</span>
-                  <span class="org-starter-kit-paren">(</span><span class="org-keyword">save-excursion</span>
-                    <span class="org-starter-kit-paren">(</span><span class="org-keyword">condition-case</span> nil <span class="org-comment-delimiter">;; </span><span class="org-comment">collect as a header</span>
-                        <span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span>
-                          <span class="org-starter-kit-paren">(</span>org-link-search <span class="org-starter-kit-paren">(</span>concat<span class="org-string">"#"</span>header-or-tag<span class="org-starter-kit-paren">))</span>
-                          <span class="org-starter-kit-paren">(</span>org-narrow-to-subtree<span class="org-starter-kit-paren">)</span>
-                          <span class="org-starter-kit-paren">(</span>buffer-string<span class="org-starter-kit-paren">))</span>
-                      <span class="org-starter-kit-paren">(</span><span class="org-warning">error</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">collect all entries with as tags</span>
-                       <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">(</span>body<span class="org-starter-kit-paren">)</span>
-                         <span class="org-starter-kit-paren">(</span>org-map-entries
-                          <span class="org-starter-kit-paren">(</span><span class="org-keyword">lambda</span> <span class="org-starter-kit-paren">()</span>
-                            <span class="org-starter-kit-paren">(</span><span class="org-keyword">save-restriction</span>
-                              <span class="org-starter-kit-paren">(</span>org-narrow-to-subtree<span class="org-starter-kit-paren">)</span>
-                              <span class="org-starter-kit-paren">(</span>setq body <span class="org-starter-kit-paren">(</span>concat body <span class="org-string">"\n"</span> <span class="org-starter-kit-paren">(</span>buffer-string<span class="org-starter-kit-paren">)))))</span>
-                          header-or-tag<span class="org-starter-kit-paren">)</span>
-                         body<span class="org-starter-kit-paren">))))))))</span>
-           partial-file<span class="org-starter-kit-paren">)</span>
-       file<span class="org-starter-kit-paren">))))</span>
+                                  (format <span style="font-style: italic;">"starter-kit-%s.org"</span> file))
+                                starter-kit-dir)))
+    (org-babel-load-file
+     (<span style="font-weight: bold;">if</span> header-or-tag
+         (<span style="font-weight: bold;">let*</span> ((base (file-name-nondirectory file))
+                (dir  (file-name-directory file))
+                (partial-file (expand-file-name
+                               (concat <span style="font-style: italic;">"."</span> (file-name-sans-extension base)
+                                       <span style="font-style: italic;">".part."</span> header-or-tag <span style="font-style: italic;">".org"</span>)
+                               dir)))
+           (<span style="font-weight: bold;">unless</span> (file-exists-p partial-file)
+             (<span style="font-weight: bold;">with-temp-file</span> partial-file
+               (insert
+                (<span style="font-weight: bold;">with-temp-buffer</span>
+                  (insert-file-contents file)
+                  (<span style="font-weight: bold;">save-excursion</span>
+                    (<span style="font-weight: bold;">condition-case</span> nil <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">collect as a header</span>
+                        (<span style="font-weight: bold;">progn</span>
+                          (org-link-search (concat<span style="font-style: italic;">"#"</span>header-or-tag))
+                          (org-narrow-to-subtree)
+                          (buffer-string))
+                      (<span style="font-weight: bold;">error</span> <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">collect all entries with as tags</span>
+                       (<span style="font-weight: bold;">let</span> (body)
+                         (org-map-entries
+                          (<span style="font-weight: bold;">lambda</span> ()
+                            (<span style="font-weight: bold;">save-restriction</span>
+                              (org-narrow-to-subtree)
+                              (setq body (concat body <span style="font-style: italic;">"\n"</span> (buffer-string)))))
+                          header-or-tag)
+                         body))))))))
+           partial-file)
+       file))))
 </pre>
-
-
+</div>
 </li>
+
 <li>Work around a bug on OS X where system-name is FQDN.
+<div class="org-src-container">
 
-  
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">if</span> <span class="org-starter-kit-paren">(</span>eq system-type 'darwin<span class="org-starter-kit-paren">)</span>
-    <span class="org-starter-kit-paren">(</span>setq system-name <span class="org-starter-kit-paren">(</span>car <span class="org-starter-kit-paren">(</span>split-string system-name <span class="org-string">"\\."</span><span class="org-starter-kit-paren">))))</span>
+<pre class="src src-emacs-lisp" id="starter-kit-osX-workaround">(<span style="font-weight: bold;">if</span> (or
+    (eq system-type 'darwin)
+    (eq system-type 'berkeley-unix))
+    (setq system-name (car (split-string system-name <span style="font-style: italic;">"\\."</span>))))
 </pre>
-
+</div>
 </li>
 </ul>
-
-
 </div>
-
 </div>
 
 <div id="outline-container-starter-kit-core" class="outline-3">
-<h3 id="starter-kit-core"><a name="sec-2-2" id="sec-2-2"></a>Starter kit core</h3>
+<h3 id="starter-kit-core"><a id="sec-2-2" name="sec-2-2"></a>Starter kit core</h3>
 <div class="outline-text-3" id="text-starter-kit-core">
-
-<p>The following files contain the remainder of the core of the Emacs
+<p>
+The following files contain the remainder of the core of the Emacs
 Starter Kit.  All of the code in this section should be loaded by
 everyone using the starter kit.
 </p>
-<ul>
+
+<ul class="org-ul">
 <li>Starter kit function definitions in <a href="starter-kit-defuns.html">starter-kit-defuns</a>
+<div class="org-src-container">
 
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-defuns.org"</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(starter-kit-load <span style="font-style: italic;">"starter-kit-defuns.org"</span>)
 </pre>
-
-
+</div>
 </li>
+
 <li>Key Bindings in <a href="starter-kit-bindings.html">starter-kit-bindings</a>
+<div class="org-src-container">
 
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-bindings.org"</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(starter-kit-load <span style="font-style: italic;">"starter-kit-bindings.org"</span>)
 </pre>
-
-
+</div>
 </li>
+
 <li>Miscellaneous settings in <a href="starter-kit-misc.html">starter-kit-misc</a>
+<div class="org-src-container">
 
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-misc.org"</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(starter-kit-load <span style="font-style: italic;">"starter-kit-misc.org"</span>)
 </pre>
-
-
+</div>
 </li>
+
 <li>Registers for jumping to commonly used files in <a href="starter-kit-registers.html">starter-kit-registers</a>
+<div class="org-src-container">
 
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>starter-kit-load <span class="org-string">"starter-kit-registers.org"</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(starter-kit-load <span style="font-style: italic;">"starter-kit-registers.org"</span>)
 </pre>
-
-
-</li>
-<li><a href="http://code.google.com/p/yasnippet/">yasnippet</a> is yet another snippet expansion system for Emacs.  It is
-  inspired by TextMate's templating syntax.
-<ul>
-<li>watch the <a href="http://www.youtube.com/watch?v=vOj7btx3ATg">video on YouTube</a>
-</li>
-<li>see the <a href="http://yasnippet.googlecode.com/svn/trunk/doc/index.html">intro and tutorial</a>
-
+</div>
 </li>
 </ul>
-
-<p>  load the yasnippet bundle
-</p>
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'load-path
-             <span class="org-starter-kit-paren">(</span>expand-file-name  <span class="org-string">"yasnippet"</span>
-                                <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"src"</span>
-                                                  starter-kit-dir<span class="org-starter-kit-paren">)))</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">yasnippet</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span>yas/initialize<span class="org-starter-kit-paren">)</span>
-</pre>
-
-
-<p>
-  load the snippets defined in the <code>./snippets/</code> directory
-</p>
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>yas/load-directory <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"snippets"</span> starter-kit-dir<span class="org-starter-kit-paren">))</span>
-</pre>
-
-
-<p>
-  The latest version of yasnippets doesn't play well with Org-mode, the
-  following function allows these two to play nicely together.
-</p>
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">yas/org-very-safe-expand</span> <span class="org-starter-kit-paren">()</span>
-  <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>yas/fallback-behavior 'return-nil<span class="org-starter-kit-paren">))</span> <span class="org-starter-kit-paren">(</span>yas/expand<span class="org-starter-kit-paren">)))</span>
-
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">yas/org-setup</span> <span class="org-starter-kit-paren">()</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">yasnippet (using the new org-cycle hooks)</span>
-  <span class="org-starter-kit-paren">(</span>make-variable-buffer-local 'yas/trigger-key<span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>setq yas/trigger-key [tab]<span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand<span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>define-key yas/keymap [tab] 'yas/next-field<span class="org-starter-kit-paren">))</span>
-
-<span class="org-starter-kit-paren">(</span>add-hook 'org-mode-hook #'yas/org-setup<span class="org-starter-kit-paren">)</span>
-</pre>
-
-</li>
-</ul>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-2-3" class="outline-3">
+<div id="outline-container-sec-2-3" class="outline-3">
 <h3 id="sec-2-3">Load User/System Specific Files</h3>
 <div class="outline-text-3" id="text-2-3">
-
-
-</div>
-
-<div id="outline-container-2-3-1" class="outline-4">
+</div><div id="outline-container-sec-2-3-1" class="outline-4">
 <h4 id="sec-2-3-1">System/User specific customizations</h4>
 <div class="outline-text-4" id="text-2-3-1">
-
-<p>You can keep system- or user-specific customizations here in either
+<p>
+You can keep system- or user-specific customizations here in either
 raw emacs-lisp files or as embedded elisp in org-mode files (as done
 in this document).
 </p>
+
 <p>
 You can keep elisp source in the <code>src</code> directory.  Packages loaded
 from here will override those installed by ELPA.  This is useful if
 you want to track the development versions of a project, or if a
 project is not in elpa.
 </p>
+
 <p>
 After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">flet</span> <span class="org-starter-kit-paren">((</span>sk-load <span class="org-starter-kit-paren">(</span>base<span class="org-starter-kit-paren">)</span>
-         <span class="org-starter-kit-paren">(</span><span class="org-keyword">let*</span> <span class="org-starter-kit-paren">((</span>path     <span class="org-starter-kit-paren">(</span>expand-file-name base starter-kit-dir<span class="org-starter-kit-paren">))</span>
-                <span class="org-starter-kit-paren">(</span>literate <span class="org-starter-kit-paren">(</span>concat path <span class="org-string">".org"</span><span class="org-starter-kit-paren">))</span>
-                <span class="org-starter-kit-paren">(</span>plain    <span class="org-starter-kit-paren">(</span>concat path <span class="org-string">".el"</span><span class="org-starter-kit-paren">)))</span>
-           <span class="org-starter-kit-paren">(</span><span class="org-keyword">cond</span>
-            <span class="org-starter-kit-paren">((</span>file-exists-p literate<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>org-babel-load-file literate<span class="org-starter-kit-paren">))</span>
-            <span class="org-starter-kit-paren">((</span>file-exists-p plain<span class="org-starter-kit-paren">)</span>    <span class="org-starter-kit-paren">(</span>load plain<span class="org-starter-kit-paren">))))))</span>
-  <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>elisp-dir <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"src"</span> starter-kit-dir<span class="org-starter-kit-paren">))</span>
-        <span class="org-starter-kit-paren">(</span>user-dir <span class="org-starter-kit-paren">(</span>expand-file-name user-login-name starter-kit-dir<span class="org-starter-kit-paren">)))</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">add the src directory to the load path</span>
-    <span class="org-starter-kit-paren">(</span>add-to-list 'load-path elisp-dir<span class="org-starter-kit-paren">)</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">load specific files</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p elisp-dir<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>default-directory elisp-dir<span class="org-starter-kit-paren">))</span>
-        <span class="org-starter-kit-paren">(</span>normal-top-level-add-subdirs-to-load-path<span class="org-starter-kit-paren">)))</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">load system-specific config</span>
-    <span class="org-starter-kit-paren">(</span>sk-load system-name<span class="org-starter-kit-paren">)</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">load user-specific config</span>
-    <span class="org-starter-kit-paren">(</span>sk-load user-login-name<span class="org-starter-kit-paren">)</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">load any files in the user's directory</span>
-    <span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>file-exists-p user-dir<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span>add-to-list 'load-path user-dir<span class="org-starter-kit-paren">)</span>
-      <span class="org-starter-kit-paren">(</span>mapc #'sk-load
-            <span class="org-starter-kit-paren">(</span>remove-duplicates
-             <span class="org-starter-kit-paren">(</span>mapcar #'file-name-sans-extension
-                     <span class="org-starter-kit-paren">(</span>directory-files user-dir t <span class="org-string">".*\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">org</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">el</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">$"</span><span class="org-starter-kit-paren">))</span>
-             <span class="org-builtin">:test</span> #'string=<span class="org-starter-kit-paren">)))))</span>
+<pre class="src src-emacs-lisp" id="starter-kit-load-files">(<span style="font-weight: bold;">cl-flet</span> ((sk-load (base)
+         (<span style="font-weight: bold;">let*</span> ((path          (expand-file-name base starter-kit-dir))
+                (literate      (concat path <span style="font-style: italic;">".org"</span>))
+                (encrypted-org (concat path <span style="font-style: italic;">".org.gpg"</span>))
+                (plain         (concat path <span style="font-style: italic;">".el"</span>))
+                (encrypted-el  (concat path <span style="font-style: italic;">".el.gpg"</span>)))
+           (<span style="font-weight: bold;">cond</span>
+            ((file-exists-p encrypted-org) (org-babel-load-file encrypted-org))
+            ((file-exists-p encrypted-el)  (load encrypted-el))
+            ((file-exists-p literate)      (org-babel-load-file literate))
+            ((file-exists-p plain)         (load plain)))))
+       (remove-extension (name)
+         (string-match <span style="font-style: italic;">"</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">.*?</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">\.</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">org</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">\\.el</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">?</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">el</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">\\.gpg</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">?$"</span> name)
+         (match-string 1 name)))
+  (<span style="font-weight: bold;">let</span> ((user-dir (expand-file-name user-login-name starter-kit-dir)))
+    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">load system-specific config</span>
+    (sk-load system-name)
+    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">load user-specific config</span>
+    (sk-load user-login-name)
+    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">load any files in the user's directory</span>
+    (<span style="font-weight: bold;">when</span> (file-exists-p user-dir)
+      (add-to-list 'load-path user-dir)
+      (mapc #'sk-load
+            (remove-duplicates
+             (mapcar #'remove-extension
+                     (directory-files user-dir t <span style="font-style: italic;">".*\.</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">org</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">el</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">\\.gpg</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">?$"</span>))
+             <span style="font-weight: bold;">:test</span> #'string=)))))
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-2-3-2" class="outline-4">
+<div id="outline-container-sec-2-3-2" class="outline-4">
 <h4 id="sec-2-3-2">Settings from M-x customize</h4>
 <div class="outline-text-4" id="text-2-3-2">
+<div class="org-src-container">
 
-
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>load custom-file 'noerror<span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp" id="m-x-customize-customizations">(load custom-file 'noerror)
 </pre>
-
-
-
+</div>
+</div>
+</div>
+</div>
+</div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn.1" href="#fnr.1">1</a></sup> If you already have a directory at <code>~/.emacs.d</code> move it out of the
-    way and put this there instead.
-</p>
 
-<p class="footnote"><sup><a class="footnum" name="fn.2" href="#fnr.2">2</a></sup> The emacs starter kit uses <a href="http://orgmode.org/">Org Mode</a> to load embedded elisp code
-    directly from literate Org-mode documents.
-</p>
-</div>
-</div>
-</div>
-</div>
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+If you already have a directory at <code>~/.emacs.d</code> move it out of the
+way and put this there instead.
+</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+The emacs starter kit uses <a href="http://orgmode.org/">Org Mode</a> to load embedded elisp code
+directly from literate Org-mode documents.
+</p></div>
+
 
 </div>
-</div>
-</div>
-
+</div></div>
 </body>
 </html>

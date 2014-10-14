@@ -1,73 +1,117 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Haskell</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Starter Kit Haskell"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-23 11:23:56 MST"/>
-<meta name="author" content="Eric Schulte"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-10-13 Mon 22:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-<style type="text/css">
-  pre{background:#232323; color:#E6E1DC;}
-  code{font-size:10pt; color:#353535;}
-  .outline-text-2{margin-left: 1em;}
-  .outline-text-3{margin-left: 2em;}
-  .outline-text-3{margin-left: 3em;}
 </style>
 <script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -89,53 +133,321 @@
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">Starter Kit Haskell</h1>
-
-<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+<p>
+This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Starter Kit Haskell</h2>
 <div class="outline-text-2" id="text-1">
-
-<p>Support for editing Haskell
+<p>
+Support for editing Haskell
 </p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Setting up cabal</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+You can skip these steps if you've already setup ghc and cabal
+</p>
+</div>
+<div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">Install cabal</h4>
+<div class="outline-text-4" id="text-1-1-1">
+</div><ul class="org-ul"><li><a id="sec-1-1-1-1" name="sec-1-1-1-1"></a>Linux (Debian/Ubuntu)<br  /><div class="outline-text-5" id="text-1-1-1-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo apt-get update
+sudo apt-get install ghc cabal-install
+cabal update
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-1-1-1-2" name="sec-1-1-1-2"></a>OS X [with Homebrew]<br  /><div class="outline-text-5" id="text-1-1-1-2">
+<div class="org-src-container">
+
+<pre class="src src-sh">brew update
+brew install ghc cabal-install
+cabal update
+</pre>
+</div>
+</div>
+</li></ul>
+</div>
+
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">Update cabal</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+#+start_src sh
+   cabal install cabal-install
+#+end
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3">Set path to ~/.cabal/bin</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="font-weight: bold;">echo</span> <span style="font-style: italic;">'PATH=~/.cabal/bin:$PATH'</span>|tee -a ~/.profile
+<span style="font-weight: bold;">source</span> ~/.profile
+<span style="font-weight: bold;">which</span> cabal
+</pre>
+</div>
+
+<p>
+The last line should show you that you are now using the local and
+latest version of cabal located in your ~/.cabal/bin directory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-1-4" class="outline-4">
+<h4 id="sec-1-1-4">Innstall Packages for Development</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<p>
+Haskell modes usually have two components to them. One side is haskell
+and the other side is installed and configured in Emacs
+</p>
+
+<p>
+We will want to install some basic haskell packages in our ~/.cabal &amp;
+~/.ghc user directories. This makes them available along side cabal
+for doing development on your projects.
+</p>
+
+<p>
+Running those commands in the shell might take some time - emacs
+appears to be frozen; trust me, it's not
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">cabal install happy alex ;<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">needed but not listed as dependency</span>
+</pre>
+</div>
+
+<p>
+Paste the following into your terminal:
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Pretty lambdas</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
 pretty lambdas in Haskell code
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">pretty-lambdas-haskell</span> <span class="org-starter-kit-paren">()</span>
-  <span class="org-starter-kit-paren">(</span>font-lock-add-keywords
-   nil `<span class="org-starter-kit-paren">((</span>,<span class="org-starter-kit-paren">(</span>concat <span class="org-string">"(?</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">"</span> <span class="org-starter-kit-paren">(</span>regexp-quote <span class="org-string">"\\"</span><span class="org-starter-kit-paren">)</span> <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span><span class="org-starter-kit-paren">)</span>
-          <span class="org-starter-kit-paren">(</span>0 <span class="org-starter-kit-paren">(</span><span class="org-keyword">progn</span> <span class="org-starter-kit-paren">(</span>compose-region <span class="org-starter-kit-paren">(</span>match-beginning 1<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>match-end 1<span class="org-starter-kit-paren">)</span>
-                                    ,<span class="org-starter-kit-paren">(</span>make-char 'greek-iso8859-7 107<span class="org-starter-kit-paren">))</span>
-                    nil<span class="org-starter-kit-paren">))))))</span>
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">pretty-lambdas-haskell</span> ()
+  (font-lock-add-keywords
+   nil `((,(concat <span style="font-style: italic;">"(?</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">"</span> (regexp-quote <span style="font-style: italic;">"\\"</span>) <span style="font-style: italic;">"</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">"</span>)
+          (0 (<span style="font-weight: bold;">progn</span> (compose-region (match-beginning 1) (match-end 1)
+                                    ,(make-char 'greek-iso8859-7 107))
+                    nil))))))
 </pre>
+</div>
+</div>
+</div>
 
 
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Haskell Mode</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">Install Haskell mode</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-install-if-needed 'haskell-mode)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2">Configure</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'haskell-mode-hook 'run-starter-kit-coding-hook)
+(<span style="font-weight: bold;">when</span> (window-system)
+  (add-hook 'haskell-mode-hook 'pretty-lambdas-haskell))
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Ignore compiled Haskell files in filename completions</span>
+(add-to-list 'completion-ignored-extensions <span style="font-style: italic;">".hi"</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">Stylish Haskell</h3>
+<div class="outline-text-3" id="text-1-4">
 <p>
-Haskell mode hook
+A simple Haskell code prettifier. 
 </p>
 
+<p>
+This tool tries to help where necessary without getting in the way.
+</p>
 
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'haskell-mode-hook 'run-starter-kit-coding-hook<span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>window-system<span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>add-hook 'haskell-mode-hook 'pretty-lambdas-haskell<span class="org-starter-kit-paren">))</span>
+<p>
+<b>Features</b>
+</p>
+
+<ul class="org-ul">
+<li>Aligns and sorts import statements
+</li>
+<li>Groups and wraps {-# LANGUAGE #-} pragmas, can remove (some)
+redundant pragmas
+</li>
+<li>Removes trailing whitespace
+</li>
+<li>Replaces tabs by four spaces (turned off by default)
+</li>
+<li>Replaces some ASCII sequences by their Unicode equivalents (turned
+off by default)
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">cabal install stylish-haskell
 </pre>
+</div>
+</div>
+<div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1">Configuration</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+To call it for every save, make sure you have C-x C-s rebound to
+haskell-mode-save-buffer.
+</p>
 
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defadvice</span> <span style="font-weight: bold;">haskell-mode-stylish-buffer</span> (around skip-if-flycheck-errors activate)
+  (<span style="font-weight: bold;">unless</span> (flycheck-has-current-errors-p 'error)
+    ad-do-it))
+(setq haskell-stylish-on-save t)
+</pre>
+</div>
 </div>
 </div>
 </div>
 
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5">GHC mod</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+The ghc-mod command is a backend command to enrich Haskell programming
+on editors including Emacs, Vim, and Sublime.
+</p>
+</div>
+<div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1">Install ghc-mod</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">cabal install ghc-mod
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-install-if-needed 'ghc)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6">Structured Haskell</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+This minor mode provides structured editing operations based on the
+syntax of Haskell. In short-hand it's called SHM and throughout the
+codebase, too. It acts a bit like, and is heavily inspired by,
+paredit-mode for Emacs.
+</p>
+</div>
+
+<div id="outline-container-sec-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1">Install structured Haskell</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">cabal install structured-haskell
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-install-if-needed 'shm)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2">Configure</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'haskell-mode-hook 'structured-haskell-mode)
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">The following are apparently pretty good for solarized-light.</span>
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(set-face-background 'shm-current-face "#eee8d5")</span>
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(set-face-background 'shm-quarantine-face "lemonchiffon")</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7">Installing Haskell-Mode Extensions</h3>
+<div class="outline-text-3" id="text-1-7">
+</div><div id="outline-container-sec-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1">Install flycheck</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-install-if-needed 'flycheck)
+(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
+(global-flycheck-mode)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2">Install flyspell-haskell</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-install-if-needed 'flyspell)
+(add-hook 'haskell-mode-hook 'flyspell-prog-mode)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

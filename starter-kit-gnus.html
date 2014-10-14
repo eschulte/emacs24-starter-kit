@@ -1,73 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Gnus</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="Starter Kit Gnus"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-23 11:23:56 MST"/>
-<meta name="author" content="Eric Schulte"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-10-13 Mon 22:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-<style type="text/css">
-  pre{background:#232323; color:#E6E1DC;}
-  code{font-size:10pt; color:#353535;}
-  .outline-text-2{margin-left: 1em;}
-  .outline-text-3{margin-left: 2em;}
-  .outline-text-3{margin-left: 3em;}
 </style>
 <script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -89,409 +133,397 @@
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">Starter Kit Gnus</h1>
-
-<p>This is part of the <a href="starter-kit.gnus">Emacs Starter Kit</a>.
+<p>
+This is part of the <a href="starter-kit.gnus">Emacs Starter Kit</a>.
 </p>
 
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Starter Kit Gnus</h2>
 <div class="outline-text-2" id="text-1">
-
-<p>Configuration for the notoriously difficult to configure <a href="http://www.gnus.org/">Gnus</a> email
+<p>
+Configuration for the notoriously difficult to configure <a href="http://www.gnus.org/">Gnus</a> email
 client
 </p>
-
 </div>
 
 <div id="outline-container-imap" class="outline-3">
-<h3 id="imap"><a name="sec-1-1" id="sec-1-1"></a>IMAP</h3>
+<h3 id="imap"><a id="sec-1-1" name="sec-1-1"></a>IMAP</h3>
 <div class="outline-text-3" id="text-imap">
-
-<p>Based on the instructions at <a href="http://www.emacswiki.org/emacs/GnusGmail#toc2">emacswiki:GnusGmail</a>.
+<p>
+Based on the instructions at <a href="http://www.emacswiki.org/emacs/GnusGmail#toc2">emacswiki:GnusGmail</a>.
 </p>
+
 <p>
 to use this file:
-</p><ol>
+</p>
+<ol class="org-ol">
 <li><i>personal information</i> in this file (specifically in the code
-   blocks which will be tangled in the next step) globally replace
-   "your-name" with your gmail username, and "your-password" with your
-   gmail password.
-
+blocks which will be tangled in the next step) globally replace
+"your-name" with your gmail username, and "your-password" with your
+gmail password.
 </li>
+
 <li><i>tangle this file</i> Run the <code>org-babel-tangle</code> command to extract
-   the code embedded in this file into a <code>starter-git-gnus-imap.el</code>
-   file which can be added to your configuration, and a <code>~/.authinfo</code>
-   file which will be used by gnus.
-
+the code embedded in this file into a <code>starter-git-gnus-imap.el</code>
+file which can be added to your configuration, and a <code>~/.authinfo</code>
+file which will be used by gnus.
 </li>
-<li><i>load this configuration</i> If you have a recent version of Org-mode
-   (i.e. after 7.0) or are using the <a href="http://eschulte.github.com/emacs24-starter-kit/">literate Emacs Starter Kit</a>, then
-   this file can be loaded directly using the <code>org-babel-load-file</code>
-   function, or by placing it in your load path (if you're using the
-   starter kit).
 
-<p>     
-   Alternately ensure that the <code>gnus-gmail.el</code> file generated by the
-   previous step is loaded by your configuration.
+<li><i>load this configuration</i> If you have a recent version of Org-mode
+(i.e. after 7.0) or are using the <a href="http://eschulte.github.com/emacs24-starter-kit/">literate Emacs Starter Kit</a>, then
+this file can be loaded directly using the <code>org-babel-load-file</code>
+function, or by placing it in your load path (if you're using the
+starter kit).
+
+<p>
+Alternately ensure that the <code>gnus-gmail.el</code> file generated by the
+previous step is loaded by your configuration.
 </p>
 </li>
-<li><i>fire up gnus</i> This can be done with the command <code>M-x gnus</code>
 
+<li><i>fire up gnus</i> This can be done with the command <code>M-x gnus</code>
 </li>
+
 <li><i>view your mail</i> After gnus boots up you will see the "Group
-   Buffer" (see <a href="http://www.gnu.org/software/emacs/manual/html_node/gnus/index.html#toc_Group-Buffer">Group-Buffer</a>).  Each line is a mail "Group", hit
-   <code>SPACE</code> or <code>ENTER</code> on a group to view it's contents.  You should
-   see an "INBOX" group which contains the mail in your gmail account.
-   If not, you can jump to the "INBOX" group by
-<ul>
+Buffer" (see <a href="http://www.gnu.org/software/emacs/manual/html_node/gnus/index.html#toc_Group-Buffer">Group-Buffer</a>).  Each line is a mail "Group", hit
+<code>SPACE</code> or <code>ENTER</code> on a group to view it's contents.  You should
+see an "INBOX" group which contains the mail in your gmail account.
+If not, you can jump to the "INBOX" group by
+<ul class="org-ul">
 <li>pressing <code>j</code> for "jump"
 </li>
 <li>tab completing the name "INBOX"
 </li>
 <li>pressing <code>U</code> for "unkill" meaning this will now always be
-       displayed in your Group buffer when you have new mail
-
+displayed in your Group buffer when you have new mail
 </li>
 </ul>
-
 </li>
+
 <li><i>customize</i> Gnus has unrivalled capacity for customization.  Once
-   your comfortable with basic usage, take some time to browse through
-   the very readable <a href="http://www.gnu.org/software/emacs/manual/html_node/gnus/index.html">Gnus Manual</a> to learn untold tricks (see also
-   <a href="starter-kit-gnus.html#customization">Starter-kit-gnus:Customizations</a>).
+your comfortable with basic usage, take some time to browse through
+the very readable <a href="http://www.gnu.org/software/emacs/manual/html_node/gnus/index.html">Gnus Manual</a> to learn untold tricks (see also
+<a href="starter-kit-gnus.html#customization">Starter-kit-<a href="Customizations">Customizations</a></a>).
 </li>
 </ol>
-
-
-
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
+<div id="outline-container-sec-1-1-1" class="outline-4">
 <h4 id="sec-1-1-1">saving mail locally</h4>
 <div class="outline-text-4" id="text-1-1-1">
-
-<p>Where your mail will be saved locally default value will be <code>~/gmail</code>.
+<p>
+Where your mail will be saved locally default value will be <code>~/gmail</code>.
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">gnus</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span>setq nnml-directory <span class="org-string">"~/gmail"</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span>setq message-directory <span class="org-string">"~/gmail"</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">gnus</span>)
+(setq nnml-directory <span style="font-style: italic;">"~/gmail"</span>)
+(setq message-directory <span style="font-style: italic;">"~/gmail"</span>)
 </pre>
-
+</div>
 
 <p>
 All Gmail groups will be ignored by the default value of
 <code>gnus-ignored-newsgroups</code>, so let's change that default value.
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq gnus-ignored-newsgroups <span class="org-string">"^to\\.</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">^[0-9. ]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string"> </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">$</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">^[\&#8221;]\&#8221;[#&#8217;()]"</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(setq gnus-ignored-newsgroups <span style="font-style: italic;">"^to\\.</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">^[0-9. ]+</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;"> </span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">$</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">^[\&#8221;]\&#8221;[#&#8217;()]"</span>)
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-1-2" class="outline-4">
+<div id="outline-container-sec-1-1-2" class="outline-4">
 <h4 id="sec-1-1-2">getting mail</h4>
 <div class="outline-text-4" id="text-1-1-2">
-
-<p>Set Gmail as the primary source for incoming mail (Gnus can aggregate
+<p>
+Set Gmail as the primary source for incoming mail (Gnus can aggregate
 many email and/or newsgroup sources).
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq gnus-select-method
-      '<span class="org-starter-kit-paren">(</span>nnimap <span class="org-string">"gmail"</span>
-               <span class="org-starter-kit-paren">(</span>nnimap-address <span class="org-string">"imap.gmail.com"</span><span class="org-starter-kit-paren">)</span>
-               <span class="org-starter-kit-paren">(</span>nnimap-server-port 993<span class="org-starter-kit-paren">)</span>
-               <span class="org-starter-kit-paren">(</span>nnimap-stream ssl<span class="org-starter-kit-paren">)))</span>
+<pre class="src src-emacs-lisp">(setq gnus-select-method
+      '(nnimap <span style="font-style: italic;">"gmail"</span>
+               (nnimap-address <span style="font-style: italic;">"imap.gmail.com"</span>)
+               (nnimap-server-port 993)
+               (nnimap-stream ssl)))
 </pre>
-
+</div>
 
 <p>
 Place a line like the following in <code>~/.authinfo</code>
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-fundamental">machine imap.gmail.com login your-name@gmail.com password your-password port 993
 </pre>
-
+</div>
 
 <p>
 and make sure that no-one else can read it with
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-sh">chmod 600 ~/.authinfo
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-1-3" class="outline-4">
+<div id="outline-container-sec-1-1-3" class="outline-4">
 <h4 id="sec-1-1-3">sending mail</h4>
 <div class="outline-text-4" id="text-1-1-3">
-
-<p><i>Requirement</i>: gnus uses the <a href="http://en.wikipedia.org/wiki/STARTTLS">starttls</a> tool for encrypted sending of
+<p>
+<i>Requirement</i>: gnus uses the <a href="http://en.wikipedia.org/wiki/STARTTLS">starttls</a> tool for encrypted sending of
 email to the Gmail SMTP server.  This is easily installed on modern
 Debian (including Ubuntu) systems with
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-sh">apt-get install starttls
 </pre>
-
+</div>
 
 <p>
 The following configures gnus to use the Gmail SMTP server for sending
 email.
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-starttls-credentials '<span class="org-starter-kit-paren">((</span><span class="org-string">"smtp.gmail.com"</span> 587 nil nil<span class="org-starter-kit-paren">))</span>
-      smtpmail-auth-credentials '<span class="org-starter-kit-paren">((</span><span class="org-string">"smtp.gmail.com"</span> 587 <span class="org-string">"your-name@gmail.com"</span> ni<span class="org-column-marker-3">l</span><span class="org-starter-kit-paren">))</span>
-      smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span>
-      smtpmail-smtp-server <span class="org-string">"smtp.gmail.com"</span>
-      smtpmail-smtp-service 587<span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-starttls-credentials '((<span style="font-style: italic;">"smtp.gmail.com"</span> 587 nil nil))
+      smtpmail-auth-credentials '((<span style="font-style: italic;">"smtp.gmail.com"</span> 587 <span style="font-style: italic;">"your-name@gmail.com"</span> nil))
+      smtpmail-default-smtp-server <span style="font-style: italic;">"smtp.gmail.com"</span>
+      smtpmail-smtp-server <span style="font-style: italic;">"smtp.gmail.com"</span>
+      smtpmail-smtp-service 587)
 </pre>
-
+</div>
 
 <p>
 If you don't want to be prompted for a password on every mail sent,
 you can add the following line to your <code>~/.authinfo</code>.
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-fundamental">machine smtp.gmail.com login your-name@gmail.com your-password secret port 587
 </pre>
-
-
 </div>
 </div>
-
+</div>
 </div>
 
 <div id="outline-container-pop" class="outline-3">
-<h3 id="pop"><a name="sec-1-2" id="sec-1-2"></a>Pop</h3>
+<h3 id="pop"><a id="sec-1-2" name="sec-1-2"></a>Pop</h3>
 <div class="outline-text-3" id="text-pop">
-
-<p>This file can be used to jump start a working Gnus instillation.  The
+<p>
+This file can be used to jump start a working Gnus instillation.  The
 following steps will result in a working vanilla Gnus POP
 instillation.
-</p><ol>
-<li>install the <a href="#sec-1-2-2">required-packages</a>
+</p>
+<ol class="org-ol">
+<li>install the <i>required-packages</i>
 </li>
-<li>follow the <a href="#sec-1-2-3">gmail</a> specific instructions
+<li>follow the <i>gmail</i> specific instructions
 </li>
 <li>tangle this file with `org-babel-tangle' (with C-c M-b t) creating
-   the <code>starter-kit-gnus-pop.el</code> file which can be loaded by Emacs
+the <code>starter-kit-gnus-pop.el</code> file which can be loaded by Emacs
 </li>
 </ol>
 
-
 <p>
-(if you run into any problems &ndash; the <a href="http://www.gnus.org/manual.html">gnus manual</a> is very thorough)
+(if you run into any problems &#x2013; the <a href="http://www.gnus.org/manual.html">gnus manual</a> is very thorough)
 </p>
-
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
+<div id="outline-container-sec-1-2-1" class="outline-4">
 <h4 id="sec-1-2-1">Basic configuration</h4>
 <div class="outline-text-4" id="text-1-2-1">
-
-<p>First off, load up <code>gnus</code>
+<p>
+First off, load up <code>gnus</code>
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">gnus</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">gnus</span>)
 </pre>
-
+</div>
 
 <p>
 Tell gnus that your mainly going to be using it for email not as a
-news reader &ndash; after all it's not longer the late 80s.
+news reader &#x2013; after all it's not longer the late 80s.
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>setq gnus-select-method '<span class="org-starter-kit-paren">(</span>nnml <span class="org-string">""</span><span class="org-starter-kit-paren">))</span>
+<pre class="src src-emacs-lisp">(setq gnus-select-method '(nnml <span style="font-style: italic;">""</span>))
 </pre>
-
-
 </div>
-
+</div>
 </div>
 
 <div id="outline-container-required-packages" class="outline-4">
-<h4 id="required-packages"><a name="sec-1-2-2" id="sec-1-2-2"></a>Required packages</h4>
+<h4 id="required-packages"><a id="sec-1-2-2" name="sec-1-2-2"></a>Required packages</h4>
 <div class="outline-text-4" id="text-required-packages">
-
-<p>A <a href="http://en.wikipedia.org/wiki/STARTTLS">starttls</a> client allows encrypted communication with remote pop3 and
+<p>
+A <a href="http://en.wikipedia.org/wiki/STARTTLS">starttls</a> client allows encrypted communication with remote pop3 and
 IMAP email clients.
 </p>
+
 <p>
 <a href="http://www.openssl.org/">openssl</a> implements the Secure Socket Layer (SSL) secure communication
 protocol.
 </p>
+
 <p>
 On Debian systems (including Ubuntu) instillation of <code>starttls</code> and
 <code>openssl</code> client is as simple as
-</p><pre class="example">
+</p>
+<pre class="example">
 sudo apt-get install starttls openssl
 </pre>
-
-
 </div>
-
 </div>
 
 <div id="outline-container-gmail" class="outline-4">
-<h4 id="gmail"><a name="sec-1-2-3" id="sec-1-2-3"></a>Gmail Setup</h4>
+<h4 id="gmail"><a id="sec-1-2-3" name="sec-1-2-3"></a>Gmail Setup</h4>
 <div class="outline-text-4" id="text-gmail">
-
-<p>For more information on configuring Gnus with Gmail see <a href="http://www.emacswiki.org/emacs/GnusGmail">GnusGmail</a> on
+<p>
+For more information on configuring Gnus with Gmail see <a href="http://www.emacswiki.org/emacs/GnusGmail">GnusGmail</a> on
 the Emacs Wiki.
 </p>
+
 <p>
 For a simple pop3 setup, simply replace <code>your-gmail-email-address</code> and
 <code>your-gmail-password</code> with your gmail account information in the
 following tables.
 </p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
-<colgroup><col class="left" /><col class="left" />
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
 </colgroup>
 <tbody>
-<tr><td class="left">email</td><td class="left">your-gmail-email-address</td></tr>
-<tr><td class="left">password</td><td class="left">your-gmail-password</td></tr>
+<tr>
+<td class="left">email</td>
+<td class="left">your-gmail-email-address</td>
+</tr>
+
+<tr>
+<td class="left">password</td>
+<td class="left">your-gmail-password</td>
+</tr>
 </tbody>
 </table>
 
+<div class="org-src-container">
 
-
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">let</span> <span class="org-starter-kit-paren">((</span>email <span class="org-starter-kit-paren">(</span>second <span class="org-starter-kit-paren">(</span>first config<span class="org-starter-kit-paren">)))</span>
-      <span class="org-starter-kit-paren">(</span>passwd <span class="org-starter-kit-paren">(</span>second <span class="org-starter-kit-paren">(</span>second config<span class="org-starter-kit-paren">))))</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">The following adds Gmail as a source of mail for Gnus</span>
-  <span class="org-starter-kit-paren">(</span>add-to-list 'mail-sources
-               `<span class="org-starter-kit-paren">(</span>pop <span class="org-builtin">:server</span> <span class="org-string">"pop.gmail.com"</span>
-                     <span class="org-builtin">:port</span> 995
-                     <span class="org-builtin">:user</span> ,email
-                     <span class="org-builtin">:password</span> ,passwd
-                     <span class="org-builtin">:stream</span> ssl<span class="org-starter-kit-paren">))</span>
-  <span class="org-comment-delimiter">;; </span><span class="org-comment">The following is used for sending email through gmail using SMTP.</span>
-  <span class="org-starter-kit-paren">(</span>setq message-send-mail-function 'smtpmail-send-it
-        smtpmail-starttls-credentials '<span class="org-starter-kit-paren">((</span><span class="org-string">"smtp.gmail.com"</span> 25 nil nil<span class="org-starter-kit-paren">))</span>
-        smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span>
-        smtpmail-smtp-server <span class="org-string">"smtp.gmail.com"</span>
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">let</span> ((email (second (first config)))
+      (passwd (second (second config))))
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">The following adds Gmail as a source of mail for Gnus</span>
+  (add-to-list 'mail-sources
+               `(pop <span style="font-weight: bold;">:server</span> <span style="font-style: italic;">"pop.gmail.com"</span>
+                     <span style="font-weight: bold;">:port</span> 995
+                     <span style="font-weight: bold;">:user</span> ,email
+                     <span style="font-weight: bold;">:password</span> ,passwd
+                     <span style="font-weight: bold;">:stream</span> ssl))
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">The following is used for sending email through gmail using SMTP.</span>
+  (setq message-send-mail-function 'smtpmail-send-it
+        smtpmail-starttls-credentials '((<span style="font-style: italic;">"smtp.gmail.com"</span> 25 nil nil))
+        smtpmail-default-smtp-server <span style="font-style: italic;">"smtp.gmail.com"</span>
+        smtpmail-smtp-server <span style="font-style: italic;">"smtp.gmail.com"</span>
         smtpmail-smtp-service 25
         user-mail-address email
-        smtpmail-starttls-credentials '<span class="org-starter-kit-paren">((</span><span class="org-string">"smtp.gmail.com"</span> 587 nil nil<span class="org-starter-kit-paren">))</span>
-        smtpmail-auth-credentials `<span class="org-starter-kit-paren">((</span><span class="org-string">"smtp.gmail.com"</span> 587 ,email ,passwd<span class="org-starter-kit-paren">))</span>
-        smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span>
-        smtpmail-smtp-server <span class="org-string">"smtp.gmail.com"</span>
-        smtpmail-smtp-service 587<span class="org-starter-kit-paren">))</span>
+        smtpmail-starttls-credentials '((<span style="font-style: italic;">"smtp.gmail.com"</span> 587 nil nil))
+        smtpmail-auth-credentials `((<span style="font-style: italic;">"smtp.gmail.com"</span> 587 ,email ,passwd))
+        smtpmail-default-smtp-server <span style="font-style: italic;">"smtp.gmail.com"</span>
+        smtpmail-smtp-server <span style="font-style: italic;">"smtp.gmail.com"</span>
+        smtpmail-smtp-service 587))
 </pre>
-
-
 </div>
 </div>
-
+</div>
 </div>
 
 <div id="outline-container-customization" class="outline-3">
-<h3 id="customization"><a name="sec-1-3" id="sec-1-3"></a>Customizations</h3>
+<h3 id="customization"><a id="sec-1-3" name="sec-1-3"></a>Customizations</h3>
 <div class="outline-text-3" id="text-customization">
-
-<p>Once gnus is installed and working, here are some recommended Gnus
+<p>
+Once gnus is installed and working, here are some recommended Gnus
 customizations.
 </p>
-
 </div>
 
 <div id="outline-container-bbdb" class="outline-4">
-<h4 id="bbdb"><a name="sec-1-3-1" id="sec-1-3-1"></a>BBDB</h4>
+<h4 id="bbdb"><a id="sec-1-3-1" name="sec-1-3-1"></a>BBDB</h4>
 <div class="outline-text-4" id="text-bbdb">
-
-<p><a href="http://bbdb.sourceforge.net/">BBDB</a> &ndash; <span style="text-decoration:underline;">The Insidious Big Brother Database</span> is Emacs' contact manager
+<p>
+<a href="http://bbdb.sourceforge.net/">BBDB</a> &#x2013; <span class="underline">The Insidious Big Brother Database</span> is Emacs' contact manager
 which is very useful for keeping all of your contacts organized for
 use with gnus.
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">bbdb</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">bbdb</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">bbdb-autoloads</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span>setq
- bbdb-file <span class="org-string">"~/.bbdb"</span>
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">bbdb</span>
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">bbdb</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">bbdb-autoloads</span>)
+(setq
+ bbdb-file <span style="font-style: italic;">"~/.bbdb"</span>
  bbdb-offer-save 'auto
  bbdb-notice-auto-save-file t
  bbdb-expand-mail-aliases t
  bbdb-canonicalize-redundant-nets-p t
  bbdb-always-add-addresses t
  bbdb-complete-name-allow-cycling t
- <span class="org-starter-kit-paren">)</span>
+ )
 </pre>
-
-
 </div>
-
+</div>
 </div>
 
 <div id="outline-container-pretty-summary" class="outline-4">
-<h4 id="pretty-summary"><a name="sec-1-3-2" id="sec-1-3-2"></a>More attractive Summary View</h4>
+<h4 id="pretty-summary"><a id="sec-1-3-2" name="sec-1-3-2"></a>More attractive Summary View</h4>
 <div class="outline-text-4" id="text-pretty-summary">
-
-<p>Thanks to Dan Davison.
+<p>
+Thanks to Dan Davison.
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">http://groups.google.com/group/gnu.emacs.gnus/browse_thread/thread/a673a74356</span><span class="org-comment"><span class="org-column-marker-3">e</span></span><span class="org-comment">7141f</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> window-system
-  <span class="org-starter-kit-paren">(</span>setq gnus-sum-thread-tree-indent <span class="org-string">"  "</span><span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>setq gnus-sum-thread-tree-root <span class="org-string">""</span><span class="org-starter-kit-paren">)</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">"&#9679; ")</span>
-  <span class="org-starter-kit-paren">(</span>setq gnus-sum-thread-tree-false-root <span class="org-string">""</span><span class="org-starter-kit-paren">)</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">"&#9711; ")</span>
-  <span class="org-starter-kit-paren">(</span>setq gnus-sum-thread-tree-single-indent <span class="org-string">""</span><span class="org-starter-kit-paren">)</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">"&#9678; ")</span>
-  <span class="org-starter-kit-paren">(</span>setq gnus-sum-thread-tree-vertical        <span class="org-string">"&#9474;"</span><span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>setq gnus-sum-thread-tree-leaf-with-other <span class="org-string">"&#9500;&#9472;&#9658; "</span><span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>setq gnus-sum-thread-tree-single-leaf     <span class="org-string">"&#9584;&#9472;&#9658; "</span><span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span>setq gnus-summary-line-format
-      <span class="org-starter-kit-paren">(</span>concat
-       <span class="org-string">"%0{%U%R%z%}"</span>
-       <span class="org-string">"%3{&#9474;%}"</span> <span class="org-string">"%1{%d%}"</span> <span class="org-string">"%3{&#9474;%}"</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">date</span>
-       <span class="org-string">"  "</span>
-       <span class="org-string">"%4{%-20,20f%}"</span>               <span class="org-comment-delimiter">;; </span><span class="org-comment">name</span>
-       <span class="org-string">"  "</span>
-       <span class="org-string">"%3{&#9474;%}"</span>
-       <span class="org-string">" "</span>
-       <span class="org-string">"%1{%B%}"</span>
-       <span class="org-string">"%s\n"</span><span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span>setq gnus-summary-display-arrow t<span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">http://groups.google.com/group/gnu.emacs.gnus/browse_thread/thread/a673a74356e7141f</span>
+(<span style="font-weight: bold;">when</span> window-system
+  (setq gnus-sum-thread-tree-indent <span style="font-style: italic;">"  "</span>)
+  (setq gnus-sum-thread-tree-root <span style="font-style: italic;">""</span>) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">"&#9679; ")</span>
+  (setq gnus-sum-thread-tree-false-root <span style="font-style: italic;">""</span>) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">"&#9711; ")</span>
+  (setq gnus-sum-thread-tree-single-indent <span style="font-style: italic;">""</span>) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">"&#9678; ")</span>
+  (setq gnus-sum-thread-tree-vertical        <span style="font-style: italic;">"&#9474;"</span>)
+  (setq gnus-sum-thread-tree-leaf-with-other <span style="font-style: italic;">"&#9500;&#9472;&#9658; "</span>)
+  (setq gnus-sum-thread-tree-single-leaf     <span style="font-style: italic;">"&#9584;&#9472;&#9658; "</span>))
+(setq gnus-summary-line-format
+      (concat
+       <span style="font-style: italic;">"%0{%U%R%z%}"</span>
+       <span style="font-style: italic;">"%3{&#9474;%}"</span> <span style="font-style: italic;">"%1{%d%}"</span> <span style="font-style: italic;">"%3{&#9474;%}"</span> <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">date</span>
+       <span style="font-style: italic;">"  "</span>
+       <span style="font-style: italic;">"%4{%-20,20f%}"</span>               <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">name</span>
+       <span style="font-style: italic;">"  "</span>
+       <span style="font-style: italic;">"%3{&#9474;%}"</span>
+       <span style="font-style: italic;">" "</span>
+       <span style="font-style: italic;">"%1{%B%}"</span>
+       <span style="font-style: italic;">"%s\n"</span>))
+(setq gnus-summary-display-arrow t)
 </pre>
-
 </div>
 </div>
 </div>
 </div>
 </div>
-
+</div>
 </body>
 </html>

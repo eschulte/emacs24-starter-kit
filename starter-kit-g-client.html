@@ -1,73 +1,117 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit G-Client</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Starter Kit G-Client"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-23 11:23:57 MST"/>
-<meta name="author" content="Eric Schulte"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-10-13 Mon 22:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-<style type="text/css">
-  pre{background:#232323; color:#E6E1DC;}
-  code{font-size:10pt; color:#353535;}
-  .outline-text-2{margin-left: 1em;}
-  .outline-text-3{margin-left: 2em;}
-  .outline-text-3{margin-left: 3em;}
 </style>
 <script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -89,19 +133,14 @@
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">Starter Kit G-Client</h1>
-
-<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+<p>
+This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
+
 <p>
 G-Client is part of T.V. Raman's <a href="http://code.google.com/p/emacspeak/">emacspeak</a> package which provides for
 interaction with Google services (e.g., google-docs, google-calendar)
@@ -109,132 +148,122 @@ from within Emacs.
 </p>
 
 <div id="outline-container-instillation" class="outline-2">
-<h2 id="instillation"><a name="sec-1" id="sec-1"></a>Instillation</h2>
+<h2 id="instillation"><a id="sec-1" name="sec-1"></a>Installation</h2>
 <div class="outline-text-2" id="text-instillation">
 
-
-<ol>
+<ol class="org-ol">
 <li>Grab the latest version of G-Client by running the following in
-   this directory.
+this directory.
+<div class="org-src-container">
 
-
-
-<pre class="src src-sh"><span class="org-builtin">cd</span> src/
+<pre class="src src-sh"><span style="font-weight: bold;">cd</span> src/
 svn co http://emacspeak.googlecode.com/svn/trunk/lisp/g-client/
 </pre>
-
-
+</div>
 </li>
+
 <li>The in the <code>g-client</code> directory run the following commands to build
-   the package.
+the package.
+<div class="org-src-container">
 
-
-
-<pre class="src src-sh"><span class="org-builtin">cd</span> src/g-client
+<pre class="src src-sh"><span style="font-weight: bold;">cd</span> src/g-client
 make
 </pre>
-
-
+</div>
 </li>
+
 <li>Add the <code>g-client</code> directory to the load path, and load the package
+<div class="org-src-container">
 
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'load-path
-             <span class="org-starter-kit-paren">(</span>expand-file-name
-              <span class="org-string">"g-client"</span>
-              <span class="org-starter-kit-paren">(</span>expand-file-name
-               <span class="org-string">"src"</span>
-               <span class="org-starter-kit-paren">(</span>file-name-directory
-                <span class="org-starter-kit-paren">(</span>or load-file-name <span class="org-starter-kit-paren">(</span>buffer-file-name<span class="org-starter-kit-paren">))))))</span>
-<span class="org-starter-kit-paren">(</span>load-library <span class="org-string">"g"</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(add-to-list 'load-path
+             (expand-file-name
+              <span style="font-style: italic;">"g-client"</span>
+              (expand-file-name
+               <span style="font-style: italic;">"src"</span>
+               (file-name-directory
+                (or load-file-name (buffer-file-name))))))
+(load-library <span style="font-style: italic;">"g"</span>)
 </pre>
-
-
+</div>
 </li>
+
 <li>Finally, in the current version of g-client one small change to the
-   code is required.  In the definition `<a href="src/g-client/gdocs.el#defun-gdocs-publish-from-org">gdocs-publish-from-org</a>' the
-   call to the `org-export-region-as-html' function should be changed
-   from
+code is required.  In the definition `<a href="src/g-client/gdocs.el">gdocs-publish-from-org</a>' the
+call to the `org-export-region-as-html' function should be changed
+from
+<div class="org-src-container">
 
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>org-export-region-as-html <span class="org-starter-kit-paren">(</span>point-min<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>point-max<span class="org-starter-kit-paren">)</span>
-                           nil g-scratch-buffer<span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(org-export-region-as-html (point-min) (point-max)
+                           nil g-scratch-buffer)
 </pre>
-
+</div>
 <p>
-   to
+to
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>org-export-region-as-html <span class="org-starter-kit-paren">(</span>point-min<span class="org-starter-kit-paren">)</span> <span class="org-starter-kit-paren">(</span>point-max<span class="org-starter-kit-paren">)</span>
-                           'body-only g-scratch-buffer<span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(org-export-region-as-html (point-min) (point-max)
+                           'body-only g-scratch-buffer)
 </pre>
-
+</div>
 <p>
-   so that the exported html only includes the body of the html
-   document.  The header information generated by Org-mode seems to
-   confuse google documents.
-</p></li>
+so that the exported html only includes the body of the html
+document.  The header information generated by Org-mode seems to
+confuse google documents.
+</p>
+</li>
 </ol>
-
 
 <p>
 For more information see
-</p><ul>
-<li>the <a href="#sec-2">usage</a> section immediately below
+</p>
+<ul class="org-ul">
+<li>the <i>usage</i> section immediately below
 </li>
-<li>the <a href="src/g-client/g-client.html">src/g-client/g-client</a> file included with <code>g-client</code>
+<li>the <a href="src/g-client/g-client.html">src/g-client/g-client.html</a> file included with <code>g-client</code>
 </li>
 <li>and this blog post <a href="http://blog.vivekhaldar.com/post/1649745633/editing-google-docs-in-emacs">blog.vivekhaldar.com/editing-google-docs-in-emacs</a>
 </li>
 </ul>
-
-
 </div>
-
 </div>
 
 <div id="outline-container-usage" class="outline-2">
-<h2 id="usage"><a name="sec-2" id="sec-2"></a>Usage</h2>
+<h2 id="usage"><a id="sec-2" name="sec-2"></a>Usage</h2>
 <div class="outline-text-2" id="text-usage">
-
-<p>Usage is as simple as
+<p>
+Usage is as simple as
 </p>
-<ol>
+
+<ol class="org-ol">
 <li>add g-client to your load path
+<div class="org-src-container">
 
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'load-path <span class="org-starter-kit-paren">(</span>expand-file-name
-                         <span class="org-string">"g-client"</span> <span class="org-starter-kit-paren">(</span>expand-file-name <span class="org-string">"src"</span> starter-kit-dir<span class="org-starter-kit-paren">)))</span>
+<pre class="src src-emacs-lisp">(add-to-list 'load-path (expand-file-name
+                         <span style="font-style: italic;">"g-client"</span> (expand-file-name <span style="font-style: italic;">"src"</span> starter-kit-dir)))
 </pre>
-
-
+</div>
 </li>
+
 <li>load g-client
+<div class="org-src-container">
 
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>load-library <span class="org-string">"g"</span><span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp">(load-library <span style="font-style: italic;">"g"</span>)
 </pre>
-
-
+</div>
 </li>
+
 <li>sign into google documents with <code>M-x gdocs-sign-in</code>
-
 </li>
+
 <li>open an Emacs buffer which you would like to post to google docs
-
 </li>
+
 <li>publish the buffer with `gdocs-publish-from-text'
 </li>
 </ol>
-
 </div>
 </div>
 </div>
-
 </body>
 </html>

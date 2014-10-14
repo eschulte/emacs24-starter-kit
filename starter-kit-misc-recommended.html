@@ -1,73 +1,117 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Misc Recommended</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Starter Kit Misc Recommended"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-23 11:23:55 MST"/>
-<meta name="author" content="Eric Schulte"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-10-13 Mon 22:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-<style type="text/css">
-  pre{background:#232323; color:#E6E1DC;}
-  code{font-size:10pt; color:#353535;}
-  .outline-text-2{margin-left: 1em;}
-  .outline-text-3{margin-left: 2em;}
-  .outline-text-3{margin-left: 3em;}
 </style>
 <script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -89,84 +133,57 @@
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">Starter Kit Misc Recommended</h1>
-
-<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+<p>
+This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Starter Kit Misc</h2>
 <div class="outline-text-2" id="text-1">
-
-<p>Things that don't fit anywhere else, and which aren't quite universal
+<p>
+Things that don't fit anywhere else, and which aren't quite universal
 enough to live in <code>starter-kit-misc.org</code>.
 </p>
-
 </div>
 
 <div id="outline-container-window-system" class="outline-3">
-<h3 id="window-system"><a name="sec-1-1" id="sec-1-1"></a>Window systems &ndash; remove visual cruft &nbsp;&nbsp;&nbsp;<span class="tag"><span class="visual">visual</span></span></h3>
+<h3 id="window-system"><a id="sec-1-1" name="sec-1-1"></a>Window systems &#x2013; remove visual cruft&#xa0;&#xa0;&#xa0;<span class="tag"><span class="visual">visual</span></span></h3>
 <div class="outline-text-3" id="text-window-system">
+<div class="org-src-container">
 
-
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> window-system
-  <span class="org-starter-kit-paren">(</span>tooltip-mode -1<span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>tool-bar-mode -1<span class="org-starter-kit-paren">))</span>
+<pre class="src src-emacs-lisp" id="starter-kit-window-view-stuff-recommended">(<span style="font-weight: bold;">when</span> window-system
+  (tooltip-mode -1)
+  (tool-bar-mode -1))
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2">No Menu Bar &nbsp;&nbsp;&nbsp;<span class="tag"><span class="visual">visual</span></span></h3>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">No Menu Bar&#xa0;&#xa0;&#xa0;<span class="tag"><span class="visual">visual</span></span></h3>
 <div class="outline-text-3" id="text-1-2">
-
-<p>You really don't need this; trust me.
-</p>
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>menu-bar-mode -1<span class="org-starter-kit-paren">)</span>
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3">Nxhtml &ndash; utilities for we development</h3>
-<div class="outline-text-3" id="text-1-3">
-
-<p><a href="http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html">Nxhtml</a> is a large package of utilities for web development and for
-embedding multiple major modes in a single buffer.
-</p>
 <p>
-Nxhtml is not installed in this version of the starter-kit by default,
-for information on installing nxhtml see <a href="http://www.emacswiki.org/emacs/NxhtmlMode">EmacsWiki-Nxhtml</a>.
+You really don't need this; trust me.
 </p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp" id="starter-kit-no-menu">(menu-bar-mode -1)
+</pre>
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4">Set browser</h3>
-<div class="outline-text-3" id="text-1-4">
-
-<p>Set this to whatever browser you use e.g&hellip;
-</p><pre class="example">
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Set browser</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Set this to whatever browser you use e.g&#x2026;
+</p>
+<pre class="example">
 ;; (setq browse-url-browser-function 'browse-url-firefox)
 ;; (setq browse-url-browser-function 'browse-default-macosx-browser)
 ;; (setq browse-url-browser-function 'browse-default-windows-browser)
@@ -174,36 +191,11 @@ for information on installing nxhtml see <a href="http://www.emacswiki.org/emacs
 ;; (setq browse-url-browser-function 'browse-default-epiphany)
 ;; (setq browse-url-browser-function 'browse-default-w3m)
 ;; (setq browse-url-browser-function 'browse-url-generic
-;;       browse-url-generic-program "~/src/conkeror/conkeror")
+;;       browse-url-generic-program "conkeror")
 </pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5">Associate modes with file extensions</h3>
-<div class="outline-text-3" id="text-1-5">
-
-
-
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"COMMIT_EDITMSG$"</span> . diff-mode<span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.css$"</span> . css-mode<span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">require</span> '<span class="org-constant">yaml-mode</span><span class="org-starter-kit-paren">)</span>
-<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.ya?ml$"</span> . yaml-mode<span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.rb$"</span> . ruby-mode<span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"Rakefile$"</span> . ruby-mode<span class="org-starter-kit-paren">))</span>
-<span class="org-starter-kit-paren">(</span>add-to-list 'auto-mode-alist '<span class="org-starter-kit-paren">(</span><span class="org-string">"\\.js</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">on</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">?$"</span> . js2-mode<span class="org-starter-kit-paren">))</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">(add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))</span>
-</pre>
-
-
 </div>
 </div>
 </div>
 </div>
-
 </body>
 </html>

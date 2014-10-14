@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Starter Kit Scala</title>
+<!-- 2014-10-13 Mon 22:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Starter Kit Scala</h1>
+<p>
+This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Starter Kit Scala</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>
+Support for developing in Scala under Emacs. 
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Scala-mode2</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+This is a new scala major mode for emacs 24. It is a complete rewrite
+based on the Scala Language Specification 2.9.
+</p>
+
+<p>
+The mode intends to provide the basic emacs support, including:
+</p>
+
+<ul class="org-ul">
+<li>indenting of code, comments and multi-line strings
+</li>
+<li>motion commands
+</li>
+<li>highlighting
+</li>
+</ul>
+
+<p>
+Currently the indenting of code has been finalized. Highlighting is
+under work. No scala specific motion commands have been added, but
+standard emacs motions work of course.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">Install scala-mode2</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Install scala-mode2 from MELPA (M-x package-install RET scala-mode2)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-install-if-needed 'scala-mode2)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">Customise scala-mode2</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'scala-mode-hook '(<span style="font-weight: bold;">lambda</span> ()
+
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Bind the 'newline-and-indent' command to RET (aka 'enter'). This</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">is normally also available as C-j. The 'newline-and-indent'</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">command has the following functionality: 1) it removes trailing</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">whitespace from the current line, 2) it create a new line, and 3)</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">indents it.  An alternative is the</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">'reindent-then-newline-and-indent' command.</span>
+  (local-set-key (kbd <span style="font-style: italic;">"RET"</span>) 'newline-and-indent)
+
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Alternatively, bind the 'newline-and-indent' command and</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">'scala-indent:insert-asterisk-on-multiline-comment' to RET in</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">order to get indentation and asterisk-insertion within multi-line</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">comments.</span>
+  (local-set-key (kbd <span style="font-style: italic;">"RET"</span>)
+                 '(<span style="font-weight: bold;">lambda</span> ()
+                    (interactive)
+                    (newline-and-indent)
+                    (scala-indent:insert-asterisk-on-multiline-comment)))
+
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Bind the backtab (shift tab) to</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">'scala-indent:indent-with-reluctant-strategy command. This is usefull</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">when using the 'eager' mode by default and you want to "outdent" a</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">code line as a new statement.</span>
+  (local-set-key (kbd <span style="font-style: italic;">"&lt;backtab&gt;"</span>) 'scala-indent:indent-with-reluctant-strategy)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">sbt-mode</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>
+An emacs mode for interacting with sbt, scala console (aka REPL) and
+sbt projects.
+</p>
+
+<p>
+The mode provides basic functionality required for successfully
+interacting with sbt from emacs. The core functionality includes:
+</p>
+
+<ul class="org-ul">
+<li>interacting with sbt shell and scala console
+</li>
+<li>compiling code and navigating to errors
+</li>
+<li>finding things in code
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">Install sbt-mode</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Install sbt-mode2 from MELPA (M-x package-install RET sbt-mode)
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-install-if-needed 'sbt-mode)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2">Customise sbt-mode</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+To work efficiently with sbt-mode, you should customize these
+variables.
+</p>
+
+<ul class="org-ul">
+<li>sbt:program-name - the name of the sbt executable, defaults to
+</li>
+</ul>
+<p>
+sbt. Note: this variable is best configured throught the emacs
+customization menu (M-x customize-variable RET sbt:program-name) or
+set globally. You can not set it with the mode hook.
+</p>
+
+<ul class="org-ul">
+<li>grep-find-ignored-directories - directories not to include in
+</li>
+</ul>
+<p>
+searches. You should add the target directory and maybe remove many of
+the directories related to arcane version control tools that you will
+not have anyway.
+</p>
+
+<ul class="org-ul">
+<li>grep-find-ignored-files - a list of file patterns to ignore in searches.
+</li>
+</ul>
+<p>
+You may also want to add a mode-hook to you .emacs file that alters
+key-bindings and some settings.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'sbt-mode-hook '(<span style="font-weight: bold;">lambda</span> ()
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">compilation-skip-threshold tells the compilation minor-mode</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">which type of compiler output can be skipped. 1 = skip info</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">2 = skip info and warnings.</span>
+  (setq compilation-skip-threshold 1)
+
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Bind C-a to 'comint-bol when in sbt-mode. This will move the</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">cursor to just after prompt.</span>
+  (local-set-key (kbd <span style="font-style: italic;">"C-a"</span>) 'comint-bol)
+
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Bind M-RET to 'comint-accumulate. This will allow you to add</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">more than one line to scala console prompt before sending it</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">for interpretation. It will keep your command history cleaner.</span>
+  (local-set-key (kbd <span style="font-style: italic;">"M-RET"</span>) 'comint-accumulate)))
+</pre>
+</div>
+
+<p>
+Besides customizing sbt-mode, you might also want to add some
+customizations to your scala-mode2 key-bindings. The following two
+commands are good to have in some easily accessible key position.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'scala-mode-hook '(<span style="font-weight: bold;">lambda</span> ()
+   <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">sbt-find-definitions is a command that tries to find (with grep)</span>
+   <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">the definition of the thing at point.</span>
+   (local-set-key (kbd <span style="font-style: italic;">"M-."</span>) 'sbt-find-definitions)
+
+   <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">use emacs M-x next-error to navigate errors</span>
+   (local-set-key (kbd <span style="font-style: italic;">"M-'"</span>) 'next-error)
+   <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">use sbt-run-previous-command to re-compile your code after changes</span>
+   (local-set-key (kbd <span style="font-style: italic;">"C-x '"</span>) 'sbt-run-previous-command)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Ensime</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+ENSIME is the ENhanced Scala Interaction Mode for Emacs. It provides
+many features that are commonly found only in IDEs, such as live
+error-checking, symbol inspection, package/type browsing, and basic
+refactoring.
+</p>
+</div>
+
+<div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">Install Ensime</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-install-if-needed 'ensime)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">Yasnippet</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Provide templates for many standard operations.   
+</p>
+</div>
+
+<div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1">Install Yasnippet</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(starter-kit-install-if-needed 'yasnippet)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2">Configure Yasnippet</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'scala-mode-hook '(<span style="font-weight: bold;">lambda</span> ()
+  (yas-minor-mode)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5">Whitespace</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<p>
+Emacs has a very nice minor mode for highlighting bad whitespace and
+removing any unwanted whitespace when you save a file. To use it,
+uncomment the expression below
+</p>
+</div>
+<div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1">Configure Whitespace</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'scala-mode-hook '(<span style="font-weight: bold;">lambda</span> ()
+  <span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(require 'whitespace)</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">clean-up whitespace at save</span>
+  (make-local-variable 'before-save-hook)
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">turn on highlight. To configure what is highlighted, customize</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">the *whitespace-style* variable. A sane set of things to</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">highlight is: face, tabs, trailing</span>
+  (whitespace-mode)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

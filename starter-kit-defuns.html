@@ -1,73 +1,117 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Starter Kit Defuns</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Starter Kit Defuns"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2011-12-23 11:23:57 MST"/>
-<meta name="author" content="Eric Schulte"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-10-13 Mon 22:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="emacs.css" type="text/css"/>
-<style type="text/css">
-  pre{background:#232323; color:#E6E1DC;}
-  code{font-size:10pt; color:#353535;}
-  .outline-text-2{margin-left: 1em;}
-  .outline-text-3{margin-left: 2em;}
-  .outline-text-3{margin-left: 3em;}
 </style>
 <script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -89,27 +133,22 @@
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">Starter Kit Defuns</h1>
-
-<p>This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
+<p>
+This is part of the <a href="starter-kit.html">Emacs Starter Kit</a>.
 </p>
 
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">The starter-kit-coding-hook:</h2>
 <div class="outline-text-2" id="text-1">
-
-<p>A single hook holding those functions which should be run in <b>every</b>
+<p>
+A single hook holding those functions which should be run in <b>every</b>
 code buffer.
 </p>
+
 <p>
 We have a number of turn-on-* functions since it's advised that lambda
 functions not go in hooks. Repeatedly evaling an add-to-list with a
@@ -117,49 +156,75 @@ hook value will repeatedly add it since there's no way to ensure that
 a lambda doesn't already exist in the list.
 </p>
 
+<div class="org-src-container">
 
+<pre class="src src-emacs-lisp" id="starter-kit-hook-functions">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">starter-kit-local-column-number-mode</span> ()
+  (make-local-variable 'column-number-mode)
+  (column-number-mode t))
 
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-local-column-number-mode</span> <span class="org-starter-kit-paren">()</span>
-  <span class="org-starter-kit-paren">(</span>make-local-variable 'column-number-mode<span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>column-number-mode t<span class="org-starter-kit-paren">))</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">starter-kit-local-comment-auto-fill</span> ()
+  (set (make-local-variable 'comment-auto-fill-only-comments) t)
+  (auto-fill-mode t))
 
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-local-comment-auto-fill</span> <span class="org-starter-kit-paren">()</span>
-  <span class="org-starter-kit-paren">(</span>set <span class="org-starter-kit-paren">(</span>make-local-variable 'comment-auto-fill-only-comments<span class="org-starter-kit-paren">)</span> t<span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>auto-fill-mode t<span class="org-starter-kit-paren">))</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">starter-kit-turn-on-save-place-mode</span> ()
+  (setq save-place t))
 
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-turn-on-save-place-mode</span> <span class="org-starter-kit-paren">()</span>
-  <span class="org-starter-kit-paren">(</span>setq save-place t<span class="org-starter-kit-paren">))</span>
-
-<span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">starter-kit-turn-on-whitespace</span> <span class="org-starter-kit-paren">()</span>
-  <span class="org-starter-kit-paren">(</span>whitespace-mode t<span class="org-starter-kit-paren">))</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">starter-kit-turn-on-whitespace</span> ()
+  (whitespace-mode t))
 </pre>
+</div>
 
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'starter-kit-coding-hook 'starter-kit-local-column-number-mode<span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp" id="starter-kit-add-local-column-number-mode">(add-hook 'starter-kit-coding-hook 'starter-kit-local-column-number-mode)
 </pre>
+</div>
 
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span>add-hook 'starter-kit-coding-hook 'starter-kit-local-comment-auto-fill<span class="org-starter-kit-paren">)</span>
+<pre class="src src-emacs-lisp" id="start-kit-add-local-comment-auto-fill">(add-hook 'starter-kit-coding-hook 'starter-kit-local-comment-auto-fill)
 </pre>
+</div>
 
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">when</span> <span class="org-starter-kit-paren">(</span>window-system<span class="org-starter-kit-paren">)</span>
-  <span class="org-starter-kit-paren">(</span>add-hook 'starter-kit-coding-hook 'starter-kit-pretty-lambdas<span class="org-starter-kit-paren">))</span>
+<pre class="src src-emacs-lisp" id="starter-kit-add-pretty-lambdas">(<span style="font-weight: bold;">when</span> (window-system)
+  (add-hook 'starter-kit-coding-hook 'starter-kit-pretty-lambdas))
 </pre>
+</div>
 
+<div class="org-src-container">
 
-
-<pre class="src src-emacs-lisp"><span class="org-starter-kit-paren">(</span><span class="org-keyword">defun</span> <span class="org-function-name">run-starter-kit-coding-hook</span> <span class="org-starter-kit-paren">()</span>
-  <span class="org-doc">"Enable things that are convenient across all coding buffers."</span>
-  <span class="org-starter-kit-paren">(</span>run-hooks 'starter-kit-coding-hook<span class="org-starter-kit-paren">))</span>
+<pre class="src src-emacs-lisp" id="starter-kit-run-starter-kit-coding-hook">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">run-starter-kit-coding-hook</span> ()
+  <span style="font-style: italic;">"Enable things that are convenient across all coding buffers."</span>
+  (run-hooks 'starter-kit-coding-hook))
 </pre>
+</div>
 
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp" id="starter-kit-recentf-ido-find-file">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">recentf-ido-find-file</span> () 
+  <span style="font-style: italic;">"Find a recent file using Ido."</span> 
+  (interactive) 
+  (<span style="font-weight: bold;">let*</span> ((file-assoc-list 
+          (mapcar (<span style="font-weight: bold;">lambda</span> (x) 
+                    (cons (file-name-nondirectory x) 
+                          x)) 
+                  recentf-list)) 
+         (filename-list 
+          (remove-duplicates (mapcar #'car file-assoc-list) 
+                             <span style="font-weight: bold;">:test</span> #'string=)) 
+         (filename (ido-completing-read <span style="font-style: italic;">"Choose recent file: "</span> 
+                                        filename-list 
+                                        nil 
+                                        t))) 
+    (<span style="font-weight: bold;">when</span> filename 
+      (find-file (cdr (assoc filename 
+                             file-assoc-list))))))
+</pre>
 </div>
 </div>
 </div>
-
+</div>
 </body>
 </html>
