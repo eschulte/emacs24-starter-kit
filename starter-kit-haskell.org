@@ -9,6 +9,57 @@ This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
   :END:
 Support for editing Haskell
 
+** Setting up cabal
+You can skip these steps if you've already setup ghc and cabal
+*** Install cabal
+**** Linux (Debian/Ubuntu)
+#+begin_src sh
+  sudo apt-get update
+  sudo apt-get install ghc cabal-install
+  cabal update
+#+end_src
+    
+**** OS X [with Homebrew]
+#+begin_src sh
+  brew update
+  brew install ghc cabal-install
+  cabal update
+#+end_src
+
+*** Update cabal
+#+start_src sh
+   cabal install cabal-install
+#+end
+
+*** Set path to ~/.cabal/bin
+#+begin_src sh
+  echo 'PATH=~/.cabal/bin:$PATH'|tee -a ~/.profile
+  source ~/.profile
+  which cabal
+#+end_src
+
+The last line should show you that you are now using the local and
+latest version of cabal located in your ~/.cabal/bin directory.
+
+*** Innstall Packages for Development
+
+Haskell modes usually have two components to them. One side is haskell
+and the other side is installed and configured in Emacs
+
+We will want to install some basic haskell packages in our ~/.cabal &
+~/.ghc user directories. This makes them available along side cabal
+for doing development on your projects.
+
+Running those commands in the shell might take some time - emacs
+appears to be frozen; trust me, it's not
+#+begin_src sh
+  cabal install happy alex ;# needed but not listed as dependency
+#+end_src
+
+Paste the following into your terminal:
+
+
+** Pretty lambdas
 pretty lambdas in Haskell code
 #+begin_src emacs-lisp
   (defun pretty-lambdas-haskell ()
@@ -19,9 +70,98 @@ pretty lambdas in Haskell code
                       nil))))))
 #+end_src
 
-Haskell mode hook
+
+** Haskell Mode
+*** Install Haskell mode 
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'haskell-mode)
+#+end_src
+
+*** Configure
 #+begin_src emacs-lisp
   (add-hook 'haskell-mode-hook 'run-starter-kit-coding-hook)
   (when (window-system)
     (add-hook 'haskell-mode-hook 'pretty-lambdas-haskell))
+  (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+  ;; Ignore compiled Haskell files in filename completions
+  (add-to-list 'completion-ignored-extensions ".hi")
 #+end_src
+
+
+** Stylish Haskell
+A simple Haskell code prettifier. 
+
+This tool tries to help where necessary without getting in the way.
+
+*Features*
+
+- Aligns and sorts import statements
+- Groups and wraps {-# LANGUAGE #-} pragmas, can remove (some)
+  redundant pragmas
+- Removes trailing whitespace
+- Replaces tabs by four spaces (turned off by default)
+- Replaces some ASCII sequences by their Unicode equivalents (turned
+  off by default)
+
+#+begin_src sh
+  cabal install stylish-haskell
+#+end_src
+*** Configuration
+To call it for every save, make sure you have C-x C-s rebound to
+haskell-mode-save-buffer.
+
+#+begin_src emacs-lisp
+  (defadvice haskell-mode-stylish-buffer (around skip-if-flycheck-errors activate)
+    (unless (flycheck-has-current-errors-p 'error)
+      ad-do-it))
+  (setq haskell-stylish-on-save t)
+#+end_src
+
+** GHC mod
+The ghc-mod command is a backend command to enrich Haskell programming
+on editors including Emacs, Vim, and Sublime.
+*** Install ghc-mod
+#+begin_src sh
+  cabal install ghc-mod
+#+end_src
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'ghc)
+#+end_src
+
+
+** Structured Haskell
+This minor mode provides structured editing operations based on the
+syntax of Haskell. In short-hand it's called SHM and throughout the
+codebase, too. It acts a bit like, and is heavily inspired by,
+paredit-mode for Emacs.
+
+*** Install structured Haskell 
+#+begin_src sh
+  cabal install structured-haskell
+#+end_src
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'shm)
+#+end_src
+
+*** Configure
+#+begin_src emacs-lisp
+  (add-hook 'haskell-mode-hook 'structured-haskell-mode)
+  ;; The following are apparently pretty good for solarized-light.
+  ;;(set-face-background 'shm-current-face "#eee8d5")
+  ;;(set-face-background 'shm-quarantine-face "lemonchiffon")
+#+end_src
+
+
+** Installing Haskell-Mode Extensions
+*** Install flycheck
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'flycheck)
+  (add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
+  (global-flycheck-mode)
+#+end_src
+*** Install flyspell-haskell
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'flyspell)
+  (add-hook 'haskell-mode-hook 'flyspell-prog-mode)
+#+end_src
+    
