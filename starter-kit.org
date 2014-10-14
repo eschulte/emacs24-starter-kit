@@ -258,6 +258,7 @@ interested in the actual code implementing the starter kit.
   #+name: starter-kit-load-on-startup
   #+begin_src emacs-lisp
     (require 'cl)
+    (require 'cl-lib)
     (require 'saveplace)
     (require 'ffap)
     (require 'uniquify)
@@ -435,8 +436,6 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
                        (directory-files user-dir t ".*\.\\(org\\|el\\)\\(\\.gpg\\)?$"))
                :test #'string=)))))
 #+end_src
-
-#+RESULTS: starter-kit-load-files
 
 *** Settings from M-x customize
 #+name: m-x-customize-customizations
