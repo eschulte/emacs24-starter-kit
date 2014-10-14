@@ -12,21 +12,25 @@ the documentation for the Starter Kit to html.
 #+begin_src emacs-lisp :results silent
   (unless (boundp 'org-publish-project-alist)
     (setq org-publish-project-alist nil))
-  
+
   (let* ((this-dir (file-name-directory (or load-file-name buffer-file-name)))
+         (starter-kit-dir this-dir)
         (org-export-htmlize-output-type 'css)
         (load-path (cons (expand-file-name "elpa" this-dir) load-path))
         (package-archives '(("original"    . "http://tromey.com/elpa/"))))
+    ;; load the basic starter kit
+    (org-babel-load-file (expand-file-name "starter-kit.org" this-dir))
     ;; load up htmlize
     (package-initialize)
     (unless (functionp 'htmlize)
       (starter-kit-install-if-needed 'htmlize))
     (require 'htmlize)
-    (org-export-htmlize-generate-css)
+    (org-html-htmlize-generate-css)
     ;; define the org-publish-project for the starter kit
     (add-to-list
      'org-publish-project-alist
      `("starter-kit-documentation"
+       :publishing-function org-html-publish-to-html
        :base-directory ,this-dir
        :base-extension "org"
        :style "<link rel=\"stylesheet\" href=\"emacs.css\" type=\"text/css\"/>
