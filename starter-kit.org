@@ -407,7 +407,7 @@ project is not in elpa.
 After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 #+name: starter-kit-load-files
 #+begin_src emacs-lisp
-  (flet ((sk-load (base)
+  (cl-flet ((sk-load (base)
            (let* ((path          (expand-file-name base starter-kit-dir))
                   (literate      (concat path ".org"))
                   (encrypted-org (concat path ".org.gpg"))
@@ -435,6 +435,8 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
                        (directory-files user-dir t ".*\.\\(org\\|el\\)\\(\\.gpg\\)?$"))
                :test #'string=)))))
 #+end_src
+
+#+RESULTS: starter-kit-load-files
 
 *** Settings from M-x customize
 #+name: m-x-customize-customizations
