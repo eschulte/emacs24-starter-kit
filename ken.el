@@ -1,4 +1,3 @@
-;; My settings
 (starter-kit-load "yasnippet")
 (starter-kit-load "misc-recommended")
 (starter-kit-load "org")
@@ -85,7 +84,7 @@
 ;;(color-theme-billw)
 ;;(require 'color-theme-sanityinc-tomorrow)
 ;;(color-theme-sanityinc-tomorrow--define-theme night)
-(load-theme 'anti-zenburn t)
+;;(load-theme 'anti-zenburn t)
 ;;(load-theme 'zenburn t)
 
 ;;======== BUFF-MOVE ========
@@ -103,7 +102,7 @@
 (require 'evil)
 (evil-mode 1)
 
-(require 'evil-org)
+;;(require 'evil-org)
 
 ;;======== FCI ========
 (require 'fill-column-indicator)
@@ -327,7 +326,7 @@
 (setq org-capture-templates 
       '(("p" "Project" entry (file+headline (concat org-directory "/project.org") "project") "** TODO %?\n %i\n  %a")
         ("i" "Inbox" entry (file (concat org-directory "/inbox.org")) "** TODO %? %^G %i\n %a")
-        ("P" "Personal" entry (file+headline (concat org-directory "/personal.org") "personal") "** TODO %? %^G %a")
+        ("P" "Personal" entry (file+headline (concat org-directory "/personal.org") "personal") "** TODO %? %^G\n %a")
         ("n" "Note" entry (file+datetree (concat org-directory "/note.org")) "* %?\nEntered on %U\n %i\n  %a")
 ))
 
