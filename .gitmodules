@@ -1,3 +1,6 @@
 [submodule "vendor/nxhtml"]
 	path = vendor/nxhtml
 	url = git://github.com/emacsmirror/nxhtml.git
+[submodule "vendor/orgmode-mediawiki"]
+	path = vendor/orgmode-mediawiki
+	url = https://github.com/craftkiller/orgmode-mediawiki.git
