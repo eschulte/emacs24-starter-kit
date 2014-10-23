@@ -66,7 +66,8 @@ If you want to keep your regular =~/.emacs.d= in place and just launch
 a single instance using the starter kit, try the following invocation:
 
 #+begin_src sh
-  emacs -q -l ~/path/to/emacs24-starter-kit/init.el
+  emacs -q -l ~/path/to/emacs24-starter-kit/init.el \
+      --eval "(run-hooks 'after-init-hook)"
 #+end_src
 
 Note that having a =~/.emacs= file might override the starter kit
@@ -198,6 +199,7 @@ generally useful please submit it to the starter kit core!
 - [[file:starter-kit-perl.org][perl]]
 - [[file:starter-kit-python.org][python]]
 - [[file:starter-kit-ruby.org][ruby]]
+- [[file:starter-kit-scala.org][scala]]
 
 ** Emacs Lisp Package Archive
    :PROPERTIES:
@@ -238,7 +240,13 @@ interested in the actual code implementing the starter kit.
 - Load path etc.
   #+name: starter-kit-load-paths
   #+begin_src emacs-lisp
-    (add-to-list 'load-path starter-kit-dir)
+    (let ((elisp-dir (expand-file-name "src" starter-kit-dir)))
+      ;; add the src directory to the load path
+      (add-to-list 'load-path elisp-dir)
+      ;; load specific files
+      (when (file-exists-p elisp-dir)
+        (let ((default-directory elisp-dir))
+          (normal-top-level-add-subdirs-to-load-path))))
     (setq autoload-file (concat starter-kit-dir "loaddefs.el"))
     (setq package-user-dir (concat starter-kit-dir "elpa"))
     (setq custom-file (concat starter-kit-dir "custom.el"))
@@ -250,6 +258,7 @@ interested in the actual code implementing the starter kit.
   #+name: starter-kit-load-on-startup
   #+begin_src emacs-lisp
     (require 'cl)
+    (require 'cl-lib)
     (require 'saveplace)
     (require 'ffap)
     (require 'uniquify)
@@ -257,36 +266,45 @@ interested in the actual code implementing the starter kit.
     (require 'recentf)
   #+end_src
 
-- ELPA archive repositories and two packages to install by default.
+- Function to check if a packages exist in the load path.  This may be
+  used to preempt the installation of ELPA versions of packages whose
+  source may already be found in the load path.
+  #+name: starter-kit-loadable
   #+begin_src emacs-lisp
-    (setq package-archives
-          '(("gnu"         . "http://elpa.gnu.org/packages/")
-            ("original"    . "http://tromey.com/elpa/")
-            ("org"         . "http://orgmode.org/elpa/")
-            ("marmalade"   . "http://marmalade-repo.org/packages/")
-            ("melpa"       . "http://melpa.milkbox.net/packages/")))
-    (package-initialize)
-    
-    (defvar starter-kit-packages
-      (list 'yasnippet)
-      "Libraries that should be installed by default.")
-    
-    ;; If `yasnippet-bundle' has previously been installed through ELPA,
-    ;; delete it before installing the new `yasnippet'
-    (let ((yas-bundle-desc (assq 'yasnippet-bundle package-alist)))
-      (when yas-bundle-desc
-        (package-delete "yasnippet-bundle"
-                        (package-version-join
-                         (package-desc-vers (cdr yas-bundle-desc))))))
-    
-    (unless package-archive-contents
-      (package-refresh-contents))
-    (dolist (package starter-kit-packages)
-      (unless (package-installed-p package)
-        (package-install package)))
+    (defun starter-kit-loadable-p (package)
+      "Check if PACKAGE is loadable from a directory in `load-path'."
+      (let ((load-file (concat (symbol-name package) ".el")))
+        (catch 'file-found
+          (dolist (dir load-path)
+            (let ((path (expand-file-name load-file dir)))
+              (when (file-exists-p path)
+                (throw 'file-found path)))))))
   #+end_src
 
-- Functions for loading other parts of the starter kit
+- ELPA archive repositories and two packages to install by default.
+  #+begin_src emacs-lisp
+        (setq package-archives
+              '(("gnu"         . "http://elpa.gnu.org/packages/")
+                ("org"         . "http://orgmode.org/elpa/")
+                ("melpa"       . "http://melpa.milkbox.net/packages/")
+                ("marmalade"   . "http://marmalade-repo.org/packages/")))
+        (package-initialize)
+        
+        (defvar starter-kit-packages nil
+          "Libraries that should be installed by default (currently none).")
+        
+        (defun starter-kit-install-if-needed (&rest packages)
+          "Install PACKAGES using ELPA if they are not loadable or installed locally."
+          (when packages
+            (unless package-archive-contents
+              (package-refresh-contents))
+            (dolist (package packages)
+              (unless (or (starter-kit-loadable-p package)
+                          (package-installed-p package))
+                (package-install package)))))
+  #+end_src
+
+- Function for loading other parts of the starter kit
   #+name: starter-kit-load
   #+begin_src emacs-lisp
     (defun starter-kit-load (file &optional header-or-tag)
@@ -376,42 +394,6 @@ everyone using the starter kit.
   (starter-kit-load "starter-kit-registers.org")
   #+end_src
 
-- [[http://code.google.com/p/yasnippet/][yasnippet]] is yet another snippet expansion system for Emacs.  It is
-  inspired by TextMate's templating syntax.
-  - watch the [[http://www.youtube.com/watch?v=vOj7btx3ATg][video on YouTube]]
-  - see the [[http://yasnippet.googlecode.com/svn/trunk/doc/index.html][intro and tutorial]]
-
-  load the yasnippet bundle
-  #+begin_src emacs-lisp
-    (add-to-list 'load-path
-                 (expand-file-name  "yasnippet"
-                                    (expand-file-name "src"
-                                                      starter-kit-dir)))
-    (require 'yasnippet)
-    (yas-global-mode 1)
-  #+end_src
-
-  load the snippets defined in the =./snippets/= directory
-  #+begin_src emacs-lisp
-    (yas/load-directory (expand-file-name "snippets" starter-kit-dir))
-  #+end_src
-
-  The latest version of yasnippets doesn't play well with Org-mode, the
-  following function allows these two to play nicely together.
-  #+begin_src emacs-lisp
-    (defun yas/org-very-safe-expand ()
-      (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
-    
-    (defun yas/org-setup ()
-      ;; yasnippet (using the new org-cycle hooks)
-      (make-variable-buffer-local 'yas/trigger-key)
-      (setq yas/trigger-key [tab])
-      (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-      (define-key yas/keymap [tab] 'yas/next-field))
-    
-    (add-hook 'org-mode-hook #'yas/org-setup)
-  #+end_src
-
 ** Load User/System Specific Files
 *** System/User specific customizations
 You can keep system- or user-specific customizations here in either
@@ -426,7 +408,7 @@ project is not in elpa.
 After we've loaded all the Starter Kit defaults, lets load the User's stuff.
 #+name: starter-kit-load-files
 #+begin_src emacs-lisp
-  (flet ((sk-load (base)
+  (cl-flet ((sk-load (base)
            (let* ((path          (expand-file-name base starter-kit-dir))
                   (literate      (concat path ".org"))
                   (encrypted-org (concat path ".org.gpg"))
@@ -440,14 +422,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
          (remove-extension (name)
            (string-match "\\(.*?\\)\.\\(org\\(\\.el\\)?\\|el\\)\\(\\.gpg\\)?$" name)
            (match-string 1 name)))
-    (let ((elisp-dir (expand-file-name "src" starter-kit-dir))
-          (user-dir (expand-file-name user-login-name starter-kit-dir)))
-      ;; add the src directory to the load path
-      (add-to-list 'load-path elisp-dir)
-      ;; load specific files
-      (when (file-exists-p elisp-dir)
-        (let ((default-directory elisp-dir))
-          (normal-top-level-add-subdirs-to-load-path)))
+    (let ((user-dir (expand-file-name user-login-name starter-kit-dir)))
       ;; load system-specific config
       (sk-load system-name)
       ;; load user-specific config

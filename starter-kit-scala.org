@@ -1,0 +1,185 @@
+#+TITLE: Starter Kit Scala
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
+
+* Starter Kit Scala
+  :PROPERTIES:
+  :results:  silent
+  :END:
+
+Support for developing in Scala under Emacs. 
+
+** Scala-mode2
+  :PROPERTIES:
+  :tangle: yes
+  :END:
+This is a new scala major mode for emacs 24. It is a complete rewrite
+based on the Scala Language Specification 2.9.
+
+The mode intends to provide the basic emacs support, including:
+
+- indenting of code, comments and multi-line strings
+- motion commands
+- highlighting
+
+Currently the indenting of code has been finalized. Highlighting is
+under work. No scala specific motion commands have been added, but
+standard emacs motions work of course.
+
+*** Install scala-mode2
+Install scala-mode2 from MELPA (M-x package-install RET scala-mode2)
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'scala-mode2)
+#+end_src
+
+*** Customise scala-mode2
+#+begin_src emacs-lisp
+  (add-hook 'scala-mode-hook '(lambda ()
+  
+    ;; Bind the 'newline-and-indent' command to RET (aka 'enter'). This
+    ;; is normally also available as C-j. The 'newline-and-indent'
+    ;; command has the following functionality: 1) it removes trailing
+    ;; whitespace from the current line, 2) it create a new line, and 3)
+    ;; indents it.  An alternative is the
+    ;; 'reindent-then-newline-and-indent' command.
+    (local-set-key (kbd "RET") 'newline-and-indent)
+  
+    ;; Alternatively, bind the 'newline-and-indent' command and
+    ;; 'scala-indent:insert-asterisk-on-multiline-comment' to RET in
+    ;; order to get indentation and asterisk-insertion within multi-line
+    ;; comments.
+    (local-set-key (kbd "RET")
+                   '(lambda ()
+                      (interactive)
+                      (newline-and-indent)
+                      (scala-indent:insert-asterisk-on-multiline-comment)))
+  
+    ;; Bind the backtab (shift tab) to
+    ;; 'scala-indent:indent-with-reluctant-strategy command. This is usefull
+    ;; when using the 'eager' mode by default and you want to "outdent" a
+    ;; code line as a new statement.
+    (local-set-key (kbd "<backtab>") 'scala-indent:indent-with-reluctant-strategy)))
+#+end_src
+
+** sbt-mode
+  :PROPERTIES:
+  :tangle: yes
+  :END:
+
+An emacs mode for interacting with sbt, scala console (aka REPL) and
+sbt projects.
+
+The mode provides basic functionality required for successfully
+interacting with sbt from emacs. The core functionality includes:
+
+- interacting with sbt shell and scala console
+- compiling code and navigating to errors
+- finding things in code
+  
+*** Install sbt-mode
+Install sbt-mode2 from MELPA (M-x package-install RET sbt-mode)
+
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'sbt-mode)
+#+end_src
+*** Customise sbt-mode
+To work efficiently with sbt-mode, you should customize these
+variables.
+
+- sbt:program-name - the name of the sbt executable, defaults to
+sbt. Note: this variable is best configured throught the emacs
+customization menu (M-x customize-variable RET sbt:program-name) or
+set globally. You can not set it with the mode hook.
+
+- grep-find-ignored-directories - directories not to include in
+searches. You should add the target directory and maybe remove many of
+the directories related to arcane version control tools that you will
+not have anyway.
+
+- grep-find-ignored-files - a list of file patterns to ignore in searches.
+You may also want to add a mode-hook to you .emacs file that alters
+key-bindings and some settings.
+
+#+begin_src emacs-lisp
+  (add-hook 'sbt-mode-hook '(lambda ()
+    ;; compilation-skip-threshold tells the compilation minor-mode
+    ;; which type of compiler output can be skipped. 1 = skip info
+    ;; 2 = skip info and warnings.
+    (setq compilation-skip-threshold 1)
+  
+    ;; Bind C-a to 'comint-bol when in sbt-mode. This will move the
+    ;; cursor to just after prompt.
+    (local-set-key (kbd "C-a") 'comint-bol)
+  
+    ;; Bind M-RET to 'comint-accumulate. This will allow you to add
+    ;; more than one line to scala console prompt before sending it
+    ;; for interpretation. It will keep your command history cleaner.
+    (local-set-key (kbd "M-RET") 'comint-accumulate)))
+#+end_src
+
+Besides customizing sbt-mode, you might also want to add some
+customizations to your scala-mode2 key-bindings. The following two
+commands are good to have in some easily accessible key position.
+
+#+begin_src emacs-lisp
+  (add-hook 'scala-mode-hook '(lambda ()
+     ;; sbt-find-definitions is a command that tries to find (with grep)
+     ;; the definition of the thing at point.
+     (local-set-key (kbd "M-.") 'sbt-find-definitions)
+     
+     ;; use emacs M-x next-error to navigate errors
+     (local-set-key (kbd "M-'") 'next-error)
+     ;; use sbt-run-previous-command to re-compile your code after changes
+     (local-set-key (kbd "C-x '") 'sbt-run-previous-command)))
+#+end_src
+** Ensime
+ENSIME is the ENhanced Scala Interaction Mode for Emacs. It provides
+many features that are commonly found only in IDEs, such as live
+error-checking, symbol inspection, package/type browsing, and basic
+refactoring.
+
+*** Install Ensime
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'ensime)
+#+end_src
+
+** Yasnippet
+  :PROPERTIES:
+  :tangle: yes
+  :END:
+Provide templates for many standard operations.   
+
+*** Install Yasnippet
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'yasnippet)
+#+end_src
+
+*** Configure Yasnippet
+#+begin_src emacs-lisp
+  (add-hook 'scala-mode-hook '(lambda ()
+    (yas-minor-mode)))
+#+end_src
+
+** Whitespace
+  :PROPERTIES:
+  :tangle: yes
+  :END:
+
+Emacs has a very nice minor mode for highlighting bad whitespace and
+removing any unwanted whitespace when you save a file. To use it,
+uncomment the expression below
+*** Configure Whitespace
+
+#+begin_src emacs-lisp
+  (add-hook 'scala-mode-hook '(lambda ()
+    ;;(require 'whitespace)
+    ;; clean-up whitespace at save
+    (make-local-variable 'before-save-hook)
+    (add-hook 'before-save-hook 'whitespace-cleanup)
+  
+    ;; turn on highlight. To configure what is highlighted, customize
+    ;; the *whitespace-style* variable. A sane set of things to
+    ;; highlight is: face, tabs, trailing
+    (whitespace-mode)))
+#+end_src

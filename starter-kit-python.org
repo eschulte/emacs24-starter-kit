@@ -12,9 +12,7 @@ Support for the Python programming language.
 Determine whether required packages are installed. If not, use ELPA to
 install them.
 #+begin_src emacs-lisp
-  (dolist (package '(python-mode ipython))
-    (unless (package-installed-p package)
-      (package-install package)))
+  (starter-kit-install-if-needed 'python-mode 'ipython)
 #+end_src
 
 ** Use Python's python-mode.el instead of Emacs' python.el

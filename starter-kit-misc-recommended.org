@@ -7,16 +7,6 @@ This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
 Things that don't fit anywhere else, and which aren't quite universal
 enough to live in =starter-kit-misc.org=.
 
-** Check Dependencies
-
-Determine whether required packages are installed. If not, use ELPA to
-install them. Other dependencies are provided by Emacs 24.
-#+begin_src emacs-lisp
-  (dolist (package '(yaml-mode js2-mode))
-    (unless (package-installed-p package)
-      (package-install package)))
-#+end_src
-
 ** Window systems -- remove visual cruft                             :visual:
    :PROPERTIES:
    :CUSTOM_ID: window-system
@@ -35,13 +25,6 @@ You really don't need this; trust me.
 (menu-bar-mode -1)
 #+end_src
 
-** Nxhtml -- utilities for web development
-[[http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html][Nxhtml]] is a large package of utilities for web development and for
-embedding multiple major modes in a single buffer.
-
-Nxhtml is not installed in this version of the starter-kit by default,
-for information on installing nxhtml see [[http://www.emacswiki.org/emacs/NxhtmlMode][EmacsWiki-Nxhtml]].
-
 ** Set browser
 Set this to whatever browser you use e.g...
 : ;; (setq browse-url-browser-function 'browse-url-firefox)
@@ -51,17 +34,4 @@ Set this to whatever browser you use e.g...
 : ;; (setq browse-url-browser-function 'browse-default-epiphany)
 : ;; (setq browse-url-browser-function 'browse-default-w3m)
 : ;; (setq browse-url-browser-function 'browse-url-generic
-: ;;       browse-url-generic-program "~/src/conkeror/conkeror")
-
-** Associate modes with file extensions
-#+begin_src emacs-lisp
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
-(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js2-mode))
-;; (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
-#+end_src
-
+: ;;       browse-url-generic-program "conkeror")
