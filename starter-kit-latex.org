@@ -1,0 +1,55 @@
+
+#+TITLE: Starter Kit Latex
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
+
+* Starter Kit Latex
+  :PROPERTIES:
+  :results:  silent
+  :END:
+Support for editing Latex
+
+** Prerequesites
+
+In order to use AUCTeX the following software is required in addition:
+
+*** A working TeX installation
+
+**** UNIX-Style systems
+A popular TEX system is TEX Live which may also be available via the
+package system of your operating system distribution.
+
+**** Mac OSX
+A popular TEX system for Mac OS X is MacTEX which is based on TEX
+Live.
+
+*** A recent Ghostscript
+
+This is needed for operation of preview-latex in both DVI and PDF
+mode. Most versions of Ghostscript nowadays in use should work fine
+(version 7.0 and newer).
+
+** Installation
+
+#+begin_src emacs-lisp
+  (starter-kit-install-if-needed 'auctex)
+#+end_src
+
+** Customization
+
+#+begin_src emacs-lisp
+(when (locate-library "auctex")
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+
+  (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
+  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (setq reftex-plug-into-AUCTeX t)
+)
+
+#+end_src
+   
