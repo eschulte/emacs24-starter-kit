@@ -29,5 +29,25 @@ doc/index.html:
 	cp doc/starter-kit.html doc/index.html
 	echo "Documentation published to doc/"
 
+# Packaging
+NAME=literate-emacs-starter-kit
+VERSION=1.0.0
+DOC=A literate version of the Emacs Starter Kit.
+REQ=(emacs "24.3")
+DEFPKG=(define-package "$(NAME)" "$(VERSION)"\n  "$(DOC)"\n  (quote $(REQ)))
+PACKAGE=$(NAME)-$(VERSION)
+
+$(PACKAGE): $(wildcard *.org) init.el Makefile
+	mkdir -p $(PACKAGE)
+	cp $^ $(PACKAGE)
+	$(BATCH) starter-kit.org --eval "(org-export-to-file 'ascii \"$(PACKAGE)/README\")"
+	echo -e '$(DEFPKG)' > $(PACKAGE)/$(NAME)-pkg.el
+
+$(PACKAGE).tar: $(PACKAGE)
+	tar cf $@ $<
+
+package: $(PACKAGE).tar
+
 clean:
 	rm -f *.elc *.aux *.tex *.pdf starter-kit*.el starter-kit*.html doc/*html *~ .starter-kit*.part.org
+	rm -rf $(PACKAGE).tar $(PACKAGE)
