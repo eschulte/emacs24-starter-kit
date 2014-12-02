@@ -30,18 +30,13 @@ doc/index.html:
 	echo "Documentation published to doc/"
 
 # Packaging
-NAME=literate-emacs-starter-kit
-VERSION=1.0.0
-DOC=A literate version of the Emacs Starter Kit.
-REQ=(emacs "24.3")
-DEFPKG=(define-package "$(NAME)" "$(VERSION)"\n  "$(DOC)"\n  (quote $(REQ)))
-PACKAGE=$(NAME)-$(VERSION)
+NAME=literate-starter-kit
+PACKAGE=$(NAME)
 
-$(PACKAGE): $(wildcard *.org) init.el Makefile
+$(PACKAGE): $(wildcard *.org) init.el Makefile literate-starter-kit-pkg.el
 	mkdir -p $(PACKAGE)
 	cp $^ $(PACKAGE)
 	$(BATCH) starter-kit.org --eval "(org-export-to-file 'ascii \"$(PACKAGE)/README\")"
-	echo -e '$(DEFPKG)' > $(PACKAGE)/$(NAME)-pkg.el
 
 $(PACKAGE).tar: $(PACKAGE)
 	tar cf $@ $<
