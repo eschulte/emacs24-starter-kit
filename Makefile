@@ -29,5 +29,20 @@ doc/index.html:
 	cp doc/starter-kit.html doc/index.html
 	echo "Documentation published to doc/"
 
+# Packaging
+NAME=literate-starter-kit
+PACKAGE=$(NAME)
+
+$(PACKAGE): $(wildcard *.org) init.el Makefile literate-starter-kit-pkg.el
+	mkdir -p $(PACKAGE)
+	cp $^ $(PACKAGE)
+	$(BATCH) starter-kit.org --eval "(org-export-to-file 'ascii \"$(PACKAGE)/README\")"
+
+$(PACKAGE).tar: $(PACKAGE)
+	tar cf $@ $<
+
+package: $(PACKAGE).tar
+
 clean:
 	rm -f *.elc *.aux *.tex *.pdf starter-kit*.el starter-kit*.html doc/*html *~ .starter-kit*.part.org
+	rm -rf $(PACKAGE).tar $(PACKAGE)

@@ -51,3 +51,8 @@ secret.org
 .emacs.desktop*
 .*~
 agent/*
+
+## package directory
+!literate-starter-kit-pkg.el
+literate-starter-kit/
+literate-starter-kit.tar

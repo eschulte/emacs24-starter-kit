@@ -29,7 +29,7 @@ You can skip these steps if you've already setup ghc and cabal
 *** Update cabal
 #+start_src sh
    cabal install cabal-install
-#+end
+#+end_src
 
 *** Set path to ~/.cabal/bin
 #+begin_src sh
