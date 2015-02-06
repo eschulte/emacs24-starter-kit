@@ -4,3 +4,6 @@
 [submodule "vendor/orgmode-mediawiki"]
 	path = vendor/orgmode-mediawiki
 	url = https://github.com/craftkiller/orgmode-mediawiki.git
+[submodule "vendor/org-reveal"]
+	path = vendor/org-reveal
+	url = https://github.com/yjwen/org-reveal.git
