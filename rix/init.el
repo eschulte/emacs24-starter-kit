@@ -1,0 +1,6 @@
+(starter-kit-load "misc-recommended")
+(starter-kit-load "org")
+(starter-kit-load "ruby")
+(starter-kit-load "js")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'desert t)
