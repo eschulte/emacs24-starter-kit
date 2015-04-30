@@ -25,7 +25,6 @@ url/*
 
 ## exported and encrypted files
 *gpg
-*el
 *elc
 *html
 *tex
@@ -45,6 +44,7 @@ mail
 *.SCORE
 marks
 .session
+session*
 abbrev_defs
 scratch
 secret.org
