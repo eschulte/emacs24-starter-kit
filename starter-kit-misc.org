@@ -161,7 +161,7 @@ let them live in the =backups/= directory inside of the starter kit.
 
 ** Cosmetics
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (eval-after-load 'diff-mode
   '(progn
      (set-face-foreground 'diff-added "green4")
