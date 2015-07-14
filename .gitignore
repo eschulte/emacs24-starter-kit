@@ -9,6 +9,9 @@ places
 .svn
 .DS_Store
 tramp
+.smex-items
+ac-comphist.dat
+ido.last
 
 ## directories
 backups/*
