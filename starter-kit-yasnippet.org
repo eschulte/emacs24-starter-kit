@@ -72,5 +72,8 @@ following function allows these two to play nicely together.
     (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
     (define-key yas/keymap [tab] 'yas/next-field))
 
+  ;; See https://github.com/eschulte/emacs24-starter-kit/issues/80.
+  (setq org-src-tab-acts-natively nil)
+
   (add-hook 'org-mode-hook #'yas/org-setup)
 #+end_src
