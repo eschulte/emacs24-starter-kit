@@ -1,0 +1,30 @@
+#+TITLE: Starter Kit Automatic After Load
+#+OPTIONS: toc:nil num:nil ^:nil
+
+* Automatic after load
+
+Use file named modes/after-load-*.org in after-load-mode:
+modes/after-load-MODE.org will be load when MODE has been provided.
+
+#+begin_src emacs-lisp
+  (let ((modes-dir (expand-file-name "modes" starter-kit-dir)))
+    (cl-flet ((sk-after-load (base)
+                             (eval-after-load base
+                               (let* ((path          (expand-file-name (concat "after-load-" base) modes-dir))
+                                      (literate      (concat path ".org"))
+                                      (encrypted-org (concat path ".org.gpg"))
+                                      (plain         (concat path ".el"))
+                                      (encrypted-el  (concat path ".el.gpg")))
+                                 (cond
+                                  ((file-exists-p encrypted-org) `(org-babel-load-file ,encrypted-org))
+                                  ((file-exists-p encrypted-el)  `(load ,encrypted-el))
+                                  ((file-exists-p literate)      `(org-babel-load-file ,literate))
+                                  ((file-exists-p plain)         `(load ,plain))))))
+              (base-name (name)
+                         (string-match "after-load-\\(.*?\\)\.\\(org\\(\\.el\\)?\\|el\\)\\(\\.gpg\\)?$" name)
+                         (match-string 1 name)))
+      (let* ((files (directory-files modes-dir () "after-load-.*\.\\(org\\|el\\)\\(\\.gpg\\)?$"))
+             (base-name (mapcar #'base-name files))
+             (base-single (remove-duplicates base-name :test #'string=)))
+        (mapc #'sk-after-load base-single))))
+#+end_src
