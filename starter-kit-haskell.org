@@ -27,7 +27,7 @@ You can skip these steps if you've already setup ghc and cabal
 #+end_src
 
 *** Update cabal
-#+start_src sh
+#+begin_src sh
    cabal install cabal-install
 #+end_src
 
