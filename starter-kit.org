@@ -156,7 +156,7 @@ general starter-kit updates without conflict.
      #+begin_src emacs-lisp
        (starter-kit-load "gnus" "pretty-summary")
      #+end_src
-     
+
      Finally you can load just those subsections of a file which have
      a specific tag, so to load just the two sections of
      =starter-kit-misc-recommended.org= which are tagged =visual= add
@@ -289,10 +289,10 @@ interested in the actual code implementing the starter kit.
                 ("melpa"       . "http://melpa.org/packages/")
                 ("marmalade"   . "http://marmalade-repo.org/packages/")))
         (package-initialize)
-        
+
         (defvar starter-kit-packages nil
           "Libraries that should be installed by default (currently none).")
-        
+
         (defun starter-kit-install-if-needed (&rest packages)
           "Install PACKAGES using ELPA if they are not loadable or installed locally."
           (when packages
@@ -313,10 +313,10 @@ interested in the actual code implementing the starter kit.
     configuration from within that subtree will be loaded.  If it is
     not an id then it will be interpreted as a tag, and only subtrees
     marked with the given tag will be loaded.
-    
+
     For example, to load all of starter-kit-lisp.org simply
     add (starter-kit-load \"lisp\") to your configuration.
-    
+
     To load only the 'window-system' config from
     starter-kit-misc-recommended.org add
      (starter-kit-load \"misc-recommended\" \"window-system\")
@@ -428,7 +428,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
       ;; load user-specific config
       (sk-load user-login-name)
       ;; load any files in the user's directory
-      (when (file-exists-p user-dir)
+      (when (file-directory-p user-dir)
         (add-to-list 'load-path user-dir)
         (mapc #'sk-load
               (remove-duplicates
