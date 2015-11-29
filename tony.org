@@ -1,17 +1,47 @@
-* Switch mac's command and option keys to satisfy me
-  #+BEGIN_SRC emacs-lisp
-    (setq mac-option-modifier 'alt)
-    (setq mac-command-modifier 'meta)
-    (global-set-key [kp-delete] 'delete-char)
-  #+END_SRC
-* Hidden the tool bar to stretch the space of editing area
-  #+BEGIN_SRC emacs-lisp
-    (tool-bar-mode 0)
-  #+END_SRC
+* face
+** Hidden the tool bar to stretch the space of editing area
+   #+BEGIN_SRC emacs-lisp
+     (tool-bar-mode 0)
+     (scroll-bar-mode 0)
+   #+END_SRC
+
+** font size
+   #+BEGIN_SRC emacs-lisp
+     (set-face-attribute 'default nil :height 165)
+   #+END_SRC
+
+** Color-theme
+   there is a emacs color-theme's website that you can choose your favourate theme by eye.It's very useful and the url is "http://pawelbx.github.io/emacs-theme-gallery/" 
+   #+BEGIN_SRC emacs-lisp
+     (load-theme 'solarized-light t)
+   #+END_SRC
+* keys and keybindings
+** Switch mac's command and option keys to satisfy me.
+   #+BEGIN_SRC emacs-lisp
+     (setq mac-option-modifier 'alt)
+     (setq mac-command-modifier 'meta)
+     (global-set-key [kp-delete] 'delete-char)
+   #+END_SRC
+
+** Fullscreen and maximize frame
+   #+BEGIN_SRC emacs-lisp
+   (global-set-key (kbd "C-c f") 'toggle-frame-fullscreen)
+   (global-set-key (kbd "C-c m") 'toggle-frame-maximized)
+   #+END_SRC
+
+** Dictionary
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)
+     (global-set-key (kbd "C-c d") 'osx-dictionary-search-pointer)
+   #+END_SRC
 * The brew version of emacs visual blink has some truble,so I choose the alternative way to replace it
   #+BEGIN_SRC emacs-lisp
-    (setq visible-bell nil)
-    (setq ring-bell-function `(lambda ()
-                                (set-face-background 'default "DodgerBlue")
-                                (set-face-background 'default "white")))
+     (defun my-terminal-visible-bell ()
+       "A friendlier visual bell effect."
+       (invert-face 'mode-line)
+       (run-with-timer 0.1 nil 'invert-face 'mode-line))
+     
+     (setq visible-bell nil
+           ring-bell-function 'my-terminal-visible-bell)
+
   #+END_SRC
