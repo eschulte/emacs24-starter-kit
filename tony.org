@@ -1,0 +1,17 @@
+* Switch mac's command and option keys to satisfy me
+  #+BEGIN_SRC emacs-lisp
+    (setq mac-option-modifier 'alt)
+    (setq mac-command-modifier 'meta)
+    (global-set-key [kp-delete] 'delete-char)
+  #+END_SRC
+* Hidden the tool bar to stretch the space of editing area
+  #+BEGIN_SRC emacs-lisp
+    (tool-bar-mode 0)
+  #+END_SRC
+* The brew version of emacs visual blink has some truble,so I choose the alternative way to replace it
+  #+BEGIN_SRC emacs-lisp
+    (setq visible-bell nil)
+    (setq ring-bell-function `(lambda ()
+                                (set-face-background 'default "DodgerBlue")
+                                (set-face-background 'default "white")))
+  #+END_SRC
