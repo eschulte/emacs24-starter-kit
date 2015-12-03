@@ -5,15 +5,15 @@
      (scroll-bar-mode 0)
    #+END_SRC
 
-** font size
-   #+BEGIN_SRC emacs-lisp
-     (set-face-attribute 'default nil :height 165)
-   #+END_SRC
-
 ** Color-theme
    there is a emacs color-theme's website that you can choose your favourate theme by eye.It's very useful and the url is "http://pawelbx.github.io/emacs-theme-gallery/" 
    #+BEGIN_SRC emacs-lisp
      (load-theme 'solarized-light t)
+   #+END_SRC
+
+** Font settings 
+   #+BEGIN_SRC emacs-lisp
+     (require 'chinese-fonts-setup)
    #+END_SRC
 * keys and keybindings
 ** Switch mac's command and option keys to satisfy me.
