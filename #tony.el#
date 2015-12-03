@@ -1,0 +1,16 @@
+
+(setq mac-option-modifier 'alt)
+(setq mac-command-modifier 'meta)
+(global-set-key [kp-delete] 'delete-char)
+
+(tool-bar-mode 0)
+
+(defun my-terminal-visible-bell ()
+  "A friendlier visual bell effect."
+  (invert-face 'mode-line)
+  (run-with-timer 0.1 nil 'invert-face 'mode-line))
+
+(setq visible-bell nil
+      ring-bell-function 'my-terminal-visible-bell)
+
+(load-theme 'solarized-dark t)
