@@ -17,15 +17,24 @@ install them. Other dependencies are provided by Emacs 24.
 #+end_src
 
 ** Color Themes
-Emacs24 has build in support for saving and loading themes.
+Emacs24 has built in support for saving and loading themes. It comes
+with a selection of built-in themes that you can choose from, so
+you’re no longer bound to the default theme.
 
-A Theme builder is available at http://elpa.gnu.org/themes/ along with
-a list of pre-built themes at http://elpa.gnu.org/themes/view.html and
-themes are available through ELPA.
+A comprehensive resource of additional themes is available at
+[[https://emacsthemes.com/][https://emacsthemes.com/]]. These themes can be downloaded from their
+official sources but should also be available through the various ELPA
+respositories.
 
-Downloaded themes may be saved to the =themes/= directory in the base
-of the starter kit which ignored by git.  Once downloaded and
-evaluated a theme is activated using the =load-theme= function.
+Themes downloaded from official sources may be saved to a =themes/=
+directory (which will need to be added to the
+=custom-theme-load-path=) in the base of the starter kit and which
+will be ignored by git. Those downloaded from an ELPA repository will
+be placed in the =elpa/= directory already in the base of the starter
+kit. Once downloaded and evaluated a theme joins the list of available
+themes in your emacs setup. A theme is activated using the
+=load-theme= function. To have a persistent theme this function should
+be included in your user-specific-config file.
 
 ** Window systems
 #+srcname: starter-kit-window-view-stuff
@@ -148,7 +157,7 @@ it's possible aspell isn't in your path
     (delete 'try-expand-list hippie-expand-try-functions-list))
 #+end_src
 
-** Don't clutter up directories with files~
+** Don't clutter up directories with '~' files
 Rather than saving backup files scattered all over the file system,
 let them live in the =backups/= directory inside of the starter kit.
 #+begin_src emacs-lisp
