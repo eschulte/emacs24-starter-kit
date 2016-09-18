@@ -114,9 +114,9 @@ you can add the following line to your =~/.authinfo=.
   :PROPERTIES:
   :CUSTOM_ID: pop
   :END:
-This file can be used to jump start a working Gnus instillation.  The
+This file can be used to jump start a working Gnus installation.  The
 following steps will result in a working vanilla Gnus POP
-instillation.
+installation.
 1) install the [[required-packages]]
 2) follow the [[gmail]] specific instructions
 3) tangle this file with `org-babel-tangle' (with C-c M-b t) creating
@@ -146,7 +146,7 @@ IMAP email clients.
 [[http://www.openssl.org/][openssl]] implements the Secure Socket Layer (SSL) secure communication
 protocol.
 
-On Debian systems (including Ubuntu) instillation of =starttls= and
+On Debian systems (including Ubuntu) installation of =starttls= and
 =openssl= client is as simple as
 : sudo apt-get install starttls openssl
 
