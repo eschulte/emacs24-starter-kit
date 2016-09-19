@@ -98,7 +98,7 @@ Clear the compilation buffer between test runs.
 
 #+begin_src emacs-lisp
 ;; (add-hook 'ruby-mode-hook 'idle-highlight)
-#+end_src emacs-lisp
+#+end_src
 
 ** Flymake
    :PROPERTIES:
@@ -146,3 +146,4 @@ See [[http://rinari.rubyforge.org/][rinari.rubyforge]] for more information on r
   (setq rinari-major-modes
         '(dired-mode 'ruby-mode  'css-mode 'yaml-mode 'javascript-mode))
 #+end_src
+
